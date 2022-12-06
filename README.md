@@ -1,6 +1,6 @@
 # weebs_app
 
-A new Flutter project.
+Weebs App: The app where you can stream anime, dorama, and read manga.
 
 ## Getting Started
 
