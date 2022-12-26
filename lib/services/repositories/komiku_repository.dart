@@ -12,14 +12,18 @@ abstract class IKomikuRepository {
   /// Get latest manga from komiku
   Future<Either<Failure, KomikuListModel>> getLatestKomik();
 
+  /// Get next data of komik list
+  Future<Either<Failure, KomikuListModel>> getNextKomikListData({
+    required String nextURL,
+  });
+
   /// Get manga detail
   Future<Either<Failure, KomikuDetailModel>> getKomikDetail({
     required String url,
   });
 
   /// Get chapter images
-  Future<Either<Failure, KomikuChapterImageListModel>>
-      getKomikDetailChapterImages({
+  Future<Either<Failure, KomikuChapterImageListModel>> getKomikDetailChapterImages({
     required String url,
   });
 }
@@ -41,8 +45,7 @@ class KomikuRepository implements IKomikuRepository {
   }
 
   @override
-  Future<Either<Failure, KomikuChapterImageListModel>>
-      getKomikDetailChapterImages({
+  Future<Either<Failure, KomikuChapterImageListModel>> getKomikDetailChapterImages({
     required String url,
   }) async {
     /// Get komik chapter image
@@ -59,6 +62,18 @@ class KomikuRepository implements IKomikuRepository {
   Future<Either<Failure, KomikuListModel>> getLatestKomik() async {
     /// Get latest updated komik
     final res = await DioHelper.defaultGetRequest(url: Endpoints.komiku);
+
+    /// return the result
+    return res.fold(
+      (l) => Left(l),
+      (r) => Right(KomikuListModel.fromJson(r)),
+    );
+  }
+
+  @override
+  Future<Either<Failure, KomikuListModel>> getNextKomikListData({required String nextURL}) async {
+    /// Get next komik list
+    final res = await DioHelper.defaultGetRequest(url: nextURL);
 
     /// return the result
     return res.fold(

@@ -2,15 +2,17 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:weebs_app/global/assets_constant.dart';
+import 'package:weebs_app/global/design_size.dart';
 import 'package:weebs_app/helpers/get_it_helper/get_it_helper.dart';
 import 'package:weebs_app/helpers/http_overrides/custom_http_overrides.dart';
+import 'package:weebs_app/main_bloc_wrapper.dart';
 import 'package:weebs_app/routes/app_router.dart';
 import 'package:weebs_app/routes/app_router_observer.dart';
 
 /// Scaffold messenger key
-GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey =
-    GlobalKey<ScaffoldMessengerState>();
+GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey = GlobalKey<ScaffoldMessengerState>();
 
 Future<void> main() async {
   /// Ensure initialized
@@ -37,14 +39,20 @@ class WeebsApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: 'Weebs App',
-      darkTheme: ThemeData.dark(),
-      routerDelegate: _appRouter.delegate(
-        navigatorObservers: () => [AppRouterObserver()],
+    return MainBlocWrapper(
+      child: ScreenUtilInit(
+        minTextAdapt: true,
+        designSize: DesignSize.designSize,
+        builder: (context, child) => MaterialApp.router(
+          title: 'Weebs App',
+          darkTheme: ThemeData.dark(),
+          routerDelegate: _appRouter.delegate(
+            navigatorObservers: () => [AppRouterObserver()],
+          ),
+          routeInformationParser: _appRouter.defaultRouteParser(),
+          scaffoldMessengerKey: scaffoldMessengerKey,
+        ),
       ),
-      routeInformationParser: _appRouter.defaultRouteParser(),
-      scaffoldMessengerKey: scaffoldMessengerKey,
     );
   }
 }

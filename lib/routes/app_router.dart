@@ -20,7 +20,7 @@ part 'app_router.gr.dart';
     /// Home Screen
     AutoRoute(
       name: RouteNames.homeScreen,
-      path: "/${RouteNames.homeScreen}",
+      path: RouteNames.homeScreen,
       page: HomeScreen,
     ),
   ],
