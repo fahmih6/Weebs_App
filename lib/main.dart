@@ -1,9 +1,8 @@
 import 'dart:io';
 
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:weebs_app/global/assets_constant.dart';
 import 'package:weebs_app/global/design_size.dart';
 import 'package:weebs_app/helpers/get_it_helper/get_it_helper.dart';
 import 'package:weebs_app/helpers/http_overrides/custom_http_overrides.dart';
@@ -12,7 +11,8 @@ import 'package:weebs_app/routes/app_router.dart';
 import 'package:weebs_app/routes/app_router_observer.dart';
 
 /// Scaffold messenger key
-GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey = GlobalKey<ScaffoldMessengerState>();
+GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey =
+    GlobalKey<ScaffoldMessengerState>();
 
 Future<void> main() async {
   /// Ensure initialized
@@ -20,9 +20,6 @@ Future<void> main() async {
 
   /// Set Custom HTTP Overrides
   HttpOverrides.global = CustomHttpOverrides();
-
-  /// Load dot env file
-  await dotenv.load(fileName: AssetsConstant.envFile);
 
   /// Setup the dependencies
   await GetItHelper.setupDependencies();
@@ -45,12 +42,20 @@ class WeebsApp extends StatelessWidget {
         designSize: DesignSize.designSize,
         builder: (context, child) => MaterialApp.router(
           title: 'Weebs App',
-          darkTheme: ThemeData.dark(),
+          theme: ThemeData.dark(useMaterial3: true),
+          darkTheme: ThemeData.dark(useMaterial3: true),
           routerDelegate: _appRouter.delegate(
             navigatorObservers: () => [AppRouterObserver()],
           ),
           routeInformationParser: _appRouter.defaultRouteParser(),
           scaffoldMessengerKey: scaffoldMessengerKey,
+          scrollBehavior: const MaterialScrollBehavior().copyWith(dragDevices: {
+            PointerDeviceKind.mouse,
+            PointerDeviceKind.touch,
+            PointerDeviceKind.stylus,
+            PointerDeviceKind.trackpad,
+            PointerDeviceKind.unknown,
+          }),
         ),
       ),
     );

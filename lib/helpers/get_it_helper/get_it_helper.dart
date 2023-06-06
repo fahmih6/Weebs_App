@@ -23,32 +23,32 @@ class GetItHelper {
   /// Repository dependencies
   static void repositoryDependencies() {
     /// Anoboy Repository
-    getIt.registerLazySingleton<AnoboyRepository>(() => AnoboyRepository());
+    getIt.registerFactory<AnoboyRepository>(() => AnoboyRepository());
 
     /// Komiku Repository
-    getIt.registerLazySingleton<KomikuRepository>(() => KomikuRepository());
+    getIt.registerFactory<KomikuRepository>(() => KomikuRepository());
   }
 
   /// Dio Dependency
   static void dioDependency() {
     /// Setup DIO Dependency
-    final dio = Dio(BaseOptions(
-      baseUrl: Endpoints.baseUrl,
-      connectTimeout: 10000,
-      sendTimeout: 10000,
-      receiveTimeout: 30000,
-    ));
+    final dio = Dio(
+      BaseOptions(
+        baseUrl: Endpoints.baseUrl,
+        connectTimeout: const Duration(milliseconds: 10000),
+        sendTimeout: const Duration(milliseconds: 10000),
+        receiveTimeout: const Duration(milliseconds: 10000),
+      ),
+    );
 
     // Add the interceptor
-    dio.interceptors.add(RetryInterceptor(
-      dio: dio,
-      logPrint: debugPrint,
-      retries: 3, // Retry count (optional)
-      retryDelays: const [
-        // Set delays between retries (optional)
-        Duration(seconds: 1)
-      ],
-    ));
+    dio.interceptors.add(
+      RetryInterceptor(
+        dio: dio,
+        logPrint: debugPrint,
+        retries: 100, // Retry count (optional)
+      ),
+    );
 
     /// Register dio
     getIt.registerSingleton<Dio>(dio);

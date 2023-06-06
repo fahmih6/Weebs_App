@@ -27,6 +27,11 @@ _$_AnoboyDetailModel _$$_AnoboyDetailModelFromJson(Map<String, dynamic> json) =>
               ?.map((e) => AnoboyLinksItem.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
+      videoMirrorDirectLinks: (json['video_mirrors_direct_link']
+                  as List<dynamic>?)
+              ?.map((e) => AnoboyLinksItem.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$$_AnoboyDetailModelToJson(
@@ -42,6 +47,8 @@ Map<String, dynamic> _$$_AnoboyDetailModelToJson(
           instance.videoDirectLinks.map((e) => e.toJson()).toList(),
       'video_mirrors':
           instance.videoEmbedMirrorLinks.map((e) => e.toJson()).toList(),
+      'video_mirrors_direct_link':
+          instance.videoMirrorDirectLinks.map((e) => e.toJson()).toList(),
     };
 
 _$_AnoboyEpisodeNavigationItemModel

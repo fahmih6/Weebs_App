@@ -1,8 +1,6 @@
-import '../helpers/singletons/dotenv_singletons.dart';
-
 class Endpoints {
   /// Base URL
-  static final String baseUrl = DotEnvSingleton.shared.baseUrl;
+  static const String baseUrl = "http://murasakibara.online:3000";
 
   /// Anoboy
   static const String anoboyV1 = "/api/anoboy/";

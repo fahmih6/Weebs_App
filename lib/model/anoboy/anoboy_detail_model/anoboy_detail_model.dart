@@ -15,22 +15,27 @@ class AnoboyDetailModel with _$AnoboyDetailModel {
     /// Episode Navigation if any
     @JsonKey(name: "episode_navigation")
     @Default([])
-        List<AnoboyEpisodeNavigationItemModel> episodeNavigations,
+    List<AnoboyEpisodeNavigationItemModel> episodeNavigations,
 
     /// Video Embed Links
     @JsonKey(name: "video_embed_links")
     @Default([])
-        List<AnoboyLinksItem> videoEmbedLinks,
+    List<AnoboyLinksItem> videoEmbedLinks,
 
     /// Video Direct Links
     @JsonKey(name: "video_direct_links")
     @Default([])
-        List<AnoboyLinksItem> videoDirectLinks,
+    List<AnoboyLinksItem> videoDirectLinks,
 
     /// Video Embed Mirror Links
     @JsonKey(name: "video_mirrors")
     @Default([])
-        List<AnoboyLinksItem> videoEmbedMirrorLinks,
+    List<AnoboyLinksItem> videoEmbedMirrorLinks,
+
+    /// Video Mirrors Direct Link
+    @JsonKey(name: 'video_mirrors_direct_link')
+    @Default([])
+    List<AnoboyLinksItem> videoMirrorDirectLinks,
   }) = _AnoboyDetailModel;
 
   factory AnoboyDetailModel.fromJson(Map<String, dynamic> json) =>

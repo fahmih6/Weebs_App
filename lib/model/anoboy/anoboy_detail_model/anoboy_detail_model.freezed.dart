@@ -46,6 +46,11 @@ mixin _$AnoboyDetailModel {
   List<AnoboyLinksItem> get videoEmbedMirrorLinks =>
       throw _privateConstructorUsedError;
 
+  /// Video Mirrors Direct Link
+  @JsonKey(name: 'video_mirrors_direct_link')
+  List<AnoboyLinksItem> get videoMirrorDirectLinks =>
+      throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $AnoboyDetailModelCopyWith<AnoboyDetailModel> get copyWith =>
@@ -68,7 +73,9 @@ abstract class $AnoboyDetailModelCopyWith<$Res> {
       @JsonKey(name: "video_direct_links")
           List<AnoboyLinksItem> videoDirectLinks,
       @JsonKey(name: "video_mirrors")
-          List<AnoboyLinksItem> videoEmbedMirrorLinks});
+          List<AnoboyLinksItem> videoEmbedMirrorLinks,
+      @JsonKey(name: 'video_mirrors_direct_link')
+          List<AnoboyLinksItem> videoMirrorDirectLinks});
 }
 
 /// @nodoc
@@ -90,6 +97,7 @@ class _$AnoboyDetailModelCopyWithImpl<$Res, $Val extends AnoboyDetailModel>
     Object? videoEmbedLinks = null,
     Object? videoDirectLinks = null,
     Object? videoEmbedMirrorLinks = null,
+    Object? videoMirrorDirectLinks = null,
   }) {
     return _then(_value.copyWith(
       name: null == name
@@ -116,6 +124,10 @@ class _$AnoboyDetailModelCopyWithImpl<$Res, $Val extends AnoboyDetailModel>
           ? _value.videoEmbedMirrorLinks
           : videoEmbedMirrorLinks // ignore: cast_nullable_to_non_nullable
               as List<AnoboyLinksItem>,
+      videoMirrorDirectLinks: null == videoMirrorDirectLinks
+          ? _value.videoMirrorDirectLinks
+          : videoMirrorDirectLinks // ignore: cast_nullable_to_non_nullable
+              as List<AnoboyLinksItem>,
     ) as $Val);
   }
 }
@@ -138,7 +150,9 @@ abstract class _$$_AnoboyDetailModelCopyWith<$Res>
       @JsonKey(name: "video_direct_links")
           List<AnoboyLinksItem> videoDirectLinks,
       @JsonKey(name: "video_mirrors")
-          List<AnoboyLinksItem> videoEmbedMirrorLinks});
+          List<AnoboyLinksItem> videoEmbedMirrorLinks,
+      @JsonKey(name: 'video_mirrors_direct_link')
+          List<AnoboyLinksItem> videoMirrorDirectLinks});
 }
 
 /// @nodoc
@@ -158,6 +172,7 @@ class __$$_AnoboyDetailModelCopyWithImpl<$Res>
     Object? videoEmbedLinks = null,
     Object? videoDirectLinks = null,
     Object? videoEmbedMirrorLinks = null,
+    Object? videoMirrorDirectLinks = null,
   }) {
     return _then(_$_AnoboyDetailModel(
       name: null == name
@@ -184,6 +199,10 @@ class __$$_AnoboyDetailModelCopyWithImpl<$Res>
           ? _value._videoEmbedMirrorLinks
           : videoEmbedMirrorLinks // ignore: cast_nullable_to_non_nullable
               as List<AnoboyLinksItem>,
+      videoMirrorDirectLinks: null == videoMirrorDirectLinks
+          ? _value._videoMirrorDirectLinks
+          : videoMirrorDirectLinks // ignore: cast_nullable_to_non_nullable
+              as List<AnoboyLinksItem>,
     ));
   }
 }
@@ -202,11 +221,14 @@ class _$_AnoboyDetailModel implements _AnoboyDetailModel {
       @JsonKey(name: "video_direct_links")
           final List<AnoboyLinksItem> videoDirectLinks = const [],
       @JsonKey(name: "video_mirrors")
-          final List<AnoboyLinksItem> videoEmbedMirrorLinks = const []})
+          final List<AnoboyLinksItem> videoEmbedMirrorLinks = const [],
+      @JsonKey(name: 'video_mirrors_direct_link')
+          final List<AnoboyLinksItem> videoMirrorDirectLinks = const []})
       : _episodeNavigations = episodeNavigations,
         _videoEmbedLinks = videoEmbedLinks,
         _videoDirectLinks = videoDirectLinks,
-        _videoEmbedMirrorLinks = videoEmbedMirrorLinks;
+        _videoEmbedMirrorLinks = videoEmbedMirrorLinks,
+        _videoMirrorDirectLinks = videoMirrorDirectLinks;
 
   factory _$_AnoboyDetailModel.fromJson(Map<String, dynamic> json) =>
       _$$_AnoboyDetailModelFromJson(json);
@@ -272,9 +294,22 @@ class _$_AnoboyDetailModel implements _AnoboyDetailModel {
     return EqualUnmodifiableListView(_videoEmbedMirrorLinks);
   }
 
+  /// Video Mirrors Direct Link
+  final List<AnoboyLinksItem> _videoMirrorDirectLinks;
+
+  /// Video Mirrors Direct Link
+  @override
+  @JsonKey(name: 'video_mirrors_direct_link')
+  List<AnoboyLinksItem> get videoMirrorDirectLinks {
+    if (_videoMirrorDirectLinks is EqualUnmodifiableListView)
+      return _videoMirrorDirectLinks;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_videoMirrorDirectLinks);
+  }
+
   @override
   String toString() {
-    return 'AnoboyDetailModel(name: $name, synopsis: $synopsis, episodeNavigations: $episodeNavigations, videoEmbedLinks: $videoEmbedLinks, videoDirectLinks: $videoDirectLinks, videoEmbedMirrorLinks: $videoEmbedMirrorLinks)';
+    return 'AnoboyDetailModel(name: $name, synopsis: $synopsis, episodeNavigations: $episodeNavigations, videoEmbedLinks: $videoEmbedLinks, videoDirectLinks: $videoDirectLinks, videoEmbedMirrorLinks: $videoEmbedMirrorLinks, videoMirrorDirectLinks: $videoMirrorDirectLinks)';
   }
 
   @override
@@ -292,7 +327,9 @@ class _$_AnoboyDetailModel implements _AnoboyDetailModel {
             const DeepCollectionEquality()
                 .equals(other._videoDirectLinks, _videoDirectLinks) &&
             const DeepCollectionEquality()
-                .equals(other._videoEmbedMirrorLinks, _videoEmbedMirrorLinks));
+                .equals(other._videoEmbedMirrorLinks, _videoEmbedMirrorLinks) &&
+            const DeepCollectionEquality().equals(
+                other._videoMirrorDirectLinks, _videoMirrorDirectLinks));
   }
 
   @JsonKey(ignore: true)
@@ -304,7 +341,8 @@ class _$_AnoboyDetailModel implements _AnoboyDetailModel {
       const DeepCollectionEquality().hash(_episodeNavigations),
       const DeepCollectionEquality().hash(_videoEmbedLinks),
       const DeepCollectionEquality().hash(_videoDirectLinks),
-      const DeepCollectionEquality().hash(_videoEmbedMirrorLinks));
+      const DeepCollectionEquality().hash(_videoEmbedMirrorLinks),
+      const DeepCollectionEquality().hash(_videoMirrorDirectLinks));
 
   @JsonKey(ignore: true)
   @override
@@ -332,7 +370,9 @@ abstract class _AnoboyDetailModel implements AnoboyDetailModel {
           @JsonKey(name: "video_direct_links")
               final List<AnoboyLinksItem> videoDirectLinks,
           @JsonKey(name: "video_mirrors")
-              final List<AnoboyLinksItem> videoEmbedMirrorLinks}) =
+              final List<AnoboyLinksItem> videoEmbedMirrorLinks,
+          @JsonKey(name: 'video_mirrors_direct_link')
+              final List<AnoboyLinksItem> videoMirrorDirectLinks}) =
       _$_AnoboyDetailModel;
 
   factory _AnoboyDetailModel.fromJson(Map<String, dynamic> json) =
@@ -366,6 +406,11 @@ abstract class _AnoboyDetailModel implements AnoboyDetailModel {
   /// Video Embed Mirror Links
   @JsonKey(name: "video_mirrors")
   List<AnoboyLinksItem> get videoEmbedMirrorLinks;
+  @override
+
+  /// Video Mirrors Direct Link
+  @JsonKey(name: 'video_mirrors_direct_link')
+  List<AnoboyLinksItem> get videoMirrorDirectLinks;
   @override
   @JsonKey(ignore: true)
   _$$_AnoboyDetailModelCopyWith<_$_AnoboyDetailModel> get copyWith =>

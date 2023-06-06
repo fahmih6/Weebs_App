@@ -5,7 +5,9 @@ class KomikuListKomikFetchState with _$KomikuListKomikFetchState {
   const factory KomikuListKomikFetchState.initial() = _Initial;
   const factory KomikuListKomikFetchState.loading() = _Loading;
   const factory KomikuListKomikFetchState.completed({
-    required KomikuListModel komikuList,
+    required KomikuListModel recommendationList,
+    required KomikuListModel hotList,
+    @Default(false) bool isLoadMore,
     String? errorMsg,
   }) = _Completed;
 }

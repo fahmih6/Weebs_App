@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'komiku_list_model.freezed.dart';
 part 'komiku_list_model.g.dart';
 
-@freezed
+@Freezed(makeCollectionsUnmodifiable: false)
 class KomikuListModel with _$KomikuListModel {
   const factory KomikuListModel({
     @JsonKey(name: "next_page") String? nextPage,
@@ -26,6 +26,9 @@ class KomikuListItemModel with _$KomikuListItemModel {
 
     /// Manga Param
     @Default("") String param,
+
+    /// Manga Latest Chapter
+    @JsonKey(name: "latest_chapter") @Default("") String latestChapter,
 
     /// Direct detail url
     @JsonKey(name: "detail_url") @Default("") String detailUrl,

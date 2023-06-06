@@ -8,9 +8,7 @@
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:weebs_app/global/assets_constant.dart';
 import 'package:weebs_app/helpers/get_it_helper/get_it_helper.dart';
 import 'package:weebs_app/helpers/http_overrides/custom_http_overrides.dart';
 
@@ -26,9 +24,6 @@ Future<void> main() async {
 
       /// Set Custom HTTP Overrides
       HttpOverrides.global = CustomHttpOverrides();
-
-      /// Load dot env file
-      await dotenv.load(fileName: AssetsConstant.envFile);
 
       /// Setup Dependencies
       await GetItHelper.setupDependencies();

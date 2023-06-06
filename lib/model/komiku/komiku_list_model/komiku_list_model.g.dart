@@ -30,6 +30,7 @@ _$_KomikuListItemModel _$$_KomikuListItemModelFromJson(
       title: json['title'] as String? ?? "",
       thumbnail: json['thumbnail'] as String? ?? "",
       param: json['param'] as String? ?? "",
+      latestChapter: json['latest_chapter'] as String? ?? "",
       detailUrl: json['detail_url'] as String? ?? "",
     );
 
@@ -39,5 +40,6 @@ Map<String, dynamic> _$$_KomikuListItemModelToJson(
       'title': instance.title,
       'thumbnail': instance.thumbnail,
       'param': instance.param,
+      'latest_chapter': instance.latestChapter,
       'detail_url': instance.detailUrl,
     };

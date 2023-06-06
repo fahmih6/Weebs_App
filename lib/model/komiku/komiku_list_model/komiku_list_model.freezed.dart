@@ -117,7 +117,7 @@ class __$$_KomikuListModelCopyWithImpl<$Res>
           : prevPage // ignore: cast_nullable_to_non_nullable
               as String?,
       data: null == data
-          ? _value._data
+          ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as List<KomikuListItemModel>,
     ));
@@ -130,8 +130,7 @@ class _$_KomikuListModel implements _KomikuListModel {
   const _$_KomikuListModel(
       {@JsonKey(name: "next_page") this.nextPage,
       @JsonKey(name: "prev_page") this.prevPage,
-      final List<KomikuListItemModel> data = const []})
-      : _data = data;
+      this.data = const []});
 
   factory _$_KomikuListModel.fromJson(Map<String, dynamic> json) =>
       _$$_KomikuListModelFromJson(json);
@@ -142,14 +141,9 @@ class _$_KomikuListModel implements _KomikuListModel {
   @override
   @JsonKey(name: "prev_page")
   final String? prevPage;
-  final List<KomikuListItemModel> _data;
   @override
   @JsonKey()
-  List<KomikuListItemModel> get data {
-    if (_data is EqualUnmodifiableListView) return _data;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_data);
-  }
+  final List<KomikuListItemModel> data;
 
   @override
   String toString() {
@@ -165,13 +159,13 @@ class _$_KomikuListModel implements _KomikuListModel {
                 other.nextPage == nextPage) &&
             (identical(other.prevPage, prevPage) ||
                 other.prevPage == prevPage) &&
-            const DeepCollectionEquality().equals(other._data, _data));
+            const DeepCollectionEquality().equals(other.data, data));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, nextPage, prevPage,
-      const DeepCollectionEquality().hash(_data));
+      const DeepCollectionEquality().hash(data));
 
   @JsonKey(ignore: true)
   @override
@@ -225,6 +219,10 @@ mixin _$KomikuListItemModel {
   /// Manga Param
   String get param => throw _privateConstructorUsedError;
 
+  /// Manga Latest Chapter
+  @JsonKey(name: "latest_chapter")
+  String get latestChapter => throw _privateConstructorUsedError;
+
   /// Direct detail url
   @JsonKey(name: "detail_url")
   String get detailUrl => throw _privateConstructorUsedError;
@@ -245,6 +243,7 @@ abstract class $KomikuListItemModelCopyWith<$Res> {
       {String title,
       String thumbnail,
       String param,
+      @JsonKey(name: "latest_chapter") String latestChapter,
       @JsonKey(name: "detail_url") String detailUrl});
 }
 
@@ -264,6 +263,7 @@ class _$KomikuListItemModelCopyWithImpl<$Res, $Val extends KomikuListItemModel>
     Object? title = null,
     Object? thumbnail = null,
     Object? param = null,
+    Object? latestChapter = null,
     Object? detailUrl = null,
   }) {
     return _then(_value.copyWith(
@@ -278,6 +278,10 @@ class _$KomikuListItemModelCopyWithImpl<$Res, $Val extends KomikuListItemModel>
       param: null == param
           ? _value.param
           : param // ignore: cast_nullable_to_non_nullable
+              as String,
+      latestChapter: null == latestChapter
+          ? _value.latestChapter
+          : latestChapter // ignore: cast_nullable_to_non_nullable
               as String,
       detailUrl: null == detailUrl
           ? _value.detailUrl
@@ -299,6 +303,7 @@ abstract class _$$_KomikuListItemModelCopyWith<$Res>
       {String title,
       String thumbnail,
       String param,
+      @JsonKey(name: "latest_chapter") String latestChapter,
       @JsonKey(name: "detail_url") String detailUrl});
 }
 
@@ -316,6 +321,7 @@ class __$$_KomikuListItemModelCopyWithImpl<$Res>
     Object? title = null,
     Object? thumbnail = null,
     Object? param = null,
+    Object? latestChapter = null,
     Object? detailUrl = null,
   }) {
     return _then(_$_KomikuListItemModel(
@@ -330,6 +336,10 @@ class __$$_KomikuListItemModelCopyWithImpl<$Res>
       param: null == param
           ? _value.param
           : param // ignore: cast_nullable_to_non_nullable
+              as String,
+      latestChapter: null == latestChapter
+          ? _value.latestChapter
+          : latestChapter // ignore: cast_nullable_to_non_nullable
               as String,
       detailUrl: null == detailUrl
           ? _value.detailUrl
@@ -346,6 +356,7 @@ class _$_KomikuListItemModel implements _KomikuListItemModel {
       {this.title = "",
       this.thumbnail = "",
       this.param = "",
+      @JsonKey(name: "latest_chapter") this.latestChapter = "",
       @JsonKey(name: "detail_url") this.detailUrl = ""});
 
   factory _$_KomikuListItemModel.fromJson(Map<String, dynamic> json) =>
@@ -366,6 +377,11 @@ class _$_KomikuListItemModel implements _KomikuListItemModel {
   @JsonKey()
   final String param;
 
+  /// Manga Latest Chapter
+  @override
+  @JsonKey(name: "latest_chapter")
+  final String latestChapter;
+
   /// Direct detail url
   @override
   @JsonKey(name: "detail_url")
@@ -373,7 +389,7 @@ class _$_KomikuListItemModel implements _KomikuListItemModel {
 
   @override
   String toString() {
-    return 'KomikuListItemModel(title: $title, thumbnail: $thumbnail, param: $param, detailUrl: $detailUrl)';
+    return 'KomikuListItemModel(title: $title, thumbnail: $thumbnail, param: $param, latestChapter: $latestChapter, detailUrl: $detailUrl)';
   }
 
   @override
@@ -385,14 +401,16 @@ class _$_KomikuListItemModel implements _KomikuListItemModel {
             (identical(other.thumbnail, thumbnail) ||
                 other.thumbnail == thumbnail) &&
             (identical(other.param, param) || other.param == param) &&
+            (identical(other.latestChapter, latestChapter) ||
+                other.latestChapter == latestChapter) &&
             (identical(other.detailUrl, detailUrl) ||
                 other.detailUrl == detailUrl));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, title, thumbnail, param, detailUrl);
+  int get hashCode => Object.hash(
+      runtimeType, title, thumbnail, param, latestChapter, detailUrl);
 
   @JsonKey(ignore: true)
   @override
@@ -414,6 +432,7 @@ abstract class _KomikuListItemModel implements KomikuListItemModel {
           {final String title,
           final String thumbnail,
           final String param,
+          @JsonKey(name: "latest_chapter") final String latestChapter,
           @JsonKey(name: "detail_url") final String detailUrl}) =
       _$_KomikuListItemModel;
 
@@ -432,6 +451,11 @@ abstract class _KomikuListItemModel implements KomikuListItemModel {
 
   /// Manga Param
   String get param;
+  @override
+
+  /// Manga Latest Chapter
+  @JsonKey(name: "latest_chapter")
+  String get latestChapter;
   @override
 
   /// Direct detail url

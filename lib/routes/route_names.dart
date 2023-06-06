@@ -1,4 +1,7 @@
 class RouteNames {
-  static const String splashScreen = 'SplashScreenRoute';
-  static const String homeScreen = "HomeScreenRoute";
+  static const String splashScreen = 'SplashRoute';
+  static const String homeScreen = "HomeRoute";
+  static const String komikListScreen = "KomikListRoute";
+  static const String anoboyListScreen = "AnoboyListRoute";
+  static const String searchScreen = "SearchRoute";
 }

@@ -10,7 +10,8 @@ import '../../model/komiku/komiku_list_model/komiku_list_model.dart';
 /// Komiku Repository
 abstract class IKomikuRepository {
   /// Get latest manga from komiku
-  Future<Either<Failure, KomikuListModel>> getLatestKomik();
+  Future<Either<Failure, KomikuListModel>> getLatestKomik(
+      {String? genre, String? tag});
 
   /// Get next data of komik list
   Future<Either<Failure, KomikuListModel>> getNextKomikListData({
@@ -23,7 +24,8 @@ abstract class IKomikuRepository {
   });
 
   /// Get chapter images
-  Future<Either<Failure, KomikuChapterImageListModel>> getKomikDetailChapterImages({
+  Future<Either<Failure, KomikuChapterImageListModel>>
+      getKomikDetailChapterImages({
     required String url,
   });
 }
@@ -45,7 +47,8 @@ class KomikuRepository implements IKomikuRepository {
   }
 
   @override
-  Future<Either<Failure, KomikuChapterImageListModel>> getKomikDetailChapterImages({
+  Future<Either<Failure, KomikuChapterImageListModel>>
+      getKomikDetailChapterImages({
     required String url,
   }) async {
     /// Get komik chapter image
@@ -59,9 +62,18 @@ class KomikuRepository implements IKomikuRepository {
   }
 
   @override
-  Future<Either<Failure, KomikuListModel>> getLatestKomik() async {
+  Future<Either<Failure, KomikuListModel>> getLatestKomik(
+      {String? genre, String? tag}) async {
+    /// Query Params
+    Map<String, dynamic> queryParams = {};
+
+    /// Fill in the query params
+    queryParams['genre'] = genre;
+    queryParams['tag'] = tag;
+
     /// Get latest updated komik
-    final res = await DioHelper.defaultGetRequest(url: Endpoints.komiku);
+    final res = await DioHelper.defaultGetRequest(
+        url: Endpoints.komiku, queryParams: queryParams);
 
     /// return the result
     return res.fold(
@@ -71,7 +83,8 @@ class KomikuRepository implements IKomikuRepository {
   }
 
   @override
-  Future<Either<Failure, KomikuListModel>> getNextKomikListData({required String nextURL}) async {
+  Future<Either<Failure, KomikuListModel>> getNextKomikListData(
+      {required String nextURL}) async {
     /// Get next komik list
     final res = await DioHelper.defaultGetRequest(url: nextURL);
 

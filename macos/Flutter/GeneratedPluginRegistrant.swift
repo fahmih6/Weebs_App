@@ -6,7 +6,7 @@ import FlutterMacOS
 import Foundation
 
 import device_info_plus
-import path_provider_macos
+import path_provider_foundation
 import screen_retriever
 import sqflite
 import wakelock_macos

@@ -19,19 +19,19 @@ mixin _$KomikuListKomikFetchEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String nextLink) loadMore,
+    required TResult Function(String tag, String nextLink) loadMore,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String nextLink)? loadMore,
+    TResult? Function(String tag, String nextLink)? loadMore,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String nextLink)? loadMore,
+    TResult Function(String tag, String nextLink)? loadMore,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -92,12 +92,19 @@ class __$$_StartedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Started implements _Started {
+class _$_Started with DiagnosticableTreeMixin implements _Started {
   const _$_Started();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'KomikuListKomikFetchEvent.started()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+        .add(DiagnosticsProperty('type', 'KomikuListKomikFetchEvent.started'));
   }
 
   @override
@@ -113,7 +120,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String nextLink) loadMore,
+    required TResult Function(String tag, String nextLink) loadMore,
   }) {
     return started();
   }
@@ -122,7 +129,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String nextLink)? loadMore,
+    TResult? Function(String tag, String nextLink)? loadMore,
   }) {
     return started?.call();
   }
@@ -131,7 +138,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String nextLink)? loadMore,
+    TResult Function(String tag, String nextLink)? loadMore,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -182,7 +189,7 @@ abstract class _$$_LoadMoreCopyWith<$Res> {
           _$_LoadMore value, $Res Function(_$_LoadMore) then) =
       __$$_LoadMoreCopyWithImpl<$Res>;
   @useResult
-  $Res call({String nextLink});
+  $Res call({String tag, String nextLink});
 }
 
 /// @nodoc
@@ -196,9 +203,14 @@ class __$$_LoadMoreCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? tag = null,
     Object? nextLink = null,
   }) {
     return _then(_$_LoadMore(
+      tag: null == tag
+          ? _value.tag
+          : tag // ignore: cast_nullable_to_non_nullable
+              as String,
       nextLink: null == nextLink
           ? _value.nextLink
           : nextLink // ignore: cast_nullable_to_non_nullable
@@ -209,15 +221,26 @@ class __$$_LoadMoreCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_LoadMore implements _LoadMore {
-  const _$_LoadMore({required this.nextLink});
+class _$_LoadMore with DiagnosticableTreeMixin implements _LoadMore {
+  const _$_LoadMore({required this.tag, required this.nextLink});
 
+  @override
+  final String tag;
   @override
   final String nextLink;
 
   @override
-  String toString() {
-    return 'KomikuListKomikFetchEvent.loadMore(nextLink: $nextLink)';
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'KomikuListKomikFetchEvent.loadMore(tag: $tag, nextLink: $nextLink)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'KomikuListKomikFetchEvent.loadMore'))
+      ..add(DiagnosticsProperty('tag', tag))
+      ..add(DiagnosticsProperty('nextLink', nextLink));
   }
 
   @override
@@ -225,12 +248,13 @@ class _$_LoadMore implements _LoadMore {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_LoadMore &&
+            (identical(other.tag, tag) || other.tag == tag) &&
             (identical(other.nextLink, nextLink) ||
                 other.nextLink == nextLink));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, nextLink);
+  int get hashCode => Object.hash(runtimeType, tag, nextLink);
 
   @JsonKey(ignore: true)
   @override
@@ -242,29 +266,29 @@ class _$_LoadMore implements _LoadMore {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String nextLink) loadMore,
+    required TResult Function(String tag, String nextLink) loadMore,
   }) {
-    return loadMore(nextLink);
+    return loadMore(tag, nextLink);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String nextLink)? loadMore,
+    TResult? Function(String tag, String nextLink)? loadMore,
   }) {
-    return loadMore?.call(nextLink);
+    return loadMore?.call(tag, nextLink);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String nextLink)? loadMore,
+    TResult Function(String tag, String nextLink)? loadMore,
     required TResult orElse(),
   }) {
     if (loadMore != null) {
-      return loadMore(nextLink);
+      return loadMore(tag, nextLink);
     }
     return orElse();
   }
@@ -302,8 +326,11 @@ class _$_LoadMore implements _LoadMore {
 }
 
 abstract class _LoadMore implements KomikuListKomikFetchEvent {
-  const factory _LoadMore({required final String nextLink}) = _$_LoadMore;
+  const factory _LoadMore(
+      {required final String tag,
+      required final String nextLink}) = _$_LoadMore;
 
+  String get tag;
   String get nextLink;
   @JsonKey(ignore: true)
   _$$_LoadMoreCopyWith<_$_LoadMore> get copyWith =>
@@ -316,7 +343,8 @@ mixin _$KomikuListKomikFetchState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(KomikuListModel komikuList, String? errorMsg)
+    required TResult Function(KomikuListModel recommendationList,
+            KomikuListModel hotList, bool isLoadMore, String? errorMsg)
         completed,
   }) =>
       throw _privateConstructorUsedError;
@@ -324,14 +352,18 @@ mixin _$KomikuListKomikFetchState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(KomikuListModel komikuList, String? errorMsg)? completed,
+    TResult? Function(KomikuListModel recommendationList,
+            KomikuListModel hotList, bool isLoadMore, String? errorMsg)?
+        completed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(KomikuListModel komikuList, String? errorMsg)? completed,
+    TResult Function(KomikuListModel recommendationList,
+            KomikuListModel hotList, bool isLoadMore, String? errorMsg)?
+        completed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -395,12 +427,19 @@ class __$$_InitialCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
+class _$_Initial with DiagnosticableTreeMixin implements _Initial {
   const _$_Initial();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'KomikuListKomikFetchState.initial()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+        .add(DiagnosticsProperty('type', 'KomikuListKomikFetchState.initial'));
   }
 
   @override
@@ -417,7 +456,8 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(KomikuListModel komikuList, String? errorMsg)
+    required TResult Function(KomikuListModel recommendationList,
+            KomikuListModel hotList, bool isLoadMore, String? errorMsg)
         completed,
   }) {
     return initial();
@@ -428,7 +468,9 @@ class _$_Initial implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(KomikuListModel komikuList, String? errorMsg)? completed,
+    TResult? Function(KomikuListModel recommendationList,
+            KomikuListModel hotList, bool isLoadMore, String? errorMsg)?
+        completed,
   }) {
     return initial?.call();
   }
@@ -438,7 +480,9 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(KomikuListModel komikuList, String? errorMsg)? completed,
+    TResult Function(KomikuListModel recommendationList,
+            KomikuListModel hotList, bool isLoadMore, String? errorMsg)?
+        completed,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -503,12 +547,19 @@ class __$$_LoadingCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Loading implements _Loading {
+class _$_Loading with DiagnosticableTreeMixin implements _Loading {
   const _$_Loading();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'KomikuListKomikFetchState.loading()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+        .add(DiagnosticsProperty('type', 'KomikuListKomikFetchState.loading'));
   }
 
   @override
@@ -525,7 +576,8 @@ class _$_Loading implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(KomikuListModel komikuList, String? errorMsg)
+    required TResult Function(KomikuListModel recommendationList,
+            KomikuListModel hotList, bool isLoadMore, String? errorMsg)
         completed,
   }) {
     return loading();
@@ -536,7 +588,9 @@ class _$_Loading implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(KomikuListModel komikuList, String? errorMsg)? completed,
+    TResult? Function(KomikuListModel recommendationList,
+            KomikuListModel hotList, bool isLoadMore, String? errorMsg)?
+        completed,
   }) {
     return loading?.call();
   }
@@ -546,7 +600,9 @@ class _$_Loading implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(KomikuListModel komikuList, String? errorMsg)? completed,
+    TResult Function(KomikuListModel recommendationList,
+            KomikuListModel hotList, bool isLoadMore, String? errorMsg)?
+        completed,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -600,9 +656,14 @@ abstract class _$$_CompletedCopyWith<$Res> {
           _$_Completed value, $Res Function(_$_Completed) then) =
       __$$_CompletedCopyWithImpl<$Res>;
   @useResult
-  $Res call({KomikuListModel komikuList, String? errorMsg});
+  $Res call(
+      {KomikuListModel recommendationList,
+      KomikuListModel hotList,
+      bool isLoadMore,
+      String? errorMsg});
 
-  $KomikuListModelCopyWith<$Res> get komikuList;
+  $KomikuListModelCopyWith<$Res> get recommendationList;
+  $KomikuListModelCopyWith<$Res> get hotList;
 }
 
 /// @nodoc
@@ -616,14 +677,24 @@ class __$$_CompletedCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? komikuList = null,
+    Object? recommendationList = null,
+    Object? hotList = null,
+    Object? isLoadMore = null,
     Object? errorMsg = freezed,
   }) {
     return _then(_$_Completed(
-      komikuList: null == komikuList
-          ? _value.komikuList
-          : komikuList // ignore: cast_nullable_to_non_nullable
+      recommendationList: null == recommendationList
+          ? _value.recommendationList
+          : recommendationList // ignore: cast_nullable_to_non_nullable
               as KomikuListModel,
+      hotList: null == hotList
+          ? _value.hotList
+          : hotList // ignore: cast_nullable_to_non_nullable
+              as KomikuListModel,
+      isLoadMore: null == isLoadMore
+          ? _value.isLoadMore
+          : isLoadMore // ignore: cast_nullable_to_non_nullable
+              as bool,
       errorMsg: freezed == errorMsg
           ? _value.errorMsg
           : errorMsg // ignore: cast_nullable_to_non_nullable
@@ -633,26 +704,54 @@ class __$$_CompletedCopyWithImpl<$Res>
 
   @override
   @pragma('vm:prefer-inline')
-  $KomikuListModelCopyWith<$Res> get komikuList {
-    return $KomikuListModelCopyWith<$Res>(_value.komikuList, (value) {
-      return _then(_value.copyWith(komikuList: value));
+  $KomikuListModelCopyWith<$Res> get recommendationList {
+    return $KomikuListModelCopyWith<$Res>(_value.recommendationList, (value) {
+      return _then(_value.copyWith(recommendationList: value));
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $KomikuListModelCopyWith<$Res> get hotList {
+    return $KomikuListModelCopyWith<$Res>(_value.hotList, (value) {
+      return _then(_value.copyWith(hotList: value));
     });
   }
 }
 
 /// @nodoc
 
-class _$_Completed implements _Completed {
-  const _$_Completed({required this.komikuList, this.errorMsg});
+class _$_Completed with DiagnosticableTreeMixin implements _Completed {
+  const _$_Completed(
+      {required this.recommendationList,
+      required this.hotList,
+      this.isLoadMore = false,
+      this.errorMsg});
 
   @override
-  final KomikuListModel komikuList;
+  final KomikuListModel recommendationList;
+  @override
+  final KomikuListModel hotList;
+  @override
+  @JsonKey()
+  final bool isLoadMore;
   @override
   final String? errorMsg;
 
   @override
-  String toString() {
-    return 'KomikuListKomikFetchState.completed(komikuList: $komikuList, errorMsg: $errorMsg)';
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'KomikuListKomikFetchState.completed(recommendationList: $recommendationList, hotList: $hotList, isLoadMore: $isLoadMore, errorMsg: $errorMsg)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'KomikuListKomikFetchState.completed'))
+      ..add(DiagnosticsProperty('recommendationList', recommendationList))
+      ..add(DiagnosticsProperty('hotList', hotList))
+      ..add(DiagnosticsProperty('isLoadMore', isLoadMore))
+      ..add(DiagnosticsProperty('errorMsg', errorMsg));
   }
 
   @override
@@ -660,14 +759,18 @@ class _$_Completed implements _Completed {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Completed &&
-            (identical(other.komikuList, komikuList) ||
-                other.komikuList == komikuList) &&
+            (identical(other.recommendationList, recommendationList) ||
+                other.recommendationList == recommendationList) &&
+            (identical(other.hotList, hotList) || other.hotList == hotList) &&
+            (identical(other.isLoadMore, isLoadMore) ||
+                other.isLoadMore == isLoadMore) &&
             (identical(other.errorMsg, errorMsg) ||
                 other.errorMsg == errorMsg));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, komikuList, errorMsg);
+  int get hashCode => Object.hash(
+      runtimeType, recommendationList, hotList, isLoadMore, errorMsg);
 
   @JsonKey(ignore: true)
   @override
@@ -680,10 +783,11 @@ class _$_Completed implements _Completed {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(KomikuListModel komikuList, String? errorMsg)
+    required TResult Function(KomikuListModel recommendationList,
+            KomikuListModel hotList, bool isLoadMore, String? errorMsg)
         completed,
   }) {
-    return completed(komikuList, errorMsg);
+    return completed(recommendationList, hotList, isLoadMore, errorMsg);
   }
 
   @override
@@ -691,9 +795,11 @@ class _$_Completed implements _Completed {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(KomikuListModel komikuList, String? errorMsg)? completed,
+    TResult? Function(KomikuListModel recommendationList,
+            KomikuListModel hotList, bool isLoadMore, String? errorMsg)?
+        completed,
   }) {
-    return completed?.call(komikuList, errorMsg);
+    return completed?.call(recommendationList, hotList, isLoadMore, errorMsg);
   }
 
   @override
@@ -701,11 +807,13 @@ class _$_Completed implements _Completed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(KomikuListModel komikuList, String? errorMsg)? completed,
+    TResult Function(KomikuListModel recommendationList,
+            KomikuListModel hotList, bool isLoadMore, String? errorMsg)?
+        completed,
     required TResult orElse(),
   }) {
     if (completed != null) {
-      return completed(komikuList, errorMsg);
+      return completed(recommendationList, hotList, isLoadMore, errorMsg);
     }
     return orElse();
   }
@@ -747,10 +855,14 @@ class _$_Completed implements _Completed {
 
 abstract class _Completed implements KomikuListKomikFetchState {
   const factory _Completed(
-      {required final KomikuListModel komikuList,
+      {required final KomikuListModel recommendationList,
+      required final KomikuListModel hotList,
+      final bool isLoadMore,
       final String? errorMsg}) = _$_Completed;
 
-  KomikuListModel get komikuList;
+  KomikuListModel get recommendationList;
+  KomikuListModel get hotList;
+  bool get isLoadMore;
   String? get errorMsg;
   @JsonKey(ignore: true)
   _$$_CompletedCopyWith<_$_Completed> get copyWith =>
