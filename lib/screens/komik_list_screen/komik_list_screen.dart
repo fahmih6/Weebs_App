@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:fluid_bottom_nav_bar/fluid_bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -97,7 +98,7 @@ class _KomikListScreenState extends State<KomikListScreen> {
 
                   /// Margin
                   SliverToBoxAdapter(
-                    child: SizedBox(height: 16.h),
+                    child: SizedBox(height: FluidNavBar.nominalHeight + 32.h),
                   ),
                 ],
               );

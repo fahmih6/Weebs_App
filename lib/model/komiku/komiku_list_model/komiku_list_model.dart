@@ -27,6 +27,9 @@ class KomikuListItemModel with _$KomikuListItemModel {
     /// Manga Param
     @Default("") String param,
 
+    /// Description
+    @Default("") String description,
+
     /// Manga Latest Chapter
     @JsonKey(name: "latest_chapter") @Default("") String latestChapter,
 

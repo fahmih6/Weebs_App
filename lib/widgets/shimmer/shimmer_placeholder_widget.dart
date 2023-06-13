@@ -10,6 +10,8 @@ class ShimmerPlaceholderWidget extends StatelessWidget {
       baseColor: Colors.grey,
       highlightColor: Colors.grey.shade300,
       child: Container(
+        height: double.infinity,
+        width: double.infinity,
         color: Colors.grey,
       ),
     );

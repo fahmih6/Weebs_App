@@ -19,7 +19,16 @@ class _HomeScreenState extends State<HomeScreen> {
     return AutoTabsRouter(
       routes: const [
         KomikListRoute(),
+        AnoboyListRoute(),
       ],
+      transitionBuilder: (context, child, animation) {
+        return FadeTransition(
+          opacity: animation,
+          child: child,
+        );
+      },
+      duration: const Duration(milliseconds: 250),
+      lazyLoad: false,
       builder: (context, child) {
         /// Tabs Controller
         final tabsRouter = AutoTabsRouter.of(context);
@@ -28,16 +37,16 @@ class _HomeScreenState extends State<HomeScreen> {
         return SafeArea(
           child: Scaffold(
             extendBody: true,
-            body: Padding(
-              padding: const EdgeInsets.only(bottom: FluidNavBar.nominalHeight),
-              child: Container(
-                alignment: Alignment.center,
-                child: child,
-              ),
+            body: Container(
+              alignment: Alignment.center,
+              child: child,
             ),
             bottomNavigationBar: FluidNavBar(
               animationFactor: 0.4,
               defaultIndex: tabsRouter.activeIndex,
+              onChange: (selectedIndex) {
+                tabsRouter.setActiveIndex(selectedIndex);
+              },
               icons: [
                 FluidNavBarIcon(svgPath: AssetsConstant.komikuIcon),
                 FluidNavBarIcon(svgPath: AssetsConstant.anoboyIcon),

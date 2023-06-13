@@ -28,6 +28,11 @@ abstract class IKomikuRepository {
       getKomikDetailChapterImages({
     required String url,
   });
+
+  /// Search Komik
+  Future<Either<Failure, KomikuListModel>> searchKomik({
+    String? keyword,
+  });
 }
 
 /// Komiku Repository
@@ -92,6 +97,24 @@ class KomikuRepository implements IKomikuRepository {
     return res.fold(
       (l) => Left(l),
       (r) => Right(KomikuListModel.fromJson(r)),
+    );
+  }
+
+  @override
+  Future<Either<Failure, KomikuListModel>> searchKomik(
+      {String? keyword}) async {
+    /// Search Komik
+    final res = await DioHelper.defaultGetRequest(
+      url: Endpoints.komiku,
+      queryParams: {"s": keyword},
+    );
+
+    /// Return the result
+    return res.fold(
+      (l) => Left(l),
+      (r) => Right(
+        KomikuListModel.fromJson(r),
+      ),
     );
   }
 }

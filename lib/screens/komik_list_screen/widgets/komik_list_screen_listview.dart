@@ -1,10 +1,9 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:weebs_app/logic/komiku_list_komik_fetch_bloc/komiku_list_komik_fetch_bloc.dart';
+import 'package:weebs_app/screens/komik_list_screen/widgets/komik_list_screen_list_item.dart';
 import 'package:weebs_app/widgets/loading_widget/loading_widget.dart';
-import 'package:weebs_app/widgets/shimmer/shimmer_placeholder_widget.dart';
 
 import '../../../model/komiku/komiku_list_model/komiku_list_model.dart';
 
@@ -52,108 +51,10 @@ class KomikListScreenListView extends StatelessWidget {
               runSpacing: 8.h,
               spacing: 8.h,
               children: [
+                /// Komik Item
                 ...komikuList.data
                     .map(
-                      (item) => SizedBox(
-                        width: 120.h,
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            /// Image
-                            Stack(
-                              alignment: Alignment.bottomCenter,
-                              children: [
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(8),
-                                  child: CachedNetworkImage(
-                                    imageUrl: item.thumbnail,
-                                    placeholder: (context, url) {
-                                      return const ShimmerPlaceholderWidget();
-                                    },
-                                    fit: BoxFit.cover,
-                                    height: 180.h,
-                                    width: 120.h,
-                                  ),
-                                ),
-
-                                /// Title
-                                Tooltip(
-                                  message: item.title,
-                                  textAlign: TextAlign.center,
-                                  child: Align(
-                                    alignment: Alignment.bottomCenter,
-                                    child: Container(
-                                      alignment: Alignment.center,
-                                      width: MediaQuery.of(context).size.width,
-                                      padding: EdgeInsets.all(4.h),
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(8),
-                                        gradient: LinearGradient(
-                                          begin: Alignment.topCenter,
-                                          end: Alignment.bottomCenter,
-                                          stops: const [-1, 0.5],
-                                          colors: [
-                                            Colors.transparent,
-                                            Colors.black.withOpacity(0.9),
-                                          ],
-                                        ),
-                                      ),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.min,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          /// Title
-                                          Flexible(
-                                            child: Text(
-                                              item.title,
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 14.sp,
-                                              ),
-                                              textAlign: TextAlign.center,
-                                              maxLines: 2,
-                                              overflow: TextOverflow.ellipsis,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-
-                            /// Divider
-                            Padding(
-                              padding: EdgeInsets.symmetric(vertical: 8.h),
-                              child: const Divider(
-                                color: Colors.white,
-                                height: 1,
-                              ),
-                            ),
-
-                            /// Chapter
-                            Flexible(
-                              child: Align(
-                                alignment: Alignment.centerLeft,
-                                child: Text(
-                                  item.latestChapter,
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 12.sp,
-                                  ),
-                                ),
-                              ),
-                            ),
-
-                            /// Padding
-                            SizedBox(height: 16.h),
-                          ],
-                        ),
-                      ),
+                      (item) => KomikListScreenListItem(item: item),
                     )
                     .toList(),
 
@@ -169,7 +70,7 @@ class KomikListScreenListView extends StatelessWidget {
                         final komikuBloc =
                             context.read<KomikuListKomikFetchBloc>();
 
-                        /// Only perform is load more
+                        /// Only perform is load more when is load more is not active
                         komikuBloc.state.mapOrNull(
                           completed: (value) {
                             if (!value.isLoadMore) {
@@ -188,29 +89,34 @@ class KomikListScreenListView extends StatelessWidget {
                           borderRadius: BorderRadius.circular(8),
                         ),
                       ),
-                      child: context
-                          .watch<KomikuListKomikFetchBloc>()
-                          .state
-                          .mapOrNull(
-                        completed: (value) {
-                          if (value.isLoadMore) {
-                            return Center(
-                              child: SizedBox(
-                                height: 80.h,
-                                width: 80.h,
-                                child: LoadingWidget(),
-                              ),
-                            );
-                          } else {
-                            return Text(
-                              "Load More",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 16.sp,
-                              ),
-                            );
-                          }
+                      child: BlocBuilder<KomikuListKomikFetchBloc,
+                          KomikuListKomikFetchState>(
+                        builder: (context, state) {
+                          return state.maybeMap(
+                            completed: (value) {
+                              if (value.isLoadMore) {
+                                return Center(
+                                  child: SizedBox(
+                                    height: 80.h,
+                                    width: 80.h,
+                                    child: const LoadingWidget(),
+                                  ),
+                                );
+                              } else {
+                                return Text(
+                                  "Load More",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 16.sp,
+                                  ),
+                                );
+                              }
+                            },
+                            orElse: () {
+                              return const SizedBox.shrink();
+                            },
+                          );
                         },
                       ),
                     ),
