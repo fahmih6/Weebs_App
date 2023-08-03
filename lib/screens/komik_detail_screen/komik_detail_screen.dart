@@ -93,7 +93,9 @@ class _KomikDetailScreenState extends State<KomikDetailScreen> {
                                       enableFeedback: true,
                                       message: value.komikuDetailModel.title,
                                       child: ElevatedButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          /// TODO : Add to Favourite.
+                                        },
                                         child: const Text("Add to Favourite"),
                                       ),
                                     ),
@@ -214,7 +216,9 @@ class _KomikDetailScreenState extends State<KomikDetailScreen> {
                                     shape: ContinuousRectangleBorder(
                                       borderRadius: BorderRadius.circular(8),
                                     ),
-                                    onTap: () {},
+                                    onTap: () {
+                                      /// TODO : To Chapter List
+                                    },
                                     tileColor: Colors.transparent,
                                   );
                                 },
