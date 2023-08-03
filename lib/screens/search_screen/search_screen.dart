@@ -11,6 +11,8 @@ import 'package:weebs_app/routes/route_names.dart';
 import 'package:weebs_app/widgets/loading_widget/loading_widget.dart';
 import 'package:weebs_app/widgets/shimmer/shimmer_placeholder_widget.dart';
 
+import '../../routes/app_router.dart';
+
 @RoutePage(name: RouteNames.searchScreen)
 class SearchScreen extends StatelessWidget {
   const SearchScreen({super.key});
@@ -78,66 +80,76 @@ class SearchScreen extends StatelessWidget {
                                 final item = value.komikResult.data[index];
                                 return Padding(
                                   padding: EdgeInsets.only(bottom: 16.h),
-                                  child: Container(
-                                    height: 120.h,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(8),
-                                    ),
-                                    child: Row(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        /// Images
-                                        ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(8),
-                                          child: CachedNetworkImage(
-                                            height: 120.h,
-                                            width: 90.h,
-                                            fit: BoxFit.cover,
-                                            imageUrl: item.thumbnail,
-                                            placeholder: (context, url) {
-                                              return const ShimmerPlaceholderWidget();
-                                            },
+                                  child: InkWell(
+                                    onTap: () {
+                                      context.pushRoute(
+                                        KomikDetailRoute(
+                                          param: item.param,
+                                        ),
+                                      );
+                                    },
+                                    child: Container(
+                                      height: 120.h,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      child: Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          /// Images
+                                          ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                            child: CachedNetworkImage(
+                                              height: 120.h,
+                                              width: 90.h,
+                                              fit: BoxFit.cover,
+                                              imageUrl: item.thumbnail,
+                                              placeholder: (context, url) {
+                                                return const ShimmerPlaceholderWidget();
+                                              },
+                                            ),
                                           ),
-                                        ),
 
-                                        /// Padding
-                                        SizedBox(
-                                          width: 8.h,
-                                        ),
+                                          /// Padding
+                                          SizedBox(
+                                            width: 8.h,
+                                          ),
 
-                                        /// Title and Description
-                                        Flexible(
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              /// Title
-                                              Text(
-                                                item.title,
-                                                style: TextStyle(
-                                                  fontWeight: FontWeight.w600,
-                                                  fontSize: 16.sp,
+                                          /// Title and Description
+                                          Flexible(
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                /// Title
+                                                Text(
+                                                  item.title,
+                                                  style: TextStyle(
+                                                    fontWeight: FontWeight.w600,
+                                                    fontSize: 16.sp,
+                                                  ),
+                                                  maxLines: 3,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
                                                 ),
-                                                maxLines: 3,
-                                                overflow: TextOverflow.ellipsis,
-                                              ),
 
-                                              /// Latest Chapter
-                                              Flexible(
-                                                child: Padding(
-                                                  padding:
-                                                      EdgeInsets.only(top: 8.h),
-                                                  child: Text(
-                                                    "Updated : ${item.latestChapter}",
+                                                /// Latest Chapter
+                                                Flexible(
+                                                  child: Padding(
+                                                    padding: EdgeInsets.only(
+                                                        top: 8.h),
+                                                    child: Text(
+                                                      "Updated : ${item.latestChapter}",
+                                                    ),
                                                   ),
                                                 ),
-                                              ),
-                                            ],
+                                              ],
+                                            ),
                                           ),
-                                        ),
-                                      ],
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 );

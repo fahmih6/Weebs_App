@@ -45,6 +45,16 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const SearchScreen(),
       );
     },
+    KomikDetailRoute.name: (routeData) {
+      final args = routeData.argsAs<KomikDetailRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: KomikDetailScreen(
+          key: args.key,
+          param: args.param,
+        ),
+      );
+    },
   };
 }
 
@@ -116,4 +126,42 @@ class SearchRoute extends PageRouteInfo<void> {
   static const String name = 'SearchRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [KomikDetailScreen]
+class KomikDetailRoute extends PageRouteInfo<KomikDetailRouteArgs> {
+  KomikDetailRoute({
+    Key? key,
+    required String param,
+    List<PageRouteInfo>? children,
+  }) : super(
+          KomikDetailRoute.name,
+          args: KomikDetailRouteArgs(
+            key: key,
+            param: param,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'KomikDetailRoute';
+
+  static const PageInfo<KomikDetailRouteArgs> page =
+      PageInfo<KomikDetailRouteArgs>(name);
+}
+
+class KomikDetailRouteArgs {
+  const KomikDetailRouteArgs({
+    this.key,
+    required this.param,
+  });
+
+  final Key? key;
+
+  final String param;
+
+  @override
+  String toString() {
+    return 'KomikDetailRouteArgs{key: $key, param: $param}';
+  }
 }

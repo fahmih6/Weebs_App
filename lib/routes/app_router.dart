@@ -1,7 +1,9 @@
+import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:weebs_app/routes/route_names.dart';
 import 'package:weebs_app/screens/screens_export.dart';
 import 'package:weebs_app/screens/search_screen/search_screen.dart';
+import 'package:weebs_app/screens/komik_detail_screen/komik_detail_screen.dart';
 
 part 'app_router.gr.dart';
 
@@ -42,6 +44,12 @@ class AppRouter extends _$AppRouter {
         AutoRoute(
           path: "/${RouteNames.searchScreen}",
           page: SearchRoute.page,
+        ),
+
+        /// Komik Detail Screen
+        AutoRoute(
+          path: "/${RouteNames.komikDetailScreen}",
+          page: KomikDetailRoute.page,
         )
       ];
 }

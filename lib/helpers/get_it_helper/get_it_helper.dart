@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
 import 'package:weebs_app/global/endpoints.dart';
 import 'package:weebs_app/helpers/general/debouncer.dart';
+import 'package:weebs_app/logic/komiku_detail_fetch_bloc/komiku_detail_fetch_bloc.dart';
 import 'package:weebs_app/logic/search_bloc/search_bloc.dart';
 import 'package:weebs_app/services/repositories/anoboy_repository.dart';
 import 'package:weebs_app/services/repositories/komiku_repository.dart';
@@ -41,6 +42,9 @@ class GetItHelper {
   static void blocDependencies() {
     /// Search Bloc
     getIt.registerLazySingleton(() => SearchBloc());
+
+    /// Komik Detail Bloc
+    getIt.registerLazySingleton(() => KomikuDetailFetchBloc());
   }
 
   /// Dio Dependency
