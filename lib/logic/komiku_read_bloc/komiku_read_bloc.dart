@@ -12,25 +12,28 @@ class KomikuReadBloc extends HydratedBloc<KomikuReadEvent, KomikuReadState> {
   KomikuReadBloc() : super(const _State()) {
     /// Mark as read
     on<_MarkAsRead>((event, emit) {
-      /// Reinitialize
-      final komikuData = event.komikuData.copyWith();
-
       /// State list
       final komikuList = [...state.komikuList];
 
+      /// Reinitialize
+      final komikuData = komikuList
+          .firstWhereOrNull(
+              (element) => element.param == event.komikuData.param)
+          ?.copyWith();
+
       /// Komik Index
-      final komikIndex =
-          komikuList.indexWhere((element) => element.param == komikuData.param);
+      final komikIndex = komikuList
+          .indexWhere((element) => element.param == komikuData?.param);
 
       /// Chapter List
-      final chapterList = [...komikuData.chapters];
+      final chapterList = [...?komikuData?.chapters];
 
       /// Chapter Index
       final chapterIndex = chapterList
           .indexWhere((element) => element.param == event.chapterParam);
 
       /// Chapter data
-      final chapterData = komikuData.chapters
+      final chapterData = komikuData?.chapters
           .firstWhereOrNull((element) => element.param == event.chapterParam)
           ?.copyWith(isRead: true);
 
@@ -40,13 +43,13 @@ class KomikuReadBloc extends HydratedBloc<KomikuReadEvent, KomikuReadState> {
       }
 
       /// Modify the komiku data
-      final newKomikuData = komikuData.copyWith(chapters: chapterList);
+      final newKomikuData = komikuData?.copyWith(chapters: chapterList);
 
       /// Edit the komiku list
-      if (komikIndex >= 0) {
+      if (komikIndex >= 0 && newKomikuData != null) {
         komikuList[komikIndex] = newKomikuData;
       } else {
-        komikuList.add(newKomikuData);
+        komikuList.add(newKomikuData ?? event.komikuData);
       }
 
       /// Emit the new komik list
