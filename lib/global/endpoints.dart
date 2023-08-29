@@ -12,4 +12,5 @@ class Endpoints {
 
   /// Komiku
   static const String komiku = "/api/komiku/";
+  static const String komikuChapter = "/api/komiku/chapter/";
 }

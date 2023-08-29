@@ -13,6 +13,7 @@ part 'komiku_detail_fetch_bloc.freezed.dart';
 class KomikuDetailFetchBloc
     extends Bloc<KomikuDetailFetchEvent, KomikuDetailFetchState> {
   KomikuDetailFetchBloc() : super(const _Initial()) {
+    /// Started
     on<_Started>((event, emit) async {
       emit(const _Loading());
 

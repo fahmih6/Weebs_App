@@ -4,10 +4,15 @@ import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
 import 'package:weebs_app/global/endpoints.dart';
 import 'package:weebs_app/helpers/general/debouncer.dart';
+import 'package:weebs_app/logic/favourites_bloc/favourites_bloc.dart';
+import 'package:weebs_app/logic/komik_read_appbar_cubit/komik_read_appbar_cubit.dart';
 import 'package:weebs_app/logic/komiku_detail_fetch_bloc/komiku_detail_fetch_bloc.dart';
 import 'package:weebs_app/logic/search_bloc/search_bloc.dart';
 import 'package:weebs_app/services/repositories/anoboy_repository.dart';
 import 'package:weebs_app/services/repositories/komiku_repository.dart';
+
+import '../../logic/komiku_chapter_fetch_bloc/komiku_chapter_fetch_bloc.dart';
+import '../../logic/komiku_read_bloc/komiku_read_bloc.dart';
 
 /// Get It
 final getIt = GetIt.instance;
@@ -27,6 +32,9 @@ class GetItHelper {
 
     /// Setup Bloc Dependencies
     blocDependencies();
+
+    /// Setup Cubit Dependencies
+    cubitDependencies();
   }
 
   /// Repository dependencies
@@ -45,6 +53,21 @@ class GetItHelper {
 
     /// Komik Detail Bloc
     getIt.registerLazySingleton(() => KomikuDetailFetchBloc());
+
+    /// Favourites Bloc
+    getIt.registerLazySingleton(() => FavouritesBloc());
+
+    /// Komik Chapter Bloc
+    getIt.registerLazySingleton(() => KomikuChapterFetchBloc());
+
+    /// Komik Read Bloc
+    getIt.registerLazySingleton(() => KomikuReadBloc());
+  }
+
+  /// Cubit Dependencies
+  static void cubitDependencies() {
+    /// Komik Read App Bar Cubit
+    getIt.registerLazySingleton(() => KomikReadAppbarCubit());
   }
 
   /// Dio Dependency

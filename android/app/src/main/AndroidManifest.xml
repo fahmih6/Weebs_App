@@ -2,7 +2,7 @@
     package="org.fahmi.weebs_app">
     <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:label="weebs_app"
+        android:label="Weebs App 2"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

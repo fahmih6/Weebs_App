@@ -5,4 +5,5 @@ class RouteNames {
   static const String anoboyListScreen = "AnoboyListRoute";
   static const String searchScreen = "SearchRoute";
   static const String komikDetailScreen = "KomikDetailRoute";
+  static const String komikReadScreen = "KomikReadRoute";
 }

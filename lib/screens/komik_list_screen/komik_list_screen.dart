@@ -3,7 +3,10 @@ import 'package:fluid_bottom_nav_bar/fluid_bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:weebs_app/global/endpoints.dart';
+import 'package:weebs_app/logic/favourites_bloc/favourites_bloc.dart';
 import 'package:weebs_app/logic/komiku_list_komik_fetch_bloc/komiku_list_komik_fetch_bloc.dart';
+import 'package:weebs_app/model/komiku/komiku_list_model/komiku_list_model.dart';
 import 'package:weebs_app/routes/route_names.dart';
 import 'package:weebs_app/screens/komik_list_screen/widgets/komik_list_screen_appbar.dart';
 import 'package:weebs_app/screens/komik_list_screen/widgets/komik_list_screen_listview.dart';
@@ -66,6 +69,40 @@ class _KomikListScreenState extends State<KomikListScreen> {
                   /// Margin
                   SliverToBoxAdapter(
                     child: SizedBox(height: 16.h),
+                  ),
+
+                  SliverToBoxAdapter(
+                    child: BlocBuilder<FavouritesBloc, FavouritesState>(
+                      builder: (context, state) {
+                        return Visibility(
+                          visible: state.komikuList.isNotEmpty,
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 8.h),
+                            child: KomikListScreenListView(
+                              title: "Favourites",
+                              tagOrGenre: 'favourites',
+                              komikuList: KomikuListModel(
+                                data: state.komikuList
+                                    .map(
+                                      (e) => KomikuListItemModel(
+                                        description: e.synopsis,
+                                        detailUrl:
+                                            '${Endpoints.baseUrl}${Endpoints.komiku}/${e.param}',
+                                        latestChapter:
+                                            e.chapters.firstOrNull?.chapter ??
+                                                'Unknown',
+                                        param: e.param,
+                                        thumbnail: e.thumbnail,
+                                        title: e.title,
+                                      ),
+                                    )
+                                    .toList(),
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                    ),
                   ),
 
                   /// Recomendation

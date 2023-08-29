@@ -7,6 +7,7 @@ part 'komiku_detail_model.g.dart';
 class KomikuDetailModel with _$KomikuDetailModel {
   const factory KomikuDetailModel({
     @Default("") String title,
+    @Default("") String param,
     @Default("") String thumbnail,
     @Default([]) List<String> genre,
     @Default("") String synopsis,
@@ -31,8 +32,26 @@ class KomikuDetailChapterModel with _$KomikuDetailChapterModel {
 
     /// Manga chapter detail URL
     @JsonKey(name: "detail_url") @Default("") String detailUrl,
+
+    /// Is Read
+    @Default(false) bool isRead,
   }) = _KomikuDetailChapterModel;
 
   factory KomikuDetailChapterModel.fromJson(Map<String, dynamic> json) =>
       _$KomikuDetailChapterModelFromJson(json);
+}
+
+@freezed
+class KomikuChapterFetchModel with _$KomikuChapterFetchModel {
+  @JsonSerializable(fieldRename: FieldRename.snake)
+  const factory KomikuChapterFetchModel({
+    /// Chapter Param
+    @Default("") String chapterParam,
+
+    /// Chapter URls
+    @Default([]) List<String> chapterUrls,
+  }) = _KomikuChapterFetchModel;
+
+  factory KomikuChapterFetchModel.fromJson(Map<String, dynamic> json) =>
+      _$KomikuChapterFetchModelFromJson(json);
 }

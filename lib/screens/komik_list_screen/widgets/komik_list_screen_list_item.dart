@@ -14,11 +14,12 @@ class KomikListScreenListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      borderRadius: BorderRadius.circular(8),
       onTap: () {
         context.pushRoute(KomikDetailRoute(param: item.param));
       },
       child: SizedBox(
-        width: 120.h,
+        width: 119.h,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -26,6 +27,7 @@ class KomikListScreenListItem extends StatelessWidget {
             Stack(
               alignment: Alignment.bottomCenter,
               children: [
+                /// Image
                 ClipRRect(
                   borderRadius: BorderRadius.circular(8),
                   child: Hero(

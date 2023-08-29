@@ -9,6 +9,7 @@ part of 'komiku_detail_model.dart';
 _$_KomikuDetailModel _$$_KomikuDetailModelFromJson(Map<String, dynamic> json) =>
     _$_KomikuDetailModel(
       title: json['title'] as String? ?? "",
+      param: json['param'] as String? ?? "",
       thumbnail: json['thumbnail'] as String? ?? "",
       genre:
           (json['genre'] as List<dynamic>?)?.map((e) => e as String).toList() ??
@@ -25,6 +26,7 @@ Map<String, dynamic> _$$_KomikuDetailModelToJson(
         _$_KomikuDetailModel instance) =>
     <String, dynamic>{
       'title': instance.title,
+      'param': instance.param,
       'thumbnail': instance.thumbnail,
       'genre': instance.genre,
       'synopsis': instance.synopsis,
@@ -38,6 +40,7 @@ _$_KomikuDetailChapterModel _$$_KomikuDetailChapterModelFromJson(
       param: json['param'] as String? ?? "",
       release: json['release'] as String? ?? "",
       detailUrl: json['detail_url'] as String? ?? "",
+      isRead: json['isRead'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$_KomikuDetailChapterModelToJson(
@@ -47,4 +50,22 @@ Map<String, dynamic> _$$_KomikuDetailChapterModelToJson(
       'param': instance.param,
       'release': instance.release,
       'detail_url': instance.detailUrl,
+      'isRead': instance.isRead,
+    };
+
+_$_KomikuChapterFetchModel _$$_KomikuChapterFetchModelFromJson(
+        Map<String, dynamic> json) =>
+    _$_KomikuChapterFetchModel(
+      chapterParam: json['chapter_param'] as String? ?? "",
+      chapterUrls: (json['chapter_urls'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
+    );
+
+Map<String, dynamic> _$$_KomikuChapterFetchModelToJson(
+        _$_KomikuChapterFetchModel instance) =>
+    <String, dynamic>{
+      'chapter_param': instance.chapterParam,
+      'chapter_urls': instance.chapterUrls,
     };

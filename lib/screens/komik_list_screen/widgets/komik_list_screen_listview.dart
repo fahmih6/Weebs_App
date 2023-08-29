@@ -46,7 +46,9 @@ class KomikListScreenListView extends StatelessWidget {
         /// Content
         Flexible(
           child: Align(
-            alignment: Alignment.topCenter,
+            alignment: komikuList.data.length <= 2
+                ? Alignment.centerLeft
+                : Alignment.topCenter,
             child: Wrap(
               runSpacing: 8.h,
               spacing: 8.h,

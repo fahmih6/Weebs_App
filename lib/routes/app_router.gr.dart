@@ -15,6 +15,16 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
+    KomikDetailRoute.name: (routeData) {
+      final args = routeData.argsAs<KomikDetailRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: KomikDetailScreen(
+          key: args.key,
+          param: args.param,
+        ),
+      );
+    },
     KomikListRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -33,29 +43,67 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const HomeScreen(),
       );
     },
-    AnoboyListRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const AnoboyListScreen(),
-      );
-    },
     SearchRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const SearchScreen(),
       );
     },
-    KomikDetailRoute.name: (routeData) {
-      final args = routeData.argsAs<KomikDetailRouteArgs>();
+    AnoboyListRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: KomikDetailScreen(
+        child: const AnoboyListScreen(),
+      );
+    },
+    KomikReadRoute.name: (routeData) {
+      final args = routeData.argsAs<KomikReadRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: KomikReadScreen(
           key: args.key,
           param: args.param,
         ),
       );
     },
   };
+}
+
+/// generated route for
+/// [KomikDetailScreen]
+class KomikDetailRoute extends PageRouteInfo<KomikDetailRouteArgs> {
+  KomikDetailRoute({
+    Key? key,
+    required String param,
+    List<PageRouteInfo>? children,
+  }) : super(
+          KomikDetailRoute.name,
+          args: KomikDetailRouteArgs(
+            key: key,
+            param: param,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'KomikDetailRoute';
+
+  static const PageInfo<KomikDetailRouteArgs> page =
+      PageInfo<KomikDetailRouteArgs>(name);
+}
+
+class KomikDetailRouteArgs {
+  const KomikDetailRouteArgs({
+    this.key,
+    required this.param,
+  });
+
+  final Key? key;
+
+  final String param;
+
+  @override
+  String toString() {
+    return 'KomikDetailRouteArgs{key: $key, param: $param}';
+  }
 }
 
 /// generated route for
@@ -101,20 +149,6 @@ class HomeRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [AnoboyListScreen]
-class AnoboyListRoute extends PageRouteInfo<void> {
-  const AnoboyListRoute({List<PageRouteInfo>? children})
-      : super(
-          AnoboyListRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'AnoboyListRoute';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
 /// [SearchScreen]
 class SearchRoute extends PageRouteInfo<void> {
   const SearchRoute({List<PageRouteInfo>? children})
@@ -129,29 +163,43 @@ class SearchRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [KomikDetailScreen]
-class KomikDetailRoute extends PageRouteInfo<KomikDetailRouteArgs> {
-  KomikDetailRoute({
+/// [AnoboyListScreen]
+class AnoboyListRoute extends PageRouteInfo<void> {
+  const AnoboyListRoute({List<PageRouteInfo>? children})
+      : super(
+          AnoboyListRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AnoboyListRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [KomikReadScreen]
+class KomikReadRoute extends PageRouteInfo<KomikReadRouteArgs> {
+  KomikReadRoute({
     Key? key,
     required String param,
     List<PageRouteInfo>? children,
   }) : super(
-          KomikDetailRoute.name,
-          args: KomikDetailRouteArgs(
+          KomikReadRoute.name,
+          args: KomikReadRouteArgs(
             key: key,
             param: param,
           ),
           initialChildren: children,
         );
 
-  static const String name = 'KomikDetailRoute';
+  static const String name = 'KomikReadRoute';
 
-  static const PageInfo<KomikDetailRouteArgs> page =
-      PageInfo<KomikDetailRouteArgs>(name);
+  static const PageInfo<KomikReadRouteArgs> page =
+      PageInfo<KomikReadRouteArgs>(name);
 }
 
-class KomikDetailRouteArgs {
-  const KomikDetailRouteArgs({
+class KomikReadRouteArgs {
+  const KomikReadRouteArgs({
     this.key,
     required this.param,
   });
@@ -162,6 +210,6 @@ class KomikDetailRouteArgs {
 
   @override
   String toString() {
-    return 'KomikDetailRouteArgs{key: $key, param: $param}';
+    return 'KomikReadRouteArgs{key: $key, param: $param}';
   }
 }

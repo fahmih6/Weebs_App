@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'komiku_detail_fetch_bloc.dart';
+part of 'komiku_chapter_fetch_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,78 +15,94 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$KomikuDetailFetchEvent {
+mixin _$KomikuChapterFetchEvent {
+  String get param => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String param) started,
-    required TResult Function(KomikuDetailChapterModel item) read,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String param)? started,
-    TResult? Function(KomikuDetailChapterModel item)? read,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String param)? started,
-    TResult Function(KomikuDetailChapterModel item)? read,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_Read value) read,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_Read value)? read,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_Read value)? read,
     required TResult orElse(),
   }) =>
+      throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $KomikuChapterFetchEventCopyWith<KomikuChapterFetchEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $KomikuDetailFetchEventCopyWith<$Res> {
-  factory $KomikuDetailFetchEventCopyWith(KomikuDetailFetchEvent value,
-          $Res Function(KomikuDetailFetchEvent) then) =
-      _$KomikuDetailFetchEventCopyWithImpl<$Res, KomikuDetailFetchEvent>;
+abstract class $KomikuChapterFetchEventCopyWith<$Res> {
+  factory $KomikuChapterFetchEventCopyWith(KomikuChapterFetchEvent value,
+          $Res Function(KomikuChapterFetchEvent) then) =
+      _$KomikuChapterFetchEventCopyWithImpl<$Res, KomikuChapterFetchEvent>;
+  @useResult
+  $Res call({String param});
 }
 
 /// @nodoc
-class _$KomikuDetailFetchEventCopyWithImpl<$Res,
-        $Val extends KomikuDetailFetchEvent>
-    implements $KomikuDetailFetchEventCopyWith<$Res> {
-  _$KomikuDetailFetchEventCopyWithImpl(this._value, this._then);
+class _$KomikuChapterFetchEventCopyWithImpl<$Res,
+        $Val extends KomikuChapterFetchEvent>
+    implements $KomikuChapterFetchEventCopyWith<$Res> {
+  _$KomikuChapterFetchEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? param = null,
+  }) {
+    return _then(_value.copyWith(
+      param: null == param
+          ? _value.param
+          : param // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$_StartedCopyWith<$Res> {
+abstract class _$$_StartedCopyWith<$Res>
+    implements $KomikuChapterFetchEventCopyWith<$Res> {
   factory _$$_StartedCopyWith(
           _$_Started value, $Res Function(_$_Started) then) =
       __$$_StartedCopyWithImpl<$Res>;
+  @override
   @useResult
   $Res call({String param});
 }
 
 /// @nodoc
 class __$$_StartedCopyWithImpl<$Res>
-    extends _$KomikuDetailFetchEventCopyWithImpl<$Res, _$_Started>
+    extends _$KomikuChapterFetchEventCopyWithImpl<$Res, _$_Started>
     implements _$$_StartedCopyWith<$Res> {
   __$$_StartedCopyWithImpl(_$_Started _value, $Res Function(_$_Started) _then)
       : super(_value, _then);
@@ -115,7 +131,7 @@ class _$_Started implements _Started {
 
   @override
   String toString() {
-    return 'KomikuDetailFetchEvent.started(param: $param)';
+    return 'KomikuChapterFetchEvent.started(param: $param)';
   }
 
   @override
@@ -139,7 +155,6 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String param) started,
-    required TResult Function(KomikuDetailChapterModel item) read,
   }) {
     return started(param);
   }
@@ -148,7 +163,6 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String param)? started,
-    TResult? Function(KomikuDetailChapterModel item)? read,
   }) {
     return started?.call(param);
   }
@@ -157,7 +171,6 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String param)? started,
-    TResult Function(KomikuDetailChapterModel item)? read,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -170,7 +183,6 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_Read value) read,
   }) {
     return started(this);
   }
@@ -179,7 +191,6 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_Read value)? read,
   }) {
     return started?.call(this);
   }
@@ -188,7 +199,6 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_Read value)? read,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -198,163 +208,25 @@ class _$_Started implements _Started {
   }
 }
 
-abstract class _Started implements KomikuDetailFetchEvent {
+abstract class _Started implements KomikuChapterFetchEvent {
   const factory _Started({required final String param}) = _$_Started;
 
+  @override
   String get param;
+  @override
   @JsonKey(ignore: true)
   _$$_StartedCopyWith<_$_Started> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_ReadCopyWith<$Res> {
-  factory _$$_ReadCopyWith(_$_Read value, $Res Function(_$_Read) then) =
-      __$$_ReadCopyWithImpl<$Res>;
-  @useResult
-  $Res call({KomikuDetailChapterModel item});
-
-  $KomikuDetailChapterModelCopyWith<$Res> get item;
-}
-
-/// @nodoc
-class __$$_ReadCopyWithImpl<$Res>
-    extends _$KomikuDetailFetchEventCopyWithImpl<$Res, _$_Read>
-    implements _$$_ReadCopyWith<$Res> {
-  __$$_ReadCopyWithImpl(_$_Read _value, $Res Function(_$_Read) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? item = null,
-  }) {
-    return _then(_$_Read(
-      item: null == item
-          ? _value.item
-          : item // ignore: cast_nullable_to_non_nullable
-              as KomikuDetailChapterModel,
-    ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $KomikuDetailChapterModelCopyWith<$Res> get item {
-    return $KomikuDetailChapterModelCopyWith<$Res>(_value.item, (value) {
-      return _then(_value.copyWith(item: value));
-    });
-  }
-}
-
-/// @nodoc
-
-class _$_Read implements _Read {
-  const _$_Read({required this.item});
-
-  @override
-  final KomikuDetailChapterModel item;
-
-  @override
-  String toString() {
-    return 'KomikuDetailFetchEvent.read(item: $item)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_Read &&
-            (identical(other.item, item) || other.item == item));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, item);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_ReadCopyWith<_$_Read> get copyWith =>
-      __$$_ReadCopyWithImpl<_$_Read>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String param) started,
-    required TResult Function(KomikuDetailChapterModel item) read,
-  }) {
-    return read(item);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String param)? started,
-    TResult? Function(KomikuDetailChapterModel item)? read,
-  }) {
-    return read?.call(item);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String param)? started,
-    TResult Function(KomikuDetailChapterModel item)? read,
-    required TResult orElse(),
-  }) {
-    if (read != null) {
-      return read(item);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_Read value) read,
-  }) {
-    return read(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_Read value)? read,
-  }) {
-    return read?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_Read value)? read,
-    required TResult orElse(),
-  }) {
-    if (read != null) {
-      return read(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Read implements KomikuDetailFetchEvent {
-  const factory _Read({required final KomikuDetailChapterModel item}) = _$_Read;
-
-  KomikuDetailChapterModel get item;
-  @JsonKey(ignore: true)
-  _$$_ReadCopyWith<_$_Read> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-mixin _$KomikuDetailFetchState {
+mixin _$KomikuChapterFetchState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(
-            KomikuDetailModel komikuDetailModel, String errorMessage)
+    required TResult Function(bool isLoadMore, String errorMessage,
+            List<KomikuChapterFetchModel> chapterData)
         completed,
   }) =>
       throw _privateConstructorUsedError;
@@ -362,7 +234,8 @@ mixin _$KomikuDetailFetchState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(KomikuDetailModel komikuDetailModel, String errorMessage)?
+    TResult? Function(bool isLoadMore, String errorMessage,
+            List<KomikuChapterFetchModel> chapterData)?
         completed,
   }) =>
       throw _privateConstructorUsedError;
@@ -370,7 +243,8 @@ mixin _$KomikuDetailFetchState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(KomikuDetailModel komikuDetailModel, String errorMessage)?
+    TResult Function(bool isLoadMore, String errorMessage,
+            List<KomikuChapterFetchModel> chapterData)?
         completed,
     required TResult orElse(),
   }) =>
@@ -400,17 +274,17 @@ mixin _$KomikuDetailFetchState {
 }
 
 /// @nodoc
-abstract class $KomikuDetailFetchStateCopyWith<$Res> {
-  factory $KomikuDetailFetchStateCopyWith(KomikuDetailFetchState value,
-          $Res Function(KomikuDetailFetchState) then) =
-      _$KomikuDetailFetchStateCopyWithImpl<$Res, KomikuDetailFetchState>;
+abstract class $KomikuChapterFetchStateCopyWith<$Res> {
+  factory $KomikuChapterFetchStateCopyWith(KomikuChapterFetchState value,
+          $Res Function(KomikuChapterFetchState) then) =
+      _$KomikuChapterFetchStateCopyWithImpl<$Res, KomikuChapterFetchState>;
 }
 
 /// @nodoc
-class _$KomikuDetailFetchStateCopyWithImpl<$Res,
-        $Val extends KomikuDetailFetchState>
-    implements $KomikuDetailFetchStateCopyWith<$Res> {
-  _$KomikuDetailFetchStateCopyWithImpl(this._value, this._then);
+class _$KomikuChapterFetchStateCopyWithImpl<$Res,
+        $Val extends KomikuChapterFetchState>
+    implements $KomikuChapterFetchStateCopyWith<$Res> {
+  _$KomikuChapterFetchStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -427,7 +301,7 @@ abstract class _$$_InitialCopyWith<$Res> {
 
 /// @nodoc
 class __$$_InitialCopyWithImpl<$Res>
-    extends _$KomikuDetailFetchStateCopyWithImpl<$Res, _$_Initial>
+    extends _$KomikuChapterFetchStateCopyWithImpl<$Res, _$_Initial>
     implements _$$_InitialCopyWith<$Res> {
   __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
       : super(_value, _then);
@@ -440,7 +314,7 @@ class _$_Initial implements _Initial {
 
   @override
   String toString() {
-    return 'KomikuDetailFetchState.initial()';
+    return 'KomikuChapterFetchState.initial()';
   }
 
   @override
@@ -457,8 +331,8 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(
-            KomikuDetailModel komikuDetailModel, String errorMessage)
+    required TResult Function(bool isLoadMore, String errorMessage,
+            List<KomikuChapterFetchModel> chapterData)
         completed,
   }) {
     return initial();
@@ -469,7 +343,8 @@ class _$_Initial implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(KomikuDetailModel komikuDetailModel, String errorMessage)?
+    TResult? Function(bool isLoadMore, String errorMessage,
+            List<KomikuChapterFetchModel> chapterData)?
         completed,
   }) {
     return initial?.call();
@@ -480,7 +355,8 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(KomikuDetailModel komikuDetailModel, String errorMessage)?
+    TResult Function(bool isLoadMore, String errorMessage,
+            List<KomikuChapterFetchModel> chapterData)?
         completed,
     required TResult orElse(),
   }) {
@@ -525,7 +401,7 @@ class _$_Initial implements _Initial {
   }
 }
 
-abstract class _Initial implements KomikuDetailFetchState {
+abstract class _Initial implements KomikuChapterFetchState {
   const factory _Initial() = _$_Initial;
 }
 
@@ -538,7 +414,7 @@ abstract class _$$_LoadingCopyWith<$Res> {
 
 /// @nodoc
 class __$$_LoadingCopyWithImpl<$Res>
-    extends _$KomikuDetailFetchStateCopyWithImpl<$Res, _$_Loading>
+    extends _$KomikuChapterFetchStateCopyWithImpl<$Res, _$_Loading>
     implements _$$_LoadingCopyWith<$Res> {
   __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
       : super(_value, _then);
@@ -551,7 +427,7 @@ class _$_Loading implements _Loading {
 
   @override
   String toString() {
-    return 'KomikuDetailFetchState.loading()';
+    return 'KomikuChapterFetchState.loading()';
   }
 
   @override
@@ -568,8 +444,8 @@ class _$_Loading implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(
-            KomikuDetailModel komikuDetailModel, String errorMessage)
+    required TResult Function(bool isLoadMore, String errorMessage,
+            List<KomikuChapterFetchModel> chapterData)
         completed,
   }) {
     return loading();
@@ -580,7 +456,8 @@ class _$_Loading implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(KomikuDetailModel komikuDetailModel, String errorMessage)?
+    TResult? Function(bool isLoadMore, String errorMessage,
+            List<KomikuChapterFetchModel> chapterData)?
         completed,
   }) {
     return loading?.call();
@@ -591,7 +468,8 @@ class _$_Loading implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(KomikuDetailModel komikuDetailModel, String errorMessage)?
+    TResult Function(bool isLoadMore, String errorMessage,
+            List<KomikuChapterFetchModel> chapterData)?
         completed,
     required TResult orElse(),
   }) {
@@ -636,7 +514,7 @@ class _$_Loading implements _Loading {
   }
 }
 
-abstract class _Loading implements KomikuDetailFetchState {
+abstract class _Loading implements KomikuChapterFetchState {
   const factory _Loading() = _$_Loading;
 }
 
@@ -646,14 +524,15 @@ abstract class _$$_CompletedCopyWith<$Res> {
           _$_Completed value, $Res Function(_$_Completed) then) =
       __$$_CompletedCopyWithImpl<$Res>;
   @useResult
-  $Res call({KomikuDetailModel komikuDetailModel, String errorMessage});
-
-  $KomikuDetailModelCopyWith<$Res> get komikuDetailModel;
+  $Res call(
+      {bool isLoadMore,
+      String errorMessage,
+      List<KomikuChapterFetchModel> chapterData});
 }
 
 /// @nodoc
 class __$$_CompletedCopyWithImpl<$Res>
-    extends _$KomikuDetailFetchStateCopyWithImpl<$Res, _$_Completed>
+    extends _$KomikuChapterFetchStateCopyWithImpl<$Res, _$_Completed>
     implements _$$_CompletedCopyWith<$Res> {
   __$$_CompletedCopyWithImpl(
       _$_Completed _value, $Res Function(_$_Completed) _then)
@@ -662,44 +541,54 @@ class __$$_CompletedCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? komikuDetailModel = null,
+    Object? isLoadMore = null,
     Object? errorMessage = null,
+    Object? chapterData = null,
   }) {
     return _then(_$_Completed(
-      komikuDetailModel: null == komikuDetailModel
-          ? _value.komikuDetailModel
-          : komikuDetailModel // ignore: cast_nullable_to_non_nullable
-              as KomikuDetailModel,
+      isLoadMore: null == isLoadMore
+          ? _value.isLoadMore
+          : isLoadMore // ignore: cast_nullable_to_non_nullable
+              as bool,
       errorMessage: null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      chapterData: null == chapterData
+          ? _value._chapterData
+          : chapterData // ignore: cast_nullable_to_non_nullable
+              as List<KomikuChapterFetchModel>,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $KomikuDetailModelCopyWith<$Res> get komikuDetailModel {
-    return $KomikuDetailModelCopyWith<$Res>(_value.komikuDetailModel, (value) {
-      return _then(_value.copyWith(komikuDetailModel: value));
-    });
   }
 }
 
 /// @nodoc
 
 class _$_Completed implements _Completed {
-  const _$_Completed({required this.komikuDetailModel, this.errorMessage = ""});
+  const _$_Completed(
+      {this.isLoadMore = false,
+      this.errorMessage = "",
+      final List<KomikuChapterFetchModel> chapterData = const []})
+      : _chapterData = chapterData;
 
   @override
-  final KomikuDetailModel komikuDetailModel;
+  @JsonKey()
+  final bool isLoadMore;
   @override
   @JsonKey()
   final String errorMessage;
+  final List<KomikuChapterFetchModel> _chapterData;
+  @override
+  @JsonKey()
+  List<KomikuChapterFetchModel> get chapterData {
+    if (_chapterData is EqualUnmodifiableListView) return _chapterData;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_chapterData);
+  }
 
   @override
   String toString() {
-    return 'KomikuDetailFetchState.completed(komikuDetailModel: $komikuDetailModel, errorMessage: $errorMessage)';
+    return 'KomikuChapterFetchState.completed(isLoadMore: $isLoadMore, errorMessage: $errorMessage, chapterData: $chapterData)';
   }
 
   @override
@@ -707,14 +596,17 @@ class _$_Completed implements _Completed {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Completed &&
-            (identical(other.komikuDetailModel, komikuDetailModel) ||
-                other.komikuDetailModel == komikuDetailModel) &&
+            (identical(other.isLoadMore, isLoadMore) ||
+                other.isLoadMore == isLoadMore) &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+                other.errorMessage == errorMessage) &&
+            const DeepCollectionEquality()
+                .equals(other._chapterData, _chapterData));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, komikuDetailModel, errorMessage);
+  int get hashCode => Object.hash(runtimeType, isLoadMore, errorMessage,
+      const DeepCollectionEquality().hash(_chapterData));
 
   @JsonKey(ignore: true)
   @override
@@ -727,11 +619,11 @@ class _$_Completed implements _Completed {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(
-            KomikuDetailModel komikuDetailModel, String errorMessage)
+    required TResult Function(bool isLoadMore, String errorMessage,
+            List<KomikuChapterFetchModel> chapterData)
         completed,
   }) {
-    return completed(komikuDetailModel, errorMessage);
+    return completed(isLoadMore, errorMessage, chapterData);
   }
 
   @override
@@ -739,10 +631,11 @@ class _$_Completed implements _Completed {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(KomikuDetailModel komikuDetailModel, String errorMessage)?
+    TResult? Function(bool isLoadMore, String errorMessage,
+            List<KomikuChapterFetchModel> chapterData)?
         completed,
   }) {
-    return completed?.call(komikuDetailModel, errorMessage);
+    return completed?.call(isLoadMore, errorMessage, chapterData);
   }
 
   @override
@@ -750,12 +643,13 @@ class _$_Completed implements _Completed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(KomikuDetailModel komikuDetailModel, String errorMessage)?
+    TResult Function(bool isLoadMore, String errorMessage,
+            List<KomikuChapterFetchModel> chapterData)?
         completed,
     required TResult orElse(),
   }) {
     if (completed != null) {
-      return completed(komikuDetailModel, errorMessage);
+      return completed(isLoadMore, errorMessage, chapterData);
     }
     return orElse();
   }
@@ -795,13 +689,15 @@ class _$_Completed implements _Completed {
   }
 }
 
-abstract class _Completed implements KomikuDetailFetchState {
+abstract class _Completed implements KomikuChapterFetchState {
   const factory _Completed(
-      {required final KomikuDetailModel komikuDetailModel,
-      final String errorMessage}) = _$_Completed;
+      {final bool isLoadMore,
+      final String errorMessage,
+      final List<KomikuChapterFetchModel> chapterData}) = _$_Completed;
 
-  KomikuDetailModel get komikuDetailModel;
+  bool get isLoadMore;
   String get errorMessage;
+  List<KomikuChapterFetchModel> get chapterData;
   @JsonKey(ignore: true)
   _$$_CompletedCopyWith<_$_Completed> get copyWith =>
       throw _privateConstructorUsedError;

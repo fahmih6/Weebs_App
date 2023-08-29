@@ -1,8 +1,11 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:weebs_app/global/design_size.dart';
 import 'package:weebs_app/helpers/get_it_helper/get_it_helper.dart';
 import 'package:weebs_app/helpers/http_overrides/custom_http_overrides.dart';
@@ -24,6 +27,13 @@ Future<void> main() async {
   /// Setup the dependencies
   await GetItHelper.setupDependencies();
 
+  /// Hydrated Bloc
+  HydratedBloc.storage = await HydratedStorage.build(
+    storageDirectory: kIsWeb
+        ? HydratedStorage.webStorageDirectory
+        : await getApplicationSupportDirectory(),
+  );
+
   /// Run the app
   runApp(WeebsApp());
 }
@@ -41,7 +51,7 @@ class WeebsApp extends StatelessWidget {
         minTextAdapt: true,
         designSize: DesignSize.designSize,
         builder: (context, child) => MaterialApp.router(
-          title: 'Weebs App',
+          title: 'Weebs App 2',
           theme: ThemeData.dark(useMaterial3: true),
           darkTheme: ThemeData.dark(useMaterial3: true),
           routerDelegate: _appRouter.delegate(
