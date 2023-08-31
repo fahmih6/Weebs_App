@@ -37,19 +37,30 @@ class KomikuReadBloc extends HydratedBloc<KomikuReadEvent, KomikuReadState> {
           .firstWhereOrNull((element) => element.param == event.chapterParam)
           ?.copyWith(isRead: true);
 
-      /// Edit the chapter list
+      /// Edit the chapter list,
+      /// Or add the chapter if it doesn't exist.
       if (chapterIndex >= 0 && chapterData != null) {
         chapterList[chapterIndex] = chapterData;
+      } else {
+        chapterList.add(
+          event.komikuData.chapters
+                  .firstWhereOrNull(
+                      (element) => element.param == event.chapterParam)
+                  ?.copyWith(isRead: true) ??
+              KomikuDetailChapterModel(param: event.chapterParam, isRead: true),
+        );
       }
 
       /// Modify the komiku data
-      final newKomikuData = komikuData?.copyWith(chapters: chapterList);
+      final newKomikuData = komikuData != null
+          ? komikuData.copyWith(chapters: chapterList)
+          : event.komikuData.copyWith(chapters: chapterList);
 
       /// Edit the komiku list
-      if (komikIndex >= 0 && newKomikuData != null) {
+      if (komikIndex >= 0) {
         komikuList[komikIndex] = newKomikuData;
       } else {
-        komikuList.add(newKomikuData ?? event.komikuData);
+        komikuList.add(newKomikuData);
       }
 
       /// Emit the new komik list
