@@ -4,10 +4,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weebs_app/helpers/get_it_helper/get_it_helper.dart';
 import 'package:weebs_app/logic/anoboy_detail_fetch_bloc/anoboy_detail_fetch_bloc.dart';
 import 'package:weebs_app/logic/video_player_cubit/video_player_cubit.dart';
+import 'package:weebs_app/screens/anoboy_detail_screen/widgets/anoboy_related_video.dart';
 import 'package:weebs_app/widgets/loading_widget/loading_widget.dart';
 import 'package:weebs_app/widgets/video_players/video_player_widget.dart';
 
 import '../../routes/route_names.dart';
+import 'widgets/anoboy_detail_description.dart';
+import 'widgets/anoboy_detail_title.dart';
 
 @RoutePage(name: RouteNames.anoboyDetailScreen)
 class AnoboyDetailScreen extends StatefulWidget {
@@ -59,23 +62,19 @@ class _AnoboyDetailScreenState extends State<AnoboyDetailScreen> {
                   Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Container(
-                        width: double.infinity,
-                        padding: const EdgeInsets.all(16),
-                        decoration: const BoxDecoration(
-                          gradient: LinearGradient(
-                            colors: [Colors.black, Colors.transparent],
-                            begin: Alignment.centerLeft,
-                            end: Alignment.centerRight,
-                          ),
-                        ),
-                        child: Text(
-                          value.anoboyDetailModel.name,
-                          style: const TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
+                      /// Title
+                      AnoboyDetailTitle(
+                        anoboyDetailModel: value.anoboyDetailModel,
+                      ),
+
+                      /// Description.
+                      AnoboyDetailDescription(
+                        anoboyDetailModel: value.anoboyDetailModel,
+                      ),
+
+                      /// Related Video
+                      AnoboyRelatedVideo(
+                        anoboyDetailModel: value.anoboyDetailModel,
                       ),
                     ],
                   ),

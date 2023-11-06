@@ -37,20 +37,58 @@ class _HomeScreenState extends State<HomeScreen> {
         return SafeArea(
           child: Scaffold(
             extendBody: true,
-            body: Container(
-              alignment: Alignment.center,
-              child: child,
-            ),
-            bottomNavigationBar: FluidNavBar(
-              animationFactor: 0.4,
-              defaultIndex: tabsRouter.activeIndex,
-              onChange: (selectedIndex) {
-                tabsRouter.setActiveIndex(selectedIndex);
-              },
-              icons: [
-                FluidNavBarIcon(svgPath: AssetsConstant.komikuIcon),
-                FluidNavBarIcon(svgPath: AssetsConstant.anoboyIcon),
+            body: Row(
+              children: [
+                /// Navigation Rail for Landscape
+                Visibility(
+                  visible: MediaQuery.of(context).orientation ==
+                      Orientation.landscape,
+                  child: NavigationRail(
+                    selectedIndex: tabsRouter.activeIndex,
+                    onDestinationSelected: (value) {
+                      tabsRouter.setActiveIndex(value);
+                    },
+                    useIndicator: true,
+                    destinations: const [
+                      NavigationRailDestination(
+                        icon: Icon(Icons.menu_book_outlined),
+                        label: Text("Komiku"),
+                      ),
+                      NavigationRailDestination(
+                        icon: Icon(Icons.tv_sharp),
+                        label: Text("Anoboy"),
+                      ),
+                    ],
+                    elevation: 5,
+                    minExtendedWidth: 150,
+                    extended: true,
+                  ),
+                ),
+
+                /// Content
+                Expanded(
+                  flex: 2,
+                  child: Container(
+                    alignment: Alignment.center,
+                    child: child,
+                  ),
+                ),
               ],
+            ),
+            bottomNavigationBar: Visibility(
+              visible:
+                  MediaQuery.of(context).orientation == Orientation.portrait,
+              child: FluidNavBar(
+                animationFactor: 0.4,
+                defaultIndex: tabsRouter.activeIndex,
+                onChange: (selectedIndex) {
+                  tabsRouter.setActiveIndex(selectedIndex);
+                },
+                icons: [
+                  FluidNavBarIcon(svgPath: AssetsConstant.komikuIcon),
+                  FluidNavBarIcon(svgPath: AssetsConstant.anoboyIcon),
+                ],
+              ),
             ),
             floatingActionButton: ElevatedButton(
               style: ElevatedButton.styleFrom(

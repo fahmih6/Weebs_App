@@ -26,6 +26,9 @@ mixin _$AnoboyDetailModel {
   /// Anime Synopsis
   String get synopsis => throw _privateConstructorUsedError;
 
+  /// Thumbnail
+  String get thumbnail => throw _privateConstructorUsedError;
+
   /// Episode Navigation if any
   @JsonKey(name: "episode_navigation")
   List<AnoboyEpisodeNavigationItemModel> get episodeNavigations =>
@@ -66,6 +69,7 @@ abstract class $AnoboyDetailModelCopyWith<$Res> {
   $Res call(
       {String name,
       String synopsis,
+      String thumbnail,
       @JsonKey(name: "episode_navigation")
       List<AnoboyEpisodeNavigationItemModel> episodeNavigations,
       @JsonKey(name: "video_embed_links")
@@ -93,6 +97,7 @@ class _$AnoboyDetailModelCopyWithImpl<$Res, $Val extends AnoboyDetailModel>
   $Res call({
     Object? name = null,
     Object? synopsis = null,
+    Object? thumbnail = null,
     Object? episodeNavigations = null,
     Object? videoEmbedLinks = null,
     Object? videoDirectLinks = null,
@@ -107,6 +112,10 @@ class _$AnoboyDetailModelCopyWithImpl<$Res, $Val extends AnoboyDetailModel>
       synopsis: null == synopsis
           ? _value.synopsis
           : synopsis // ignore: cast_nullable_to_non_nullable
+              as String,
+      thumbnail: null == thumbnail
+          ? _value.thumbnail
+          : thumbnail // ignore: cast_nullable_to_non_nullable
               as String,
       episodeNavigations: null == episodeNavigations
           ? _value.episodeNavigations
@@ -143,6 +152,7 @@ abstract class _$$AnoboyDetailModelImplCopyWith<$Res>
   $Res call(
       {String name,
       String synopsis,
+      String thumbnail,
       @JsonKey(name: "episode_navigation")
       List<AnoboyEpisodeNavigationItemModel> episodeNavigations,
       @JsonKey(name: "video_embed_links")
@@ -168,6 +178,7 @@ class __$$AnoboyDetailModelImplCopyWithImpl<$Res>
   $Res call({
     Object? name = null,
     Object? synopsis = null,
+    Object? thumbnail = null,
     Object? episodeNavigations = null,
     Object? videoEmbedLinks = null,
     Object? videoDirectLinks = null,
@@ -182,6 +193,10 @@ class __$$AnoboyDetailModelImplCopyWithImpl<$Res>
       synopsis: null == synopsis
           ? _value.synopsis
           : synopsis // ignore: cast_nullable_to_non_nullable
+              as String,
+      thumbnail: null == thumbnail
+          ? _value.thumbnail
+          : thumbnail // ignore: cast_nullable_to_non_nullable
               as String,
       episodeNavigations: null == episodeNavigations
           ? _value._episodeNavigations
@@ -213,6 +228,7 @@ class _$AnoboyDetailModelImpl implements _AnoboyDetailModel {
   const _$AnoboyDetailModelImpl(
       {this.name = "",
       this.synopsis = "",
+      this.thumbnail = "",
       @JsonKey(name: "episode_navigation")
       final List<AnoboyEpisodeNavigationItemModel> episodeNavigations =
           const [],
@@ -242,6 +258,11 @@ class _$AnoboyDetailModelImpl implements _AnoboyDetailModel {
   @override
   @JsonKey()
   final String synopsis;
+
+  /// Thumbnail
+  @override
+  @JsonKey()
+  final String thumbnail;
 
   /// Episode Navigation if any
   final List<AnoboyEpisodeNavigationItemModel> _episodeNavigations;
@@ -309,7 +330,7 @@ class _$AnoboyDetailModelImpl implements _AnoboyDetailModel {
 
   @override
   String toString() {
-    return 'AnoboyDetailModel(name: $name, synopsis: $synopsis, episodeNavigations: $episodeNavigations, videoEmbedLinks: $videoEmbedLinks, videoDirectLinks: $videoDirectLinks, videoEmbedMirrorLinks: $videoEmbedMirrorLinks, videoMirrorDirectLinks: $videoMirrorDirectLinks)';
+    return 'AnoboyDetailModel(name: $name, synopsis: $synopsis, thumbnail: $thumbnail, episodeNavigations: $episodeNavigations, videoEmbedLinks: $videoEmbedLinks, videoDirectLinks: $videoDirectLinks, videoEmbedMirrorLinks: $videoEmbedMirrorLinks, videoMirrorDirectLinks: $videoMirrorDirectLinks)';
   }
 
   @override
@@ -320,6 +341,8 @@ class _$AnoboyDetailModelImpl implements _AnoboyDetailModel {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.synopsis, synopsis) ||
                 other.synopsis == synopsis) &&
+            (identical(other.thumbnail, thumbnail) ||
+                other.thumbnail == thumbnail) &&
             const DeepCollectionEquality()
                 .equals(other._episodeNavigations, _episodeNavigations) &&
             const DeepCollectionEquality()
@@ -338,6 +361,7 @@ class _$AnoboyDetailModelImpl implements _AnoboyDetailModel {
       runtimeType,
       name,
       synopsis,
+      thumbnail,
       const DeepCollectionEquality().hash(_episodeNavigations),
       const DeepCollectionEquality().hash(_videoEmbedLinks),
       const DeepCollectionEquality().hash(_videoDirectLinks),
@@ -363,6 +387,7 @@ abstract class _AnoboyDetailModel implements AnoboyDetailModel {
   const factory _AnoboyDetailModel(
           {final String name,
           final String synopsis,
+          final String thumbnail,
           @JsonKey(name: "episode_navigation")
           final List<AnoboyEpisodeNavigationItemModel> episodeNavigations,
           @JsonKey(name: "video_embed_links")
@@ -386,6 +411,10 @@ abstract class _AnoboyDetailModel implements AnoboyDetailModel {
 
   /// Anime Synopsis
   String get synopsis;
+  @override
+
+  /// Thumbnail
+  String get thumbnail;
   @override
 
   /// Episode Navigation if any

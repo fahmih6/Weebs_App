@@ -11,6 +11,7 @@ _$AnoboyDetailModelImpl _$$AnoboyDetailModelImplFromJson(
     _$AnoboyDetailModelImpl(
       name: json['name'] as String? ?? "",
       synopsis: json['synopsis'] as String? ?? "",
+      thumbnail: json['thumbnail'] as String? ?? "",
       episodeNavigations: (json['episode_navigation'] as List<dynamic>?)
               ?.map((e) => AnoboyEpisodeNavigationItemModel.fromJson(
                   e as Map<String, dynamic>))
@@ -44,6 +45,7 @@ Map<String, dynamic> _$$AnoboyDetailModelImplToJson(
     <String, dynamic>{
       'name': instance.name,
       'synopsis': instance.synopsis,
+      'thumbnail': instance.thumbnail,
       'episode_navigation':
           instance.episodeNavigations.map((e) => e.toJson()).toList(),
       'video_embed_links':

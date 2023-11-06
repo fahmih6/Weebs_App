@@ -16,22 +16,23 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$SearchEvent {
+  String get currentRouteName => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String keyword) started,
-    required TResult Function() loadMore,
+    required TResult Function(String currentRouteName, String keyword) started,
+    required TResult Function(String currentRouteName) loadMore,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String keyword)? started,
-    TResult? Function()? loadMore,
+    TResult? Function(String currentRouteName, String keyword)? started,
+    TResult? Function(String currentRouteName)? loadMore,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String keyword)? started,
-    TResult Function()? loadMore,
+    TResult Function(String currentRouteName, String keyword)? started,
+    TResult Function(String currentRouteName)? loadMore,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -54,6 +55,10 @@ mixin _$SearchEvent {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $SearchEventCopyWith<SearchEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -61,6 +66,8 @@ abstract class $SearchEventCopyWith<$Res> {
   factory $SearchEventCopyWith(
           SearchEvent value, $Res Function(SearchEvent) then) =
       _$SearchEventCopyWithImpl<$Res, SearchEvent>;
+  @useResult
+  $Res call({String currentRouteName});
 }
 
 /// @nodoc
@@ -72,15 +79,30 @@ class _$SearchEventCopyWithImpl<$Res, $Val extends SearchEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? currentRouteName = null,
+  }) {
+    return _then(_value.copyWith(
+      currentRouteName: null == currentRouteName
+          ? _value.currentRouteName
+          : currentRouteName // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$StartedImplCopyWith<$Res> {
+abstract class _$$StartedImplCopyWith<$Res>
+    implements $SearchEventCopyWith<$Res> {
   factory _$$StartedImplCopyWith(
           _$StartedImpl value, $Res Function(_$StartedImpl) then) =
       __$$StartedImplCopyWithImpl<$Res>;
+  @override
   @useResult
-  $Res call({String keyword});
+  $Res call({String currentRouteName, String keyword});
 }
 
 /// @nodoc
@@ -94,9 +116,14 @@ class __$$StartedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? currentRouteName = null,
     Object? keyword = null,
   }) {
     return _then(_$StartedImpl(
+      currentRouteName: null == currentRouteName
+          ? _value.currentRouteName
+          : currentRouteName // ignore: cast_nullable_to_non_nullable
+              as String,
       keyword: null == keyword
           ? _value.keyword
           : keyword // ignore: cast_nullable_to_non_nullable
@@ -108,14 +135,16 @@ class __$$StartedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$StartedImpl implements _Started {
-  const _$StartedImpl({required this.keyword});
+  const _$StartedImpl({required this.currentRouteName, required this.keyword});
 
+  @override
+  final String currentRouteName;
   @override
   final String keyword;
 
   @override
   String toString() {
-    return 'SearchEvent.started(keyword: $keyword)';
+    return 'SearchEvent.started(currentRouteName: $currentRouteName, keyword: $keyword)';
   }
 
   @override
@@ -123,11 +152,13 @@ class _$StartedImpl implements _Started {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$StartedImpl &&
+            (identical(other.currentRouteName, currentRouteName) ||
+                other.currentRouteName == currentRouteName) &&
             (identical(other.keyword, keyword) || other.keyword == keyword));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, keyword);
+  int get hashCode => Object.hash(runtimeType, currentRouteName, keyword);
 
   @JsonKey(ignore: true)
   @override
@@ -138,30 +169,30 @@ class _$StartedImpl implements _Started {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String keyword) started,
-    required TResult Function() loadMore,
+    required TResult Function(String currentRouteName, String keyword) started,
+    required TResult Function(String currentRouteName) loadMore,
   }) {
-    return started(keyword);
+    return started(currentRouteName, keyword);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String keyword)? started,
-    TResult? Function()? loadMore,
+    TResult? Function(String currentRouteName, String keyword)? started,
+    TResult? Function(String currentRouteName)? loadMore,
   }) {
-    return started?.call(keyword);
+    return started?.call(currentRouteName, keyword);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String keyword)? started,
-    TResult Function()? loadMore,
+    TResult Function(String currentRouteName, String keyword)? started,
+    TResult Function(String currentRouteName)? loadMore,
     required TResult orElse(),
   }) {
     if (started != null) {
-      return started(keyword);
+      return started(currentRouteName, keyword);
     }
     return orElse();
   }
@@ -199,19 +230,28 @@ class _$StartedImpl implements _Started {
 }
 
 abstract class _Started implements SearchEvent {
-  const factory _Started({required final String keyword}) = _$StartedImpl;
+  const factory _Started(
+      {required final String currentRouteName,
+      required final String keyword}) = _$StartedImpl;
 
+  @override
+  String get currentRouteName;
   String get keyword;
+  @override
   @JsonKey(ignore: true)
   _$$StartedImplCopyWith<_$StartedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$LoadMoreImplCopyWith<$Res> {
+abstract class _$$LoadMoreImplCopyWith<$Res>
+    implements $SearchEventCopyWith<$Res> {
   factory _$$LoadMoreImplCopyWith(
           _$LoadMoreImpl value, $Res Function(_$LoadMoreImpl) then) =
       __$$LoadMoreImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String currentRouteName});
 }
 
 /// @nodoc
@@ -221,54 +261,79 @@ class __$$LoadMoreImplCopyWithImpl<$Res>
   __$$LoadMoreImplCopyWithImpl(
       _$LoadMoreImpl _value, $Res Function(_$LoadMoreImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? currentRouteName = null,
+  }) {
+    return _then(_$LoadMoreImpl(
+      currentRouteName: null == currentRouteName
+          ? _value.currentRouteName
+          : currentRouteName // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$LoadMoreImpl implements _LoadMore {
-  const _$LoadMoreImpl();
+  const _$LoadMoreImpl({required this.currentRouteName});
+
+  @override
+  final String currentRouteName;
 
   @override
   String toString() {
-    return 'SearchEvent.loadMore()';
+    return 'SearchEvent.loadMore(currentRouteName: $currentRouteName)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadMoreImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$LoadMoreImpl &&
+            (identical(other.currentRouteName, currentRouteName) ||
+                other.currentRouteName == currentRouteName));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, currentRouteName);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoadMoreImplCopyWith<_$LoadMoreImpl> get copyWith =>
+      __$$LoadMoreImplCopyWithImpl<_$LoadMoreImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String keyword) started,
-    required TResult Function() loadMore,
+    required TResult Function(String currentRouteName, String keyword) started,
+    required TResult Function(String currentRouteName) loadMore,
   }) {
-    return loadMore();
+    return loadMore(currentRouteName);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String keyword)? started,
-    TResult? Function()? loadMore,
+    TResult? Function(String currentRouteName, String keyword)? started,
+    TResult? Function(String currentRouteName)? loadMore,
   }) {
-    return loadMore?.call();
+    return loadMore?.call(currentRouteName);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String keyword)? started,
-    TResult Function()? loadMore,
+    TResult Function(String currentRouteName, String keyword)? started,
+    TResult Function(String currentRouteName)? loadMore,
     required TResult orElse(),
   }) {
     if (loadMore != null) {
-      return loadMore();
+      return loadMore(currentRouteName);
     }
     return orElse();
   }
@@ -306,7 +371,15 @@ class _$LoadMoreImpl implements _LoadMore {
 }
 
 abstract class _LoadMore implements SearchEvent {
-  const factory _LoadMore() = _$LoadMoreImpl;
+  const factory _LoadMore({required final String currentRouteName}) =
+      _$LoadMoreImpl;
+
+  @override
+  String get currentRouteName;
+  @override
+  @JsonKey(ignore: true)
+  _$$LoadMoreImplCopyWith<_$LoadMoreImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

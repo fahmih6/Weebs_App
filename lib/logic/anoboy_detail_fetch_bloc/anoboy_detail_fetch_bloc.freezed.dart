@@ -226,8 +226,8 @@ mixin _$AnoboyDetailFetchState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(
-            AnoboyDetailModel anoboyDetailModel, String errorMessage)
+    required TResult Function(AnoboyDetailModel anoboyDetailModel,
+            List<AnoboyDetailModel> relatedVideos, String errorMessage)
         completed,
   }) =>
       throw _privateConstructorUsedError;
@@ -235,7 +235,8 @@ mixin _$AnoboyDetailFetchState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(AnoboyDetailModel anoboyDetailModel, String errorMessage)?
+    TResult? Function(AnoboyDetailModel anoboyDetailModel,
+            List<AnoboyDetailModel> relatedVideos, String errorMessage)?
         completed,
   }) =>
       throw _privateConstructorUsedError;
@@ -243,7 +244,8 @@ mixin _$AnoboyDetailFetchState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(AnoboyDetailModel anoboyDetailModel, String errorMessage)?
+    TResult Function(AnoboyDetailModel anoboyDetailModel,
+            List<AnoboyDetailModel> relatedVideos, String errorMessage)?
         completed,
     required TResult orElse(),
   }) =>
@@ -331,8 +333,8 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(
-            AnoboyDetailModel anoboyDetailModel, String errorMessage)
+    required TResult Function(AnoboyDetailModel anoboyDetailModel,
+            List<AnoboyDetailModel> relatedVideos, String errorMessage)
         completed,
   }) {
     return initial();
@@ -343,7 +345,8 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(AnoboyDetailModel anoboyDetailModel, String errorMessage)?
+    TResult? Function(AnoboyDetailModel anoboyDetailModel,
+            List<AnoboyDetailModel> relatedVideos, String errorMessage)?
         completed,
   }) {
     return initial?.call();
@@ -354,7 +357,8 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(AnoboyDetailModel anoboyDetailModel, String errorMessage)?
+    TResult Function(AnoboyDetailModel anoboyDetailModel,
+            List<AnoboyDetailModel> relatedVideos, String errorMessage)?
         completed,
     required TResult orElse(),
   }) {
@@ -443,8 +447,8 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(
-            AnoboyDetailModel anoboyDetailModel, String errorMessage)
+    required TResult Function(AnoboyDetailModel anoboyDetailModel,
+            List<AnoboyDetailModel> relatedVideos, String errorMessage)
         completed,
   }) {
     return loading();
@@ -455,7 +459,8 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(AnoboyDetailModel anoboyDetailModel, String errorMessage)?
+    TResult? Function(AnoboyDetailModel anoboyDetailModel,
+            List<AnoboyDetailModel> relatedVideos, String errorMessage)?
         completed,
   }) {
     return loading?.call();
@@ -466,7 +471,8 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(AnoboyDetailModel anoboyDetailModel, String errorMessage)?
+    TResult Function(AnoboyDetailModel anoboyDetailModel,
+            List<AnoboyDetailModel> relatedVideos, String errorMessage)?
         completed,
     required TResult orElse(),
   }) {
@@ -521,7 +527,10 @@ abstract class _$$CompletedImplCopyWith<$Res> {
           _$CompletedImpl value, $Res Function(_$CompletedImpl) then) =
       __$$CompletedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({AnoboyDetailModel anoboyDetailModel, String errorMessage});
+  $Res call(
+      {AnoboyDetailModel anoboyDetailModel,
+      List<AnoboyDetailModel> relatedVideos,
+      String errorMessage});
 
   $AnoboyDetailModelCopyWith<$Res> get anoboyDetailModel;
 }
@@ -538,6 +547,7 @@ class __$$CompletedImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? anoboyDetailModel = null,
+    Object? relatedVideos = null,
     Object? errorMessage = null,
   }) {
     return _then(_$CompletedImpl(
@@ -545,6 +555,10 @@ class __$$CompletedImplCopyWithImpl<$Res>
           ? _value.anoboyDetailModel
           : anoboyDetailModel // ignore: cast_nullable_to_non_nullable
               as AnoboyDetailModel,
+      relatedVideos: null == relatedVideos
+          ? _value._relatedVideos
+          : relatedVideos // ignore: cast_nullable_to_non_nullable
+              as List<AnoboyDetailModel>,
       errorMessage: null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -565,17 +579,33 @@ class __$$CompletedImplCopyWithImpl<$Res>
 
 class _$CompletedImpl implements _Completed {
   const _$CompletedImpl(
-      {required this.anoboyDetailModel, this.errorMessage = ""});
+      {required this.anoboyDetailModel,
+      final List<AnoboyDetailModel> relatedVideos = const [],
+      this.errorMessage = ""})
+      : _relatedVideos = relatedVideos;
 
   @override
   final AnoboyDetailModel anoboyDetailModel;
+
+  /// Fetched from Episode Navigations
+  final List<AnoboyDetailModel> _relatedVideos;
+
+  /// Fetched from Episode Navigations
+  @override
+  @JsonKey()
+  List<AnoboyDetailModel> get relatedVideos {
+    if (_relatedVideos is EqualUnmodifiableListView) return _relatedVideos;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_relatedVideos);
+  }
+
   @override
   @JsonKey()
   final String errorMessage;
 
   @override
   String toString() {
-    return 'AnoboyDetailFetchState.completed(anoboyDetailModel: $anoboyDetailModel, errorMessage: $errorMessage)';
+    return 'AnoboyDetailFetchState.completed(anoboyDetailModel: $anoboyDetailModel, relatedVideos: $relatedVideos, errorMessage: $errorMessage)';
   }
 
   @override
@@ -585,12 +615,15 @@ class _$CompletedImpl implements _Completed {
             other is _$CompletedImpl &&
             (identical(other.anoboyDetailModel, anoboyDetailModel) ||
                 other.anoboyDetailModel == anoboyDetailModel) &&
+            const DeepCollectionEquality()
+                .equals(other._relatedVideos, _relatedVideos) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, anoboyDetailModel, errorMessage);
+  int get hashCode => Object.hash(runtimeType, anoboyDetailModel,
+      const DeepCollectionEquality().hash(_relatedVideos), errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -603,11 +636,11 @@ class _$CompletedImpl implements _Completed {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(
-            AnoboyDetailModel anoboyDetailModel, String errorMessage)
+    required TResult Function(AnoboyDetailModel anoboyDetailModel,
+            List<AnoboyDetailModel> relatedVideos, String errorMessage)
         completed,
   }) {
-    return completed(anoboyDetailModel, errorMessage);
+    return completed(anoboyDetailModel, relatedVideos, errorMessage);
   }
 
   @override
@@ -615,10 +648,11 @@ class _$CompletedImpl implements _Completed {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(AnoboyDetailModel anoboyDetailModel, String errorMessage)?
+    TResult? Function(AnoboyDetailModel anoboyDetailModel,
+            List<AnoboyDetailModel> relatedVideos, String errorMessage)?
         completed,
   }) {
-    return completed?.call(anoboyDetailModel, errorMessage);
+    return completed?.call(anoboyDetailModel, relatedVideos, errorMessage);
   }
 
   @override
@@ -626,12 +660,13 @@ class _$CompletedImpl implements _Completed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(AnoboyDetailModel anoboyDetailModel, String errorMessage)?
+    TResult Function(AnoboyDetailModel anoboyDetailModel,
+            List<AnoboyDetailModel> relatedVideos, String errorMessage)?
         completed,
     required TResult orElse(),
   }) {
     if (completed != null) {
-      return completed(anoboyDetailModel, errorMessage);
+      return completed(anoboyDetailModel, relatedVideos, errorMessage);
     }
     return orElse();
   }
@@ -674,9 +709,13 @@ class _$CompletedImpl implements _Completed {
 abstract class _Completed implements AnoboyDetailFetchState {
   const factory _Completed(
       {required final AnoboyDetailModel anoboyDetailModel,
+      final List<AnoboyDetailModel> relatedVideos,
       final String errorMessage}) = _$CompletedImpl;
 
   AnoboyDetailModel get anoboyDetailModel;
+
+  /// Fetched from Episode Navigations
+  List<AnoboyDetailModel> get relatedVideos;
   String get errorMessage;
   @JsonKey(ignore: true)
   _$$CompletedImplCopyWith<_$CompletedImpl> get copyWith =>

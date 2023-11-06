@@ -22,6 +22,11 @@ abstract class IAnoboyRepository {
   Future<Either<Failure, AnoboyListModel>> getNextAnimeListData({
     required String nextURL,
   });
+
+  /// Search Anime List
+  Future<Either<Failure, AnoboyListModel>> searchAnime({
+    required String keyword,
+  });
 }
 
 /// Anoboy Repository
@@ -99,6 +104,22 @@ class AnoboyRepository implements IAnoboyRepository {
       {required String nextURL}) async {
     /// Get next komik list
     final res = await DioHelper.defaultGetRequest(url: nextURL);
+
+    /// return the result
+    return res.fold(
+      (l) => Left(l),
+      (r) => Right(AnoboyListModel.fromJson(r)),
+    );
+  }
+
+  @override
+  Future<Either<Failure, AnoboyListModel>> searchAnime(
+      {required String keyword}) async {
+    /// Get next komik list
+    final res = await DioHelper.defaultGetRequest(
+      url: Endpoints.anoboy,
+      queryParams: {"s": keyword},
+    );
 
     /// return the result
     return res.fold(

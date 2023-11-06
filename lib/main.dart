@@ -54,6 +54,7 @@ class WeebsApp extends StatelessWidget {
               : DesignSize.landscapeDesignSize,
           ensureScreenSize: true,
           builder: (context, child) => MaterialApp.router(
+            debugShowCheckedModeBanner: false,
             title: 'Weebs App 2',
             theme: ThemeData.dark(useMaterial3: true),
             darkTheme: ThemeData.dark(useMaterial3: true),

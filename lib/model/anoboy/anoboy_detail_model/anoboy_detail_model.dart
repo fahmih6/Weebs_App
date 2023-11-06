@@ -12,6 +12,9 @@ class AnoboyDetailModel with _$AnoboyDetailModel {
     /// Anime Synopsis
     @Default("") String synopsis,
 
+    /// Thumbnail
+    @Default("") String thumbnail,
+
     /// Episode Navigation if any
     @JsonKey(name: "episode_navigation")
     @Default([])
