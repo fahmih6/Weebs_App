@@ -1,0 +1,43 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:weebs_app/helpers/get_it_helper/get_it_helper.dart';
+import 'package:weebs_app/model/anoboy/anoboy_detail_model/anoboy_detail_model.dart';
+import 'package:weebs_app/services/repositories/anoboy_repository.dart';
+
+part 'anoboy_detail_fetch_event.dart';
+part 'anoboy_detail_fetch_state.dart';
+part 'anoboy_detail_fetch_bloc.freezed.dart';
+
+class AnoboyDetailFetchBloc
+    extends Bloc<AnoboyDetailFetchEvent, AnoboyDetailFetchState> {
+  AnoboyDetailFetchBloc() : super(const _Initial()) {
+    /// Start Fetch
+    on<_Started>((event, emit) async {
+      /// Emit Loading State
+      emit(const AnoboyDetailFetchState.loading());
+
+      /// Start fetching
+      final res =
+          await getIt<AnoboyRepository>().getAnimeDetail(param: event.param);
+
+      /// Act according to the result
+      res.fold(
+        (l) {
+          emit(
+            AnoboyDetailFetchState.completed(
+              anoboyDetailModel: const AnoboyDetailModel(),
+              errorMessage: l.message,
+            ),
+          );
+        },
+        (r) {
+          emit(
+            AnoboyDetailFetchState.completed(
+              anoboyDetailModel: r,
+            ),
+          );
+        },
+      );
+    });
+  }
+}

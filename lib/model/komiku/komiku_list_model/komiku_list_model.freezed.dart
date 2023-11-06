@@ -79,11 +79,11 @@ class _$KomikuListModelCopyWithImpl<$Res, $Val extends KomikuListModel>
 }
 
 /// @nodoc
-abstract class _$$_KomikuListModelCopyWith<$Res>
+abstract class _$$KomikuListModelImplCopyWith<$Res>
     implements $KomikuListModelCopyWith<$Res> {
-  factory _$$_KomikuListModelCopyWith(
-          _$_KomikuListModel value, $Res Function(_$_KomikuListModel) then) =
-      __$$_KomikuListModelCopyWithImpl<$Res>;
+  factory _$$KomikuListModelImplCopyWith(_$KomikuListModelImpl value,
+          $Res Function(_$KomikuListModelImpl) then) =
+      __$$KomikuListModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -93,11 +93,11 @@ abstract class _$$_KomikuListModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_KomikuListModelCopyWithImpl<$Res>
-    extends _$KomikuListModelCopyWithImpl<$Res, _$_KomikuListModel>
-    implements _$$_KomikuListModelCopyWith<$Res> {
-  __$$_KomikuListModelCopyWithImpl(
-      _$_KomikuListModel _value, $Res Function(_$_KomikuListModel) _then)
+class __$$KomikuListModelImplCopyWithImpl<$Res>
+    extends _$KomikuListModelCopyWithImpl<$Res, _$KomikuListModelImpl>
+    implements _$$KomikuListModelImplCopyWith<$Res> {
+  __$$KomikuListModelImplCopyWithImpl(
+      _$KomikuListModelImpl _value, $Res Function(_$KomikuListModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -107,7 +107,7 @@ class __$$_KomikuListModelCopyWithImpl<$Res>
     Object? prevPage = freezed,
     Object? data = null,
   }) {
-    return _then(_$_KomikuListModel(
+    return _then(_$KomikuListModelImpl(
       nextPage: freezed == nextPage
           ? _value.nextPage
           : nextPage // ignore: cast_nullable_to_non_nullable
@@ -126,14 +126,14 @@ class __$$_KomikuListModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_KomikuListModel implements _KomikuListModel {
-  const _$_KomikuListModel(
+class _$KomikuListModelImpl implements _KomikuListModel {
+  const _$KomikuListModelImpl(
       {@JsonKey(name: "next_page") this.nextPage,
       @JsonKey(name: "prev_page") this.prevPage,
       this.data = const []});
 
-  factory _$_KomikuListModel.fromJson(Map<String, dynamic> json) =>
-      _$$_KomikuListModelFromJson(json);
+  factory _$KomikuListModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$KomikuListModelImplFromJson(json);
 
   @override
   @JsonKey(name: "next_page")
@@ -154,7 +154,7 @@ class _$_KomikuListModel implements _KomikuListModel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_KomikuListModel &&
+            other is _$KomikuListModelImpl &&
             (identical(other.nextPage, nextPage) ||
                 other.nextPage == nextPage) &&
             (identical(other.prevPage, prevPage) ||
@@ -170,12 +170,13 @@ class _$_KomikuListModel implements _KomikuListModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_KomikuListModelCopyWith<_$_KomikuListModel> get copyWith =>
-      __$$_KomikuListModelCopyWithImpl<_$_KomikuListModel>(this, _$identity);
+  _$$KomikuListModelImplCopyWith<_$KomikuListModelImpl> get copyWith =>
+      __$$KomikuListModelImplCopyWithImpl<_$KomikuListModelImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_KomikuListModelToJson(
+    return _$$KomikuListModelImplToJson(
       this,
     );
   }
@@ -185,10 +186,10 @@ abstract class _KomikuListModel implements KomikuListModel {
   const factory _KomikuListModel(
       {@JsonKey(name: "next_page") final String? nextPage,
       @JsonKey(name: "prev_page") final String? prevPage,
-      final List<KomikuListItemModel> data}) = _$_KomikuListModel;
+      final List<KomikuListItemModel> data}) = _$KomikuListModelImpl;
 
   factory _KomikuListModel.fromJson(Map<String, dynamic> json) =
-      _$_KomikuListModel.fromJson;
+      _$KomikuListModelImpl.fromJson;
 
   @override
   @JsonKey(name: "next_page")
@@ -200,7 +201,7 @@ abstract class _KomikuListModel implements KomikuListModel {
   List<KomikuListItemModel> get data;
   @override
   @JsonKey(ignore: true)
-  _$$_KomikuListModelCopyWith<_$_KomikuListModel> get copyWith =>
+  _$$KomikuListModelImplCopyWith<_$KomikuListModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -301,11 +302,11 @@ class _$KomikuListItemModelCopyWithImpl<$Res, $Val extends KomikuListItemModel>
 }
 
 /// @nodoc
-abstract class _$$_KomikuListItemModelCopyWith<$Res>
+abstract class _$$KomikuListItemModelImplCopyWith<$Res>
     implements $KomikuListItemModelCopyWith<$Res> {
-  factory _$$_KomikuListItemModelCopyWith(_$_KomikuListItemModel value,
-          $Res Function(_$_KomikuListItemModel) then) =
-      __$$_KomikuListItemModelCopyWithImpl<$Res>;
+  factory _$$KomikuListItemModelImplCopyWith(_$KomikuListItemModelImpl value,
+          $Res Function(_$KomikuListItemModelImpl) then) =
+      __$$KomikuListItemModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -318,11 +319,11 @@ abstract class _$$_KomikuListItemModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_KomikuListItemModelCopyWithImpl<$Res>
-    extends _$KomikuListItemModelCopyWithImpl<$Res, _$_KomikuListItemModel>
-    implements _$$_KomikuListItemModelCopyWith<$Res> {
-  __$$_KomikuListItemModelCopyWithImpl(_$_KomikuListItemModel _value,
-      $Res Function(_$_KomikuListItemModel) _then)
+class __$$KomikuListItemModelImplCopyWithImpl<$Res>
+    extends _$KomikuListItemModelCopyWithImpl<$Res, _$KomikuListItemModelImpl>
+    implements _$$KomikuListItemModelImplCopyWith<$Res> {
+  __$$KomikuListItemModelImplCopyWithImpl(_$KomikuListItemModelImpl _value,
+      $Res Function(_$KomikuListItemModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -335,7 +336,7 @@ class __$$_KomikuListItemModelCopyWithImpl<$Res>
     Object? latestChapter = null,
     Object? detailUrl = null,
   }) {
-    return _then(_$_KomikuListItemModel(
+    return _then(_$KomikuListItemModelImpl(
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -366,8 +367,8 @@ class __$$_KomikuListItemModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_KomikuListItemModel implements _KomikuListItemModel {
-  const _$_KomikuListItemModel(
+class _$KomikuListItemModelImpl implements _KomikuListItemModel {
+  const _$KomikuListItemModelImpl(
       {this.title = "",
       this.thumbnail = "",
       this.param = "",
@@ -375,8 +376,8 @@ class _$_KomikuListItemModel implements _KomikuListItemModel {
       @JsonKey(name: "latest_chapter") this.latestChapter = "",
       @JsonKey(name: "detail_url") this.detailUrl = ""});
 
-  factory _$_KomikuListItemModel.fromJson(Map<String, dynamic> json) =>
-      _$$_KomikuListItemModelFromJson(json);
+  factory _$KomikuListItemModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$KomikuListItemModelImplFromJson(json);
 
   /// Manga Title
   @override
@@ -417,7 +418,7 @@ class _$_KomikuListItemModel implements _KomikuListItemModel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_KomikuListItemModel &&
+            other is _$KomikuListItemModelImpl &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.thumbnail, thumbnail) ||
                 other.thumbnail == thumbnail) &&
@@ -438,13 +439,13 @@ class _$_KomikuListItemModel implements _KomikuListItemModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_KomikuListItemModelCopyWith<_$_KomikuListItemModel> get copyWith =>
-      __$$_KomikuListItemModelCopyWithImpl<_$_KomikuListItemModel>(
+  _$$KomikuListItemModelImplCopyWith<_$KomikuListItemModelImpl> get copyWith =>
+      __$$KomikuListItemModelImplCopyWithImpl<_$KomikuListItemModelImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_KomikuListItemModelToJson(
+    return _$$KomikuListItemModelImplToJson(
       this,
     );
   }
@@ -458,10 +459,10 @@ abstract class _KomikuListItemModel implements KomikuListItemModel {
           final String description,
           @JsonKey(name: "latest_chapter") final String latestChapter,
           @JsonKey(name: "detail_url") final String detailUrl}) =
-      _$_KomikuListItemModel;
+      _$KomikuListItemModelImpl;
 
   factory _KomikuListItemModel.fromJson(Map<String, dynamic> json) =
-      _$_KomikuListItemModel.fromJson;
+      _$KomikuListItemModelImpl.fromJson;
 
   @override
 
@@ -491,6 +492,6 @@ abstract class _KomikuListItemModel implements KomikuListItemModel {
   String get detailUrl;
   @override
   @JsonKey(ignore: true)
-  _$$_KomikuListItemModelCopyWith<_$_KomikuListItemModel> get copyWith =>
+  _$$KomikuListItemModelImplCopyWith<_$KomikuListItemModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

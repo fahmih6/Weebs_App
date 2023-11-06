@@ -6,8 +6,9 @@ part of 'komiku_list_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_KomikuListModel _$$_KomikuListModelFromJson(Map<String, dynamic> json) =>
-    _$_KomikuListModel(
+_$KomikuListModelImpl _$$KomikuListModelImplFromJson(
+        Map<String, dynamic> json) =>
+    _$KomikuListModelImpl(
       nextPage: json['next_page'] as String?,
       prevPage: json['prev_page'] as String?,
       data: (json['data'] as List<dynamic>?)
@@ -17,16 +18,17 @@ _$_KomikuListModel _$$_KomikuListModelFromJson(Map<String, dynamic> json) =>
           const [],
     );
 
-Map<String, dynamic> _$$_KomikuListModelToJson(_$_KomikuListModel instance) =>
+Map<String, dynamic> _$$KomikuListModelImplToJson(
+        _$KomikuListModelImpl instance) =>
     <String, dynamic>{
       'next_page': instance.nextPage,
       'prev_page': instance.prevPage,
       'data': instance.data.map((e) => e.toJson()).toList(),
     };
 
-_$_KomikuListItemModel _$$_KomikuListItemModelFromJson(
+_$KomikuListItemModelImpl _$$KomikuListItemModelImplFromJson(
         Map<String, dynamic> json) =>
-    _$_KomikuListItemModel(
+    _$KomikuListItemModelImpl(
       title: json['title'] as String? ?? "",
       thumbnail: json['thumbnail'] as String? ?? "",
       param: json['param'] as String? ?? "",
@@ -35,8 +37,8 @@ _$_KomikuListItemModel _$$_KomikuListItemModelFromJson(
       detailUrl: json['detail_url'] as String? ?? "",
     );
 
-Map<String, dynamic> _$$_KomikuListItemModelToJson(
-        _$_KomikuListItemModel instance) =>
+Map<String, dynamic> _$$KomikuListItemModelImplToJson(
+        _$KomikuListItemModelImpl instance) =>
     <String, dynamic>{
       'title': instance.title,
       'thumbnail': instance.thumbnail,

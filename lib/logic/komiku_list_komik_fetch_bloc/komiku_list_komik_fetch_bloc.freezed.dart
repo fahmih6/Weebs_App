@@ -76,24 +76,25 @@ class _$KomikuListKomikFetchEventCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_StartedCopyWith<$Res> {
-  factory _$$_StartedCopyWith(
-          _$_Started value, $Res Function(_$_Started) then) =
-      __$$_StartedCopyWithImpl<$Res>;
+abstract class _$$StartedImplCopyWith<$Res> {
+  factory _$$StartedImplCopyWith(
+          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
+      __$$StartedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_StartedCopyWithImpl<$Res>
-    extends _$KomikuListKomikFetchEventCopyWithImpl<$Res, _$_Started>
-    implements _$$_StartedCopyWith<$Res> {
-  __$$_StartedCopyWithImpl(_$_Started _value, $Res Function(_$_Started) _then)
+class __$$StartedImplCopyWithImpl<$Res>
+    extends _$KomikuListKomikFetchEventCopyWithImpl<$Res, _$StartedImpl>
+    implements _$$StartedImplCopyWith<$Res> {
+  __$$StartedImplCopyWithImpl(
+      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Started with DiagnosticableTreeMixin implements _Started {
-  const _$_Started();
+class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
+  const _$StartedImpl();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -110,7 +111,7 @@ class _$_Started with DiagnosticableTreeMixin implements _Started {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Started);
+        (other.runtimeType == runtimeType && other is _$StartedImpl);
   }
 
   @override
@@ -180,24 +181,24 @@ class _$_Started with DiagnosticableTreeMixin implements _Started {
 }
 
 abstract class _Started implements KomikuListKomikFetchEvent {
-  const factory _Started() = _$_Started;
+  const factory _Started() = _$StartedImpl;
 }
 
 /// @nodoc
-abstract class _$$_LoadMoreCopyWith<$Res> {
-  factory _$$_LoadMoreCopyWith(
-          _$_LoadMore value, $Res Function(_$_LoadMore) then) =
-      __$$_LoadMoreCopyWithImpl<$Res>;
+abstract class _$$LoadMoreImplCopyWith<$Res> {
+  factory _$$LoadMoreImplCopyWith(
+          _$LoadMoreImpl value, $Res Function(_$LoadMoreImpl) then) =
+      __$$LoadMoreImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String tag, String nextLink});
 }
 
 /// @nodoc
-class __$$_LoadMoreCopyWithImpl<$Res>
-    extends _$KomikuListKomikFetchEventCopyWithImpl<$Res, _$_LoadMore>
-    implements _$$_LoadMoreCopyWith<$Res> {
-  __$$_LoadMoreCopyWithImpl(
-      _$_LoadMore _value, $Res Function(_$_LoadMore) _then)
+class __$$LoadMoreImplCopyWithImpl<$Res>
+    extends _$KomikuListKomikFetchEventCopyWithImpl<$Res, _$LoadMoreImpl>
+    implements _$$LoadMoreImplCopyWith<$Res> {
+  __$$LoadMoreImplCopyWithImpl(
+      _$LoadMoreImpl _value, $Res Function(_$LoadMoreImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -206,7 +207,7 @@ class __$$_LoadMoreCopyWithImpl<$Res>
     Object? tag = null,
     Object? nextLink = null,
   }) {
-    return _then(_$_LoadMore(
+    return _then(_$LoadMoreImpl(
       tag: null == tag
           ? _value.tag
           : tag // ignore: cast_nullable_to_non_nullable
@@ -221,8 +222,8 @@ class __$$_LoadMoreCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_LoadMore with DiagnosticableTreeMixin implements _LoadMore {
-  const _$_LoadMore({required this.tag, required this.nextLink});
+class _$LoadMoreImpl with DiagnosticableTreeMixin implements _LoadMore {
+  const _$LoadMoreImpl({required this.tag, required this.nextLink});
 
   @override
   final String tag;
@@ -247,7 +248,7 @@ class _$_LoadMore with DiagnosticableTreeMixin implements _LoadMore {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LoadMore &&
+            other is _$LoadMoreImpl &&
             (identical(other.tag, tag) || other.tag == tag) &&
             (identical(other.nextLink, nextLink) ||
                 other.nextLink == nextLink));
@@ -259,8 +260,8 @@ class _$_LoadMore with DiagnosticableTreeMixin implements _LoadMore {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LoadMoreCopyWith<_$_LoadMore> get copyWith =>
-      __$$_LoadMoreCopyWithImpl<_$_LoadMore>(this, _$identity);
+  _$$LoadMoreImplCopyWith<_$LoadMoreImpl> get copyWith =>
+      __$$LoadMoreImplCopyWithImpl<_$LoadMoreImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -328,12 +329,12 @@ class _$_LoadMore with DiagnosticableTreeMixin implements _LoadMore {
 abstract class _LoadMore implements KomikuListKomikFetchEvent {
   const factory _LoadMore(
       {required final String tag,
-      required final String nextLink}) = _$_LoadMore;
+      required final String nextLink}) = _$LoadMoreImpl;
 
   String get tag;
   String get nextLink;
   @JsonKey(ignore: true)
-  _$$_LoadMoreCopyWith<_$_LoadMore> get copyWith =>
+  _$$LoadMoreImplCopyWith<_$LoadMoreImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -411,24 +412,25 @@ class _$KomikuListKomikFetchStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$KomikuListKomikFetchStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$KomikuListKomikFetchStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Initial with DiagnosticableTreeMixin implements _Initial {
-  const _$_Initial();
+class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
+  const _$InitialImpl();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -445,7 +447,7 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
@@ -527,28 +529,29 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
 }
 
 abstract class _Initial implements KomikuListKomikFetchState {
-  const factory _Initial() = _$_Initial;
+  const factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract class _$$_LoadingCopyWith<$Res> {
-  factory _$$_LoadingCopyWith(
-          _$_Loading value, $Res Function(_$_Loading) then) =
-      __$$_LoadingCopyWithImpl<$Res>;
+abstract class _$$LoadingImplCopyWith<$Res> {
+  factory _$$LoadingImplCopyWith(
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadingCopyWithImpl<$Res>
-    extends _$KomikuListKomikFetchStateCopyWithImpl<$Res, _$_Loading>
-    implements _$$_LoadingCopyWith<$Res> {
-  __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
+class __$$LoadingImplCopyWithImpl<$Res>
+    extends _$KomikuListKomikFetchStateCopyWithImpl<$Res, _$LoadingImpl>
+    implements _$$LoadingImplCopyWith<$Res> {
+  __$$LoadingImplCopyWithImpl(
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Loading with DiagnosticableTreeMixin implements _Loading {
-  const _$_Loading();
+class _$LoadingImpl with DiagnosticableTreeMixin implements _Loading {
+  const _$LoadingImpl();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -565,7 +568,7 @@ class _$_Loading with DiagnosticableTreeMixin implements _Loading {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Loading);
+        (other.runtimeType == runtimeType && other is _$LoadingImpl);
   }
 
   @override
@@ -647,14 +650,14 @@ class _$_Loading with DiagnosticableTreeMixin implements _Loading {
 }
 
 abstract class _Loading implements KomikuListKomikFetchState {
-  const factory _Loading() = _$_Loading;
+  const factory _Loading() = _$LoadingImpl;
 }
 
 /// @nodoc
-abstract class _$$_CompletedCopyWith<$Res> {
-  factory _$$_CompletedCopyWith(
-          _$_Completed value, $Res Function(_$_Completed) then) =
-      __$$_CompletedCopyWithImpl<$Res>;
+abstract class _$$CompletedImplCopyWith<$Res> {
+  factory _$$CompletedImplCopyWith(
+          _$CompletedImpl value, $Res Function(_$CompletedImpl) then) =
+      __$$CompletedImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
       {KomikuListModel recommendationList,
@@ -667,11 +670,11 @@ abstract class _$$_CompletedCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_CompletedCopyWithImpl<$Res>
-    extends _$KomikuListKomikFetchStateCopyWithImpl<$Res, _$_Completed>
-    implements _$$_CompletedCopyWith<$Res> {
-  __$$_CompletedCopyWithImpl(
-      _$_Completed _value, $Res Function(_$_Completed) _then)
+class __$$CompletedImplCopyWithImpl<$Res>
+    extends _$KomikuListKomikFetchStateCopyWithImpl<$Res, _$CompletedImpl>
+    implements _$$CompletedImplCopyWith<$Res> {
+  __$$CompletedImplCopyWithImpl(
+      _$CompletedImpl _value, $Res Function(_$CompletedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -682,7 +685,7 @@ class __$$_CompletedCopyWithImpl<$Res>
     Object? isLoadMore = null,
     Object? errorMsg = freezed,
   }) {
-    return _then(_$_Completed(
+    return _then(_$CompletedImpl(
       recommendationList: null == recommendationList
           ? _value.recommendationList
           : recommendationList // ignore: cast_nullable_to_non_nullable
@@ -721,8 +724,8 @@ class __$$_CompletedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Completed with DiagnosticableTreeMixin implements _Completed {
-  const _$_Completed(
+class _$CompletedImpl with DiagnosticableTreeMixin implements _Completed {
+  const _$CompletedImpl(
       {required this.recommendationList,
       required this.hotList,
       this.isLoadMore = false,
@@ -758,7 +761,7 @@ class _$_Completed with DiagnosticableTreeMixin implements _Completed {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Completed &&
+            other is _$CompletedImpl &&
             (identical(other.recommendationList, recommendationList) ||
                 other.recommendationList == recommendationList) &&
             (identical(other.hotList, hotList) || other.hotList == hotList) &&
@@ -775,8 +778,8 @@ class _$_Completed with DiagnosticableTreeMixin implements _Completed {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CompletedCopyWith<_$_Completed> get copyWith =>
-      __$$_CompletedCopyWithImpl<_$_Completed>(this, _$identity);
+  _$$CompletedImplCopyWith<_$CompletedImpl> get copyWith =>
+      __$$CompletedImplCopyWithImpl<_$CompletedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -858,13 +861,13 @@ abstract class _Completed implements KomikuListKomikFetchState {
       {required final KomikuListModel recommendationList,
       required final KomikuListModel hotList,
       final bool isLoadMore,
-      final String? errorMsg}) = _$_Completed;
+      final String? errorMsg}) = _$CompletedImpl;
 
   KomikuListModel get recommendationList;
   KomikuListModel get hotList;
   bool get isLoadMore;
   String? get errorMsg;
   @JsonKey(ignore: true)
-  _$$_CompletedCopyWith<_$_Completed> get copyWith =>
+  _$$CompletedImplCopyWith<_$CompletedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

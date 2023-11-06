@@ -7,7 +7,9 @@ import 'package:weebs_app/model/failure/failure.dart';
 class DioHelper {
   /// Default get request
   static Future<Either<Failure, Map<String, dynamic>>> defaultGetRequest(
-      {required String url, Map<String, dynamic>? queryParams}) async {
+      {required String url,
+      Map<String, dynamic>? queryParams,
+      Options? options}) async {
     final dio = getIt<Dio>();
 
     try {
@@ -15,11 +17,12 @@ class DioHelper {
       debugPrint("GET : $url");
 
       /// Get the data
-      final res = await dio.get(url, queryParameters: queryParams);
+      final res =
+          await dio.get(url, queryParameters: queryParams, options: options);
 
       /// Return data
       return Right(res.data);
-    } on DioError catch (error) {
+    } on DioException catch (error) {
       /// Return error message
       return Left(Failure(message: error.message ?? error.toString()));
     } catch (e) {
@@ -39,7 +42,7 @@ class DioHelper {
 
       /// Return data
       return Right(res.data);
-    } on DioError catch (error) {
+    } on DioException catch (error) {
       /// Return error message
       return Left(Failure(message: error.message ?? error.toString()));
     } catch (e) {

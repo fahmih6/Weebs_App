@@ -2,13 +2,12 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:weebs_app/logic/komiku_detail_fetch_bloc/komiku_detail_fetch_bloc.dart';
-import 'package:weebs_app/routes/app_router.dart';
-import 'package:weebs_app/screens/komik_detail_screen/widgets/komik_detail_appbar.dart';
-import 'package:weebs_app/widgets/loading_widget/loading_widget.dart';
-import 'package:weebs_app/widgets/texts/readmore.dart';
 
-import '../../logic/komiku_read_bloc/komiku_read_bloc.dart';
+import '../komik_detail_screen/widgets/komik_detail_list_chapter.dart';
+import '../../logic/komiku_detail_fetch_bloc/komiku_detail_fetch_bloc.dart';
+import '../../screens/komik_detail_screen/widgets/komik_detail_appbar.dart';
+import '../../widgets/loading_widget/loading_widget.dart';
+import '../../widgets/texts/readmore.dart';
 import '../../routes/route_names.dart';
 
 @RoutePage(name: RouteNames.komikDetailScreen)
@@ -61,13 +60,12 @@ class _KomikDetailScreenState extends State<KomikDetailScreen> {
                               Container(
                                 padding: EdgeInsets.symmetric(horizontal: 16.h),
                                 width: MediaQuery.of(context).size.width,
-                                decoration: BoxDecoration(
-                                  gradient: const LinearGradient(
+                                decoration: const BoxDecoration(
+                                  gradient: LinearGradient(
                                     colors: [Colors.black, Colors.transparent],
                                     begin: Alignment.centerLeft,
                                     end: Alignment.centerRight,
                                   ),
-                                  borderRadius: BorderRadius.circular(8),
                                 ),
                                 child: Text(
                                   value.komikuDetailModel.title,
@@ -142,56 +140,9 @@ class _KomikDetailScreenState extends State<KomikDetailScreen> {
 
                               /// List of chapters
                               Flexible(
-                                child: ListView.builder(
-                                  shrinkWrap: true,
-                                  padding: EdgeInsets.symmetric(
-                                    vertical: 8.h,
-                                  ),
-                                  physics: const NeverScrollableScrollPhysics(),
-                                  reverse: _flipList,
-                                  itemCount:
-                                      value.komikuDetailModel.chapters.length,
-                                  itemBuilder: (context, index) {
-                                    final item =
-                                        value.komikuDetailModel.chapters[index];
-                                    return ListTile(
-                                      title: Text(
-                                        item.chapter,
-                                        style: TextStyle(fontSize: 16.sp),
-                                      ),
-                                      trailing: Text(
-                                        item.release,
-                                        style: TextStyle(fontSize: 13.sp),
-                                      ),
-                                      shape: ContinuousRectangleBorder(
-                                        borderRadius: BorderRadius.circular(8),
-                                      ),
-                                      onTap: () {
-                                        context.pushRoute(
-                                          KomikReadRoute(
-                                            param: item.param,
-                                          ),
-                                        );
-
-                                        /// Mark as read
-                                        context.read<KomikuReadBloc>().add(
-                                              KomikuReadEvent.markAsRead(
-                                                komikuData:
-                                                    value.komikuDetailModel,
-                                                chapterParam: item.param,
-                                              ),
-                                            );
-                                      },
-                                      tileColor: context
-                                              .watch<KomikuReadBloc>()
-                                              .isChapterRead(
-                                                  komikuParam: value
-                                                      .komikuDetailModel.param,
-                                                  chapterParam: item.param)
-                                          ? Theme.of(context).highlightColor
-                                          : Colors.transparent,
-                                    );
-                                  },
+                                child: KomikDetailListChapter(
+                                  komikuDetailModel: value.komikuDetailModel,
+                                  isReversed: _flipList,
                                 ),
                               )
                             ],
@@ -204,8 +155,10 @@ class _KomikDetailScreenState extends State<KomikDetailScreen> {
                       onTap: () {
                         /// Start the komik list fetch.
                         context.read<KomikuDetailFetchBloc>().add(
-                            KomikuDetailFetchEvent.started(
-                                param: widget.param));
+                              KomikuDetailFetchEvent.started(
+                                param: widget.param,
+                              ),
+                            );
                       },
                       child: Center(
                         child: Text(

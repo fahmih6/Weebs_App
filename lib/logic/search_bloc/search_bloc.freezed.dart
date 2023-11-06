@@ -75,19 +75,20 @@ class _$SearchEventCopyWithImpl<$Res, $Val extends SearchEvent>
 }
 
 /// @nodoc
-abstract class _$$_StartedCopyWith<$Res> {
-  factory _$$_StartedCopyWith(
-          _$_Started value, $Res Function(_$_Started) then) =
-      __$$_StartedCopyWithImpl<$Res>;
+abstract class _$$StartedImplCopyWith<$Res> {
+  factory _$$StartedImplCopyWith(
+          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
+      __$$StartedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String keyword});
 }
 
 /// @nodoc
-class __$$_StartedCopyWithImpl<$Res>
-    extends _$SearchEventCopyWithImpl<$Res, _$_Started>
-    implements _$$_StartedCopyWith<$Res> {
-  __$$_StartedCopyWithImpl(_$_Started _value, $Res Function(_$_Started) _then)
+class __$$StartedImplCopyWithImpl<$Res>
+    extends _$SearchEventCopyWithImpl<$Res, _$StartedImpl>
+    implements _$$StartedImplCopyWith<$Res> {
+  __$$StartedImplCopyWithImpl(
+      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -95,7 +96,7 @@ class __$$_StartedCopyWithImpl<$Res>
   $Res call({
     Object? keyword = null,
   }) {
-    return _then(_$_Started(
+    return _then(_$StartedImpl(
       keyword: null == keyword
           ? _value.keyword
           : keyword // ignore: cast_nullable_to_non_nullable
@@ -106,8 +107,8 @@ class __$$_StartedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Started implements _Started {
-  const _$_Started({required this.keyword});
+class _$StartedImpl implements _Started {
+  const _$StartedImpl({required this.keyword});
 
   @override
   final String keyword;
@@ -121,7 +122,7 @@ class _$_Started implements _Started {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Started &&
+            other is _$StartedImpl &&
             (identical(other.keyword, keyword) || other.keyword == keyword));
   }
 
@@ -131,8 +132,8 @@ class _$_Started implements _Started {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_StartedCopyWith<_$_Started> get copyWith =>
-      __$$_StartedCopyWithImpl<_$_Started>(this, _$identity);
+  _$$StartedImplCopyWith<_$StartedImpl> get copyWith =>
+      __$$StartedImplCopyWithImpl<_$StartedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -198,34 +199,34 @@ class _$_Started implements _Started {
 }
 
 abstract class _Started implements SearchEvent {
-  const factory _Started({required final String keyword}) = _$_Started;
+  const factory _Started({required final String keyword}) = _$StartedImpl;
 
   String get keyword;
   @JsonKey(ignore: true)
-  _$$_StartedCopyWith<_$_Started> get copyWith =>
+  _$$StartedImplCopyWith<_$StartedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_LoadMoreCopyWith<$Res> {
-  factory _$$_LoadMoreCopyWith(
-          _$_LoadMore value, $Res Function(_$_LoadMore) then) =
-      __$$_LoadMoreCopyWithImpl<$Res>;
+abstract class _$$LoadMoreImplCopyWith<$Res> {
+  factory _$$LoadMoreImplCopyWith(
+          _$LoadMoreImpl value, $Res Function(_$LoadMoreImpl) then) =
+      __$$LoadMoreImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadMoreCopyWithImpl<$Res>
-    extends _$SearchEventCopyWithImpl<$Res, _$_LoadMore>
-    implements _$$_LoadMoreCopyWith<$Res> {
-  __$$_LoadMoreCopyWithImpl(
-      _$_LoadMore _value, $Res Function(_$_LoadMore) _then)
+class __$$LoadMoreImplCopyWithImpl<$Res>
+    extends _$SearchEventCopyWithImpl<$Res, _$LoadMoreImpl>
+    implements _$$LoadMoreImplCopyWith<$Res> {
+  __$$LoadMoreImplCopyWithImpl(
+      _$LoadMoreImpl _value, $Res Function(_$LoadMoreImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_LoadMore implements _LoadMore {
-  const _$_LoadMore();
+class _$LoadMoreImpl implements _LoadMore {
+  const _$LoadMoreImpl();
 
   @override
   String toString() {
@@ -235,7 +236,7 @@ class _$_LoadMore implements _LoadMore {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_LoadMore);
+        (other.runtimeType == runtimeType && other is _$LoadMoreImpl);
   }
 
   @override
@@ -305,7 +306,7 @@ class _$_LoadMore implements _LoadMore {
 }
 
 abstract class _LoadMore implements SearchEvent {
-  const factory _LoadMore() = _$_LoadMore;
+  const factory _LoadMore() = _$LoadMoreImpl;
 }
 
 /// @nodoc
@@ -430,9 +431,11 @@ class _$SearchStateCopyWithImpl<$Res, $Val extends SearchState>
 }
 
 /// @nodoc
-abstract class _$$_StateCopyWith<$Res> implements $SearchStateCopyWith<$Res> {
-  factory _$$_StateCopyWith(_$_State value, $Res Function(_$_State) then) =
-      __$$_StateCopyWithImpl<$Res>;
+abstract class _$$StateImplCopyWith<$Res>
+    implements $SearchStateCopyWith<$Res> {
+  factory _$$StateImplCopyWith(
+          _$StateImpl value, $Res Function(_$StateImpl) then) =
+      __$$StateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -448,10 +451,11 @@ abstract class _$$_StateCopyWith<$Res> implements $SearchStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_StateCopyWithImpl<$Res>
-    extends _$SearchStateCopyWithImpl<$Res, _$_State>
-    implements _$$_StateCopyWith<$Res> {
-  __$$_StateCopyWithImpl(_$_State _value, $Res Function(_$_State) _then)
+class __$$StateImplCopyWithImpl<$Res>
+    extends _$SearchStateCopyWithImpl<$Res, _$StateImpl>
+    implements _$$StateImplCopyWith<$Res> {
+  __$$StateImplCopyWithImpl(
+      _$StateImpl _value, $Res Function(_$StateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -462,7 +466,7 @@ class __$$_StateCopyWithImpl<$Res>
     Object? komikResult = null,
     Object? anoboyResult = null,
   }) {
-    return _then(_$_State(
+    return _then(_$StateImpl(
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -485,8 +489,8 @@ class __$$_StateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_State implements _State {
-  const _$_State(
+class _$StateImpl implements _State {
+  const _$StateImpl(
       {this.isLoading = false,
       this.isLoadMore = false,
       this.komikResult = const KomikuListModel(),
@@ -514,7 +518,7 @@ class _$_State implements _State {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_State &&
+            other is _$StateImpl &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
             (identical(other.isLoadMore, isLoadMore) ||
@@ -532,8 +536,8 @@ class _$_State implements _State {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_StateCopyWith<_$_State> get copyWith =>
-      __$$_StateCopyWithImpl<_$_State>(this, _$identity);
+  _$$StateImplCopyWith<_$StateImpl> get copyWith =>
+      __$$StateImplCopyWithImpl<_$StateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -603,7 +607,7 @@ abstract class _State implements SearchState {
       {final bool isLoading,
       final bool isLoadMore,
       final KomikuListModel komikResult,
-      final AnoboyListModel anoboyResult}) = _$_State;
+      final AnoboyListModel anoboyResult}) = _$StateImpl;
 
   @override
   bool get isLoading;
@@ -615,6 +619,6 @@ abstract class _State implements SearchState {
   AnoboyListModel get anoboyResult;
   @override
   @JsonKey(ignore: true)
-  _$$_StateCopyWith<_$_State> get copyWith =>
+  _$$StateImplCopyWith<_$StateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

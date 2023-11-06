@@ -60,20 +60,21 @@ class _$FailureCopyWithImpl<$Res, $Val extends Failure>
 }
 
 /// @nodoc
-abstract class _$$_FailureCopyWith<$Res> implements $FailureCopyWith<$Res> {
-  factory _$$_FailureCopyWith(
-          _$_Failure value, $Res Function(_$_Failure) then) =
-      __$$_FailureCopyWithImpl<$Res>;
+abstract class _$$FailureImplCopyWith<$Res> implements $FailureCopyWith<$Res> {
+  factory _$$FailureImplCopyWith(
+          _$FailureImpl value, $Res Function(_$FailureImpl) then) =
+      __$$FailureImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$_FailureCopyWithImpl<$Res>
-    extends _$FailureCopyWithImpl<$Res, _$_Failure>
-    implements _$$_FailureCopyWith<$Res> {
-  __$$_FailureCopyWithImpl(_$_Failure _value, $Res Function(_$_Failure) _then)
+class __$$FailureImplCopyWithImpl<$Res>
+    extends _$FailureCopyWithImpl<$Res, _$FailureImpl>
+    implements _$$FailureImplCopyWith<$Res> {
+  __$$FailureImplCopyWithImpl(
+      _$FailureImpl _value, $Res Function(_$FailureImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -81,7 +82,7 @@ class __$$_FailureCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$_Failure(
+    return _then(_$FailureImpl(
       message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -92,11 +93,11 @@ class __$$_FailureCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Failure implements _Failure {
-  const _$_Failure({required this.message});
+class _$FailureImpl implements _Failure {
+  const _$FailureImpl({required this.message});
 
-  factory _$_Failure.fromJson(Map<String, dynamic> json) =>
-      _$$_FailureFromJson(json);
+  factory _$FailureImpl.fromJson(Map<String, dynamic> json) =>
+      _$$FailureImplFromJson(json);
 
   @override
   final String message;
@@ -110,7 +111,7 @@ class _$_Failure implements _Failure {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Failure &&
+            other is _$FailureImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -121,26 +122,26 @@ class _$_Failure implements _Failure {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_FailureCopyWith<_$_Failure> get copyWith =>
-      __$$_FailureCopyWithImpl<_$_Failure>(this, _$identity);
+  _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
+      __$$FailureImplCopyWithImpl<_$FailureImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_FailureToJson(
+    return _$$FailureImplToJson(
       this,
     );
   }
 }
 
 abstract class _Failure implements Failure {
-  const factory _Failure({required final String message}) = _$_Failure;
+  const factory _Failure({required final String message}) = _$FailureImpl;
 
-  factory _Failure.fromJson(Map<String, dynamic> json) = _$_Failure.fromJson;
+  factory _Failure.fromJson(Map<String, dynamic> json) = _$FailureImpl.fromJson;
 
   @override
   String get message;
   @override
   @JsonKey(ignore: true)
-  _$$_FailureCopyWith<_$_Failure> get copyWith =>
+  _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

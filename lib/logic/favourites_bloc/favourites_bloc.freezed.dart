@@ -152,10 +152,11 @@ class _$FavouritesEventCopyWithImpl<$Res, $Val extends FavouritesEvent>
 }
 
 /// @nodoc
-abstract class _$$_AddedCopyWith<$Res>
+abstract class _$$AddedImplCopyWith<$Res>
     implements $FavouritesEventCopyWith<$Res> {
-  factory _$$_AddedCopyWith(_$_Added value, $Res Function(_$_Added) then) =
-      __$$_AddedCopyWithImpl<$Res>;
+  factory _$$AddedImplCopyWith(
+          _$AddedImpl value, $Res Function(_$AddedImpl) then) =
+      __$$AddedImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({AnoboyDetailModel? anoboyData, KomikuDetailModel? komikuData});
@@ -167,10 +168,11 @@ abstract class _$$_AddedCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_AddedCopyWithImpl<$Res>
-    extends _$FavouritesEventCopyWithImpl<$Res, _$_Added>
-    implements _$$_AddedCopyWith<$Res> {
-  __$$_AddedCopyWithImpl(_$_Added _value, $Res Function(_$_Added) _then)
+class __$$AddedImplCopyWithImpl<$Res>
+    extends _$FavouritesEventCopyWithImpl<$Res, _$AddedImpl>
+    implements _$$AddedImplCopyWith<$Res> {
+  __$$AddedImplCopyWithImpl(
+      _$AddedImpl _value, $Res Function(_$AddedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -179,7 +181,7 @@ class __$$_AddedCopyWithImpl<$Res>
     Object? anoboyData = freezed,
     Object? komikuData = freezed,
   }) {
-    return _then(_$_Added(
+    return _then(_$AddedImpl(
       anoboyData: freezed == anoboyData
           ? _value.anoboyData
           : anoboyData // ignore: cast_nullable_to_non_nullable
@@ -194,8 +196,8 @@ class __$$_AddedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Added implements _Added {
-  const _$_Added({this.anoboyData, this.komikuData});
+class _$AddedImpl implements _Added {
+  const _$AddedImpl({this.anoboyData, this.komikuData});
 
   @override
   final AnoboyDetailModel? anoboyData;
@@ -211,7 +213,7 @@ class _$_Added implements _Added {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Added &&
+            other is _$AddedImpl &&
             (identical(other.anoboyData, anoboyData) ||
                 other.anoboyData == anoboyData) &&
             (identical(other.komikuData, komikuData) ||
@@ -224,8 +226,8 @@ class _$_Added implements _Added {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AddedCopyWith<_$_Added> get copyWith =>
-      __$$_AddedCopyWithImpl<_$_Added>(this, _$identity);
+  _$$AddedImplCopyWith<_$AddedImpl> get copyWith =>
+      __$$AddedImplCopyWithImpl<_$AddedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -317,7 +319,7 @@ class _$_Added implements _Added {
 abstract class _Added implements FavouritesEvent {
   const factory _Added(
       {final AnoboyDetailModel? anoboyData,
-      final KomikuDetailModel? komikuData}) = _$_Added;
+      final KomikuDetailModel? komikuData}) = _$AddedImpl;
 
   @override
   AnoboyDetailModel? get anoboyData;
@@ -325,16 +327,16 @@ abstract class _Added implements FavouritesEvent {
   KomikuDetailModel? get komikuData;
   @override
   @JsonKey(ignore: true)
-  _$$_AddedCopyWith<_$_Added> get copyWith =>
+  _$$AddedImplCopyWith<_$AddedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_RemovedCopyWith<$Res>
+abstract class _$$RemovedImplCopyWith<$Res>
     implements $FavouritesEventCopyWith<$Res> {
-  factory _$$_RemovedCopyWith(
-          _$_Removed value, $Res Function(_$_Removed) then) =
-      __$$_RemovedCopyWithImpl<$Res>;
+  factory _$$RemovedImplCopyWith(
+          _$RemovedImpl value, $Res Function(_$RemovedImpl) then) =
+      __$$RemovedImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({AnoboyDetailModel? anoboyData, KomikuDetailModel? komikuData});
@@ -346,10 +348,11 @@ abstract class _$$_RemovedCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_RemovedCopyWithImpl<$Res>
-    extends _$FavouritesEventCopyWithImpl<$Res, _$_Removed>
-    implements _$$_RemovedCopyWith<$Res> {
-  __$$_RemovedCopyWithImpl(_$_Removed _value, $Res Function(_$_Removed) _then)
+class __$$RemovedImplCopyWithImpl<$Res>
+    extends _$FavouritesEventCopyWithImpl<$Res, _$RemovedImpl>
+    implements _$$RemovedImplCopyWith<$Res> {
+  __$$RemovedImplCopyWithImpl(
+      _$RemovedImpl _value, $Res Function(_$RemovedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -358,7 +361,7 @@ class __$$_RemovedCopyWithImpl<$Res>
     Object? anoboyData = freezed,
     Object? komikuData = freezed,
   }) {
-    return _then(_$_Removed(
+    return _then(_$RemovedImpl(
       anoboyData: freezed == anoboyData
           ? _value.anoboyData
           : anoboyData // ignore: cast_nullable_to_non_nullable
@@ -373,8 +376,8 @@ class __$$_RemovedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Removed implements _Removed {
-  const _$_Removed({this.anoboyData, this.komikuData});
+class _$RemovedImpl implements _Removed {
+  const _$RemovedImpl({this.anoboyData, this.komikuData});
 
   @override
   final AnoboyDetailModel? anoboyData;
@@ -390,7 +393,7 @@ class _$_Removed implements _Removed {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Removed &&
+            other is _$RemovedImpl &&
             (identical(other.anoboyData, anoboyData) ||
                 other.anoboyData == anoboyData) &&
             (identical(other.komikuData, komikuData) ||
@@ -403,8 +406,8 @@ class _$_Removed implements _Removed {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RemovedCopyWith<_$_Removed> get copyWith =>
-      __$$_RemovedCopyWithImpl<_$_Removed>(this, _$identity);
+  _$$RemovedImplCopyWith<_$RemovedImpl> get copyWith =>
+      __$$RemovedImplCopyWithImpl<_$RemovedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -496,7 +499,7 @@ class _$_Removed implements _Removed {
 abstract class _Removed implements FavouritesEvent {
   const factory _Removed(
       {final AnoboyDetailModel? anoboyData,
-      final KomikuDetailModel? komikuData}) = _$_Removed;
+      final KomikuDetailModel? komikuData}) = _$RemovedImpl;
 
   @override
   AnoboyDetailModel? get anoboyData;
@@ -504,15 +507,16 @@ abstract class _Removed implements FavouritesEvent {
   KomikuDetailModel? get komikuData;
   @override
   @JsonKey(ignore: true)
-  _$$_RemovedCopyWith<_$_Removed> get copyWith =>
+  _$$RemovedImplCopyWith<_$RemovedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_EditedCopyWith<$Res>
+abstract class _$$EditedImplCopyWith<$Res>
     implements $FavouritesEventCopyWith<$Res> {
-  factory _$$_EditedCopyWith(_$_Edited value, $Res Function(_$_Edited) then) =
-      __$$_EditedCopyWithImpl<$Res>;
+  factory _$$EditedImplCopyWith(
+          _$EditedImpl value, $Res Function(_$EditedImpl) then) =
+      __$$EditedImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({AnoboyDetailModel? anoboyData, KomikuDetailModel? komikuData});
@@ -524,10 +528,11 @@ abstract class _$$_EditedCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_EditedCopyWithImpl<$Res>
-    extends _$FavouritesEventCopyWithImpl<$Res, _$_Edited>
-    implements _$$_EditedCopyWith<$Res> {
-  __$$_EditedCopyWithImpl(_$_Edited _value, $Res Function(_$_Edited) _then)
+class __$$EditedImplCopyWithImpl<$Res>
+    extends _$FavouritesEventCopyWithImpl<$Res, _$EditedImpl>
+    implements _$$EditedImplCopyWith<$Res> {
+  __$$EditedImplCopyWithImpl(
+      _$EditedImpl _value, $Res Function(_$EditedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -536,7 +541,7 @@ class __$$_EditedCopyWithImpl<$Res>
     Object? anoboyData = freezed,
     Object? komikuData = freezed,
   }) {
-    return _then(_$_Edited(
+    return _then(_$EditedImpl(
       anoboyData: freezed == anoboyData
           ? _value.anoboyData
           : anoboyData // ignore: cast_nullable_to_non_nullable
@@ -551,8 +556,8 @@ class __$$_EditedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Edited implements _Edited {
-  const _$_Edited({this.anoboyData, this.komikuData});
+class _$EditedImpl implements _Edited {
+  const _$EditedImpl({this.anoboyData, this.komikuData});
 
   @override
   final AnoboyDetailModel? anoboyData;
@@ -568,7 +573,7 @@ class _$_Edited implements _Edited {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Edited &&
+            other is _$EditedImpl &&
             (identical(other.anoboyData, anoboyData) ||
                 other.anoboyData == anoboyData) &&
             (identical(other.komikuData, komikuData) ||
@@ -581,8 +586,8 @@ class _$_Edited implements _Edited {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_EditedCopyWith<_$_Edited> get copyWith =>
-      __$$_EditedCopyWithImpl<_$_Edited>(this, _$identity);
+  _$$EditedImplCopyWith<_$EditedImpl> get copyWith =>
+      __$$EditedImplCopyWithImpl<_$EditedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -674,7 +679,7 @@ class _$_Edited implements _Edited {
 abstract class _Edited implements FavouritesEvent {
   const factory _Edited(
       {final AnoboyDetailModel? anoboyData,
-      final KomikuDetailModel? komikuData}) = _$_Edited;
+      final KomikuDetailModel? komikuData}) = _$EditedImpl;
 
   @override
   AnoboyDetailModel? get anoboyData;
@@ -682,7 +687,7 @@ abstract class _Edited implements FavouritesEvent {
   KomikuDetailModel? get komikuData;
   @override
   @JsonKey(ignore: true)
-  _$$_EditedCopyWith<_$_Edited> get copyWith =>
+  _$$EditedImplCopyWith<_$EditedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -774,10 +779,11 @@ class _$FavouritesStateCopyWithImpl<$Res, $Val extends FavouritesState>
 }
 
 /// @nodoc
-abstract class _$$_StateCopyWith<$Res>
+abstract class _$$StateImplCopyWith<$Res>
     implements $FavouritesStateCopyWith<$Res> {
-  factory _$$_StateCopyWith(_$_State value, $Res Function(_$_State) then) =
-      __$$_StateCopyWithImpl<$Res>;
+  factory _$$StateImplCopyWith(
+          _$StateImpl value, $Res Function(_$StateImpl) then) =
+      __$$StateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -785,10 +791,11 @@ abstract class _$$_StateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_StateCopyWithImpl<$Res>
-    extends _$FavouritesStateCopyWithImpl<$Res, _$_State>
-    implements _$$_StateCopyWith<$Res> {
-  __$$_StateCopyWithImpl(_$_State _value, $Res Function(_$_State) _then)
+class __$$StateImplCopyWithImpl<$Res>
+    extends _$FavouritesStateCopyWithImpl<$Res, _$StateImpl>
+    implements _$$StateImplCopyWith<$Res> {
+  __$$StateImplCopyWithImpl(
+      _$StateImpl _value, $Res Function(_$StateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -797,7 +804,7 @@ class __$$_StateCopyWithImpl<$Res>
     Object? anoboyList = null,
     Object? komikuList = null,
   }) {
-    return _then(_$_State(
+    return _then(_$StateImpl(
       anoboyList: null == anoboyList
           ? _value._anoboyList
           : anoboyList // ignore: cast_nullable_to_non_nullable
@@ -812,8 +819,8 @@ class __$$_StateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_State implements _State {
-  const _$_State(
+class _$StateImpl implements _State {
+  const _$StateImpl(
       {final List<AnoboyDetailModel> anoboyList = const [],
       final List<KomikuDetailModel> komikuList = const []})
       : _anoboyList = anoboyList,
@@ -846,7 +853,7 @@ class _$_State implements _State {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_State &&
+            other is _$StateImpl &&
             const DeepCollectionEquality()
                 .equals(other._anoboyList, _anoboyList) &&
             const DeepCollectionEquality()
@@ -862,8 +869,8 @@ class _$_State implements _State {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_StateCopyWith<_$_State> get copyWith =>
-      __$$_StateCopyWithImpl<_$_State>(this, _$identity);
+  _$$StateImplCopyWith<_$StateImpl> get copyWith =>
+      __$$StateImplCopyWithImpl<_$StateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -931,7 +938,7 @@ class _$_State implements _State {
 abstract class _State implements FavouritesState {
   const factory _State(
       {final List<AnoboyDetailModel> anoboyList,
-      final List<KomikuDetailModel> komikuList}) = _$_State;
+      final List<KomikuDetailModel> komikuList}) = _$StateImpl;
 
   @override
   List<AnoboyDetailModel> get anoboyList;
@@ -939,6 +946,6 @@ abstract class _State implements FavouritesState {
   List<KomikuDetailModel> get komikuList;
   @override
   @JsonKey(ignore: true)
-  _$$_StateCopyWith<_$_State> get copyWith =>
+  _$$StateImplCopyWith<_$StateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

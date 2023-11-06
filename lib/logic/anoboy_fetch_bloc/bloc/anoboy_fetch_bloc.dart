@@ -21,7 +21,7 @@ class AnoboyFetchBloc extends Bloc<AnoboyFetchEvent, AnoboyFetchState> {
       emit(_Loading(animeList: currentAnimeList));
 
       /// Get fetch result
-      final res = await getIt<AnoboyRepository>().getLatestAnime(useV2: false);
+      final res = await getIt<AnoboyRepository>().getLatestAnime();
 
       /// Act According to result
       res.fold(
@@ -32,6 +32,60 @@ class AnoboyFetchBloc extends Bloc<AnoboyFetchEvent, AnoboyFetchState> {
           emit(_Completed(animeList: r, errorMsg: null));
         },
       );
+    });
+
+    /// On Load More
+    on<_LoadMore>((event, emit) async {
+      /// Current list
+      final currentList =
+          state.mapOrNull(completed: (value) => value.animeList) ??
+              const AnoboyListModel();
+
+      /// Emit Loading State
+      emit(
+        _Completed(
+          animeList: currentList,
+          errorMsg: null,
+          isLoadMore: true,
+        ),
+      );
+
+      /// Get fetch result
+      final res = await getIt<AnoboyRepository>()
+          .getNextAnimeListData(nextURL: event.nextLink);
+
+      /// Act According to result
+      res.fold((l) {
+        state.mapOrNull(
+          completed: (value) {
+            emit(
+              value.copyWith(
+                errorMsg: l.message,
+                isLoadMore: false,
+              ),
+            );
+          },
+        );
+      }, (r) {
+        /// Append the next anime list data
+        List<AnoboyListItemModel> listData = [...currentList.data];
+        listData.addAll(r.data);
+
+        /// Create a new instance of Komiku List Model
+        final newListData = r.copyWith(
+          data: listData,
+          nextPage: r.nextPage,
+          prevPage: r.prevPage,
+        );
+
+        /// Emit completed
+        emit(
+          _Completed(
+            animeList: newListData,
+            errorMsg: null,
+          ),
+        );
+      });
     });
   }
 }

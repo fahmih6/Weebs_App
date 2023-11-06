@@ -4,13 +4,18 @@ import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
 import 'package:weebs_app/global/endpoints.dart';
 import 'package:weebs_app/helpers/general/debouncer.dart';
+import 'package:weebs_app/logic/anoboy_fetch_bloc/bloc/anoboy_fetch_bloc.dart';
 import 'package:weebs_app/logic/favourites_bloc/favourites_bloc.dart';
 import 'package:weebs_app/logic/komik_read_appbar_cubit/komik_read_appbar_cubit.dart';
 import 'package:weebs_app/logic/komiku_detail_fetch_bloc/komiku_detail_fetch_bloc.dart';
+import 'package:weebs_app/logic/komiku_list_komik_fetch_bloc/komiku_list_komik_fetch_bloc.dart';
 import 'package:weebs_app/logic/search_bloc/search_bloc.dart';
+import 'package:weebs_app/logic/video_player_cubit/video_player_cubit.dart';
 import 'package:weebs_app/services/repositories/anoboy_repository.dart';
+import 'package:weebs_app/services/repositories/blogger_repository.dart';
 import 'package:weebs_app/services/repositories/komiku_repository.dart';
 
+import '../../logic/anoboy_detail_fetch_bloc/anoboy_detail_fetch_bloc.dart';
 import '../../logic/komiku_chapter_fetch_bloc/komiku_chapter_fetch_bloc.dart';
 import '../../logic/komiku_read_bloc/komiku_read_bloc.dart';
 
@@ -44,12 +49,18 @@ class GetItHelper {
 
     /// Komiku Repository
     getIt.registerFactory<KomikuRepository>(() => KomikuRepository());
+
+    /// Blogger Repository
+    getIt.registerFactory<BloggerRepository>(() => BloggerRepository());
   }
 
   /// Bloc Dependencies
   static void blocDependencies() {
     /// Search Bloc
     getIt.registerLazySingleton(() => SearchBloc());
+
+    /// Komiku List Komik Fetch Bloc
+    getIt.registerLazySingleton(() => KomikuListKomikFetchBloc());
 
     /// Komik Detail Bloc
     getIt.registerLazySingleton(() => KomikuDetailFetchBloc());
@@ -62,12 +73,21 @@ class GetItHelper {
 
     /// Komik Read Bloc
     getIt.registerLazySingleton(() => KomikuReadBloc());
+
+    /// Anoboy Fetch Bloc
+    getIt.registerLazySingleton(() => AnoboyFetchBloc());
+
+    /// Anoboy Detail Fetch Bloc
+    getIt.registerLazySingleton(() => AnoboyDetailFetchBloc());
   }
 
   /// Cubit Dependencies
   static void cubitDependencies() {
     /// Komik Read App Bar Cubit
     getIt.registerLazySingleton(() => KomikReadAppbarCubit());
+
+    /// Video Player Cubit
+    getIt.registerLazySingleton(() => VideoPlayerCubit());
   }
 
   /// Dio Dependency
@@ -87,7 +107,7 @@ class GetItHelper {
       RetryInterceptor(
         dio: dio,
         logPrint: debugPrint,
-        retries: 100, // Retry count (optional)
+        retries: 3, // Retry count (optional)
       ),
     );
 

@@ -69,24 +69,25 @@ class _$SplashScreenEventCopyWithImpl<$Res, $Val extends SplashScreenEvent>
 }
 
 /// @nodoc
-abstract class _$$_StartedCopyWith<$Res> {
-  factory _$$_StartedCopyWith(
-          _$_Started value, $Res Function(_$_Started) then) =
-      __$$_StartedCopyWithImpl<$Res>;
+abstract class _$$StartedImplCopyWith<$Res> {
+  factory _$$StartedImplCopyWith(
+          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
+      __$$StartedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_StartedCopyWithImpl<$Res>
-    extends _$SplashScreenEventCopyWithImpl<$Res, _$_Started>
-    implements _$$_StartedCopyWith<$Res> {
-  __$$_StartedCopyWithImpl(_$_Started _value, $Res Function(_$_Started) _then)
+class __$$StartedImplCopyWithImpl<$Res>
+    extends _$SplashScreenEventCopyWithImpl<$Res, _$StartedImpl>
+    implements _$$StartedImplCopyWith<$Res> {
+  __$$StartedImplCopyWithImpl(
+      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Started implements _Started {
-  const _$_Started();
+class _$StartedImpl implements _Started {
+  const _$StartedImpl();
 
   @override
   String toString() {
@@ -96,7 +97,7 @@ class _$_Started implements _Started {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Started);
+        (other.runtimeType == runtimeType && other is _$StartedImpl);
   }
 
   @override
@@ -160,7 +161,7 @@ class _$_Started implements _Started {
 }
 
 abstract class _Started implements SplashScreenEvent {
-  const factory _Started() = _$_Started;
+  const factory _Started() = _$StartedImpl;
 }
 
 /// @nodoc
@@ -224,24 +225,25 @@ class _$SplashScreenStateCopyWithImpl<$Res, $Val extends SplashScreenState>
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$SplashScreenStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$SplashScreenStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl();
 
   @override
   String toString() {
@@ -251,7 +253,7 @@ class _$_Initial implements _Initial {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
@@ -321,29 +323,29 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements SplashScreenState {
-  const factory _Initial() = _$_Initial;
+  const factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract class _$$_LoggedInCopyWith<$Res> {
-  factory _$$_LoggedInCopyWith(
-          _$_LoggedIn value, $Res Function(_$_LoggedIn) then) =
-      __$$_LoggedInCopyWithImpl<$Res>;
+abstract class _$$LoggedInImplCopyWith<$Res> {
+  factory _$$LoggedInImplCopyWith(
+          _$LoggedInImpl value, $Res Function(_$LoggedInImpl) then) =
+      __$$LoggedInImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoggedInCopyWithImpl<$Res>
-    extends _$SplashScreenStateCopyWithImpl<$Res, _$_LoggedIn>
-    implements _$$_LoggedInCopyWith<$Res> {
-  __$$_LoggedInCopyWithImpl(
-      _$_LoggedIn _value, $Res Function(_$_LoggedIn) _then)
+class __$$LoggedInImplCopyWithImpl<$Res>
+    extends _$SplashScreenStateCopyWithImpl<$Res, _$LoggedInImpl>
+    implements _$$LoggedInImplCopyWith<$Res> {
+  __$$LoggedInImplCopyWithImpl(
+      _$LoggedInImpl _value, $Res Function(_$LoggedInImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_LoggedIn implements _LoggedIn {
-  const _$_LoggedIn();
+class _$LoggedInImpl implements _LoggedIn {
+  const _$LoggedInImpl();
 
   @override
   String toString() {
@@ -353,7 +355,7 @@ class _$_LoggedIn implements _LoggedIn {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_LoggedIn);
+        (other.runtimeType == runtimeType && other is _$LoggedInImpl);
   }
 
   @override
@@ -423,5 +425,5 @@ class _$_LoggedIn implements _LoggedIn {
 }
 
 abstract class _LoggedIn implements SplashScreenState {
-  const factory _LoggedIn() = _$_LoggedIn;
+  const factory _LoggedIn() = _$LoggedInImpl;
 }

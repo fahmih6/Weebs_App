@@ -19,32 +19,38 @@ mixin _$AnoboyFetchEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function(String nextLink) loadMore,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function(String nextLink)? loadMore,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function(String nextLink)? loadMore,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_LoadMore value) loadMore,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_LoadMore value)? loadMore,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_LoadMore value)? loadMore,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -69,24 +75,25 @@ class _$AnoboyFetchEventCopyWithImpl<$Res, $Val extends AnoboyFetchEvent>
 }
 
 /// @nodoc
-abstract class _$$_StartedCopyWith<$Res> {
-  factory _$$_StartedCopyWith(
-          _$_Started value, $Res Function(_$_Started) then) =
-      __$$_StartedCopyWithImpl<$Res>;
+abstract class _$$StartedImplCopyWith<$Res> {
+  factory _$$StartedImplCopyWith(
+          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
+      __$$StartedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_StartedCopyWithImpl<$Res>
-    extends _$AnoboyFetchEventCopyWithImpl<$Res, _$_Started>
-    implements _$$_StartedCopyWith<$Res> {
-  __$$_StartedCopyWithImpl(_$_Started _value, $Res Function(_$_Started) _then)
+class __$$StartedImplCopyWithImpl<$Res>
+    extends _$AnoboyFetchEventCopyWithImpl<$Res, _$StartedImpl>
+    implements _$$StartedImplCopyWith<$Res> {
+  __$$StartedImplCopyWithImpl(
+      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Started implements _Started {
-  const _$_Started();
+class _$StartedImpl implements _Started {
+  const _$StartedImpl();
 
   @override
   String toString() {
@@ -96,7 +103,7 @@ class _$_Started implements _Started {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Started);
+        (other.runtimeType == runtimeType && other is _$StartedImpl);
   }
 
   @override
@@ -106,6 +113,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function(String nextLink) loadMore,
   }) {
     return started();
   }
@@ -114,6 +122,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function(String nextLink)? loadMore,
   }) {
     return started?.call();
   }
@@ -122,6 +131,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function(String nextLink)? loadMore,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -134,6 +144,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_LoadMore value) loadMore,
   }) {
     return started(this);
   }
@@ -142,6 +153,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_LoadMore value)? loadMore,
   }) {
     return started?.call(this);
   }
@@ -150,6 +162,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_LoadMore value)? loadMore,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -160,7 +173,141 @@ class _$_Started implements _Started {
 }
 
 abstract class _Started implements AnoboyFetchEvent {
-  const factory _Started() = _$_Started;
+  const factory _Started() = _$StartedImpl;
+}
+
+/// @nodoc
+abstract class _$$LoadMoreImplCopyWith<$Res> {
+  factory _$$LoadMoreImplCopyWith(
+          _$LoadMoreImpl value, $Res Function(_$LoadMoreImpl) then) =
+      __$$LoadMoreImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String nextLink});
+}
+
+/// @nodoc
+class __$$LoadMoreImplCopyWithImpl<$Res>
+    extends _$AnoboyFetchEventCopyWithImpl<$Res, _$LoadMoreImpl>
+    implements _$$LoadMoreImplCopyWith<$Res> {
+  __$$LoadMoreImplCopyWithImpl(
+      _$LoadMoreImpl _value, $Res Function(_$LoadMoreImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? nextLink = null,
+  }) {
+    return _then(_$LoadMoreImpl(
+      nextLink: null == nextLink
+          ? _value.nextLink
+          : nextLink // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$LoadMoreImpl implements _LoadMore {
+  const _$LoadMoreImpl({required this.nextLink});
+
+  @override
+  final String nextLink;
+
+  @override
+  String toString() {
+    return 'AnoboyFetchEvent.loadMore(nextLink: $nextLink)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoadMoreImpl &&
+            (identical(other.nextLink, nextLink) ||
+                other.nextLink == nextLink));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, nextLink);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoadMoreImplCopyWith<_$LoadMoreImpl> get copyWith =>
+      __$$LoadMoreImplCopyWithImpl<_$LoadMoreImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(String nextLink) loadMore,
+  }) {
+    return loadMore(nextLink);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(String nextLink)? loadMore,
+  }) {
+    return loadMore?.call(nextLink);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String nextLink)? loadMore,
+    required TResult orElse(),
+  }) {
+    if (loadMore != null) {
+      return loadMore(nextLink);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_LoadMore value) loadMore,
+  }) {
+    return loadMore(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_LoadMore value)? loadMore,
+  }) {
+    return loadMore?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_LoadMore value)? loadMore,
+    required TResult orElse(),
+  }) {
+    if (loadMore != null) {
+      return loadMore(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoadMore implements AnoboyFetchEvent {
+  const factory _LoadMore({required final String nextLink}) = _$LoadMoreImpl;
+
+  String get nextLink;
+  @JsonKey(ignore: true)
+  _$$LoadMoreImplCopyWith<_$LoadMoreImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -169,7 +316,8 @@ mixin _$AnoboyFetchState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(AnoboyListModel animeList) loading,
-    required TResult Function(AnoboyListModel animeList, String? errorMsg)
+    required TResult Function(
+            AnoboyListModel animeList, bool isLoadMore, String? errorMsg)
         completed,
   }) =>
       throw _privateConstructorUsedError;
@@ -177,14 +325,18 @@ mixin _$AnoboyFetchState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(AnoboyListModel animeList)? loading,
-    TResult? Function(AnoboyListModel animeList, String? errorMsg)? completed,
+    TResult? Function(
+            AnoboyListModel animeList, bool isLoadMore, String? errorMsg)?
+        completed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(AnoboyListModel animeList)? loading,
-    TResult Function(AnoboyListModel animeList, String? errorMsg)? completed,
+    TResult Function(
+            AnoboyListModel animeList, bool isLoadMore, String? errorMsg)?
+        completed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -231,24 +383,25 @@ class _$AnoboyFetchStateCopyWithImpl<$Res, $Val extends AnoboyFetchState>
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$AnoboyFetchStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$AnoboyFetchStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl();
 
   @override
   String toString() {
@@ -258,7 +411,7 @@ class _$_Initial implements _Initial {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
@@ -269,7 +422,8 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(AnoboyListModel animeList) loading,
-    required TResult Function(AnoboyListModel animeList, String? errorMsg)
+    required TResult Function(
+            AnoboyListModel animeList, bool isLoadMore, String? errorMsg)
         completed,
   }) {
     return initial();
@@ -280,7 +434,9 @@ class _$_Initial implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(AnoboyListModel animeList)? loading,
-    TResult? Function(AnoboyListModel animeList, String? errorMsg)? completed,
+    TResult? Function(
+            AnoboyListModel animeList, bool isLoadMore, String? errorMsg)?
+        completed,
   }) {
     return initial?.call();
   }
@@ -290,7 +446,9 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(AnoboyListModel animeList)? loading,
-    TResult Function(AnoboyListModel animeList, String? errorMsg)? completed,
+    TResult Function(
+            AnoboyListModel animeList, bool isLoadMore, String? errorMsg)?
+        completed,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -335,14 +493,14 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements AnoboyFetchState {
-  const factory _Initial() = _$_Initial;
+  const factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract class _$$_LoadingCopyWith<$Res> {
-  factory _$$_LoadingCopyWith(
-          _$_Loading value, $Res Function(_$_Loading) then) =
-      __$$_LoadingCopyWithImpl<$Res>;
+abstract class _$$LoadingImplCopyWith<$Res> {
+  factory _$$LoadingImplCopyWith(
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
   @useResult
   $Res call({AnoboyListModel animeList});
 
@@ -350,10 +508,11 @@ abstract class _$$_LoadingCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_LoadingCopyWithImpl<$Res>
-    extends _$AnoboyFetchStateCopyWithImpl<$Res, _$_Loading>
-    implements _$$_LoadingCopyWith<$Res> {
-  __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
+class __$$LoadingImplCopyWithImpl<$Res>
+    extends _$AnoboyFetchStateCopyWithImpl<$Res, _$LoadingImpl>
+    implements _$$LoadingImplCopyWith<$Res> {
+  __$$LoadingImplCopyWithImpl(
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -361,7 +520,7 @@ class __$$_LoadingCopyWithImpl<$Res>
   $Res call({
     Object? animeList = null,
   }) {
-    return _then(_$_Loading(
+    return _then(_$LoadingImpl(
       animeList: null == animeList
           ? _value.animeList
           : animeList // ignore: cast_nullable_to_non_nullable
@@ -380,8 +539,8 @@ class __$$_LoadingCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Loading implements _Loading {
-  const _$_Loading({required this.animeList});
+class _$LoadingImpl implements _Loading {
+  const _$LoadingImpl({required this.animeList});
 
   @override
   final AnoboyListModel animeList;
@@ -395,7 +554,7 @@ class _$_Loading implements _Loading {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Loading &&
+            other is _$LoadingImpl &&
             (identical(other.animeList, animeList) ||
                 other.animeList == animeList));
   }
@@ -406,15 +565,16 @@ class _$_Loading implements _Loading {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LoadingCopyWith<_$_Loading> get copyWith =>
-      __$$_LoadingCopyWithImpl<_$_Loading>(this, _$identity);
+  _$$LoadingImplCopyWith<_$LoadingImpl> get copyWith =>
+      __$$LoadingImplCopyWithImpl<_$LoadingImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(AnoboyListModel animeList) loading,
-    required TResult Function(AnoboyListModel animeList, String? errorMsg)
+    required TResult Function(
+            AnoboyListModel animeList, bool isLoadMore, String? errorMsg)
         completed,
   }) {
     return loading(animeList);
@@ -425,7 +585,9 @@ class _$_Loading implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(AnoboyListModel animeList)? loading,
-    TResult? Function(AnoboyListModel animeList, String? errorMsg)? completed,
+    TResult? Function(
+            AnoboyListModel animeList, bool isLoadMore, String? errorMsg)?
+        completed,
   }) {
     return loading?.call(animeList);
   }
@@ -435,7 +597,9 @@ class _$_Loading implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(AnoboyListModel animeList)? loading,
-    TResult Function(AnoboyListModel animeList, String? errorMsg)? completed,
+    TResult Function(
+            AnoboyListModel animeList, bool isLoadMore, String? errorMsg)?
+        completed,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -481,44 +645,49 @@ class _$_Loading implements _Loading {
 
 abstract class _Loading implements AnoboyFetchState {
   const factory _Loading({required final AnoboyListModel animeList}) =
-      _$_Loading;
+      _$LoadingImpl;
 
   AnoboyListModel get animeList;
   @JsonKey(ignore: true)
-  _$$_LoadingCopyWith<_$_Loading> get copyWith =>
+  _$$LoadingImplCopyWith<_$LoadingImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_CompletedCopyWith<$Res> {
-  factory _$$_CompletedCopyWith(
-          _$_Completed value, $Res Function(_$_Completed) then) =
-      __$$_CompletedCopyWithImpl<$Res>;
+abstract class _$$CompletedImplCopyWith<$Res> {
+  factory _$$CompletedImplCopyWith(
+          _$CompletedImpl value, $Res Function(_$CompletedImpl) then) =
+      __$$CompletedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({AnoboyListModel animeList, String? errorMsg});
+  $Res call({AnoboyListModel animeList, bool isLoadMore, String? errorMsg});
 
   $AnoboyListModelCopyWith<$Res> get animeList;
 }
 
 /// @nodoc
-class __$$_CompletedCopyWithImpl<$Res>
-    extends _$AnoboyFetchStateCopyWithImpl<$Res, _$_Completed>
-    implements _$$_CompletedCopyWith<$Res> {
-  __$$_CompletedCopyWithImpl(
-      _$_Completed _value, $Res Function(_$_Completed) _then)
+class __$$CompletedImplCopyWithImpl<$Res>
+    extends _$AnoboyFetchStateCopyWithImpl<$Res, _$CompletedImpl>
+    implements _$$CompletedImplCopyWith<$Res> {
+  __$$CompletedImplCopyWithImpl(
+      _$CompletedImpl _value, $Res Function(_$CompletedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? animeList = null,
+    Object? isLoadMore = null,
     Object? errorMsg = freezed,
   }) {
-    return _then(_$_Completed(
+    return _then(_$CompletedImpl(
       animeList: null == animeList
           ? _value.animeList
           : animeList // ignore: cast_nullable_to_non_nullable
               as AnoboyListModel,
+      isLoadMore: null == isLoadMore
+          ? _value.isLoadMore
+          : isLoadMore // ignore: cast_nullable_to_non_nullable
+              as bool,
       errorMsg: freezed == errorMsg
           ? _value.errorMsg
           : errorMsg // ignore: cast_nullable_to_non_nullable
@@ -537,48 +706,55 @@ class __$$_CompletedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Completed implements _Completed {
-  const _$_Completed({required this.animeList, this.errorMsg});
+class _$CompletedImpl implements _Completed {
+  const _$CompletedImpl(
+      {required this.animeList, this.isLoadMore = false, this.errorMsg});
 
   @override
   final AnoboyListModel animeList;
+  @override
+  @JsonKey()
+  final bool isLoadMore;
   @override
   final String? errorMsg;
 
   @override
   String toString() {
-    return 'AnoboyFetchState.completed(animeList: $animeList, errorMsg: $errorMsg)';
+    return 'AnoboyFetchState.completed(animeList: $animeList, isLoadMore: $isLoadMore, errorMsg: $errorMsg)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Completed &&
+            other is _$CompletedImpl &&
             (identical(other.animeList, animeList) ||
                 other.animeList == animeList) &&
+            (identical(other.isLoadMore, isLoadMore) ||
+                other.isLoadMore == isLoadMore) &&
             (identical(other.errorMsg, errorMsg) ||
                 other.errorMsg == errorMsg));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, animeList, errorMsg);
+  int get hashCode => Object.hash(runtimeType, animeList, isLoadMore, errorMsg);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CompletedCopyWith<_$_Completed> get copyWith =>
-      __$$_CompletedCopyWithImpl<_$_Completed>(this, _$identity);
+  _$$CompletedImplCopyWith<_$CompletedImpl> get copyWith =>
+      __$$CompletedImplCopyWithImpl<_$CompletedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(AnoboyListModel animeList) loading,
-    required TResult Function(AnoboyListModel animeList, String? errorMsg)
+    required TResult Function(
+            AnoboyListModel animeList, bool isLoadMore, String? errorMsg)
         completed,
   }) {
-    return completed(animeList, errorMsg);
+    return completed(animeList, isLoadMore, errorMsg);
   }
 
   @override
@@ -586,9 +762,11 @@ class _$_Completed implements _Completed {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(AnoboyListModel animeList)? loading,
-    TResult? Function(AnoboyListModel animeList, String? errorMsg)? completed,
+    TResult? Function(
+            AnoboyListModel animeList, bool isLoadMore, String? errorMsg)?
+        completed,
   }) {
-    return completed?.call(animeList, errorMsg);
+    return completed?.call(animeList, isLoadMore, errorMsg);
   }
 
   @override
@@ -596,11 +774,13 @@ class _$_Completed implements _Completed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(AnoboyListModel animeList)? loading,
-    TResult Function(AnoboyListModel animeList, String? errorMsg)? completed,
+    TResult Function(
+            AnoboyListModel animeList, bool isLoadMore, String? errorMsg)?
+        completed,
     required TResult orElse(),
   }) {
     if (completed != null) {
-      return completed(animeList, errorMsg);
+      return completed(animeList, isLoadMore, errorMsg);
     }
     return orElse();
   }
@@ -643,11 +823,13 @@ class _$_Completed implements _Completed {
 abstract class _Completed implements AnoboyFetchState {
   const factory _Completed(
       {required final AnoboyListModel animeList,
-      final String? errorMsg}) = _$_Completed;
+      final bool isLoadMore,
+      final String? errorMsg}) = _$CompletedImpl;
 
   AnoboyListModel get animeList;
+  bool get isLoadMore;
   String? get errorMsg;
   @JsonKey(ignore: true)
-  _$$_CompletedCopyWith<_$_Completed> get copyWith =>
+  _$$CompletedImplCopyWith<_$CompletedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

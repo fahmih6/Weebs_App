@@ -47,25 +47,30 @@ class WeebsApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MainBlocWrapper(
-      child: ScreenUtilInit(
-        minTextAdapt: true,
-        designSize: DesignSize.designSize,
-        builder: (context, child) => MaterialApp.router(
-          title: 'Weebs App 2',
-          theme: ThemeData.dark(useMaterial3: true),
-          darkTheme: ThemeData.dark(useMaterial3: true),
-          routerDelegate: _appRouter.delegate(
-            navigatorObservers: () => [AppRouterObserver()],
+      child: SafeArea(
+        child: ScreenUtilInit(
+          designSize: MediaQuery.of(context).orientation == Orientation.portrait
+              ? DesignSize.designSize
+              : DesignSize.landscapeDesignSize,
+          ensureScreenSize: true,
+          builder: (context, child) => MaterialApp.router(
+            title: 'Weebs App 2',
+            theme: ThemeData.dark(useMaterial3: true),
+            darkTheme: ThemeData.dark(useMaterial3: true),
+            routerDelegate: _appRouter.delegate(
+              navigatorObservers: () => [AppRouterObserver()],
+            ),
+            routeInformationParser: _appRouter.defaultRouteParser(),
+            scaffoldMessengerKey: scaffoldMessengerKey,
+            scrollBehavior:
+                const MaterialScrollBehavior().copyWith(dragDevices: {
+              PointerDeviceKind.mouse,
+              PointerDeviceKind.touch,
+              PointerDeviceKind.stylus,
+              PointerDeviceKind.trackpad,
+              PointerDeviceKind.unknown,
+            }),
           ),
-          routeInformationParser: _appRouter.defaultRouteParser(),
-          scaffoldMessengerKey: scaffoldMessengerKey,
-          scrollBehavior: const MaterialScrollBehavior().copyWith(dragDevices: {
-            PointerDeviceKind.mouse,
-            PointerDeviceKind.touch,
-            PointerDeviceKind.stylus,
-            PointerDeviceKind.trackpad,
-            PointerDeviceKind.unknown,
-          }),
         ),
       ),
     );

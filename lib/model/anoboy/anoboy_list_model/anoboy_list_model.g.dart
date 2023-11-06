@@ -6,8 +6,9 @@ part of 'anoboy_list_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_AnoboyListModel _$$_AnoboyListModelFromJson(Map<String, dynamic> json) =>
-    _$_AnoboyListModel(
+_$AnoboyListModelImpl _$$AnoboyListModelImplFromJson(
+        Map<String, dynamic> json) =>
+    _$AnoboyListModelImpl(
       maxPage: json['max_page'] as int? ?? 0,
       nextPage: json['next_page'] as String?,
       prevPage: json['prev_page'] as String?,
@@ -18,7 +19,8 @@ _$_AnoboyListModel _$$_AnoboyListModelFromJson(Map<String, dynamic> json) =>
           const [],
     );
 
-Map<String, dynamic> _$$_AnoboyListModelToJson(_$_AnoboyListModel instance) =>
+Map<String, dynamic> _$$AnoboyListModelImplToJson(
+        _$AnoboyListModelImpl instance) =>
     <String, dynamic>{
       'max_page': instance.maxPage,
       'next_page': instance.nextPage,
@@ -26,9 +28,9 @@ Map<String, dynamic> _$$_AnoboyListModelToJson(_$_AnoboyListModel instance) =>
       'data': instance.data.map((e) => e.toJson()).toList(),
     };
 
-_$_AnoboyListItemModel _$$_AnoboyListItemModelFromJson(
+_$AnoboyListItemModelImpl _$$AnoboyListItemModelImplFromJson(
         Map<String, dynamic> json) =>
-    _$_AnoboyListItemModel(
+    _$AnoboyListItemModelImpl(
       title: json['title'] as String? ?? "",
       param: json['param'] as String? ?? "",
       thumbnail: json['thumbnail'] as String? ?? "",
@@ -36,8 +38,8 @@ _$_AnoboyListItemModel _$$_AnoboyListItemModelFromJson(
       detailUrl: json['detail_url'] as String? ?? "",
     );
 
-Map<String, dynamic> _$$_AnoboyListItemModelToJson(
-        _$_AnoboyListItemModel instance) =>
+Map<String, dynamic> _$$AnoboyListItemModelImplToJson(
+        _$AnoboyListItemModelImpl instance) =>
     <String, dynamic>{
       'title': instance.title,
       'param': instance.param,

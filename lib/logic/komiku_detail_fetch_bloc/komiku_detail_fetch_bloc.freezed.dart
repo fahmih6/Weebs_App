@@ -76,19 +76,20 @@ class _$KomikuDetailFetchEventCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_StartedCopyWith<$Res> {
-  factory _$$_StartedCopyWith(
-          _$_Started value, $Res Function(_$_Started) then) =
-      __$$_StartedCopyWithImpl<$Res>;
+abstract class _$$StartedImplCopyWith<$Res> {
+  factory _$$StartedImplCopyWith(
+          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
+      __$$StartedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String param});
 }
 
 /// @nodoc
-class __$$_StartedCopyWithImpl<$Res>
-    extends _$KomikuDetailFetchEventCopyWithImpl<$Res, _$_Started>
-    implements _$$_StartedCopyWith<$Res> {
-  __$$_StartedCopyWithImpl(_$_Started _value, $Res Function(_$_Started) _then)
+class __$$StartedImplCopyWithImpl<$Res>
+    extends _$KomikuDetailFetchEventCopyWithImpl<$Res, _$StartedImpl>
+    implements _$$StartedImplCopyWith<$Res> {
+  __$$StartedImplCopyWithImpl(
+      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -96,7 +97,7 @@ class __$$_StartedCopyWithImpl<$Res>
   $Res call({
     Object? param = null,
   }) {
-    return _then(_$_Started(
+    return _then(_$StartedImpl(
       param: null == param
           ? _value.param
           : param // ignore: cast_nullable_to_non_nullable
@@ -107,8 +108,8 @@ class __$$_StartedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Started implements _Started {
-  const _$_Started({required this.param});
+class _$StartedImpl implements _Started {
+  const _$StartedImpl({required this.param});
 
   @override
   final String param;
@@ -122,7 +123,7 @@ class _$_Started implements _Started {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Started &&
+            other is _$StartedImpl &&
             (identical(other.param, param) || other.param == param));
   }
 
@@ -132,8 +133,8 @@ class _$_Started implements _Started {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_StartedCopyWith<_$_Started> get copyWith =>
-      __$$_StartedCopyWithImpl<_$_Started>(this, _$identity);
+  _$$StartedImplCopyWith<_$StartedImpl> get copyWith =>
+      __$$StartedImplCopyWithImpl<_$StartedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -199,18 +200,19 @@ class _$_Started implements _Started {
 }
 
 abstract class _Started implements KomikuDetailFetchEvent {
-  const factory _Started({required final String param}) = _$_Started;
+  const factory _Started({required final String param}) = _$StartedImpl;
 
   String get param;
   @JsonKey(ignore: true)
-  _$$_StartedCopyWith<_$_Started> get copyWith =>
+  _$$StartedImplCopyWith<_$StartedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_ReadCopyWith<$Res> {
-  factory _$$_ReadCopyWith(_$_Read value, $Res Function(_$_Read) then) =
-      __$$_ReadCopyWithImpl<$Res>;
+abstract class _$$ReadImplCopyWith<$Res> {
+  factory _$$ReadImplCopyWith(
+          _$ReadImpl value, $Res Function(_$ReadImpl) then) =
+      __$$ReadImplCopyWithImpl<$Res>;
   @useResult
   $Res call({KomikuDetailChapterModel item});
 
@@ -218,10 +220,10 @@ abstract class _$$_ReadCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ReadCopyWithImpl<$Res>
-    extends _$KomikuDetailFetchEventCopyWithImpl<$Res, _$_Read>
-    implements _$$_ReadCopyWith<$Res> {
-  __$$_ReadCopyWithImpl(_$_Read _value, $Res Function(_$_Read) _then)
+class __$$ReadImplCopyWithImpl<$Res>
+    extends _$KomikuDetailFetchEventCopyWithImpl<$Res, _$ReadImpl>
+    implements _$$ReadImplCopyWith<$Res> {
+  __$$ReadImplCopyWithImpl(_$ReadImpl _value, $Res Function(_$ReadImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -229,7 +231,7 @@ class __$$_ReadCopyWithImpl<$Res>
   $Res call({
     Object? item = null,
   }) {
-    return _then(_$_Read(
+    return _then(_$ReadImpl(
       item: null == item
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
@@ -248,8 +250,8 @@ class __$$_ReadCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Read implements _Read {
-  const _$_Read({required this.item});
+class _$ReadImpl implements _Read {
+  const _$ReadImpl({required this.item});
 
   @override
   final KomikuDetailChapterModel item;
@@ -263,7 +265,7 @@ class _$_Read implements _Read {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Read &&
+            other is _$ReadImpl &&
             (identical(other.item, item) || other.item == item));
   }
 
@@ -273,8 +275,8 @@ class _$_Read implements _Read {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ReadCopyWith<_$_Read> get copyWith =>
-      __$$_ReadCopyWithImpl<_$_Read>(this, _$identity);
+  _$$ReadImplCopyWith<_$ReadImpl> get copyWith =>
+      __$$ReadImplCopyWithImpl<_$ReadImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -340,11 +342,13 @@ class _$_Read implements _Read {
 }
 
 abstract class _Read implements KomikuDetailFetchEvent {
-  const factory _Read({required final KomikuDetailChapterModel item}) = _$_Read;
+  const factory _Read({required final KomikuDetailChapterModel item}) =
+      _$ReadImpl;
 
   KomikuDetailChapterModel get item;
   @JsonKey(ignore: true)
-  _$$_ReadCopyWith<_$_Read> get copyWith => throw _privateConstructorUsedError;
+  _$$ReadImplCopyWith<_$ReadImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -419,24 +423,25 @@ class _$KomikuDetailFetchStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$KomikuDetailFetchStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$KomikuDetailFetchStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl();
 
   @override
   String toString() {
@@ -446,7 +451,7 @@ class _$_Initial implements _Initial {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
@@ -526,28 +531,29 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements KomikuDetailFetchState {
-  const factory _Initial() = _$_Initial;
+  const factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract class _$$_LoadingCopyWith<$Res> {
-  factory _$$_LoadingCopyWith(
-          _$_Loading value, $Res Function(_$_Loading) then) =
-      __$$_LoadingCopyWithImpl<$Res>;
+abstract class _$$LoadingImplCopyWith<$Res> {
+  factory _$$LoadingImplCopyWith(
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadingCopyWithImpl<$Res>
-    extends _$KomikuDetailFetchStateCopyWithImpl<$Res, _$_Loading>
-    implements _$$_LoadingCopyWith<$Res> {
-  __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
+class __$$LoadingImplCopyWithImpl<$Res>
+    extends _$KomikuDetailFetchStateCopyWithImpl<$Res, _$LoadingImpl>
+    implements _$$LoadingImplCopyWith<$Res> {
+  __$$LoadingImplCopyWithImpl(
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Loading implements _Loading {
-  const _$_Loading();
+class _$LoadingImpl implements _Loading {
+  const _$LoadingImpl();
 
   @override
   String toString() {
@@ -557,7 +563,7 @@ class _$_Loading implements _Loading {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Loading);
+        (other.runtimeType == runtimeType && other is _$LoadingImpl);
   }
 
   @override
@@ -637,14 +643,14 @@ class _$_Loading implements _Loading {
 }
 
 abstract class _Loading implements KomikuDetailFetchState {
-  const factory _Loading() = _$_Loading;
+  const factory _Loading() = _$LoadingImpl;
 }
 
 /// @nodoc
-abstract class _$$_CompletedCopyWith<$Res> {
-  factory _$$_CompletedCopyWith(
-          _$_Completed value, $Res Function(_$_Completed) then) =
-      __$$_CompletedCopyWithImpl<$Res>;
+abstract class _$$CompletedImplCopyWith<$Res> {
+  factory _$$CompletedImplCopyWith(
+          _$CompletedImpl value, $Res Function(_$CompletedImpl) then) =
+      __$$CompletedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({KomikuDetailModel komikuDetailModel, String errorMessage});
 
@@ -652,11 +658,11 @@ abstract class _$$_CompletedCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_CompletedCopyWithImpl<$Res>
-    extends _$KomikuDetailFetchStateCopyWithImpl<$Res, _$_Completed>
-    implements _$$_CompletedCopyWith<$Res> {
-  __$$_CompletedCopyWithImpl(
-      _$_Completed _value, $Res Function(_$_Completed) _then)
+class __$$CompletedImplCopyWithImpl<$Res>
+    extends _$KomikuDetailFetchStateCopyWithImpl<$Res, _$CompletedImpl>
+    implements _$$CompletedImplCopyWith<$Res> {
+  __$$CompletedImplCopyWithImpl(
+      _$CompletedImpl _value, $Res Function(_$CompletedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -665,7 +671,7 @@ class __$$_CompletedCopyWithImpl<$Res>
     Object? komikuDetailModel = null,
     Object? errorMessage = null,
   }) {
-    return _then(_$_Completed(
+    return _then(_$CompletedImpl(
       komikuDetailModel: null == komikuDetailModel
           ? _value.komikuDetailModel
           : komikuDetailModel // ignore: cast_nullable_to_non_nullable
@@ -688,8 +694,9 @@ class __$$_CompletedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Completed implements _Completed {
-  const _$_Completed({required this.komikuDetailModel, this.errorMessage = ""});
+class _$CompletedImpl implements _Completed {
+  const _$CompletedImpl(
+      {required this.komikuDetailModel, this.errorMessage = ""});
 
   @override
   final KomikuDetailModel komikuDetailModel;
@@ -706,7 +713,7 @@ class _$_Completed implements _Completed {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Completed &&
+            other is _$CompletedImpl &&
             (identical(other.komikuDetailModel, komikuDetailModel) ||
                 other.komikuDetailModel == komikuDetailModel) &&
             (identical(other.errorMessage, errorMessage) ||
@@ -719,8 +726,8 @@ class _$_Completed implements _Completed {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CompletedCopyWith<_$_Completed> get copyWith =>
-      __$$_CompletedCopyWithImpl<_$_Completed>(this, _$identity);
+  _$$CompletedImplCopyWith<_$CompletedImpl> get copyWith =>
+      __$$CompletedImplCopyWithImpl<_$CompletedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -798,11 +805,11 @@ class _$_Completed implements _Completed {
 abstract class _Completed implements KomikuDetailFetchState {
   const factory _Completed(
       {required final KomikuDetailModel komikuDetailModel,
-      final String errorMessage}) = _$_Completed;
+      final String errorMessage}) = _$CompletedImpl;
 
   KomikuDetailModel get komikuDetailModel;
   String get errorMessage;
   @JsonKey(ignore: true)
-  _$$_CompletedCopyWith<_$_Completed> get copyWith =>
+  _$$CompletedImplCopyWith<_$CompletedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

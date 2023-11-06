@@ -94,11 +94,11 @@ class _$AnoboyListModelCopyWithImpl<$Res, $Val extends AnoboyListModel>
 }
 
 /// @nodoc
-abstract class _$$_AnoboyListModelCopyWith<$Res>
+abstract class _$$AnoboyListModelImplCopyWith<$Res>
     implements $AnoboyListModelCopyWith<$Res> {
-  factory _$$_AnoboyListModelCopyWith(
-          _$_AnoboyListModel value, $Res Function(_$_AnoboyListModel) then) =
-      __$$_AnoboyListModelCopyWithImpl<$Res>;
+  factory _$$AnoboyListModelImplCopyWith(_$AnoboyListModelImpl value,
+          $Res Function(_$AnoboyListModelImpl) then) =
+      __$$AnoboyListModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -109,11 +109,11 @@ abstract class _$$_AnoboyListModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_AnoboyListModelCopyWithImpl<$Res>
-    extends _$AnoboyListModelCopyWithImpl<$Res, _$_AnoboyListModel>
-    implements _$$_AnoboyListModelCopyWith<$Res> {
-  __$$_AnoboyListModelCopyWithImpl(
-      _$_AnoboyListModel _value, $Res Function(_$_AnoboyListModel) _then)
+class __$$AnoboyListModelImplCopyWithImpl<$Res>
+    extends _$AnoboyListModelCopyWithImpl<$Res, _$AnoboyListModelImpl>
+    implements _$$AnoboyListModelImplCopyWith<$Res> {
+  __$$AnoboyListModelImplCopyWithImpl(
+      _$AnoboyListModelImpl _value, $Res Function(_$AnoboyListModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -124,7 +124,7 @@ class __$$_AnoboyListModelCopyWithImpl<$Res>
     Object? prevPage = freezed,
     Object? data = null,
   }) {
-    return _then(_$_AnoboyListModel(
+    return _then(_$AnoboyListModelImpl(
       maxPage: null == maxPage
           ? _value.maxPage
           : maxPage // ignore: cast_nullable_to_non_nullable
@@ -147,16 +147,16 @@ class __$$_AnoboyListModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_AnoboyListModel implements _AnoboyListModel {
-  const _$_AnoboyListModel(
+class _$AnoboyListModelImpl implements _AnoboyListModel {
+  const _$AnoboyListModelImpl(
       {@JsonKey(name: "max_page") this.maxPage = 0,
       @JsonKey(name: "next_page") this.nextPage,
       @JsonKey(name: "prev_page") this.prevPage,
       final List<AnoboyListItemModel> data = const []})
       : _data = data;
 
-  factory _$_AnoboyListModel.fromJson(Map<String, dynamic> json) =>
-      _$$_AnoboyListModelFromJson(json);
+  factory _$AnoboyListModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AnoboyListModelImplFromJson(json);
 
   /// Max Page of Anoboy Home Screen or Search
   @override
@@ -194,7 +194,7 @@ class _$_AnoboyListModel implements _AnoboyListModel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AnoboyListModel &&
+            other is _$AnoboyListModelImpl &&
             (identical(other.maxPage, maxPage) || other.maxPage == maxPage) &&
             (identical(other.nextPage, nextPage) ||
                 other.nextPage == nextPage) &&
@@ -211,12 +211,13 @@ class _$_AnoboyListModel implements _AnoboyListModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AnoboyListModelCopyWith<_$_AnoboyListModel> get copyWith =>
-      __$$_AnoboyListModelCopyWithImpl<_$_AnoboyListModel>(this, _$identity);
+  _$$AnoboyListModelImplCopyWith<_$AnoboyListModelImpl> get copyWith =>
+      __$$AnoboyListModelImplCopyWithImpl<_$AnoboyListModelImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AnoboyListModelToJson(
+    return _$$AnoboyListModelImplToJson(
       this,
     );
   }
@@ -227,10 +228,10 @@ abstract class _AnoboyListModel implements AnoboyListModel {
       {@JsonKey(name: "max_page") final int maxPage,
       @JsonKey(name: "next_page") final String? nextPage,
       @JsonKey(name: "prev_page") final String? prevPage,
-      final List<AnoboyListItemModel> data}) = _$_AnoboyListModel;
+      final List<AnoboyListItemModel> data}) = _$AnoboyListModelImpl;
 
   factory _AnoboyListModel.fromJson(Map<String, dynamic> json) =
-      _$_AnoboyListModel.fromJson;
+      _$AnoboyListModelImpl.fromJson;
 
   @override
 
@@ -253,7 +254,7 @@ abstract class _AnoboyListModel implements AnoboyListModel {
   List<AnoboyListItemModel> get data;
   @override
   @JsonKey(ignore: true)
-  _$$_AnoboyListModelCopyWith<_$_AnoboyListModel> get copyWith =>
+  _$$AnoboyListModelImplCopyWith<_$AnoboyListModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -345,11 +346,11 @@ class _$AnoboyListItemModelCopyWithImpl<$Res, $Val extends AnoboyListItemModel>
 }
 
 /// @nodoc
-abstract class _$$_AnoboyListItemModelCopyWith<$Res>
+abstract class _$$AnoboyListItemModelImplCopyWith<$Res>
     implements $AnoboyListItemModelCopyWith<$Res> {
-  factory _$$_AnoboyListItemModelCopyWith(_$_AnoboyListItemModel value,
-          $Res Function(_$_AnoboyListItemModel) then) =
-      __$$_AnoboyListItemModelCopyWithImpl<$Res>;
+  factory _$$AnoboyListItemModelImplCopyWith(_$AnoboyListItemModelImpl value,
+          $Res Function(_$AnoboyListItemModelImpl) then) =
+      __$$AnoboyListItemModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -361,11 +362,11 @@ abstract class _$$_AnoboyListItemModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_AnoboyListItemModelCopyWithImpl<$Res>
-    extends _$AnoboyListItemModelCopyWithImpl<$Res, _$_AnoboyListItemModel>
-    implements _$$_AnoboyListItemModelCopyWith<$Res> {
-  __$$_AnoboyListItemModelCopyWithImpl(_$_AnoboyListItemModel _value,
-      $Res Function(_$_AnoboyListItemModel) _then)
+class __$$AnoboyListItemModelImplCopyWithImpl<$Res>
+    extends _$AnoboyListItemModelCopyWithImpl<$Res, _$AnoboyListItemModelImpl>
+    implements _$$AnoboyListItemModelImplCopyWith<$Res> {
+  __$$AnoboyListItemModelImplCopyWithImpl(_$AnoboyListItemModelImpl _value,
+      $Res Function(_$AnoboyListItemModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -377,7 +378,7 @@ class __$$_AnoboyListItemModelCopyWithImpl<$Res>
     Object? uploadTime = null,
     Object? detailUrl = null,
   }) {
-    return _then(_$_AnoboyListItemModel(
+    return _then(_$AnoboyListItemModelImpl(
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -404,16 +405,16 @@ class __$$_AnoboyListItemModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_AnoboyListItemModel implements _AnoboyListItemModel {
-  const _$_AnoboyListItemModel(
+class _$AnoboyListItemModelImpl implements _AnoboyListItemModel {
+  const _$AnoboyListItemModelImpl(
       {this.title = "",
       this.param = "",
       this.thumbnail = "",
       @JsonKey(name: 'upload_time') this.uploadTime = "",
       @JsonKey(name: 'detail_url') this.detailUrl = ""});
 
-  factory _$_AnoboyListItemModel.fromJson(Map<String, dynamic> json) =>
-      _$$_AnoboyListItemModelFromJson(json);
+  factory _$AnoboyListItemModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AnoboyListItemModelImplFromJson(json);
 
   /// Anime Title
   @override
@@ -449,7 +450,7 @@ class _$_AnoboyListItemModel implements _AnoboyListItemModel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AnoboyListItemModel &&
+            other is _$AnoboyListItemModelImpl &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.param, param) || other.param == param) &&
             (identical(other.thumbnail, thumbnail) ||
@@ -468,13 +469,13 @@ class _$_AnoboyListItemModel implements _AnoboyListItemModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AnoboyListItemModelCopyWith<_$_AnoboyListItemModel> get copyWith =>
-      __$$_AnoboyListItemModelCopyWithImpl<_$_AnoboyListItemModel>(
+  _$$AnoboyListItemModelImplCopyWith<_$AnoboyListItemModelImpl> get copyWith =>
+      __$$AnoboyListItemModelImplCopyWithImpl<_$AnoboyListItemModelImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AnoboyListItemModelToJson(
+    return _$$AnoboyListItemModelImplToJson(
       this,
     );
   }
@@ -487,10 +488,10 @@ abstract class _AnoboyListItemModel implements AnoboyListItemModel {
           final String thumbnail,
           @JsonKey(name: 'upload_time') final String uploadTime,
           @JsonKey(name: 'detail_url') final String detailUrl}) =
-      _$_AnoboyListItemModel;
+      _$AnoboyListItemModelImpl;
 
   factory _AnoboyListItemModel.fromJson(Map<String, dynamic> json) =
-      _$_AnoboyListItemModel.fromJson;
+      _$AnoboyListItemModelImpl.fromJson;
 
   @override
 
@@ -516,6 +517,6 @@ abstract class _AnoboyListItemModel implements AnoboyListItemModel {
   String get detailUrl;
   @override
   @JsonKey(ignore: true)
-  _$$_AnoboyListItemModelCopyWith<_$_AnoboyListItemModel> get copyWith =>
+  _$$AnoboyListItemModelImplCopyWith<_$AnoboyListItemModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

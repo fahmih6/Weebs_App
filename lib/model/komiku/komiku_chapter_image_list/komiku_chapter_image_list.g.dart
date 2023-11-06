@@ -6,16 +6,16 @@ part of 'komiku_chapter_image_list.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_KomikuChapterImageListModel _$$_KomikuChapterImageListModelFromJson(
+_$KomikuChapterImageListModelImpl _$$KomikuChapterImageListModelImplFromJson(
         Map<String, dynamic> json) =>
-    _$_KomikuChapterImageListModel(
+    _$KomikuChapterImageListModelImpl(
       data:
           (json['data'] as List<dynamic>?)?.map((e) => e as String).toList() ??
               const [],
     );
 
-Map<String, dynamic> _$$_KomikuChapterImageListModelToJson(
-        _$_KomikuChapterImageListModel instance) =>
+Map<String, dynamic> _$$KomikuChapterImageListModelImplToJson(
+        _$KomikuChapterImageListModelImpl instance) =>
     <String, dynamic>{
       'data': instance.data,
     };

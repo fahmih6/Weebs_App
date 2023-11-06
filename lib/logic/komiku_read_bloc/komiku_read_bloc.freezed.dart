@@ -108,11 +108,11 @@ class _$KomikuReadEventCopyWithImpl<$Res, $Val extends KomikuReadEvent>
 }
 
 /// @nodoc
-abstract class _$$_MarkAsReadCopyWith<$Res>
+abstract class _$$MarkAsReadImplCopyWith<$Res>
     implements $KomikuReadEventCopyWith<$Res> {
-  factory _$$_MarkAsReadCopyWith(
-          _$_MarkAsRead value, $Res Function(_$_MarkAsRead) then) =
-      __$$_MarkAsReadCopyWithImpl<$Res>;
+  factory _$$MarkAsReadImplCopyWith(
+          _$MarkAsReadImpl value, $Res Function(_$MarkAsReadImpl) then) =
+      __$$MarkAsReadImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({KomikuDetailModel komikuData, String chapterParam});
@@ -122,11 +122,11 @@ abstract class _$$_MarkAsReadCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_MarkAsReadCopyWithImpl<$Res>
-    extends _$KomikuReadEventCopyWithImpl<$Res, _$_MarkAsRead>
-    implements _$$_MarkAsReadCopyWith<$Res> {
-  __$$_MarkAsReadCopyWithImpl(
-      _$_MarkAsRead _value, $Res Function(_$_MarkAsRead) _then)
+class __$$MarkAsReadImplCopyWithImpl<$Res>
+    extends _$KomikuReadEventCopyWithImpl<$Res, _$MarkAsReadImpl>
+    implements _$$MarkAsReadImplCopyWith<$Res> {
+  __$$MarkAsReadImplCopyWithImpl(
+      _$MarkAsReadImpl _value, $Res Function(_$MarkAsReadImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -135,7 +135,7 @@ class __$$_MarkAsReadCopyWithImpl<$Res>
     Object? komikuData = null,
     Object? chapterParam = null,
   }) {
-    return _then(_$_MarkAsRead(
+    return _then(_$MarkAsReadImpl(
       komikuData: null == komikuData
           ? _value.komikuData
           : komikuData // ignore: cast_nullable_to_non_nullable
@@ -150,8 +150,9 @@ class __$$_MarkAsReadCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_MarkAsRead implements _MarkAsRead {
-  const _$_MarkAsRead({required this.komikuData, required this.chapterParam});
+class _$MarkAsReadImpl implements _MarkAsRead {
+  const _$MarkAsReadImpl(
+      {required this.komikuData, required this.chapterParam});
 
   @override
   final KomikuDetailModel komikuData;
@@ -167,7 +168,7 @@ class _$_MarkAsRead implements _MarkAsRead {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MarkAsRead &&
+            other is _$MarkAsReadImpl &&
             (identical(other.komikuData, komikuData) ||
                 other.komikuData == komikuData) &&
             (identical(other.chapterParam, chapterParam) ||
@@ -180,8 +181,8 @@ class _$_MarkAsRead implements _MarkAsRead {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MarkAsReadCopyWith<_$_MarkAsRead> get copyWith =>
-      __$$_MarkAsReadCopyWithImpl<_$_MarkAsRead>(this, _$identity);
+  _$$MarkAsReadImplCopyWith<_$MarkAsReadImpl> get copyWith =>
+      __$$MarkAsReadImplCopyWithImpl<_$MarkAsReadImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -246,7 +247,7 @@ class _$_MarkAsRead implements _MarkAsRead {
 abstract class _MarkAsRead implements KomikuReadEvent {
   const factory _MarkAsRead(
       {required final KomikuDetailModel komikuData,
-      required final String chapterParam}) = _$_MarkAsRead;
+      required final String chapterParam}) = _$MarkAsReadImpl;
 
   @override
   KomikuDetailModel get komikuData;
@@ -254,7 +255,7 @@ abstract class _MarkAsRead implements KomikuReadEvent {
   String get chapterParam;
   @override
   @JsonKey(ignore: true)
-  _$$_MarkAsReadCopyWith<_$_MarkAsRead> get copyWith =>
+  _$$MarkAsReadImplCopyWith<_$MarkAsReadImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -333,20 +334,22 @@ class _$KomikuReadStateCopyWithImpl<$Res, $Val extends KomikuReadState>
 }
 
 /// @nodoc
-abstract class _$$_StateCopyWith<$Res>
+abstract class _$$StateImplCopyWith<$Res>
     implements $KomikuReadStateCopyWith<$Res> {
-  factory _$$_StateCopyWith(_$_State value, $Res Function(_$_State) then) =
-      __$$_StateCopyWithImpl<$Res>;
+  factory _$$StateImplCopyWith(
+          _$StateImpl value, $Res Function(_$StateImpl) then) =
+      __$$StateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<KomikuDetailModel> komikuList});
 }
 
 /// @nodoc
-class __$$_StateCopyWithImpl<$Res>
-    extends _$KomikuReadStateCopyWithImpl<$Res, _$_State>
-    implements _$$_StateCopyWith<$Res> {
-  __$$_StateCopyWithImpl(_$_State _value, $Res Function(_$_State) _then)
+class __$$StateImplCopyWithImpl<$Res>
+    extends _$KomikuReadStateCopyWithImpl<$Res, _$StateImpl>
+    implements _$$StateImplCopyWith<$Res> {
+  __$$StateImplCopyWithImpl(
+      _$StateImpl _value, $Res Function(_$StateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -354,7 +357,7 @@ class __$$_StateCopyWithImpl<$Res>
   $Res call({
     Object? komikuList = null,
   }) {
-    return _then(_$_State(
+    return _then(_$StateImpl(
       komikuList: null == komikuList
           ? _value._komikuList
           : komikuList // ignore: cast_nullable_to_non_nullable
@@ -365,8 +368,8 @@ class __$$_StateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_State implements _State {
-  const _$_State({final List<KomikuDetailModel> komikuList = const []})
+class _$StateImpl implements _State {
+  const _$StateImpl({final List<KomikuDetailModel> komikuList = const []})
       : _komikuList = komikuList;
 
   final List<KomikuDetailModel> _komikuList;
@@ -387,7 +390,7 @@ class _$_State implements _State {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_State &&
+            other is _$StateImpl &&
             const DeepCollectionEquality()
                 .equals(other._komikuList, _komikuList));
   }
@@ -399,8 +402,8 @@ class _$_State implements _State {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_StateCopyWith<_$_State> get copyWith =>
-      __$$_StateCopyWithImpl<_$_State>(this, _$identity);
+  _$$StateImplCopyWith<_$StateImpl> get copyWith =>
+      __$$StateImplCopyWithImpl<_$StateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -460,12 +463,13 @@ class _$_State implements _State {
 }
 
 abstract class _State implements KomikuReadState {
-  const factory _State({final List<KomikuDetailModel> komikuList}) = _$_State;
+  const factory _State({final List<KomikuDetailModel> komikuList}) =
+      _$StateImpl;
 
   @override
   List<KomikuDetailModel> get komikuList;
   @override
   @JsonKey(ignore: true)
-  _$$_StateCopyWith<_$_State> get copyWith =>
+  _$$StateImplCopyWith<_$StateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

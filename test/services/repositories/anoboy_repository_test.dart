@@ -16,7 +16,7 @@ class AnoboyRepositoryUnitTest {
         final repository = getIt<AnoboyRepository>();
 
         /// Get anoboy latest anime
-        final res = await repository.getLatestAnime(useV2: false);
+        final res = await repository.getLatestAnime();
 
         /// Test the result.
         res.fold(
@@ -29,7 +29,7 @@ class AnoboyRepositoryUnitTest {
         );
 
         /// Get anoboy latest anime V2
-        final resV2 = await repository.getLatestAnime(useV2: true);
+        final resV2 = await repository.getLatestAnime();
 
         /// Test the result
         resV2.fold(
@@ -46,7 +46,7 @@ class AnoboyRepositoryUnitTest {
         final repository = getIt<AnoboyRepository>();
 
         /// Get anime detail from anoboy
-        final res = await repository.getAnimeDetail(param: param, useV2: false);
+        final res = await repository.getAnimeDetail(param: param);
 
         /// Test the result.
         res.fold(
@@ -55,8 +55,7 @@ class AnoboyRepositoryUnitTest {
         );
 
         /// Get anime detail from anoboy V2
-        final resV2 =
-            await repository.getAnimeDetail(param: param, useV2: true);
+        final resV2 = await repository.getAnimeDetail(param: param);
 
         /// Test the result.
         resV2.fold(

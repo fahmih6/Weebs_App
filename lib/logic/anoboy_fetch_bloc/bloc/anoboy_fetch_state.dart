@@ -7,6 +7,7 @@ class AnoboyFetchState with _$AnoboyFetchState {
       _Loading;
   const factory AnoboyFetchState.completed({
     required AnoboyListModel animeList,
+    @Default(false) bool isLoadMore,
     String? errorMsg,
   }) = _Completed;
 }

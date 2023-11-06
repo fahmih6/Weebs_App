@@ -6,6 +6,8 @@ import 'package:weebs_app/screens/screens_export.dart';
 import 'package:weebs_app/screens/search_screen/search_screen.dart';
 import 'package:weebs_app/screens/komik_detail_screen/komik_detail_screen.dart';
 
+import '../screens/anoboy_detail_screen/anoboy_detail_screen.dart';
+
 part 'app_router.gr.dart';
 
 @AutoRouterConfig(
@@ -56,6 +58,12 @@ class AppRouter extends _$AppRouter {
         AutoRoute(
           path: "/${RouteNames.komikReadScreen}",
           page: KomikReadRoute.page,
+        ),
+
+        /// Anoboy Detail Screen
+        AutoRoute(
+          path: "/${RouteNames.anoboyDetailScreen}",
+          page: AnoboyDetailRoute.page,
         ),
       ];
 }

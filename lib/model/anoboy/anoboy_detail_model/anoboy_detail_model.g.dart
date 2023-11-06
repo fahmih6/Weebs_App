@@ -6,8 +6,9 @@ part of 'anoboy_detail_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_AnoboyDetailModel _$$_AnoboyDetailModelFromJson(Map<String, dynamic> json) =>
-    _$_AnoboyDetailModel(
+_$AnoboyDetailModelImpl _$$AnoboyDetailModelImplFromJson(
+        Map<String, dynamic> json) =>
+    _$AnoboyDetailModelImpl(
       name: json['name'] as String? ?? "",
       synopsis: json['synopsis'] as String? ?? "",
       episodeNavigations: (json['episode_navigation'] as List<dynamic>?)
@@ -16,26 +17,30 @@ _$_AnoboyDetailModel _$$_AnoboyDetailModelFromJson(Map<String, dynamic> json) =>
               .toList() ??
           const [],
       videoEmbedLinks: (json['video_embed_links'] as List<dynamic>?)
-              ?.map((e) => AnoboyLinksItem.fromJson(e as Map<String, dynamic>))
+              ?.map((e) =>
+                  AnoboyLinksItemModel.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
       videoDirectLinks: (json['video_direct_links'] as List<dynamic>?)
-              ?.map((e) => AnoboyLinksItem.fromJson(e as Map<String, dynamic>))
+              ?.map((e) =>
+                  AnoboyLinksItemModel.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
       videoEmbedMirrorLinks: (json['video_mirrors'] as List<dynamic>?)
-              ?.map((e) => AnoboyLinksItem.fromJson(e as Map<String, dynamic>))
+              ?.map((e) =>
+                  AnoboyLinksItemModel.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
-      videoMirrorDirectLinks: (json['video_mirrors_direct_link']
-                  as List<dynamic>?)
-              ?.map((e) => AnoboyLinksItem.fromJson(e as Map<String, dynamic>))
-              .toList() ??
-          const [],
+      videoMirrorDirectLinks:
+          (json['video_mirrors_direct_link'] as List<dynamic>?)
+                  ?.map((e) =>
+                      AnoboyLinksItemModel.fromJson(e as Map<String, dynamic>))
+                  .toList() ??
+              const [],
     );
 
-Map<String, dynamic> _$$_AnoboyDetailModelToJson(
-        _$_AnoboyDetailModel instance) =>
+Map<String, dynamic> _$$AnoboyDetailModelImplToJson(
+        _$AnoboyDetailModelImpl instance) =>
     <String, dynamic>{
       'name': instance.name,
       'synopsis': instance.synopsis,
@@ -51,28 +56,33 @@ Map<String, dynamic> _$$_AnoboyDetailModelToJson(
           instance.videoMirrorDirectLinks.map((e) => e.toJson()).toList(),
     };
 
-_$_AnoboyEpisodeNavigationItemModel
-    _$$_AnoboyEpisodeNavigationItemModelFromJson(Map<String, dynamic> json) =>
-        _$_AnoboyEpisodeNavigationItemModel(
+_$AnoboyEpisodeNavigationItemModelImpl
+    _$$AnoboyEpisodeNavigationItemModelImplFromJson(
+            Map<String, dynamic> json) =>
+        _$AnoboyEpisodeNavigationItemModelImpl(
           navLink: json['nav_link'] as String? ?? "",
           navName: json['nav_name'] as String? ?? "",
         );
 
-Map<String, dynamic> _$$_AnoboyEpisodeNavigationItemModelToJson(
-        _$_AnoboyEpisodeNavigationItemModel instance) =>
+Map<String, dynamic> _$$AnoboyEpisodeNavigationItemModelImplToJson(
+        _$AnoboyEpisodeNavigationItemModelImpl instance) =>
     <String, dynamic>{
       'nav_link': instance.navLink,
       'nav_name': instance.navName,
     };
 
-_$_AnoboyLinksItem _$$_AnoboyLinksItemFromJson(Map<String, dynamic> json) =>
-    _$_AnoboyLinksItem(
+_$AnoboyLinksItemModelImpl _$$AnoboyLinksItemModelImplFromJson(
+        Map<String, dynamic> json) =>
+    _$AnoboyLinksItemModelImpl(
       resolution: json['resolution'] as String? ?? "",
       link: json['link'] as String? ?? "",
+      headers: json['headers'] as Map<String, dynamic>?,
     );
 
-Map<String, dynamic> _$$_AnoboyLinksItemToJson(_$_AnoboyLinksItem instance) =>
+Map<String, dynamic> _$$AnoboyLinksItemModelImplToJson(
+        _$AnoboyLinksItemModelImpl instance) =>
     <String, dynamic>{
       'resolution': instance.resolution,
       'link': instance.link,
+      'headers': instance.headers,
     };

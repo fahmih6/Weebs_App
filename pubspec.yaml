@@ -32,11 +32,11 @@ dependencies:
   auto_route: ^7.1.0
   bloc_concurrency: ^0.2.0
   cached_network_image: ^3.2.3
-  chewie: ^1.5.0
+  chewie: ^1.7.1
   collection: ^1.17.1
   cupertino_icons: ^1.0.2
   dartz: ^0.10.1
-  device_info_plus: ^8.0.0
+  device_info_plus: ^9.0.3
   dio: ^5.1.2
   dio_smart_retry: ^5.0.0
   equatable: ^2.0.5
@@ -51,11 +51,13 @@ dependencies:
   freezed_annotation: ^2.2.0
   get_it: ^7.2.0
   hive: ^2.2.3
+  html: ^0.15.4
   hydrated_bloc: ^9.1.2
   json_annotation: ^4.8.1
   path_provider: ^2.1.0
   shimmer: ^3.0.0
-  video_player: ^2.6.1
+  video_player: ^2.8.1
+  webview_flutter: ^4.2.4
   window_manager: ^0.3.4
 
 dev_dependencies:

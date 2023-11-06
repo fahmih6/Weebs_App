@@ -33,22 +33,22 @@ mixin _$AnoboyDetailModel {
 
   /// Video Embed Links
   @JsonKey(name: "video_embed_links")
-  List<AnoboyLinksItem> get videoEmbedLinks =>
+  List<AnoboyLinksItemModel> get videoEmbedLinks =>
       throw _privateConstructorUsedError;
 
   /// Video Direct Links
   @JsonKey(name: "video_direct_links")
-  List<AnoboyLinksItem> get videoDirectLinks =>
+  List<AnoboyLinksItemModel> get videoDirectLinks =>
       throw _privateConstructorUsedError;
 
   /// Video Embed Mirror Links
   @JsonKey(name: "video_mirrors")
-  List<AnoboyLinksItem> get videoEmbedMirrorLinks =>
+  List<AnoboyLinksItemModel> get videoEmbedMirrorLinks =>
       throw _privateConstructorUsedError;
 
   /// Video Mirrors Direct Link
   @JsonKey(name: 'video_mirrors_direct_link')
-  List<AnoboyLinksItem> get videoMirrorDirectLinks =>
+  List<AnoboyLinksItemModel> get videoMirrorDirectLinks =>
       throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -67,15 +67,15 @@ abstract class $AnoboyDetailModelCopyWith<$Res> {
       {String name,
       String synopsis,
       @JsonKey(name: "episode_navigation")
-          List<AnoboyEpisodeNavigationItemModel> episodeNavigations,
+      List<AnoboyEpisodeNavigationItemModel> episodeNavigations,
       @JsonKey(name: "video_embed_links")
-          List<AnoboyLinksItem> videoEmbedLinks,
+      List<AnoboyLinksItemModel> videoEmbedLinks,
       @JsonKey(name: "video_direct_links")
-          List<AnoboyLinksItem> videoDirectLinks,
+      List<AnoboyLinksItemModel> videoDirectLinks,
       @JsonKey(name: "video_mirrors")
-          List<AnoboyLinksItem> videoEmbedMirrorLinks,
+      List<AnoboyLinksItemModel> videoEmbedMirrorLinks,
       @JsonKey(name: 'video_mirrors_direct_link')
-          List<AnoboyLinksItem> videoMirrorDirectLinks});
+      List<AnoboyLinksItemModel> videoMirrorDirectLinks});
 }
 
 /// @nodoc
@@ -115,52 +115,52 @@ class _$AnoboyDetailModelCopyWithImpl<$Res, $Val extends AnoboyDetailModel>
       videoEmbedLinks: null == videoEmbedLinks
           ? _value.videoEmbedLinks
           : videoEmbedLinks // ignore: cast_nullable_to_non_nullable
-              as List<AnoboyLinksItem>,
+              as List<AnoboyLinksItemModel>,
       videoDirectLinks: null == videoDirectLinks
           ? _value.videoDirectLinks
           : videoDirectLinks // ignore: cast_nullable_to_non_nullable
-              as List<AnoboyLinksItem>,
+              as List<AnoboyLinksItemModel>,
       videoEmbedMirrorLinks: null == videoEmbedMirrorLinks
           ? _value.videoEmbedMirrorLinks
           : videoEmbedMirrorLinks // ignore: cast_nullable_to_non_nullable
-              as List<AnoboyLinksItem>,
+              as List<AnoboyLinksItemModel>,
       videoMirrorDirectLinks: null == videoMirrorDirectLinks
           ? _value.videoMirrorDirectLinks
           : videoMirrorDirectLinks // ignore: cast_nullable_to_non_nullable
-              as List<AnoboyLinksItem>,
+              as List<AnoboyLinksItemModel>,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_AnoboyDetailModelCopyWith<$Res>
+abstract class _$$AnoboyDetailModelImplCopyWith<$Res>
     implements $AnoboyDetailModelCopyWith<$Res> {
-  factory _$$_AnoboyDetailModelCopyWith(_$_AnoboyDetailModel value,
-          $Res Function(_$_AnoboyDetailModel) then) =
-      __$$_AnoboyDetailModelCopyWithImpl<$Res>;
+  factory _$$AnoboyDetailModelImplCopyWith(_$AnoboyDetailModelImpl value,
+          $Res Function(_$AnoboyDetailModelImpl) then) =
+      __$$AnoboyDetailModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {String name,
       String synopsis,
       @JsonKey(name: "episode_navigation")
-          List<AnoboyEpisodeNavigationItemModel> episodeNavigations,
+      List<AnoboyEpisodeNavigationItemModel> episodeNavigations,
       @JsonKey(name: "video_embed_links")
-          List<AnoboyLinksItem> videoEmbedLinks,
+      List<AnoboyLinksItemModel> videoEmbedLinks,
       @JsonKey(name: "video_direct_links")
-          List<AnoboyLinksItem> videoDirectLinks,
+      List<AnoboyLinksItemModel> videoDirectLinks,
       @JsonKey(name: "video_mirrors")
-          List<AnoboyLinksItem> videoEmbedMirrorLinks,
+      List<AnoboyLinksItemModel> videoEmbedMirrorLinks,
       @JsonKey(name: 'video_mirrors_direct_link')
-          List<AnoboyLinksItem> videoMirrorDirectLinks});
+      List<AnoboyLinksItemModel> videoMirrorDirectLinks});
 }
 
 /// @nodoc
-class __$$_AnoboyDetailModelCopyWithImpl<$Res>
-    extends _$AnoboyDetailModelCopyWithImpl<$Res, _$_AnoboyDetailModel>
-    implements _$$_AnoboyDetailModelCopyWith<$Res> {
-  __$$_AnoboyDetailModelCopyWithImpl(
-      _$_AnoboyDetailModel _value, $Res Function(_$_AnoboyDetailModel) _then)
+class __$$AnoboyDetailModelImplCopyWithImpl<$Res>
+    extends _$AnoboyDetailModelCopyWithImpl<$Res, _$AnoboyDetailModelImpl>
+    implements _$$AnoboyDetailModelImplCopyWith<$Res> {
+  __$$AnoboyDetailModelImplCopyWithImpl(_$AnoboyDetailModelImpl _value,
+      $Res Function(_$AnoboyDetailModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -174,7 +174,7 @@ class __$$_AnoboyDetailModelCopyWithImpl<$Res>
     Object? videoEmbedMirrorLinks = null,
     Object? videoMirrorDirectLinks = null,
   }) {
-    return _then(_$_AnoboyDetailModel(
+    return _then(_$AnoboyDetailModelImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -190,48 +190,48 @@ class __$$_AnoboyDetailModelCopyWithImpl<$Res>
       videoEmbedLinks: null == videoEmbedLinks
           ? _value._videoEmbedLinks
           : videoEmbedLinks // ignore: cast_nullable_to_non_nullable
-              as List<AnoboyLinksItem>,
+              as List<AnoboyLinksItemModel>,
       videoDirectLinks: null == videoDirectLinks
           ? _value._videoDirectLinks
           : videoDirectLinks // ignore: cast_nullable_to_non_nullable
-              as List<AnoboyLinksItem>,
+              as List<AnoboyLinksItemModel>,
       videoEmbedMirrorLinks: null == videoEmbedMirrorLinks
           ? _value._videoEmbedMirrorLinks
           : videoEmbedMirrorLinks // ignore: cast_nullable_to_non_nullable
-              as List<AnoboyLinksItem>,
+              as List<AnoboyLinksItemModel>,
       videoMirrorDirectLinks: null == videoMirrorDirectLinks
           ? _value._videoMirrorDirectLinks
           : videoMirrorDirectLinks // ignore: cast_nullable_to_non_nullable
-              as List<AnoboyLinksItem>,
+              as List<AnoboyLinksItemModel>,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_AnoboyDetailModel implements _AnoboyDetailModel {
-  const _$_AnoboyDetailModel(
+class _$AnoboyDetailModelImpl implements _AnoboyDetailModel {
+  const _$AnoboyDetailModelImpl(
       {this.name = "",
       this.synopsis = "",
       @JsonKey(name: "episode_navigation")
-          final List<AnoboyEpisodeNavigationItemModel>
-              episodeNavigations = const [],
+      final List<AnoboyEpisodeNavigationItemModel> episodeNavigations =
+          const [],
       @JsonKey(name: "video_embed_links")
-          final List<AnoboyLinksItem> videoEmbedLinks = const [],
+      final List<AnoboyLinksItemModel> videoEmbedLinks = const [],
       @JsonKey(name: "video_direct_links")
-          final List<AnoboyLinksItem> videoDirectLinks = const [],
+      final List<AnoboyLinksItemModel> videoDirectLinks = const [],
       @JsonKey(name: "video_mirrors")
-          final List<AnoboyLinksItem> videoEmbedMirrorLinks = const [],
+      final List<AnoboyLinksItemModel> videoEmbedMirrorLinks = const [],
       @JsonKey(name: 'video_mirrors_direct_link')
-          final List<AnoboyLinksItem> videoMirrorDirectLinks = const []})
+      final List<AnoboyLinksItemModel> videoMirrorDirectLinks = const []})
       : _episodeNavigations = episodeNavigations,
         _videoEmbedLinks = videoEmbedLinks,
         _videoDirectLinks = videoDirectLinks,
         _videoEmbedMirrorLinks = videoEmbedMirrorLinks,
         _videoMirrorDirectLinks = videoMirrorDirectLinks;
 
-  factory _$_AnoboyDetailModel.fromJson(Map<String, dynamic> json) =>
-      _$$_AnoboyDetailModelFromJson(json);
+  factory _$AnoboyDetailModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AnoboyDetailModelImplFromJson(json);
 
   /// Anime Name
   @override
@@ -257,24 +257,24 @@ class _$_AnoboyDetailModel implements _AnoboyDetailModel {
   }
 
   /// Video Embed Links
-  final List<AnoboyLinksItem> _videoEmbedLinks;
+  final List<AnoboyLinksItemModel> _videoEmbedLinks;
 
   /// Video Embed Links
   @override
   @JsonKey(name: "video_embed_links")
-  List<AnoboyLinksItem> get videoEmbedLinks {
+  List<AnoboyLinksItemModel> get videoEmbedLinks {
     if (_videoEmbedLinks is EqualUnmodifiableListView) return _videoEmbedLinks;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_videoEmbedLinks);
   }
 
   /// Video Direct Links
-  final List<AnoboyLinksItem> _videoDirectLinks;
+  final List<AnoboyLinksItemModel> _videoDirectLinks;
 
   /// Video Direct Links
   @override
   @JsonKey(name: "video_direct_links")
-  List<AnoboyLinksItem> get videoDirectLinks {
+  List<AnoboyLinksItemModel> get videoDirectLinks {
     if (_videoDirectLinks is EqualUnmodifiableListView)
       return _videoDirectLinks;
     // ignore: implicit_dynamic_type
@@ -282,12 +282,12 @@ class _$_AnoboyDetailModel implements _AnoboyDetailModel {
   }
 
   /// Video Embed Mirror Links
-  final List<AnoboyLinksItem> _videoEmbedMirrorLinks;
+  final List<AnoboyLinksItemModel> _videoEmbedMirrorLinks;
 
   /// Video Embed Mirror Links
   @override
   @JsonKey(name: "video_mirrors")
-  List<AnoboyLinksItem> get videoEmbedMirrorLinks {
+  List<AnoboyLinksItemModel> get videoEmbedMirrorLinks {
     if (_videoEmbedMirrorLinks is EqualUnmodifiableListView)
       return _videoEmbedMirrorLinks;
     // ignore: implicit_dynamic_type
@@ -295,12 +295,12 @@ class _$_AnoboyDetailModel implements _AnoboyDetailModel {
   }
 
   /// Video Mirrors Direct Link
-  final List<AnoboyLinksItem> _videoMirrorDirectLinks;
+  final List<AnoboyLinksItemModel> _videoMirrorDirectLinks;
 
   /// Video Mirrors Direct Link
   @override
   @JsonKey(name: 'video_mirrors_direct_link')
-  List<AnoboyLinksItem> get videoMirrorDirectLinks {
+  List<AnoboyLinksItemModel> get videoMirrorDirectLinks {
     if (_videoMirrorDirectLinks is EqualUnmodifiableListView)
       return _videoMirrorDirectLinks;
     // ignore: implicit_dynamic_type
@@ -316,7 +316,7 @@ class _$_AnoboyDetailModel implements _AnoboyDetailModel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AnoboyDetailModel &&
+            other is _$AnoboyDetailModelImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.synopsis, synopsis) ||
                 other.synopsis == synopsis) &&
@@ -347,13 +347,13 @@ class _$_AnoboyDetailModel implements _AnoboyDetailModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AnoboyDetailModelCopyWith<_$_AnoboyDetailModel> get copyWith =>
-      __$$_AnoboyDetailModelCopyWithImpl<_$_AnoboyDetailModel>(
+  _$$AnoboyDetailModelImplCopyWith<_$AnoboyDetailModelImpl> get copyWith =>
+      __$$AnoboyDetailModelImplCopyWithImpl<_$AnoboyDetailModelImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AnoboyDetailModelToJson(
+    return _$$AnoboyDetailModelImplToJson(
       this,
     );
   }
@@ -364,19 +364,19 @@ abstract class _AnoboyDetailModel implements AnoboyDetailModel {
           {final String name,
           final String synopsis,
           @JsonKey(name: "episode_navigation")
-              final List<AnoboyEpisodeNavigationItemModel> episodeNavigations,
+          final List<AnoboyEpisodeNavigationItemModel> episodeNavigations,
           @JsonKey(name: "video_embed_links")
-              final List<AnoboyLinksItem> videoEmbedLinks,
+          final List<AnoboyLinksItemModel> videoEmbedLinks,
           @JsonKey(name: "video_direct_links")
-              final List<AnoboyLinksItem> videoDirectLinks,
+          final List<AnoboyLinksItemModel> videoDirectLinks,
           @JsonKey(name: "video_mirrors")
-              final List<AnoboyLinksItem> videoEmbedMirrorLinks,
+          final List<AnoboyLinksItemModel> videoEmbedMirrorLinks,
           @JsonKey(name: 'video_mirrors_direct_link')
-              final List<AnoboyLinksItem> videoMirrorDirectLinks}) =
-      _$_AnoboyDetailModel;
+          final List<AnoboyLinksItemModel> videoMirrorDirectLinks}) =
+      _$AnoboyDetailModelImpl;
 
   factory _AnoboyDetailModel.fromJson(Map<String, dynamic> json) =
-      _$_AnoboyDetailModel.fromJson;
+      _$AnoboyDetailModelImpl.fromJson;
 
   @override
 
@@ -395,25 +395,25 @@ abstract class _AnoboyDetailModel implements AnoboyDetailModel {
 
   /// Video Embed Links
   @JsonKey(name: "video_embed_links")
-  List<AnoboyLinksItem> get videoEmbedLinks;
+  List<AnoboyLinksItemModel> get videoEmbedLinks;
   @override
 
   /// Video Direct Links
   @JsonKey(name: "video_direct_links")
-  List<AnoboyLinksItem> get videoDirectLinks;
+  List<AnoboyLinksItemModel> get videoDirectLinks;
   @override
 
   /// Video Embed Mirror Links
   @JsonKey(name: "video_mirrors")
-  List<AnoboyLinksItem> get videoEmbedMirrorLinks;
+  List<AnoboyLinksItemModel> get videoEmbedMirrorLinks;
   @override
 
   /// Video Mirrors Direct Link
   @JsonKey(name: 'video_mirrors_direct_link')
-  List<AnoboyLinksItem> get videoMirrorDirectLinks;
+  List<AnoboyLinksItemModel> get videoMirrorDirectLinks;
   @override
   @JsonKey(ignore: true)
-  _$$_AnoboyDetailModelCopyWith<_$_AnoboyDetailModel> get copyWith =>
+  _$$AnoboyDetailModelImplCopyWith<_$AnoboyDetailModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -479,12 +479,12 @@ class _$AnoboyEpisodeNavigationItemModelCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_AnoboyEpisodeNavigationItemModelCopyWith<$Res>
+abstract class _$$AnoboyEpisodeNavigationItemModelImplCopyWith<$Res>
     implements $AnoboyEpisodeNavigationItemModelCopyWith<$Res> {
-  factory _$$_AnoboyEpisodeNavigationItemModelCopyWith(
-          _$_AnoboyEpisodeNavigationItemModel value,
-          $Res Function(_$_AnoboyEpisodeNavigationItemModel) then) =
-      __$$_AnoboyEpisodeNavigationItemModelCopyWithImpl<$Res>;
+  factory _$$AnoboyEpisodeNavigationItemModelImplCopyWith(
+          _$AnoboyEpisodeNavigationItemModelImpl value,
+          $Res Function(_$AnoboyEpisodeNavigationItemModelImpl) then) =
+      __$$AnoboyEpisodeNavigationItemModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -493,13 +493,13 @@ abstract class _$$_AnoboyEpisodeNavigationItemModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_AnoboyEpisodeNavigationItemModelCopyWithImpl<$Res>
+class __$$AnoboyEpisodeNavigationItemModelImplCopyWithImpl<$Res>
     extends _$AnoboyEpisodeNavigationItemModelCopyWithImpl<$Res,
-        _$_AnoboyEpisodeNavigationItemModel>
-    implements _$$_AnoboyEpisodeNavigationItemModelCopyWith<$Res> {
-  __$$_AnoboyEpisodeNavigationItemModelCopyWithImpl(
-      _$_AnoboyEpisodeNavigationItemModel _value,
-      $Res Function(_$_AnoboyEpisodeNavigationItemModel) _then)
+        _$AnoboyEpisodeNavigationItemModelImpl>
+    implements _$$AnoboyEpisodeNavigationItemModelImplCopyWith<$Res> {
+  __$$AnoboyEpisodeNavigationItemModelImplCopyWithImpl(
+      _$AnoboyEpisodeNavigationItemModelImpl _value,
+      $Res Function(_$AnoboyEpisodeNavigationItemModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -508,7 +508,7 @@ class __$$_AnoboyEpisodeNavigationItemModelCopyWithImpl<$Res>
     Object? navLink = null,
     Object? navName = null,
   }) {
-    return _then(_$_AnoboyEpisodeNavigationItemModel(
+    return _then(_$AnoboyEpisodeNavigationItemModelImpl(
       navLink: null == navLink
           ? _value.navLink
           : navLink // ignore: cast_nullable_to_non_nullable
@@ -523,15 +523,15 @@ class __$$_AnoboyEpisodeNavigationItemModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_AnoboyEpisodeNavigationItemModel
+class _$AnoboyEpisodeNavigationItemModelImpl
     implements _AnoboyEpisodeNavigationItemModel {
-  const _$_AnoboyEpisodeNavigationItemModel(
+  const _$AnoboyEpisodeNavigationItemModelImpl(
       {@JsonKey(name: "nav_link") this.navLink = "",
       @JsonKey(name: "nav_name") this.navName = ""});
 
-  factory _$_AnoboyEpisodeNavigationItemModel.fromJson(
+  factory _$AnoboyEpisodeNavigationItemModelImpl.fromJson(
           Map<String, dynamic> json) =>
-      _$$_AnoboyEpisodeNavigationItemModelFromJson(json);
+      _$$AnoboyEpisodeNavigationItemModelImplFromJson(json);
 
   @override
   @JsonKey(name: "nav_link")
@@ -549,7 +549,7 @@ class _$_AnoboyEpisodeNavigationItemModel
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AnoboyEpisodeNavigationItemModel &&
+            other is _$AnoboyEpisodeNavigationItemModelImpl &&
             (identical(other.navLink, navLink) || other.navLink == navLink) &&
             (identical(other.navName, navName) || other.navName == navName));
   }
@@ -561,14 +561,14 @@ class _$_AnoboyEpisodeNavigationItemModel
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AnoboyEpisodeNavigationItemModelCopyWith<
-          _$_AnoboyEpisodeNavigationItemModel>
-      get copyWith => __$$_AnoboyEpisodeNavigationItemModelCopyWithImpl<
-          _$_AnoboyEpisodeNavigationItemModel>(this, _$identity);
+  _$$AnoboyEpisodeNavigationItemModelImplCopyWith<
+          _$AnoboyEpisodeNavigationItemModelImpl>
+      get copyWith => __$$AnoboyEpisodeNavigationItemModelImplCopyWithImpl<
+          _$AnoboyEpisodeNavigationItemModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AnoboyEpisodeNavigationItemModelToJson(
+    return _$$AnoboyEpisodeNavigationItemModelImplToJson(
       this,
     );
   }
@@ -579,10 +579,11 @@ abstract class _AnoboyEpisodeNavigationItemModel
   const factory _AnoboyEpisodeNavigationItemModel(
           {@JsonKey(name: "nav_link") final String navLink,
           @JsonKey(name: "nav_name") final String navName}) =
-      _$_AnoboyEpisodeNavigationItemModel;
+      _$AnoboyEpisodeNavigationItemModelImpl;
 
   factory _AnoboyEpisodeNavigationItemModel.fromJson(
-      Map<String, dynamic> json) = _$_AnoboyEpisodeNavigationItemModel.fromJson;
+          Map<String, dynamic> json) =
+      _$AnoboyEpisodeNavigationItemModelImpl.fromJson;
 
   @override
   @JsonKey(name: "nav_link")
@@ -592,39 +593,41 @@ abstract class _AnoboyEpisodeNavigationItemModel
   String get navName;
   @override
   @JsonKey(ignore: true)
-  _$$_AnoboyEpisodeNavigationItemModelCopyWith<
-          _$_AnoboyEpisodeNavigationItemModel>
+  _$$AnoboyEpisodeNavigationItemModelImplCopyWith<
+          _$AnoboyEpisodeNavigationItemModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
-AnoboyLinksItem _$AnoboyLinksItemFromJson(Map<String, dynamic> json) {
-  return _AnoboyLinksItem.fromJson(json);
+AnoboyLinksItemModel _$AnoboyLinksItemModelFromJson(Map<String, dynamic> json) {
+  return _AnoboyLinksItemModel.fromJson(json);
 }
 
 /// @nodoc
-mixin _$AnoboyLinksItem {
+mixin _$AnoboyLinksItemModel {
   String get resolution => throw _privateConstructorUsedError;
   String get link => throw _privateConstructorUsedError;
+  Map<String, dynamic>? get headers => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $AnoboyLinksItemCopyWith<AnoboyLinksItem> get copyWith =>
+  $AnoboyLinksItemModelCopyWith<AnoboyLinksItemModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $AnoboyLinksItemCopyWith<$Res> {
-  factory $AnoboyLinksItemCopyWith(
-          AnoboyLinksItem value, $Res Function(AnoboyLinksItem) then) =
-      _$AnoboyLinksItemCopyWithImpl<$Res, AnoboyLinksItem>;
+abstract class $AnoboyLinksItemModelCopyWith<$Res> {
+  factory $AnoboyLinksItemModelCopyWith(AnoboyLinksItemModel value,
+          $Res Function(AnoboyLinksItemModel) then) =
+      _$AnoboyLinksItemModelCopyWithImpl<$Res, AnoboyLinksItemModel>;
   @useResult
-  $Res call({String resolution, String link});
+  $Res call({String resolution, String link, Map<String, dynamic>? headers});
 }
 
 /// @nodoc
-class _$AnoboyLinksItemCopyWithImpl<$Res, $Val extends AnoboyLinksItem>
-    implements $AnoboyLinksItemCopyWith<$Res> {
-  _$AnoboyLinksItemCopyWithImpl(this._value, this._then);
+class _$AnoboyLinksItemModelCopyWithImpl<$Res,
+        $Val extends AnoboyLinksItemModel>
+    implements $AnoboyLinksItemModelCopyWith<$Res> {
+  _$AnoboyLinksItemModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -636,6 +639,7 @@ class _$AnoboyLinksItemCopyWithImpl<$Res, $Val extends AnoboyLinksItem>
   $Res call({
     Object? resolution = null,
     Object? link = null,
+    Object? headers = freezed,
   }) {
     return _then(_value.copyWith(
       resolution: null == resolution
@@ -646,27 +650,31 @@ class _$AnoboyLinksItemCopyWithImpl<$Res, $Val extends AnoboyLinksItem>
           ? _value.link
           : link // ignore: cast_nullable_to_non_nullable
               as String,
+      headers: freezed == headers
+          ? _value.headers
+          : headers // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>?,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_AnoboyLinksItemCopyWith<$Res>
-    implements $AnoboyLinksItemCopyWith<$Res> {
-  factory _$$_AnoboyLinksItemCopyWith(
-          _$_AnoboyLinksItem value, $Res Function(_$_AnoboyLinksItem) then) =
-      __$$_AnoboyLinksItemCopyWithImpl<$Res>;
+abstract class _$$AnoboyLinksItemModelImplCopyWith<$Res>
+    implements $AnoboyLinksItemModelCopyWith<$Res> {
+  factory _$$AnoboyLinksItemModelImplCopyWith(_$AnoboyLinksItemModelImpl value,
+          $Res Function(_$AnoboyLinksItemModelImpl) then) =
+      __$$AnoboyLinksItemModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String resolution, String link});
+  $Res call({String resolution, String link, Map<String, dynamic>? headers});
 }
 
 /// @nodoc
-class __$$_AnoboyLinksItemCopyWithImpl<$Res>
-    extends _$AnoboyLinksItemCopyWithImpl<$Res, _$_AnoboyLinksItem>
-    implements _$$_AnoboyLinksItemCopyWith<$Res> {
-  __$$_AnoboyLinksItemCopyWithImpl(
-      _$_AnoboyLinksItem _value, $Res Function(_$_AnoboyLinksItem) _then)
+class __$$AnoboyLinksItemModelImplCopyWithImpl<$Res>
+    extends _$AnoboyLinksItemModelCopyWithImpl<$Res, _$AnoboyLinksItemModelImpl>
+    implements _$$AnoboyLinksItemModelImplCopyWith<$Res> {
+  __$$AnoboyLinksItemModelImplCopyWithImpl(_$AnoboyLinksItemModelImpl _value,
+      $Res Function(_$AnoboyLinksItemModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -674,8 +682,9 @@ class __$$_AnoboyLinksItemCopyWithImpl<$Res>
   $Res call({
     Object? resolution = null,
     Object? link = null,
+    Object? headers = freezed,
   }) {
-    return _then(_$_AnoboyLinksItem(
+    return _then(_$AnoboyLinksItemModelImpl(
       resolution: null == resolution
           ? _value.resolution
           : resolution // ignore: cast_nullable_to_non_nullable
@@ -684,17 +693,25 @@ class __$$_AnoboyLinksItemCopyWithImpl<$Res>
           ? _value.link
           : link // ignore: cast_nullable_to_non_nullable
               as String,
+      headers: freezed == headers
+          ? _value._headers
+          : headers // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_AnoboyLinksItem implements _AnoboyLinksItem {
-  const _$_AnoboyLinksItem({this.resolution = "", this.link = ""});
+class _$AnoboyLinksItemModelImpl implements _AnoboyLinksItemModel {
+  const _$AnoboyLinksItemModelImpl(
+      {this.resolution = "",
+      this.link = "",
+      final Map<String, dynamic>? headers})
+      : _headers = headers;
 
-  factory _$_AnoboyLinksItem.fromJson(Map<String, dynamic> json) =>
-      _$$_AnoboyLinksItemFromJson(json);
+  factory _$AnoboyLinksItemModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AnoboyLinksItemModelImplFromJson(json);
 
   @override
   @JsonKey()
@@ -702,53 +719,70 @@ class _$_AnoboyLinksItem implements _AnoboyLinksItem {
   @override
   @JsonKey()
   final String link;
+  final Map<String, dynamic>? _headers;
+  @override
+  Map<String, dynamic>? get headers {
+    final value = _headers;
+    if (value == null) return null;
+    if (_headers is EqualUnmodifiableMapView) return _headers;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(value);
+  }
 
   @override
   String toString() {
-    return 'AnoboyLinksItem(resolution: $resolution, link: $link)';
+    return 'AnoboyLinksItemModel(resolution: $resolution, link: $link, headers: $headers)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AnoboyLinksItem &&
+            other is _$AnoboyLinksItemModelImpl &&
             (identical(other.resolution, resolution) ||
                 other.resolution == resolution) &&
-            (identical(other.link, link) || other.link == link));
+            (identical(other.link, link) || other.link == link) &&
+            const DeepCollectionEquality().equals(other._headers, _headers));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, resolution, link);
+  int get hashCode => Object.hash(runtimeType, resolution, link,
+      const DeepCollectionEquality().hash(_headers));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AnoboyLinksItemCopyWith<_$_AnoboyLinksItem> get copyWith =>
-      __$$_AnoboyLinksItemCopyWithImpl<_$_AnoboyLinksItem>(this, _$identity);
+  _$$AnoboyLinksItemModelImplCopyWith<_$AnoboyLinksItemModelImpl>
+      get copyWith =>
+          __$$AnoboyLinksItemModelImplCopyWithImpl<_$AnoboyLinksItemModelImpl>(
+              this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AnoboyLinksItemToJson(
+    return _$$AnoboyLinksItemModelImplToJson(
       this,
     );
   }
 }
 
-abstract class _AnoboyLinksItem implements AnoboyLinksItem {
-  const factory _AnoboyLinksItem({final String resolution, final String link}) =
-      _$_AnoboyLinksItem;
+abstract class _AnoboyLinksItemModel implements AnoboyLinksItemModel {
+  const factory _AnoboyLinksItemModel(
+      {final String resolution,
+      final String link,
+      final Map<String, dynamic>? headers}) = _$AnoboyLinksItemModelImpl;
 
-  factory _AnoboyLinksItem.fromJson(Map<String, dynamic> json) =
-      _$_AnoboyLinksItem.fromJson;
+  factory _AnoboyLinksItemModel.fromJson(Map<String, dynamic> json) =
+      _$AnoboyLinksItemModelImpl.fromJson;
 
   @override
   String get resolution;
   @override
   String get link;
   @override
+  Map<String, dynamic>? get headers;
+  @override
   @JsonKey(ignore: true)
-  _$$_AnoboyLinksItemCopyWith<_$_AnoboyLinksItem> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$AnoboyLinksItemModelImplCopyWith<_$AnoboyLinksItemModelImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

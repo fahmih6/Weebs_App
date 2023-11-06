@@ -1,25 +1,37 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:weebs_app/model/komiku/komiku_list_model/komiku_list_model.dart';
-import 'package:weebs_app/routes/app_router.dart';
 
 import '../../../widgets/shimmer/shimmer_placeholder_widget.dart';
 
-class KomikListScreenListItem extends StatelessWidget {
-  final KomikuListItemModel item;
-  const KomikListScreenListItem({super.key, required this.item});
+class WrapListItemWidget extends StatelessWidget {
+  final VoidCallback? onTap;
+  final String thumbnailLink;
+  final String title;
+  final String subtitle;
+  final double? containerWidth;
+  final double? imageWidth;
+  final double? imageHeight;
+  final int? titleMaxLines;
+  const WrapListItemWidget({
+    super.key,
+    this.onTap,
+    required this.thumbnailLink,
+    required this.title,
+    required this.subtitle,
+    this.containerWidth,
+    this.imageWidth,
+    this.imageHeight,
+    this.titleMaxLines,
+  });
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       borderRadius: BorderRadius.circular(8),
-      onTap: () {
-        context.pushRoute(KomikDetailRoute(param: item.param));
-      },
+      onTap: onTap,
       child: SizedBox(
-        width: 119.h,
+        width: containerWidth,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -30,23 +42,25 @@ class KomikListScreenListItem extends StatelessWidget {
                 /// Image
                 ClipRRect(
                   borderRadius: BorderRadius.circular(8),
-                  child: Hero(
-                    tag: item.param,
-                    child: CachedNetworkImage(
-                      imageUrl: item.thumbnail,
-                      placeholder: (context, url) {
-                        return const ShimmerPlaceholderWidget();
-                      },
-                      fit: BoxFit.cover,
-                      height: 180.h,
-                      width: 120.h,
-                    ),
+                  child: CachedNetworkImage(
+                    imageUrl: thumbnailLink,
+                    placeholder: (context, url) {
+                      return const ShimmerPlaceholderWidget();
+                    },
+                    errorWidget: (context, url, error) {
+                      return Container(
+                        color: Colors.black,
+                      );
+                    },
+                    fit: BoxFit.cover,
+                    height: imageHeight ?? 190.h,
+                    width: imageWidth ?? 190.h,
                   ),
                 ),
 
                 /// Title
                 Tooltip(
-                  message: item.title,
+                  message: title,
                   textAlign: TextAlign.center,
                   child: Align(
                     alignment: Alignment.bottomCenter,
@@ -74,13 +88,13 @@ class KomikListScreenListItem extends StatelessWidget {
                           /// Title
                           Flexible(
                             child: Text(
-                              item.title,
+                              title,
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 14.sp,
                               ),
                               textAlign: TextAlign.center,
-                              maxLines: 2,
+                              maxLines: titleMaxLines ?? 5,
                               overflow: TextOverflow.ellipsis,
                             ),
                           ),
@@ -106,7 +120,7 @@ class KomikListScreenListItem extends StatelessWidget {
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  item.latestChapter,
+                  subtitle,
                   style: TextStyle(
                     fontWeight: FontWeight.w600,
                     fontSize: 12.sp,

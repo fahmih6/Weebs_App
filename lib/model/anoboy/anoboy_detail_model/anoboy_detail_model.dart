@@ -20,22 +20,22 @@ class AnoboyDetailModel with _$AnoboyDetailModel {
     /// Video Embed Links
     @JsonKey(name: "video_embed_links")
     @Default([])
-    List<AnoboyLinksItem> videoEmbedLinks,
+    List<AnoboyLinksItemModel> videoEmbedLinks,
 
     /// Video Direct Links
     @JsonKey(name: "video_direct_links")
     @Default([])
-    List<AnoboyLinksItem> videoDirectLinks,
+    List<AnoboyLinksItemModel> videoDirectLinks,
 
     /// Video Embed Mirror Links
     @JsonKey(name: "video_mirrors")
     @Default([])
-    List<AnoboyLinksItem> videoEmbedMirrorLinks,
+    List<AnoboyLinksItemModel> videoEmbedMirrorLinks,
 
     /// Video Mirrors Direct Link
     @JsonKey(name: 'video_mirrors_direct_link')
     @Default([])
-    List<AnoboyLinksItem> videoMirrorDirectLinks,
+    List<AnoboyLinksItemModel> videoMirrorDirectLinks,
   }) = _AnoboyDetailModel;
 
   factory AnoboyDetailModel.fromJson(Map<String, dynamic> json) =>
@@ -55,12 +55,13 @@ class AnoboyEpisodeNavigationItemModel with _$AnoboyEpisodeNavigationItemModel {
 }
 
 @freezed
-class AnoboyLinksItem with _$AnoboyLinksItem {
-  const factory AnoboyLinksItem({
+class AnoboyLinksItemModel with _$AnoboyLinksItemModel {
+  const factory AnoboyLinksItemModel({
     @Default("") String resolution,
     @Default("") String link,
-  }) = _AnoboyLinksItem;
+    Map<String, dynamic>? headers,
+  }) = _AnoboyLinksItemModel;
 
-  factory AnoboyLinksItem.fromJson(Map<String, dynamic> json) =>
-      _$AnoboyLinksItemFromJson(json);
+  factory AnoboyLinksItemModel.fromJson(Map<String, dynamic> json) =>
+      _$AnoboyLinksItemModelFromJson(json);
 }

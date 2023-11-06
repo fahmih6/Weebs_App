@@ -66,25 +66,25 @@ class _$KomikuChapterImageListModelCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_KomikuChapterImageListModelCopyWith<$Res>
+abstract class _$$KomikuChapterImageListModelImplCopyWith<$Res>
     implements $KomikuChapterImageListModelCopyWith<$Res> {
-  factory _$$_KomikuChapterImageListModelCopyWith(
-          _$_KomikuChapterImageListModel value,
-          $Res Function(_$_KomikuChapterImageListModel) then) =
-      __$$_KomikuChapterImageListModelCopyWithImpl<$Res>;
+  factory _$$KomikuChapterImageListModelImplCopyWith(
+          _$KomikuChapterImageListModelImpl value,
+          $Res Function(_$KomikuChapterImageListModelImpl) then) =
+      __$$KomikuChapterImageListModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<String> data});
 }
 
 /// @nodoc
-class __$$_KomikuChapterImageListModelCopyWithImpl<$Res>
+class __$$KomikuChapterImageListModelImplCopyWithImpl<$Res>
     extends _$KomikuChapterImageListModelCopyWithImpl<$Res,
-        _$_KomikuChapterImageListModel>
-    implements _$$_KomikuChapterImageListModelCopyWith<$Res> {
-  __$$_KomikuChapterImageListModelCopyWithImpl(
-      _$_KomikuChapterImageListModel _value,
-      $Res Function(_$_KomikuChapterImageListModel) _then)
+        _$KomikuChapterImageListModelImpl>
+    implements _$$KomikuChapterImageListModelImplCopyWith<$Res> {
+  __$$KomikuChapterImageListModelImplCopyWithImpl(
+      _$KomikuChapterImageListModelImpl _value,
+      $Res Function(_$KomikuChapterImageListModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -92,7 +92,7 @@ class __$$_KomikuChapterImageListModelCopyWithImpl<$Res>
   $Res call({
     Object? data = null,
   }) {
-    return _then(_$_KomikuChapterImageListModel(
+    return _then(_$KomikuChapterImageListModelImpl(
       data: null == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
@@ -103,12 +103,14 @@ class __$$_KomikuChapterImageListModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_KomikuChapterImageListModel implements _KomikuChapterImageListModel {
-  const _$_KomikuChapterImageListModel({final List<String> data = const []})
+class _$KomikuChapterImageListModelImpl
+    implements _KomikuChapterImageListModel {
+  const _$KomikuChapterImageListModelImpl({final List<String> data = const []})
       : _data = data;
 
-  factory _$_KomikuChapterImageListModel.fromJson(Map<String, dynamic> json) =>
-      _$$_KomikuChapterImageListModelFromJson(json);
+  factory _$KomikuChapterImageListModelImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$KomikuChapterImageListModelImplFromJson(json);
 
   final List<String> _data;
   @override
@@ -128,7 +130,7 @@ class _$_KomikuChapterImageListModel implements _KomikuChapterImageListModel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_KomikuChapterImageListModel &&
+            other is _$KomikuChapterImageListModelImpl &&
             const DeepCollectionEquality().equals(other._data, _data));
   }
 
@@ -140,13 +142,13 @@ class _$_KomikuChapterImageListModel implements _KomikuChapterImageListModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_KomikuChapterImageListModelCopyWith<_$_KomikuChapterImageListModel>
-      get copyWith => __$$_KomikuChapterImageListModelCopyWithImpl<
-          _$_KomikuChapterImageListModel>(this, _$identity);
+  _$$KomikuChapterImageListModelImplCopyWith<_$KomikuChapterImageListModelImpl>
+      get copyWith => __$$KomikuChapterImageListModelImplCopyWithImpl<
+          _$KomikuChapterImageListModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_KomikuChapterImageListModelToJson(
+    return _$$KomikuChapterImageListModelImplToJson(
       this,
     );
   }
@@ -155,15 +157,15 @@ class _$_KomikuChapterImageListModel implements _KomikuChapterImageListModel {
 abstract class _KomikuChapterImageListModel
     implements KomikuChapterImageListModel {
   const factory _KomikuChapterImageListModel({final List<String> data}) =
-      _$_KomikuChapterImageListModel;
+      _$KomikuChapterImageListModelImpl;
 
   factory _KomikuChapterImageListModel.fromJson(Map<String, dynamic> json) =
-      _$_KomikuChapterImageListModel.fromJson;
+      _$KomikuChapterImageListModelImpl.fromJson;
 
   @override
   List<String> get data;
   @override
   @JsonKey(ignore: true)
-  _$$_KomikuChapterImageListModelCopyWith<_$_KomikuChapterImageListModel>
+  _$$KomikuChapterImageListModelImplCopyWith<_$KomikuChapterImageListModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

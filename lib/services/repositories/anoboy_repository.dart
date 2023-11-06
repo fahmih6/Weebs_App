@@ -6,18 +6,21 @@ import 'package:weebs_app/helpers/get_it_helper/get_it_helper.dart';
 import 'package:weebs_app/model/anoboy/anoboy_detail_model/anoboy_detail_model.dart';
 import 'package:weebs_app/model/anoboy/anoboy_list_model/anoboy_list_model.dart';
 import 'package:weebs_app/model/failure/failure.dart';
+import 'package:weebs_app/services/repositories/blogger_repository.dart';
 
 /// Anoboy Repository
 abstract class IAnoboyRepository {
   /// Get latest updated anime
-  Future<Either<Failure, AnoboyListModel>> getLatestAnime({
-    required bool useV2,
-  });
+  Future<Either<Failure, AnoboyListModel>> getLatestAnime();
 
   /// Get anime detail
   Future<Either<Failure, AnoboyDetailModel>> getAnimeDetail({
     required String param,
-    required bool useV2,
+  });
+
+  /// Get next anime list
+  Future<Either<Failure, AnoboyListModel>> getNextAnimeListData({
+    required String nextURL,
   });
 }
 
@@ -26,31 +29,59 @@ class AnoboyRepository implements IAnoboyRepository {
   /// Dio
   final dio = getIt<Dio>();
 
+  /// Blogger Repository
+  final BloggerRepository bloggerRepository = getIt<BloggerRepository>();
+
   @override
   Future<Either<Failure, AnoboyDetailModel>> getAnimeDetail(
-      {required String param, required bool useV2}) async {
+      {required String param}) async {
     /// Get anime detail
     final res = await DioHelper.defaultGetRequest(
-      url:
-          useV2 ? "${Endpoints.anoboyV2}$param" : "${Endpoints.anoboyV1}$param",
+      url: "${Endpoints.anoboy}$param",
     );
 
     /// Return the result
-    return res.fold(
+    return await res.fold(
       (l) => Left(l),
-      (r) {
+      (r) async {
         final data = AnoboyDetailModel.fromJson(r["data"]);
-        return Right(data);
+
+        /// Get the direct links
+        final directLinks = await Future.wait(
+          [
+            ...data.videoEmbedLinks.map(
+              (e) => bloggerRepository.getVideoDirectLink(
+                url: e.link,
+                resolution: e.resolution,
+              ),
+            ),
+          ],
+        );
+
+        /// Map the direct links
+        final directLinkList = directLinks
+            .map(
+              (e) => e.fold(
+                (l) => const AnoboyLinksItemModel(),
+                (r) => r,
+              ),
+            )
+            .toList();
+
+        return Right(
+          data.copyWith(
+            videoDirectLinks: directLinkList,
+          ),
+        );
       },
     );
   }
 
   @override
-  Future<Either<Failure, AnoboyListModel>> getLatestAnime(
-      {required bool useV2}) async {
+  Future<Either<Failure, AnoboyListModel>> getLatestAnime() async {
     /// Get latest anime data
     final res = await DioHelper.defaultGetRequest(
-      url: useV2 ? Endpoints.anoboyV2 : Endpoints.anoboyV1,
+      url: Endpoints.anoboy,
     );
 
     /// Return the result
@@ -60,6 +91,19 @@ class AnoboyRepository implements IAnoboyRepository {
         final data = AnoboyListModel.fromJson(r);
         return Right(data);
       },
+    );
+  }
+
+  @override
+  Future<Either<Failure, AnoboyListModel>> getNextAnimeListData(
+      {required String nextURL}) async {
+    /// Get next komik list
+    final res = await DioHelper.defaultGetRequest(url: nextURL);
+
+    /// return the result
+    return res.fold(
+      (l) => Left(l),
+      (r) => Right(AnoboyListModel.fromJson(r)),
     );
   }
 }

@@ -96,20 +96,22 @@ class _$KomikReadAppbarStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_StateCopyWith<$Res>
+abstract class _$$StateImplCopyWith<$Res>
     implements $KomikReadAppbarStateCopyWith<$Res> {
-  factory _$$_StateCopyWith(_$_State value, $Res Function(_$_State) then) =
-      __$$_StateCopyWithImpl<$Res>;
+  factory _$$StateImplCopyWith(
+          _$StateImpl value, $Res Function(_$StateImpl) then) =
+      __$$StateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({bool shouldShow, String title});
 }
 
 /// @nodoc
-class __$$_StateCopyWithImpl<$Res>
-    extends _$KomikReadAppbarStateCopyWithImpl<$Res, _$_State>
-    implements _$$_StateCopyWith<$Res> {
-  __$$_StateCopyWithImpl(_$_State _value, $Res Function(_$_State) _then)
+class __$$StateImplCopyWithImpl<$Res>
+    extends _$KomikReadAppbarStateCopyWithImpl<$Res, _$StateImpl>
+    implements _$$StateImplCopyWith<$Res> {
+  __$$StateImplCopyWithImpl(
+      _$StateImpl _value, $Res Function(_$StateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -118,7 +120,7 @@ class __$$_StateCopyWithImpl<$Res>
     Object? shouldShow = null,
     Object? title = null,
   }) {
-    return _then(_$_State(
+    return _then(_$StateImpl(
       shouldShow: null == shouldShow
           ? _value.shouldShow
           : shouldShow // ignore: cast_nullable_to_non_nullable
@@ -133,8 +135,8 @@ class __$$_StateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_State implements _State {
-  const _$_State({this.shouldShow = true, this.title = '-'});
+class _$StateImpl implements _State {
+  const _$StateImpl({this.shouldShow = true, this.title = '-'});
 
   @override
   @JsonKey()
@@ -152,7 +154,7 @@ class _$_State implements _State {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_State &&
+            other is _$StateImpl &&
             (identical(other.shouldShow, shouldShow) ||
                 other.shouldShow == shouldShow) &&
             (identical(other.title, title) || other.title == title));
@@ -164,8 +166,8 @@ class _$_State implements _State {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_StateCopyWith<_$_State> get copyWith =>
-      __$$_StateCopyWithImpl<_$_State>(this, _$identity);
+  _$$StateImplCopyWith<_$StateImpl> get copyWith =>
+      __$$StateImplCopyWithImpl<_$StateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -225,7 +227,8 @@ class _$_State implements _State {
 }
 
 abstract class _State implements KomikReadAppbarState {
-  const factory _State({final bool shouldShow, final String title}) = _$_State;
+  const factory _State({final bool shouldShow, final String title}) =
+      _$StateImpl;
 
   @override
   bool get shouldShow;
@@ -233,6 +236,6 @@ abstract class _State implements KomikReadAppbarState {
   String get title;
   @override
   @JsonKey(ignore: true)
-  _$$_StateCopyWith<_$_State> get copyWith =>
+  _$$StateImplCopyWith<_$StateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
