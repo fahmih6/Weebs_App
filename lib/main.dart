@@ -63,14 +63,16 @@ class WeebsApp extends StatelessWidget {
             ),
             routeInformationParser: _appRouter.defaultRouteParser(),
             scaffoldMessengerKey: scaffoldMessengerKey,
-            scrollBehavior:
-                const MaterialScrollBehavior().copyWith(dragDevices: {
-              PointerDeviceKind.mouse,
-              PointerDeviceKind.touch,
-              PointerDeviceKind.stylus,
-              PointerDeviceKind.trackpad,
-              PointerDeviceKind.unknown,
-            }),
+            scrollBehavior: const MaterialScrollBehavior().copyWith(
+              dragDevices: {
+                PointerDeviceKind.mouse,
+                PointerDeviceKind.touch,
+                PointerDeviceKind.stylus,
+                PointerDeviceKind.trackpad,
+                PointerDeviceKind.unknown,
+              },
+              scrollbars: false,
+            ),
           ),
         ),
       ),

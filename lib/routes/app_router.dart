@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:weebs_app/routes/route_names.dart';
-import 'package:weebs_app/screens/komik_read_screen/komik_read_screen.dart';
 import 'package:weebs_app/screens/screens_export.dart';
-import 'package:weebs_app/screens/search_screen/search_screen.dart';
-import 'package:weebs_app/screens/komik_detail_screen/komik_detail_screen.dart';
-
-import '../screens/anoboy_detail_screen/anoboy_detail_screen.dart';
 
 part 'app_router.gr.dart';
 

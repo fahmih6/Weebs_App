@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:fluid_bottom_nav_bar/fluid_bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:weebs_app/global/assets_constant.dart';
 import 'package:weebs_app/routes/app_router.dart';
 import 'package:weebs_app/routes/route_names.dart';
@@ -60,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ],
                     elevation: 5,
-                    minExtendedWidth: 150,
+                    minExtendedWidth: 150.w,
                     extended: true,
                   ),
                 ),

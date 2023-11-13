@@ -1,6 +1,7 @@
 import 'package:collection/collection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:weebs_app/helpers/general/debouncer.dart';
 import 'package:weebs_app/helpers/get_it_helper/get_it_helper.dart';
 
 import '../komiku_detail_fetch_bloc/komiku_detail_fetch_bloc.dart';
@@ -9,6 +10,7 @@ part 'komik_read_appbar_state.dart';
 part 'komik_read_appbar_cubit.freezed.dart';
 
 class KomikReadAppbarCubit extends Cubit<KomikReadAppbarState> {
+  final Debouncer debouncer = Debouncer(duration: const Duration(seconds: 3));
   KomikReadAppbarCubit() : super(const KomikReadAppbarState.state());
 
   /// Init
@@ -23,12 +25,9 @@ class KomikReadAppbarCubit extends Cubit<KomikReadAppbarState> {
     emit(state.copyWith(shouldShow: true));
 
     /// Hide app bar within 3 seconds
-    Future.delayed(
-      const Duration(seconds: 3),
-      () {
-        emit(state.copyWith(shouldShow: false));
-      },
-    );
+    debouncer.run(() {
+      emit(state.copyWith(shouldShow: false));
+    });
   }
 
   /// App bar title

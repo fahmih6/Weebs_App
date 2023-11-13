@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:weebs_app/helpers/general/helper_functions.dart';
 import 'package:weebs_app/logic/anoboy_fetch_bloc/bloc/anoboy_fetch_bloc.dart';
 import 'package:weebs_app/model/anoboy/anoboy_list_model/anoboy_list_model.dart';
 import 'package:weebs_app/routes/app_router.dart';
@@ -26,9 +27,9 @@ class AnoboyListScreenListView extends StatelessWidget {
           thumbnailLink: data.thumbnail,
           title: data.title,
           subtitle: data.uploadTime,
-          containerWidth: 178.h,
+          containerWidth: getItemContainerWidth(context),
           imageHeight: 178.h,
-          imageWidth: 178.h,
+          imageWidth: getItemContainerWidth(context),
           onTap: () {
             context.pushRoute(AnoboyDetailRoute(param: data.param));
           },
@@ -38,7 +39,7 @@ class AnoboyListScreenListView extends StatelessWidget {
         visible: animeList.nextPage != null,
         child: SizedBox(
           height: 213.h,
-          width: 180.h,
+          width: getItemContainerWidth(context),
           child: ElevatedButton(
             onPressed: () {
               /// Next Link
@@ -89,5 +90,10 @@ class AnoboyListScreenListView extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  /// Item Container Width
+  double getItemContainerWidth(BuildContext context) {
+    return HelperFunction.isPortrait(context) ? 178.w : 210.w;
   }
 }

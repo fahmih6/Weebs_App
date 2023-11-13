@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:weebs_app/helpers/general/helper_functions.dart';
 import 'package:weebs_app/logic/komiku_list_komik_fetch_bloc/komiku_list_komik_fetch_bloc.dart';
 import 'package:weebs_app/widgets/list_widget/wrap_list_item_widget.dart';
 import 'package:weebs_app/widgets/loading_widget/loading_widget.dart';
@@ -31,9 +32,9 @@ class KomikListScreenListView extends StatelessWidget {
           thumbnailLink: data.thumbnail,
           title: data.title,
           subtitle: data.latestChapter,
-          containerWidth: 119.h,
+          containerWidth: getItemContainerWidth(context),
           imageHeight: 180.h,
-          imageWidth: 120.h,
+          imageWidth: getItemContainerWidth(context),
           titleMaxLines: 2,
           onTap: () {
             context.pushRoute(KomikDetailRoute(param: data.param));
@@ -46,7 +47,7 @@ class KomikListScreenListView extends StatelessWidget {
         visible: komikuList.nextPage != null,
         child: SizedBox(
           height: 213.h,
-          width: 119.h,
+          width: getItemContainerWidth(context),
           child: ElevatedButton(
             onPressed: () {
               /// Komiku bloc
@@ -105,5 +106,10 @@ class KomikListScreenListView extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  /// Item Container Width
+  double getItemContainerWidth(BuildContext context) {
+    return HelperFunction.isPortrait(context) ? 119.w : 152.w;
   }
 }

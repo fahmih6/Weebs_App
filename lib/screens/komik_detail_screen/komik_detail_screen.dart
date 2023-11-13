@@ -58,7 +58,7 @@ class _KomikDetailScreenState extends State<KomikDetailScreen> {
                             children: [
                               /// Title
                               Container(
-                                padding: EdgeInsets.symmetric(horizontal: 16.h),
+                                padding: EdgeInsets.symmetric(horizontal: 16.w),
                                 width: MediaQuery.of(context).size.width,
                                 decoration: const BoxDecoration(
                                   gradient: LinearGradient(
@@ -78,15 +78,18 @@ class _KomikDetailScreenState extends State<KomikDetailScreen> {
 
                               /// Description
                               Padding(
-                                padding: EdgeInsets.only(
-                                  top: 16.h,
-                                  left: 16.h,
-                                  right: 16.h,
+                                padding: const EdgeInsets.only(
+                                  top: 16,
+                                  left: 16,
+                                  right: 16,
                                 ),
                                 child: ReadMoreText(
                                   "${value.komikuDetailModel.synopsis} ",
                                   trimLines: 2,
                                   trimMode: TrimMode.line,
+                                  style: TextStyle(
+                                    fontSize: 12.sp,
+                                  ),
                                   moreStyle: TextStyle(
                                     color: Theme.of(context)
                                         .buttonTheme
@@ -104,10 +107,10 @@ class _KomikDetailScreenState extends State<KomikDetailScreen> {
 
                               /// Chapter
                               Padding(
-                                padding: EdgeInsets.only(
-                                  top: 16.h,
-                                  left: 16.h,
-                                  right: 16.h,
+                                padding: const EdgeInsets.only(
+                                  top: 16,
+                                  left: 16,
+                                  right: 16,
                                 ),
                                 child: Row(
                                   mainAxisAlignment:
@@ -130,7 +133,7 @@ class _KomikDetailScreenState extends State<KomikDetailScreen> {
                                         flipX: _flipList,
                                         child: RotatedBox(
                                           quarterTurns: _flipList ? 2 : 0,
-                                          child: const Icon(Icons.sort),
+                                          child: Icon(Icons.sort, size: 20.sp),
                                         ),
                                       ),
                                     )

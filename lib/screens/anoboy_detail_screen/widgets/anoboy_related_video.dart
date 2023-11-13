@@ -41,7 +41,7 @@ class AnoboyRelatedVideo extends StatelessWidget {
               itemBuilder: (context, index) {
                 final item = anoboyDetailModel.episodeNavigations[index];
                 return Container(
-                  width: 200.h,
+                  width: 200.w,
                   margin: const EdgeInsets.only(right: 8),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(16),

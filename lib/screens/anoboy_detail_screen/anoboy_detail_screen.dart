@@ -9,6 +9,7 @@ import 'package:weebs_app/widgets/loading_widget/loading_widget.dart';
 import 'package:weebs_app/widgets/video_players/video_player_widget.dart';
 
 import '../../routes/route_names.dart';
+import '../../widgets/error_widget/error_screen.dart';
 import 'widgets/anoboy_detail_description.dart';
 import 'widgets/anoboy_detail_title.dart';
 
@@ -26,9 +27,8 @@ class _AnoboyDetailScreenState extends State<AnoboyDetailScreen> {
   void initState() {
     super.initState();
 
-    context.read<AnoboyDetailFetchBloc>().add(
-          AnoboyDetailFetchEvent.started(param: widget.param),
-        );
+    /// Get detail data
+    getData();
   }
 
   @override
@@ -36,50 +36,59 @@ class _AnoboyDetailScreenState extends State<AnoboyDetailScreen> {
     return Scaffold(
       body: BlocConsumer<AnoboyDetailFetchBloc, AnoboyDetailFetchState>(
         listener: (context, state) {
-          state.maybeMap(
+          state.mapOrNull(
             completed: (value) {
               context.read<VideoPlayerCubit>().loadVideo(
                     links: value.anoboyDetailModel.videoDirectLinks,
                     url: value.anoboyDetailModel.videoDirectLinks.last.link,
                   );
             },
-            orElse: () {},
           );
         },
         builder: (context, state) {
           return state.maybeMap(
             completed: (value) {
-              return ListView(
-                shrinkWrap: true,
-                children: [
-                  /// Video Player
-                  const AspectRatio(
-                    aspectRatio: 16 / 9,
-                    child: VideoPlayerWidget(),
-                  ),
+              if (value.errorMessage.isEmpty) {
+                return ListView(
+                  shrinkWrap: true,
+                  children: [
+                    /// Video Player
+                    const AspectRatio(
+                      aspectRatio: 16 / 9,
+                      child: VideoPlayerWidget(),
+                    ),
 
-                  /// Video Description and Navigation Links.
-                  Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      /// Title
-                      AnoboyDetailTitle(
-                        anoboyDetailModel: value.anoboyDetailModel,
-                      ),
+                    /// Video Description and Navigation Links.
+                    Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        /// Title
+                        AnoboyDetailTitle(
+                          anoboyDetailModel: value.anoboyDetailModel,
+                        ),
 
-                      /// Description.
-                      AnoboyDetailDescription(
-                        anoboyDetailModel: value.anoboyDetailModel,
-                      ),
+                        /// Description.
+                        AnoboyDetailDescription(
+                          anoboyDetailModel: value.anoboyDetailModel,
+                        ),
 
-                      /// Related Video
-                      AnoboyRelatedVideo(
-                        anoboyDetailModel: value.anoboyDetailModel,
-                      ),
-                    ],
-                  ),
-                ],
-              );
+                        /// Related Video
+                        AnoboyRelatedVideo(
+                          anoboyDetailModel: value.anoboyDetailModel,
+                        ),
+                      ],
+                    ),
+                  ],
+                );
+              } else {
+                return ErrorScreen(
+                  errorMesasge: value.errorMessage,
+                  onTap: () {
+                    /// Refetch the detail data.
+                    getData();
+                  },
+                );
+              }
             },
             orElse: () {
               return const Center(
@@ -90,6 +99,13 @@ class _AnoboyDetailScreenState extends State<AnoboyDetailScreen> {
         },
       ),
     );
+  }
+
+  /// Get Data
+  void getData() {
+    context.read<AnoboyDetailFetchBloc>().add(
+          AnoboyDetailFetchEvent.started(param: widget.param),
+        );
   }
 
   @override

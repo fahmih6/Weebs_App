@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:weebs_app/logic/komiku_chapter_fetch_bloc/komiku_chapter_fetch_bloc.dart';
+import 'package:weebs_app/widgets/error_widget/error_screen.dart';
 
 import '../../routes/route_names.dart';
 import '../../widgets/loading_widget/loading_widget.dart';
@@ -43,9 +44,19 @@ class _KomikReadScreenState extends State<KomikReadScreen> {
                 );
               },
               completed: (value) {
-                return KomikReadScreenContent(
-                  chapterList: value.chapterData,
-                );
+                if (value.errorMessage.isEmpty) {
+                  return KomikReadScreenContent(
+                    chapterList: value.chapterData,
+                  );
+                } else {
+                  return ErrorScreen(
+                    errorMesasge: value.errorMessage,
+                    onTap: () {
+                      context.read<KomikuChapterFetchBloc>().add(
+                          KomikuChapterFetchEvent.started(param: widget.param));
+                    },
+                  );
+                }
               },
               orElse: () {
                 return Center(
