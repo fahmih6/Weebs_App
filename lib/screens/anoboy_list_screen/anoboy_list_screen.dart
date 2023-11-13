@@ -8,7 +8,7 @@ import 'package:weebs_app/screens/anoboy_list_screen/widgets/anoboy_list_screen_
 import 'package:weebs_app/screens/anoboy_list_screen/widgets/anoboy_list_screen_listview.dart';
 import 'package:weebs_app/widgets/error_widget/error_screen.dart';
 
-import '../../logic/anoboy_fetch_bloc/bloc/anoboy_fetch_bloc.dart';
+import '../../logic/anoboy_fetch_bloc/anoboy_fetch_bloc.dart';
 import '../../widgets/loading_widget/loading_widget.dart';
 
 @RoutePage(name: RouteNames.anoboyListScreen)

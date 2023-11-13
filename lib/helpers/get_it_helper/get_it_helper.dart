@@ -4,7 +4,8 @@ import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
 import 'package:weebs_app/global/endpoints.dart';
 import 'package:weebs_app/helpers/general/debouncer.dart';
-import 'package:weebs_app/logic/anoboy_fetch_bloc/bloc/anoboy_fetch_bloc.dart';
+import 'package:weebs_app/logic/anoboy_fetch_bloc/anoboy_fetch_bloc.dart';
+import 'package:weebs_app/logic/appbar_video_cubit/appbar_video_cubit.dart';
 import 'package:weebs_app/logic/favourites_bloc/favourites_bloc.dart';
 import 'package:weebs_app/logic/komik_read_appbar_cubit/komik_read_appbar_cubit.dart';
 import 'package:weebs_app/logic/komiku_detail_fetch_bloc/komiku_detail_fetch_bloc.dart';
@@ -88,6 +89,9 @@ class GetItHelper {
 
     /// Video Player Cubit
     getIt.registerLazySingleton(() => VideoPlayerCubit());
+
+    /// Appbar Video Cubit
+    getIt.registerLazySingleton(() => AppbarVideoCubit());
   }
 
   /// Dio Dependency

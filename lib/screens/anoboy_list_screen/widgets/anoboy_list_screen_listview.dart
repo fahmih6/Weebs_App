@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:weebs_app/helpers/general/helper_functions.dart';
-import 'package:weebs_app/logic/anoboy_fetch_bloc/bloc/anoboy_fetch_bloc.dart';
+import 'package:weebs_app/logic/anoboy_fetch_bloc/anoboy_fetch_bloc.dart';
 import 'package:weebs_app/model/anoboy/anoboy_list_model/anoboy_list_model.dart';
 import 'package:weebs_app/routes/app_router.dart';
 import 'package:weebs_app/widgets/list_widget/wrap_list_item_widget.dart';

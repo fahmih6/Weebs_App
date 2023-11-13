@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:weebs_app/routes/app_router.dart';
 import 'package:weebs_app/widgets/shimmer/shimmer_placeholder_widget.dart';
+import 'package:weebs_app/widgets/video_players/appbar_video_player.dart';
 
 import '../../../model/anoboy/anoboy_list_model/anoboy_list_model.dart';
 
@@ -32,17 +33,26 @@ class AnoboyListScreenAppbar extends StatelessWidget {
                   AnoboyDetailRoute(param: animeList.data.first.param),
                 );
               },
-              child: CachedNetworkImage(
-                imageUrl: animeList.data.firstOrNull?.thumbnail ?? '',
-                fit: BoxFit.cover,
-                placeholder: (context, url) {
-                  return const ShimmerPlaceholderWidget();
-                },
-                errorWidget: (context, url, error) {
-                  return Container(
-                    color: Colors.black,
-                  );
-                },
+              child: Stack(
+                children: [
+                  /// Background image
+                  CachedNetworkImage(
+                    imageUrl: animeList.data.firstOrNull?.thumbnail ?? '',
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                    placeholder: (context, url) {
+                      return const ShimmerPlaceholderWidget();
+                    },
+                    errorWidget: (context, url, error) {
+                      return Container(
+                        color: Colors.black,
+                      );
+                    },
+                  ),
+
+                  /// App Bar Video Player
+                  AppbarVideoPlayer(param: animeList.data.first.param),
+                ],
               ),
             ),
 

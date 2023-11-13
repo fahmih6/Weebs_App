@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:video_player/video_player.dart';
+import 'package:weebs_app/logic/appbar_video_cubit/appbar_video_cubit.dart';
 
 class AppbarVideoPlayer extends StatefulWidget {
-  const AppbarVideoPlayer({super.key});
+  final String param;
+  const AppbarVideoPlayer({super.key, required this.param});
 
   @override
   State<AppbarVideoPlayer> createState() => _AppbarVideoPlayerState();
@@ -9,7 +13,47 @@ class AppbarVideoPlayer extends StatefulWidget {
 
 class _AppbarVideoPlayerState extends State<AppbarVideoPlayer> {
   @override
+  void initState() {
+    super.initState();
+    context.read<AppbarVideoCubit>().init(param: widget.param);
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Container();
+    return SizedBox.expand(
+      child: FittedBox(
+        fit: BoxFit.cover,
+        alignment: Alignment.center,
+        child: SizedBox(
+          child: BlocBuilder<AppbarVideoCubit, AppbarVideoState>(
+            builder: (context, state) {
+              return state.map(
+                state: (value) {
+                  final controller = value.videoPlayerController;
+                  if (controller != null) {
+                    return ValueListenableBuilder(
+                      valueListenable: controller,
+                      builder: (context, value, child) {
+                        if (value.isInitialized) {
+                          return SizedBox(
+                            height: controller.value.size.height,
+                            width: controller.value.size.width,
+                            child: VideoPlayer(controller),
+                          );
+                        } else {
+                          return const SizedBox.shrink();
+                        }
+                      },
+                    );
+                  } else {
+                    return const SizedBox.shrink();
+                  }
+                },
+              );
+            },
+          ),
+        ),
+      ),
+    );
   }
 }
