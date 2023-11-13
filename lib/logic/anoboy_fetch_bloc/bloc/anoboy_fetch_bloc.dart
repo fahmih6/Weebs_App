@@ -29,7 +29,7 @@ class AnoboyFetchBloc extends Bloc<AnoboyFetchEvent, AnoboyFetchState> {
           emit(_Completed(animeList: currentAnimeList, errorMsg: l.message));
         },
         (r) {
-          emit(_Completed(animeList: r, errorMsg: null));
+          emit(_Completed(animeList: r));
         },
       );
     });
@@ -45,7 +45,6 @@ class AnoboyFetchBloc extends Bloc<AnoboyFetchEvent, AnoboyFetchState> {
       emit(
         _Completed(
           animeList: currentList,
-          errorMsg: null,
           isLoadMore: true,
         ),
       );
@@ -80,10 +79,7 @@ class AnoboyFetchBloc extends Bloc<AnoboyFetchEvent, AnoboyFetchState> {
 
         /// Emit completed
         emit(
-          _Completed(
-            animeList: newListData,
-            errorMsg: null,
-          ),
+          _Completed(animeList: newListData),
         );
       });
     });

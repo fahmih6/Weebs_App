@@ -317,7 +317,7 @@ mixin _$AnoboyFetchState {
     required TResult Function() initial,
     required TResult Function(AnoboyListModel animeList) loading,
     required TResult Function(
-            AnoboyListModel animeList, bool isLoadMore, String? errorMsg)
+            AnoboyListModel animeList, bool isLoadMore, String errorMsg)
         completed,
   }) =>
       throw _privateConstructorUsedError;
@@ -326,7 +326,7 @@ mixin _$AnoboyFetchState {
     TResult? Function()? initial,
     TResult? Function(AnoboyListModel animeList)? loading,
     TResult? Function(
-            AnoboyListModel animeList, bool isLoadMore, String? errorMsg)?
+            AnoboyListModel animeList, bool isLoadMore, String errorMsg)?
         completed,
   }) =>
       throw _privateConstructorUsedError;
@@ -335,7 +335,7 @@ mixin _$AnoboyFetchState {
     TResult Function()? initial,
     TResult Function(AnoboyListModel animeList)? loading,
     TResult Function(
-            AnoboyListModel animeList, bool isLoadMore, String? errorMsg)?
+            AnoboyListModel animeList, bool isLoadMore, String errorMsg)?
         completed,
     required TResult orElse(),
   }) =>
@@ -423,7 +423,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function() initial,
     required TResult Function(AnoboyListModel animeList) loading,
     required TResult Function(
-            AnoboyListModel animeList, bool isLoadMore, String? errorMsg)
+            AnoboyListModel animeList, bool isLoadMore, String errorMsg)
         completed,
   }) {
     return initial();
@@ -435,7 +435,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? initial,
     TResult? Function(AnoboyListModel animeList)? loading,
     TResult? Function(
-            AnoboyListModel animeList, bool isLoadMore, String? errorMsg)?
+            AnoboyListModel animeList, bool isLoadMore, String errorMsg)?
         completed,
   }) {
     return initial?.call();
@@ -447,7 +447,7 @@ class _$InitialImpl implements _Initial {
     TResult Function()? initial,
     TResult Function(AnoboyListModel animeList)? loading,
     TResult Function(
-            AnoboyListModel animeList, bool isLoadMore, String? errorMsg)?
+            AnoboyListModel animeList, bool isLoadMore, String errorMsg)?
         completed,
     required TResult orElse(),
   }) {
@@ -574,7 +574,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function() initial,
     required TResult Function(AnoboyListModel animeList) loading,
     required TResult Function(
-            AnoboyListModel animeList, bool isLoadMore, String? errorMsg)
+            AnoboyListModel animeList, bool isLoadMore, String errorMsg)
         completed,
   }) {
     return loading(animeList);
@@ -586,7 +586,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function()? initial,
     TResult? Function(AnoboyListModel animeList)? loading,
     TResult? Function(
-            AnoboyListModel animeList, bool isLoadMore, String? errorMsg)?
+            AnoboyListModel animeList, bool isLoadMore, String errorMsg)?
         completed,
   }) {
     return loading?.call(animeList);
@@ -598,7 +598,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function()? initial,
     TResult Function(AnoboyListModel animeList)? loading,
     TResult Function(
-            AnoboyListModel animeList, bool isLoadMore, String? errorMsg)?
+            AnoboyListModel animeList, bool isLoadMore, String errorMsg)?
         completed,
     required TResult orElse(),
   }) {
@@ -659,7 +659,7 @@ abstract class _$$CompletedImplCopyWith<$Res> {
           _$CompletedImpl value, $Res Function(_$CompletedImpl) then) =
       __$$CompletedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({AnoboyListModel animeList, bool isLoadMore, String? errorMsg});
+  $Res call({AnoboyListModel animeList, bool isLoadMore, String errorMsg});
 
   $AnoboyListModelCopyWith<$Res> get animeList;
 }
@@ -677,7 +677,7 @@ class __$$CompletedImplCopyWithImpl<$Res>
   $Res call({
     Object? animeList = null,
     Object? isLoadMore = null,
-    Object? errorMsg = freezed,
+    Object? errorMsg = null,
   }) {
     return _then(_$CompletedImpl(
       animeList: null == animeList
@@ -688,10 +688,10 @@ class __$$CompletedImplCopyWithImpl<$Res>
           ? _value.isLoadMore
           : isLoadMore // ignore: cast_nullable_to_non_nullable
               as bool,
-      errorMsg: freezed == errorMsg
+      errorMsg: null == errorMsg
           ? _value.errorMsg
           : errorMsg // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 
@@ -708,7 +708,7 @@ class __$$CompletedImplCopyWithImpl<$Res>
 
 class _$CompletedImpl implements _Completed {
   const _$CompletedImpl(
-      {required this.animeList, this.isLoadMore = false, this.errorMsg});
+      {required this.animeList, this.isLoadMore = false, this.errorMsg = ""});
 
   @override
   final AnoboyListModel animeList;
@@ -716,7 +716,8 @@ class _$CompletedImpl implements _Completed {
   @JsonKey()
   final bool isLoadMore;
   @override
-  final String? errorMsg;
+  @JsonKey()
+  final String errorMsg;
 
   @override
   String toString() {
@@ -751,7 +752,7 @@ class _$CompletedImpl implements _Completed {
     required TResult Function() initial,
     required TResult Function(AnoboyListModel animeList) loading,
     required TResult Function(
-            AnoboyListModel animeList, bool isLoadMore, String? errorMsg)
+            AnoboyListModel animeList, bool isLoadMore, String errorMsg)
         completed,
   }) {
     return completed(animeList, isLoadMore, errorMsg);
@@ -763,7 +764,7 @@ class _$CompletedImpl implements _Completed {
     TResult? Function()? initial,
     TResult? Function(AnoboyListModel animeList)? loading,
     TResult? Function(
-            AnoboyListModel animeList, bool isLoadMore, String? errorMsg)?
+            AnoboyListModel animeList, bool isLoadMore, String errorMsg)?
         completed,
   }) {
     return completed?.call(animeList, isLoadMore, errorMsg);
@@ -775,7 +776,7 @@ class _$CompletedImpl implements _Completed {
     TResult Function()? initial,
     TResult Function(AnoboyListModel animeList)? loading,
     TResult Function(
-            AnoboyListModel animeList, bool isLoadMore, String? errorMsg)?
+            AnoboyListModel animeList, bool isLoadMore, String errorMsg)?
         completed,
     required TResult orElse(),
   }) {
@@ -824,11 +825,11 @@ abstract class _Completed implements AnoboyFetchState {
   const factory _Completed(
       {required final AnoboyListModel animeList,
       final bool isLoadMore,
-      final String? errorMsg}) = _$CompletedImpl;
+      final String errorMsg}) = _$CompletedImpl;
 
   AnoboyListModel get animeList;
   bool get isLoadMore;
-  String? get errorMsg;
+  String get errorMsg;
   @JsonKey(ignore: true)
   _$$CompletedImplCopyWith<_$CompletedImpl> get copyWith =>
       throw _privateConstructorUsedError;

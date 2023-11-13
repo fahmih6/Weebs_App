@@ -1,6 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:weebs_app/routes/app_router.dart';
 import 'package:weebs_app/widgets/shimmer/shimmer_placeholder_widget.dart';
 
 import '../../../model/anoboy/anoboy_list_model/anoboy_list_model.dart';
@@ -26,7 +28,9 @@ class AnoboyListScreenAppbar extends StatelessWidget {
             /// App bar image
             background: InkWell(
               onTap: () {
-                /// TODO : Add anoboy detail navigation.
+                context.pushRoute(
+                  AnoboyDetailRoute(param: animeList.data.first.param),
+                );
               },
               child: CachedNetworkImage(
                 imageUrl: animeList.data.firstOrNull?.thumbnail ?? '',
@@ -50,7 +54,9 @@ class AnoboyListScreenAppbar extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 16.h),
               child: InkWell(
                 onTap: () {
-                  /// TODO : Add anoboy detail navigation.
+                  context.pushRoute(
+                    AnoboyDetailRoute(param: animeList.data.first.param),
+                  );
                 },
                 child: Container(
                   width: double.infinity,

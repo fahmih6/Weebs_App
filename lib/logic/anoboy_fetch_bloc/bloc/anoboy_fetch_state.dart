@@ -8,6 +8,6 @@ class AnoboyFetchState with _$AnoboyFetchState {
   const factory AnoboyFetchState.completed({
     required AnoboyListModel animeList,
     @Default(false) bool isLoadMore,
-    String? errorMsg,
+    @Default("") String errorMsg,
   }) = _Completed;
 }

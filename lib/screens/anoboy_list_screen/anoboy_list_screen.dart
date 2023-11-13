@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:weebs_app/routes/route_names.dart';
 import 'package:weebs_app/screens/anoboy_list_screen/widgets/anoboy_list_screen_appbar.dart';
 import 'package:weebs_app/screens/anoboy_list_screen/widgets/anoboy_list_screen_listview.dart';
+import 'package:weebs_app/widgets/error_widget/error_screen.dart';
 
 import '../../logic/anoboy_fetch_bloc/bloc/anoboy_fetch_bloc.dart';
 import '../../widgets/loading_widget/loading_widget.dart';
@@ -35,20 +36,15 @@ class _AnoboyListScreenState extends State<AnoboyListScreen> {
             child: state.maybeMap(
               completed: (value) {
                 /// If error occurred, then show error message
-                if (value.errorMsg != null) {
-                  return InkWell(
+                if (value.errorMsg.isNotEmpty == true) {
+                  return ErrorScreen(
+                    errorMesasge: value.errorMsg,
                     onTap: () {
-                      /// Start the komik list fetch.
+                      /// Restart the komik list fetch.
                       context
                           .read<AnoboyFetchBloc>()
                           .add(const AnoboyFetchEvent.started());
                     },
-                    child: Center(
-                      child: Text(
-                        "${value.errorMsg}",
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
                   );
                 }
 
