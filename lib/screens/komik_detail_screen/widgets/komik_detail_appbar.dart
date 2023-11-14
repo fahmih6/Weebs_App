@@ -18,7 +18,7 @@ class KomikDetailAppbar extends StatelessWidget {
     return SliverAppBar(
       pinned: true,
       expandedHeight: 416.h,
-      collapsedHeight: 80.h < kToolbarHeight ? kToolbarHeight : 90.h,
+      collapsedHeight: 80.h < kToolbarHeight ? kToolbarHeight : 74,
       scrolledUnderElevation: 0,
       stretch: true,
       flexibleSpace: ClipPath(
