@@ -19,24 +19,25 @@ mixin _$AppbarVideoState {
   VideoPlayerController? get videoPlayerController =>
       throw _privateConstructorUsedError;
   bool get shouldStop => throw _privateConstructorUsedError;
+  bool get isVisible => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            VideoPlayerController? videoPlayerController, bool shouldStop)
+    required TResult Function(VideoPlayerController? videoPlayerController,
+            bool shouldStop, bool isVisible)
         state,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            VideoPlayerController? videoPlayerController, bool shouldStop)?
+    TResult? Function(VideoPlayerController? videoPlayerController,
+            bool shouldStop, bool isVisible)?
         state,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            VideoPlayerController? videoPlayerController, bool shouldStop)?
+    TResult Function(VideoPlayerController? videoPlayerController,
+            bool shouldStop, bool isVisible)?
         state,
     required TResult orElse(),
   }) =>
@@ -69,7 +70,10 @@ abstract class $AppbarVideoStateCopyWith<$Res> {
           AppbarVideoState value, $Res Function(AppbarVideoState) then) =
       _$AppbarVideoStateCopyWithImpl<$Res, AppbarVideoState>;
   @useResult
-  $Res call({VideoPlayerController? videoPlayerController, bool shouldStop});
+  $Res call(
+      {VideoPlayerController? videoPlayerController,
+      bool shouldStop,
+      bool isVisible});
 }
 
 /// @nodoc
@@ -87,6 +91,7 @@ class _$AppbarVideoStateCopyWithImpl<$Res, $Val extends AppbarVideoState>
   $Res call({
     Object? videoPlayerController = freezed,
     Object? shouldStop = null,
+    Object? isVisible = null,
   }) {
     return _then(_value.copyWith(
       videoPlayerController: freezed == videoPlayerController
@@ -96,6 +101,10 @@ class _$AppbarVideoStateCopyWithImpl<$Res, $Val extends AppbarVideoState>
       shouldStop: null == shouldStop
           ? _value.shouldStop
           : shouldStop // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isVisible: null == isVisible
+          ? _value.isVisible
+          : isVisible // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
   }
@@ -109,7 +118,10 @@ abstract class _$$StateImplCopyWith<$Res>
       __$$StateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({VideoPlayerController? videoPlayerController, bool shouldStop});
+  $Res call(
+      {VideoPlayerController? videoPlayerController,
+      bool shouldStop,
+      bool isVisible});
 }
 
 /// @nodoc
@@ -125,6 +137,7 @@ class __$$StateImplCopyWithImpl<$Res>
   $Res call({
     Object? videoPlayerController = freezed,
     Object? shouldStop = null,
+    Object? isVisible = null,
   }) {
     return _then(_$StateImpl(
       videoPlayerController: freezed == videoPlayerController
@@ -135,6 +148,10 @@ class __$$StateImplCopyWithImpl<$Res>
           ? _value.shouldStop
           : shouldStop // ignore: cast_nullable_to_non_nullable
               as bool,
+      isVisible: null == isVisible
+          ? _value.isVisible
+          : isVisible // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -142,17 +159,23 @@ class __$$StateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$StateImpl implements _State {
-  const _$StateImpl({this.videoPlayerController, this.shouldStop = false});
+  const _$StateImpl(
+      {this.videoPlayerController,
+      this.shouldStop = false,
+      this.isVisible = true});
 
   @override
   final VideoPlayerController? videoPlayerController;
   @override
   @JsonKey()
   final bool shouldStop;
+  @override
+  @JsonKey()
+  final bool isVisible;
 
   @override
   String toString() {
-    return 'AppbarVideoState.state(videoPlayerController: $videoPlayerController, shouldStop: $shouldStop)';
+    return 'AppbarVideoState.state(videoPlayerController: $videoPlayerController, shouldStop: $shouldStop, isVisible: $isVisible)';
   }
 
   @override
@@ -163,12 +186,14 @@ class _$StateImpl implements _State {
             (identical(other.videoPlayerController, videoPlayerController) ||
                 other.videoPlayerController == videoPlayerController) &&
             (identical(other.shouldStop, shouldStop) ||
-                other.shouldStop == shouldStop));
+                other.shouldStop == shouldStop) &&
+            (identical(other.isVisible, isVisible) ||
+                other.isVisible == isVisible));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, videoPlayerController, shouldStop);
+      Object.hash(runtimeType, videoPlayerController, shouldStop, isVisible);
 
   @JsonKey(ignore: true)
   @override
@@ -179,33 +204,33 @@ class _$StateImpl implements _State {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            VideoPlayerController? videoPlayerController, bool shouldStop)
+    required TResult Function(VideoPlayerController? videoPlayerController,
+            bool shouldStop, bool isVisible)
         state,
   }) {
-    return state(videoPlayerController, shouldStop);
+    return state(videoPlayerController, shouldStop, isVisible);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            VideoPlayerController? videoPlayerController, bool shouldStop)?
+    TResult? Function(VideoPlayerController? videoPlayerController,
+            bool shouldStop, bool isVisible)?
         state,
   }) {
-    return state?.call(videoPlayerController, shouldStop);
+    return state?.call(videoPlayerController, shouldStop, isVisible);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            VideoPlayerController? videoPlayerController, bool shouldStop)?
+    TResult Function(VideoPlayerController? videoPlayerController,
+            bool shouldStop, bool isVisible)?
         state,
     required TResult orElse(),
   }) {
     if (state != null) {
-      return state(videoPlayerController, shouldStop);
+      return state(videoPlayerController, shouldStop, isVisible);
     }
     return orElse();
   }
@@ -242,12 +267,15 @@ class _$StateImpl implements _State {
 abstract class _State implements AppbarVideoState {
   const factory _State(
       {final VideoPlayerController? videoPlayerController,
-      final bool shouldStop}) = _$StateImpl;
+      final bool shouldStop,
+      final bool isVisible}) = _$StateImpl;
 
   @override
   VideoPlayerController? get videoPlayerController;
   @override
   bool get shouldStop;
+  @override
+  bool get isVisible;
   @override
   @JsonKey(ignore: true)
   _$$StateImplCopyWith<_$StateImpl> get copyWith =>

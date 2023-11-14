@@ -61,6 +61,22 @@ class AppbarVideoCubit extends Cubit<AppbarVideoState> {
     );
   }
 
+  /// Toggle Appbar Visibility
+  void toggleAppbarVisibility({required bool isVisible}) {
+    emit(
+      state.copyWith(
+        isVisible: isVisible,
+      ),
+    );
+  }
+
+  /// Reset
+  void reset() {
+    videoPlayerController?.removeListener(positionListener);
+    videoPlayerController?.dispose();
+    emit(const AppbarVideoState.state());
+  }
+
   /// Position Listener
   void positionListener() async {
     final position = videoPlayerController?.value.position;
@@ -77,13 +93,6 @@ class AppbarVideoCubit extends Cubit<AppbarVideoState> {
         ),
       );
     }
-  }
-
-  /// Reset
-  void reset() {
-    videoPlayerController?.removeListener(positionListener);
-    videoPlayerController?.dispose();
-    emit(const AppbarVideoState.state());
   }
 
   /// Close

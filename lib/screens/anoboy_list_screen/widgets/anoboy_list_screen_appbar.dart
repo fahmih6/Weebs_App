@@ -132,6 +132,9 @@ class AnoboyListScreenAppbar extends StatelessWidget {
       controller.play();
     }
 
+    /// Edit state on app bar cubit
+    appbarCubit.toggleAppbarVisibility(isVisible: !scrolled);
+
     return scrolled;
   }
 }
