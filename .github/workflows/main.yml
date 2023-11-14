@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - Setup-Intial-App
+      - master
   pull_request:
     branches:
       - master
