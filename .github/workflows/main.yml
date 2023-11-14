@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - master
+      - Setup-Intial-App
   pull_request:
     branches:
       - master
@@ -18,13 +18,20 @@ jobs:
       - uses: subosito/flutter-action@v1
         with:
           channel: "stable"
+      # Read pubspec version number
+      - id: read-version
+        uses: blackfoot-makers/flutter-version-number-action@main
+      # Run Pub Get
       - run: flutter pub get
+      # Run Unit Test
       - run: flutter test test/unit_test.dart
+      # Build the APK
       - run: flutter build apk --split-per-abi
+      # Release the APK to Release and Tag section.
       - name: Push APK to Releases
         uses: ncipollo/release-action@v1
         with:
           artifacts: "build/app/outputs/apk/release/*.apk"
           token: ${{ secrets.TOKEN }}
           commit: master
-          tag: v0.0.${{ github.run_number }}
+          tag: ${{ steps.read-version.outputs.version-number }}
