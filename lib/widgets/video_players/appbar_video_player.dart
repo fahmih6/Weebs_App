@@ -27,28 +27,30 @@ class _AppbarVideoPlayerState extends State<AppbarVideoPlayer> {
         child: SizedBox(
           child: BlocBuilder<AppbarVideoCubit, AppbarVideoState>(
             builder: (context, state) {
-              return state.map(
-                state: (value) {
-                  final controller = value.videoPlayerController;
-                  if (controller != null) {
-                    return ValueListenableBuilder(
-                      valueListenable: controller,
-                      builder: (context, value, child) {
-                        if (value.isInitialized) {
-                          return SizedBox(
-                            height: controller.value.size.height,
-                            width: controller.value.size.width,
-                            child: VideoPlayer(controller),
-                          );
-                        } else {
-                          return const SizedBox.shrink();
-                        }
-                      },
-                    );
-                  } else {
-                    return const SizedBox.shrink();
-                  }
-                },
+              return AnimatedSwitcher(
+                duration: const Duration(milliseconds: 250),
+                child: state.map(
+                  state: (value) {
+                    final controller = value.videoPlayerController;
+                    if (controller != null && !state.shouldStop) {
+                      return ValueListenableBuilder(
+                          valueListenable: controller,
+                          builder: (context, value, child) {
+                            if (value.isInitialized) {
+                              return SizedBox(
+                                height: controller.value.size.height,
+                                width: controller.value.size.width,
+                                child: VideoPlayer(controller),
+                              );
+                            } else {
+                              return const SizedBox.shrink();
+                            }
+                          });
+                    } else {
+                      return const SizedBox.shrink();
+                    }
+                  },
+                ),
               );
             },
           ),

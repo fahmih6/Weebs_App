@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:video_player/video_player.dart';
@@ -17,6 +19,9 @@ class AppbarVideoCubit extends Cubit<AppbarVideoState> {
     final animeDetail =
         await getIt<AnoboyRepository>().getAnimeDetail(param: param);
 
+    /// Remove listener
+    videoPlayerController?.removeListener(positionListener);
+
     await animeDetail.fold(
       (l) => null,
       (r) async {
@@ -25,8 +30,8 @@ class AppbarVideoCubit extends Cubit<AppbarVideoState> {
 
         /// Assign new video player controller
         videoPlayerController = VideoPlayerController.networkUrl(
-          Uri.parse(r.videoDirectLinks.last.link),
-          httpHeaders: <String, String>{...?r.videoDirectLinks.last.headers},
+          Uri.parse(r.videoDirectLinks.first.link),
+          httpHeaders: <String, String>{...?r.videoDirectLinks.first.headers},
           videoPlayerOptions: VideoPlayerOptions(
             mixWithOthers: false,
             allowBackgroundPlayback: false,
@@ -40,6 +45,10 @@ class AppbarVideoCubit extends Cubit<AppbarVideoState> {
         if (videoPlayerController?.value.isInitialized == true) {
           await videoPlayerController?.play();
           await videoPlayerController?.setVolume(0);
+          await videoPlayerController?.pause();
+
+          /// Add listener
+          videoPlayerController?.addListener(positionListener);
         }
 
         /// Emit video player controller.
@@ -52,8 +61,27 @@ class AppbarVideoCubit extends Cubit<AppbarVideoState> {
     );
   }
 
+  /// Position Listener
+  void positionListener() async {
+    final position = videoPlayerController?.value.position;
+
+    /// Position is exceeding 90 seconds
+    if (position != null && position >= const Duration(seconds: 90)) {
+      videoPlayerController?.removeListener(positionListener);
+      await videoPlayerController?.dispose();
+
+      /// Emit should stop.
+      emit(
+        state.copyWith(
+          shouldStop: true,
+        ),
+      );
+    }
+  }
+
   /// Reset
   void reset() {
+    videoPlayerController?.removeListener(positionListener);
     videoPlayerController?.dispose();
     emit(const AppbarVideoState.state());
   }
@@ -61,6 +89,7 @@ class AppbarVideoCubit extends Cubit<AppbarVideoState> {
   /// Close
   @override
   Future<void> close() {
+    videoPlayerController?.removeListener(positionListener);
     videoPlayerController?.dispose();
     return super.close();
   }
