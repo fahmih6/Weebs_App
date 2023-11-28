@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:weebs_app/logic/komiku_chapter_fetch_bloc/komiku_chapter_fetch_bloc.dart';
+import 'package:weebs_app/model/settings/settings_model.dart';
 
 import '../../../logic/komik_read_appbar_cubit/komik_read_appbar_cubit.dart';
+import '../../../logic/settings_bloc/settings_bloc.dart';
 
 class KomikReadScreenContentAppbar extends StatefulWidget {
   const KomikReadScreenContentAppbar({super.key});
@@ -47,23 +49,64 @@ class _KomikReadScreenContentAppbarState
               color: Theme.of(context).scaffoldBackgroundColor,
             ),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                /// Back button
-                IconButton(
-                  onPressed: () {
-                    context.popRoute();
-                  },
-                  icon: const Icon(Icons.arrow_back_ios),
+                /// Title and Back Button
+                Row(
+                  children: [
+                    /// Back button
+                    IconButton(
+                      onPressed: () {
+                        context.popRoute();
+                      },
+                      icon: const Icon(Icons.arrow_back_ios),
+                    ),
+
+                    /// Title
+                    Text(
+                      state.title,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16.sp,
+                      ),
+                    )
+                  ],
                 ),
 
-                /// Title
-                Text(
-                  state.title,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16.sp,
-                  ),
-                )
+                /// Image Mode
+                BlocBuilder<SettingsBloc, SettingsState>(
+                  builder: (context, state) {
+                    return state.map(
+                      state: (value) {
+                        final mode = value.settingsData.komikReadImageMode;
+                        return IconButton(
+                          color: Colors.white,
+                          tooltip: mode == KomikReadImageMode.fillWidth
+                              ? "Fill Width"
+                              : mode == KomikReadImageMode.fitHeight
+                                  ? "Fit Height"
+                                  : "Normal",
+                          onPressed: () {
+                            /// Keep appbar shown
+                            context
+                                .read<KomikReadAppbarCubit>()
+                                .toggleShowAppbar();
+
+                            /// Toggle Read Mode
+                            context.read<SettingsBloc>().switchKomikReadMode();
+                          },
+                          icon: Icon(
+                            mode == KomikReadImageMode.fillWidth
+                                ? Icons.width_full
+                                : mode == KomikReadImageMode.fitHeight
+                                    ? Icons.width_normal
+                                    : Icons.fit_screen,
+                          ),
+                        );
+                      },
+                    );
+                  },
+                ),
               ],
             ),
           ),

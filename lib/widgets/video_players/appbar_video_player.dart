@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:video_player/video_player.dart';
 import 'package:weebs_app/logic/appbar_video_cubit/appbar_video_cubit.dart';
+import 'package:weebs_app/logic/settings_bloc/settings_bloc.dart';
 
 class AppbarVideoPlayer extends StatefulWidget {
   final String param;
@@ -15,7 +16,15 @@ class _AppbarVideoPlayerState extends State<AppbarVideoPlayer> {
   @override
   void initState() {
     super.initState();
-    context.read<AppbarVideoCubit>().init(param: widget.param);
+
+    /// If App Bar Video is activated, then play the video.
+    context.read<SettingsBloc>().state.map(
+      state: (value) {
+        if (value.settingsData.anoboyAppBarVideo) {
+          context.read<AppbarVideoCubit>().init(param: widget.param);
+        }
+      },
+    );
   }
 
   @override

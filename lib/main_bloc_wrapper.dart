@@ -11,6 +11,7 @@ import 'package:weebs_app/logic/komiku_detail_fetch_bloc/komiku_detail_fetch_blo
 import 'package:weebs_app/logic/komiku_list_komik_fetch_bloc/komiku_list_komik_fetch_bloc.dart';
 import 'package:weebs_app/logic/komiku_read_bloc/komiku_read_bloc.dart';
 import 'package:weebs_app/logic/search_bloc/search_bloc.dart';
+import 'package:weebs_app/logic/settings_bloc/settings_bloc.dart';
 import 'package:weebs_app/logic/splash_screen_bloc/splash_screen_bloc.dart';
 import 'package:weebs_app/logic/video_player_cubit/video_player_cubit.dart';
 
@@ -59,6 +60,9 @@ class MainBlocWrapper extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getIt<AppbarVideoCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<SettingsBloc>(),
         ),
       ],
       child: child,

@@ -19,6 +19,7 @@ import 'package:weebs_app/services/repositories/komiku_repository.dart';
 import '../../logic/anoboy_detail_fetch_bloc/anoboy_detail_fetch_bloc.dart';
 import '../../logic/komiku_chapter_fetch_bloc/komiku_chapter_fetch_bloc.dart';
 import '../../logic/komiku_read_bloc/komiku_read_bloc.dart';
+import '../../logic/settings_bloc/settings_bloc.dart';
 
 /// Get It
 final getIt = GetIt.instance;
@@ -80,6 +81,9 @@ class GetItHelper {
 
     /// Anoboy Detail Fetch Bloc
     getIt.registerLazySingleton(() => AnoboyDetailFetchBloc());
+
+    /// Settings Bloc
+    getIt.registerLazySingleton(() => SettingsBloc());
   }
 
   /// Cubit Dependencies

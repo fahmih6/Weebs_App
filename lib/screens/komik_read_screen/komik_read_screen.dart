@@ -36,6 +36,7 @@ class _KomikReadScreenState extends State<KomikReadScreen> {
         child: BlocBuilder<KomikuChapterFetchBloc, KomikuChapterFetchState>(
           builder: (context, state) {
             return state.maybeMap(
+              /// Loading
               loading: (value) {
                 return const SizedBox(
                   child: Center(
@@ -43,21 +44,32 @@ class _KomikReadScreenState extends State<KomikReadScreen> {
                   ),
                 );
               },
+
+              /// Completed
               completed: (value) {
+                /// Success
                 if (value.errorMessage.isEmpty) {
                   return KomikReadScreenContent(
                     chapterList: value.chapterData,
                   );
-                } else {
+                }
+
+                /// Failed
+                else {
                   return ErrorScreen(
                     errorMesasge: value.errorMessage,
                     onTap: () {
                       context.read<KomikuChapterFetchBloc>().add(
-                          KomikuChapterFetchEvent.started(param: widget.param));
+                            KomikuChapterFetchEvent.started(
+                              param: widget.param,
+                            ),
+                          );
                     },
                   );
                 }
               },
+
+              /// Error
               orElse: () {
                 return Center(
                   child: Column(

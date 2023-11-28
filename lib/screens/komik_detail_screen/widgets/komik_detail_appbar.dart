@@ -18,7 +18,7 @@ class KomikDetailAppbar extends StatelessWidget {
     return SliverAppBar(
       pinned: true,
       expandedHeight: 416.h,
-      collapsedHeight: 80.h < kToolbarHeight ? kToolbarHeight : 74,
+      collapsedHeight: 80 < kToolbarHeight ? kToolbarHeight : 80,
       scrolledUnderElevation: 0,
       stretch: true,
       flexibleSpace: ClipPath(
@@ -56,45 +56,43 @@ class KomikDetailAppbar extends StatelessWidget {
 
               /// Tambahkan ke Favorit
               Padding(
-                padding: EdgeInsets.only(top: 16.h, bottom: 29.h),
-                child: SizedBox(
-                  child: Tooltip(
-                    enableFeedback: true,
-                    message: komikuDetailModel.title,
-                    child: BlocBuilder<FavouritesBloc, FavouritesState>(
-                      builder: (context, state) {
-                        /// Is komik is already added to the favourites
-                        final isExist = state.komikuList.firstWhereOrNull(
-                                (element) =>
-                                    element.param == komikuDetailModel.param) !=
-                            null;
+                padding: const EdgeInsets.only(top: 16, bottom: 29),
+                child: Tooltip(
+                  enableFeedback: true,
+                  message: komikuDetailModel.title,
+                  child: BlocBuilder<FavouritesBloc, FavouritesState>(
+                    builder: (context, state) {
+                      /// Is komik is already added to the favourites
+                      final isExist = state.komikuList.firstWhereOrNull(
+                              (element) =>
+                                  element.param == komikuDetailModel.param) !=
+                          null;
 
-                        /// Widget
-                        return ElevatedButton(
-                          onPressed: () {
-                            if (!isExist) {
-                              context.read<FavouritesBloc>().add(
-                                    FavouritesEvent.added(
-                                      komikuData: komikuDetailModel,
-                                    ),
-                                  );
-                            } else {
-                              context.read<FavouritesBloc>().add(
-                                    FavouritesEvent.removed(
-                                      komikuData: komikuDetailModel,
-                                    ),
-                                  );
-                            }
-                          },
-                          child: Text(
-                            !isExist
-                                ? "Add to Favourite"
-                                : "Remove from Favourite",
-                            textAlign: TextAlign.center,
-                          ),
-                        );
-                      },
-                    ),
+                      /// Widget
+                      return ElevatedButton(
+                        onPressed: () {
+                          if (!isExist) {
+                            context.read<FavouritesBloc>().add(
+                                  FavouritesEvent.added(
+                                    komikuData: komikuDetailModel,
+                                  ),
+                                );
+                          } else {
+                            context.read<FavouritesBloc>().add(
+                                  FavouritesEvent.removed(
+                                    komikuData: komikuDetailModel,
+                                  ),
+                                );
+                          }
+                        },
+                        child: Text(
+                          !isExist
+                              ? "Add to Favourite"
+                              : "Remove from Favourite",
+                          textAlign: TextAlign.center,
+                        ),
+                      );
+                    },
                   ),
                 ),
               ),

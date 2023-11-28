@@ -1,7 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weebs_app/model/settings/settings_model.dart';
 import 'package:weebs_app/widgets/shimmer/shimmer_placeholder_widget.dart';
 
+import '../../../logic/settings_bloc/settings_bloc.dart';
 import '../../../model/komiku/komiku_detail_model/komiku_detail_model.dart';
 
 class KomikReadScreenContentImageListView extends StatefulWidget {
@@ -79,12 +82,30 @@ class _KomikReadScreenContentImageListViewState
                   itemCount: item.chapterUrls.length,
                   itemBuilder: (context, index) {
                     final image = item.chapterUrls[index];
-                    return CachedNetworkImage(
-                      imageUrl: image,
-                      placeholder: (context, url) => SizedBox(
-                        height: MediaQuery.of(context).size.height / 2,
-                        child: const ShimmerPlaceholderWidget(),
-                      ),
+                    return BlocBuilder<SettingsBloc, SettingsState>(
+                      builder: (context, state) {
+                        return state.map(
+                          state: (value) {
+                            final komikReadImageMode =
+                                value.settingsData.komikReadImageMode;
+                            return CachedNetworkImage(
+                              fit: komikReadImageMode ==
+                                      KomikReadImageMode.fillWidth
+                                  ? BoxFit.fill
+                                  : null,
+                              imageUrl: image,
+                              height: komikReadImageMode ==
+                                      KomikReadImageMode.fitHeight
+                                  ? MediaQuery.of(context).size.height
+                                  : null,
+                              placeholder: (context, url) => SizedBox(
+                                height: MediaQuery.of(context).size.height / 2,
+                                child: const ShimmerPlaceholderWidget(),
+                              ),
+                            );
+                          },
+                        );
+                      },
                     );
                   },
                 );
