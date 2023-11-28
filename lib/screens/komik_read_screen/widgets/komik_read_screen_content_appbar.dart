@@ -44,7 +44,6 @@ class _KomikReadScreenContentAppbarState
           duration: const Duration(milliseconds: 250),
           opacity: state.shouldShow ? 1 : 0,
           child: Container(
-            padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
               color: Theme.of(context).scaffoldBackgroundColor,
             ),
@@ -80,6 +79,7 @@ class _KomikReadScreenContentAppbarState
                       state: (value) {
                         final mode = value.settingsData.komikReadImageMode;
                         return IconButton(
+                          padding: EdgeInsets.zero,
                           color: Colors.white,
                           tooltip: mode == KomikReadImageMode.fillWidth
                               ? "Fill Width"
