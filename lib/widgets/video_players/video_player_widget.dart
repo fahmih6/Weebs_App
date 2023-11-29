@@ -1,7 +1,6 @@
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:video_player/video_player.dart';
 
 import '../../logic/video_player_cubit/video_player_cubit.dart';
 
@@ -23,26 +22,18 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
         final chewieController = state.chewieController;
         if (chewieController != null) {
           return SizedBox(
-            child: ValueListenableBuilder<VideoPlayerValue>(
-              valueListenable: chewieController.videoPlayerController,
-              builder: (context, value, child) {
-                return IgnorePointer(
-                  ignoring: !value.isInitialized,
-                  child: GestureDetector(
-                    onDoubleTapDown: (details) async {
-                      await onDoubleTap(
-                        details: details,
-                        state: state,
-                        chewieController: chewieController,
-                      );
-                    },
-                    child: Chewie(
-                      key: chewieGlobalKey,
-                      controller: chewieController,
-                    ),
-                  ),
+            child: GestureDetector(
+              onDoubleTapDown: (details) async {
+                await onDoubleTap(
+                  details: details,
+                  state: state,
+                  chewieController: chewieController,
                 );
               },
+              child: Chewie(
+                key: chewieGlobalKey,
+                controller: chewieController,
+              ),
             ),
           );
         } else {

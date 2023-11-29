@@ -32,79 +32,81 @@ class _KomikReadScreenState extends State<KomikReadScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SizedBox(
-        child: BlocBuilder<KomikuChapterFetchBloc, KomikuChapterFetchState>(
-          builder: (context, state) {
-            return state.maybeMap(
-              /// Loading
-              loading: (value) {
-                return const SizedBox(
-                  child: Center(
-                    child: LoadingWidget(),
-                  ),
-                );
-              },
-
-              /// Completed
-              completed: (value) {
-                /// Success
-                if (value.errorMessage.isEmpty) {
-                  return KomikReadScreenContent(
-                    chapterList: value.chapterData,
+      body: SafeArea(
+        child: SizedBox(
+          child: BlocBuilder<KomikuChapterFetchBloc, KomikuChapterFetchState>(
+            builder: (context, state) {
+              return state.maybeMap(
+                /// Loading
+                loading: (value) {
+                  return const SizedBox(
+                    child: Center(
+                      child: LoadingWidget(),
+                    ),
                   );
-                }
+                },
 
-                /// Failed
-                else {
-                  return ErrorScreen(
-                    errorMesasge: value.errorMessage,
-                    onTap: () {
-                      context.read<KomikuChapterFetchBloc>().add(
-                            KomikuChapterFetchEvent.started(
-                              param: widget.param,
+                /// Completed
+                completed: (value) {
+                  /// Success
+                  if (value.errorMessage.isEmpty) {
+                    return KomikReadScreenContent(
+                      chapterList: value.chapterData,
+                    );
+                  }
+
+                  /// Failed
+                  else {
+                    return ErrorScreen(
+                      errorMesasge: value.errorMessage,
+                      onTap: () {
+                        context.read<KomikuChapterFetchBloc>().add(
+                              KomikuChapterFetchEvent.started(
+                                param: widget.param,
+                              ),
+                            );
+                      },
+                    );
+                  }
+                },
+
+                /// Error
+                orElse: () {
+                  return Center(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 8.0),
+                          child: Text(
+                            "Error Loading Chapters",
+                            style: TextStyle(
+                              fontSize: 16.sp,
                             ),
-                          );
-                    },
+                          ),
+                        ),
+                        ElevatedButton(
+                          onPressed: () {
+                            context.read<KomikuChapterFetchBloc>().add(
+                                  KomikuChapterFetchEvent.started(
+                                    param: widget.param,
+                                  ),
+                                );
+                          },
+                          child: Text(
+                            "Reload",
+                            style: TextStyle(
+                              fontSize: 16.sp,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   );
-                }
-              },
-
-              /// Error
-              orElse: () {
-                return Center(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 8.0),
-                        child: Text(
-                          "Error Loading Chapters",
-                          style: TextStyle(
-                            fontSize: 16.sp,
-                          ),
-                        ),
-                      ),
-                      ElevatedButton(
-                        onPressed: () {
-                          context.read<KomikuChapterFetchBloc>().add(
-                                KomikuChapterFetchEvent.started(
-                                  param: widget.param,
-                                ),
-                              );
-                        },
-                        child: Text(
-                          "Reload",
-                          style: TextStyle(
-                            fontSize: 16.sp,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                );
-              },
-            );
-          },
+                },
+              );
+            },
+          ),
         ),
       ),
     );

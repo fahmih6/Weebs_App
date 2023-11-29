@@ -44,6 +44,7 @@ class _KomikReadScreenContentAppbarState
           duration: const Duration(milliseconds: 250),
           opacity: state.shouldShow ? 1 : 0,
           child: Container(
+            padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
               color: Theme.of(context).scaffoldBackgroundColor,
             ),

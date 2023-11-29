@@ -14,8 +14,11 @@ import 'package:chewie/src/models/option_item.dart';
 import 'package:chewie/src/models/subtitle_model.dart';
 import 'package:chewie/src/notifiers/index.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 import 'package:video_player/video_player.dart';
+
+import '../../logic/anoboy_detail_fetch_bloc/anoboy_detail_fetch_bloc.dart';
 
 class CustomMaterialControls extends StatefulWidget {
   const CustomMaterialControls({
@@ -97,8 +100,6 @@ class _CustomMaterialControlsState extends State<CustomMaterialControls>
               /// Back Button
               _buildBackButton(),
 
-              /// Action Bar
-              _buildActionBar(),
               Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
@@ -149,42 +150,99 @@ class _CustomMaterialControlsState extends State<CustomMaterialControls>
   }
 
   Widget _buildActionBar() {
-    return Positioned(
-      top: 0,
-      right: 0,
-      child: SafeArea(
-        child: AnimatedOpacity(
-          opacity: notifier.hideStuff ? 0.0 : 1.0,
-          duration: const Duration(milliseconds: 250),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  _buildSubtitleToggle(),
-                  if (chewieController.showOptions) _buildOptionsButton(),
-                ],
-              ),
-            ],
-          ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            _buildSubtitleToggle(),
+            if (chewieController.showOptions) _buildOptionsButton(),
+          ],
         ),
-      ),
+      ],
     );
+    // return Positioned(
+    //   top: 0,
+    //   right: 0,
+    //   child: SafeArea(
+    //     child: AnimatedOpacity(
+    //       opacity: notifier.hideStuff ? 0.0 : 1.0,
+    //       duration: const Duration(milliseconds: 250),
+    //       child: Row(
+    //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    //         children: [
+    //           Row(
+    //             mainAxisAlignment: MainAxisAlignment.end,
+    //             children: [
+    //               _buildSubtitleToggle(),
+    //               if (chewieController.showOptions) _buildOptionsButton(),
+    //             ],
+    //           ),
+    //         ],
+    //       ),
+    //     ),
+    //   ),
+    // );
   }
 
   Widget _buildBackButton() {
     return Positioned(
-      left: 8,
+      left: 0,
       top: 0,
       child: SafeArea(
         child: AnimatedOpacity(
           opacity: notifier.hideStuff ? 0.0 : 1.0,
           duration: const Duration(milliseconds: 250),
-          child: BackButton(
-            onPressed: () {
-              context.popRoute();
-            },
+          child: Container(
+            padding: const EdgeInsets.only(left: 8),
+            width: MediaQuery.of(context).size.width,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      /// Back Button
+                      BackButton(
+                        onPressed: () {
+                          context.popRoute();
+                        },
+                      ),
+
+                      /// Title
+                      Flexible(
+                        child: BlocBuilder<AnoboyDetailFetchBloc,
+                            AnoboyDetailFetchState>(
+                          builder: (context, state) {
+                            return state.maybeMap(
+                              completed: (value) {
+                                return Text(
+                                  value.anoboyDetailModel.name,
+                                  style: const TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
+                                );
+                              },
+                              orElse: () {
+                                return const SizedBox.shrink();
+                              },
+                            );
+                          },
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+
+                /// Action Bar
+                _buildActionBar(),
+              ],
+            ),
           ),
         ),
       ),
