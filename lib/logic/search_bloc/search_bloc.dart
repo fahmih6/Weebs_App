@@ -1,4 +1,3 @@
-import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:weebs_app/helpers/get_it_helper/get_it_helper.dart';
@@ -65,6 +64,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     /// Load More
     on<_LoadMore>(
       (event, emit) async {
+        print("AYAYA");
         if (!state.isLoadMore && !state.isLoading) {
           /// Load More
           emit(state.copyWith(isLoadMore: true));
@@ -78,7 +78,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
             );
 
             res.fold(
-              (l) => Left(l.message),
+              (l) => emit(state.copyWith(isLoadMore: false)),
               (r) {
                 /// Komik Result
                 final komikResult = state.komikResult.copyWith(
@@ -100,11 +100,15 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
               event.currentRouteName == RouteNames.anoboyListScreen) {
             /// Result
             final res = await getIt<AnoboyRepository>().getNextAnimeListData(
-              nextURL: state.komikResult.nextPage ?? '',
+              nextURL: state.anoboyResult.nextPage ?? '',
             );
 
             res.fold(
-              (l) => Left(l.message),
+              (l) {
+                emit(
+                  state.copyWith(isLoadMore: false),
+                );
+              },
               (r) {
                 /// Anoboy Result Result
                 final anoboyResult = state.anoboyResult.copyWith(

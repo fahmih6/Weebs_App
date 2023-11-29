@@ -105,11 +105,15 @@ class AnoboyRepository implements IAnoboyRepository {
     /// Get next komik list
     final res = await DioHelper.defaultGetRequest(url: nextURL);
 
-    /// return the result
-    return res.fold(
-      (l) => Left(l),
-      (r) => Right(AnoboyListModel.fromJson(r)),
-    );
+    try {
+      /// return the result
+      return res.fold(
+        (l) => Left(l),
+        (r) => Right(AnoboyListModel.fromJson(r)),
+      );
+    } catch (e) {
+      return Left(Failure(message: e.toString()));
+    }
   }
 
   @override
