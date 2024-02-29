@@ -1,6 +1,6 @@
 class Endpoints {
   /// Base URL
-  static const String baseUrl = "http://localhost:3000";
+  static const String baseUrl = "http://midorima.online";
 
   /// Anoboy
   static const String anoboy = "/api/anoboy/";
