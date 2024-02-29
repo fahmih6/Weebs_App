@@ -30,7 +30,7 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   auto_route: ^7.1.0
-  bloc_concurrency: ^0.2.3
+  bloc_concurrency: ^0.2.4
   cached_network_image: ^3.2.3
   chewie: ^1.7.1
   collection: ^1.17.1
@@ -42,13 +42,11 @@ dependencies:
   equatable: ^2.0.5
   firebase_analytics: ^10.8.0
   firebase_core: ^2.24.2
-  firebase_in_app_messaging: ^0.7.4+8
-  firebase_messaging: ^14.7.10
   floating: ^2.0.0
   fluid_bottom_nav_bar: ^1.4.0
   flutter:
     sdk: flutter
-  flutter_bloc: ^8.1.1
+  flutter_bloc: ^8.1.4
   flutter_native_splash: ^2.2.16
   flutter_screenutil: ^5.6.0
   flutter_svg: ^1.1.6
