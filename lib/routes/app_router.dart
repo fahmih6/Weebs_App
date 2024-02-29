@@ -35,6 +35,12 @@ class AppRouter extends _$AppRouter {
               path: RouteNames.anoboyListScreen,
               page: AnoboyListRoute.page,
             ),
+
+            /// Settings Screen
+            AutoRoute(
+              path: RouteNames.settingsScreen,
+              page: SettingsRoute.page,
+            ),
           ],
         ),
 
@@ -46,18 +52,18 @@ class AppRouter extends _$AppRouter {
 
         /// Komik Detail Screen
         AutoRoute(
-          path: "/${RouteNames.komikDetailScreen}",
+          path: "/${RouteNames.komikDetailScreen}/:param",
           page: KomikDetailRoute.page,
         ),
 
         AutoRoute(
-          path: "/${RouteNames.komikReadScreen}",
+          path: "/${RouteNames.komikReadScreen}/:param",
           page: KomikReadRoute.page,
         ),
 
         /// Anoboy Detail Screen
         AutoRoute(
-          path: "/${RouteNames.anoboyDetailScreen}",
+          path: "/${RouteNames.anoboyDetailScreen}/:param",
           page: AnoboyDetailRoute.page,
         ),
       ];

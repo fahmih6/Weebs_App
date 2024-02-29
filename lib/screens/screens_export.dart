@@ -15,3 +15,6 @@ export 'anoboy_detail_screen/anoboy_detail_screen.dart';
 
 /// Search
 export 'search_screen/search_screen.dart';
+
+/// Settings
+export 'settings_screen/settings_screen.dart';

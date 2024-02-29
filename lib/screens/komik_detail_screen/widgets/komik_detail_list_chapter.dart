@@ -29,11 +29,11 @@ class KomikDetailListChapter extends StatelessWidget {
         return ListTile(
           title: Text(
             item.chapter,
-            style: TextStyle(fontSize: 16.sp),
+            style: const TextStyle(fontSize: 16),
           ),
           trailing: Text(
             item.release,
-            style: TextStyle(fontSize: 13.sp),
+            style: const TextStyle(fontSize: 13),
           ),
           shape: ContinuousRectangleBorder(
             borderRadius: BorderRadius.circular(8),

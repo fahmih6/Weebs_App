@@ -21,6 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
       routes: const [
         KomikListRoute(),
         AnoboyListRoute(),
+        SettingsRoute(),
       ],
       transitionBuilder: (context, child, animation) {
         return FadeTransition(
@@ -59,6 +60,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         icon: Icon(Icons.tv_sharp),
                         label: Text("Anoboy"),
                       ),
+                      NavigationRailDestination(
+                        icon: Icon(Icons.settings),
+                        label: Text("Settings"),
+                      ),
                     ],
                     elevation: 5,
                     minExtendedWidth: 150.w,
@@ -88,6 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 icons: [
                   FluidNavBarIcon(svgPath: AssetsConstant.komikuIcon),
                   FluidNavBarIcon(svgPath: AssetsConstant.anoboyIcon),
+                  FluidNavBarIcon(icon: Icons.settings),
                 ],
               ),
             ),

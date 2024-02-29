@@ -13,7 +13,10 @@ import '../../routes/route_names.dart';
 @RoutePage(name: RouteNames.komikDetailScreen)
 class KomikDetailScreen extends StatefulWidget {
   final String param;
-  const KomikDetailScreen({super.key, required this.param});
+  const KomikDetailScreen({
+    super.key,
+    @PathParam('param') required this.param,
+  });
 
   @override
   State<KomikDetailScreen> createState() => _KomikDetailScreenState();
@@ -69,8 +72,8 @@ class _KomikDetailScreenState extends State<KomikDetailScreen> {
                                 ),
                                 child: Text(
                                   value.komikuDetailModel.title,
-                                  style: TextStyle(
-                                    fontSize: 20.sp,
+                                  style: const TextStyle(
+                                    fontSize: 20,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
@@ -87,8 +90,8 @@ class _KomikDetailScreenState extends State<KomikDetailScreen> {
                                   "${value.komikuDetailModel.synopsis} ",
                                   trimLines: 2,
                                   trimMode: TrimMode.line,
-                                  style: TextStyle(
-                                    fontSize: 12.sp,
+                                  style: const TextStyle(
+                                    fontSize: 12,
                                   ),
                                   moreStyle: TextStyle(
                                     color: Theme.of(context)
@@ -116,10 +119,10 @@ class _KomikDetailScreenState extends State<KomikDetailScreen> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text(
+                                    const Text(
                                       "Chapters",
                                       style: TextStyle(
-                                        fontSize: 20.sp,
+                                        fontSize: 20,
                                         fontWeight: FontWeight.w600,
                                       ),
                                     ),
@@ -133,7 +136,7 @@ class _KomikDetailScreenState extends State<KomikDetailScreen> {
                                         flipX: _flipList,
                                         child: RotatedBox(
                                           quarterTurns: _flipList ? 2 : 0,
-                                          child: Icon(Icons.sort, size: 20.sp),
+                                          child: const Icon(Icons.sort, size: 20),
                                         ),
                                       ),
                                     )

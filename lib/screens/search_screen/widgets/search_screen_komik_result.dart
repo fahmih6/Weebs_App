@@ -85,9 +85,9 @@ class SearchScreenKomikResult extends StatelessWidget {
                           /// Title
                           Text(
                             item.title,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: 16.sp,
+                              fontSize: 16,
                             ),
                             maxLines: 3,
                             overflow: TextOverflow.ellipsis,

@@ -16,7 +16,10 @@ abstract class _$AppRouter extends RootStackRouter {
   @override
   final Map<String, PageFactory> pagesMap = {
     AnoboyDetailRoute.name: (routeData) {
-      final args = routeData.argsAs<AnoboyDetailRouteArgs>();
+      final pathParams = routeData.inheritedPathParams;
+      final args = routeData.argsAs<AnoboyDetailRouteArgs>(
+          orElse: () =>
+              AnoboyDetailRouteArgs(param: pathParams.getString('param')));
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: AnoboyDetailScreen(
@@ -38,7 +41,10 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     KomikDetailRoute.name: (routeData) {
-      final args = routeData.argsAs<KomikDetailRouteArgs>();
+      final pathParams = routeData.inheritedPathParams;
+      final args = routeData.argsAs<KomikDetailRouteArgs>(
+          orElse: () =>
+              KomikDetailRouteArgs(param: pathParams.getString('param')));
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: KomikDetailScreen(
@@ -54,7 +60,10 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     KomikReadRoute.name: (routeData) {
-      final args = routeData.argsAs<KomikReadRouteArgs>();
+      final pathParams = routeData.inheritedPathParams;
+      final args = routeData.argsAs<KomikReadRouteArgs>(
+          orElse: () =>
+              KomikReadRouteArgs(param: pathParams.getString('param')));
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: KomikReadScreen(
@@ -67,6 +76,12 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const SearchScreen(),
+      );
+    },
+    SettingsRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const SettingsScreen(),
       );
     },
     SplashRoute.name: (routeData) {
@@ -91,6 +106,7 @@ class AnoboyDetailRoute extends PageRouteInfo<AnoboyDetailRouteArgs> {
             key: key,
             param: param,
           ),
+          rawPathParams: {'param': param},
           initialChildren: children,
         );
 
@@ -157,6 +173,7 @@ class KomikDetailRoute extends PageRouteInfo<KomikDetailRouteArgs> {
             key: key,
             param: param,
           ),
+          rawPathParams: {'param': param},
           initialChildren: children,
         );
 
@@ -209,6 +226,7 @@ class KomikReadRoute extends PageRouteInfo<KomikReadRouteArgs> {
             key: key,
             param: param,
           ),
+          rawPathParams: {'param': param},
           initialChildren: children,
         );
 
@@ -244,6 +262,20 @@ class SearchRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'SearchRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [SettingsScreen]
+class SettingsRoute extends PageRouteInfo<void> {
+  const SettingsRoute({List<PageRouteInfo>? children})
+      : super(
+          SettingsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'SettingsRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

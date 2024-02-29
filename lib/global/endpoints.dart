@@ -1,6 +1,6 @@
 class Endpoints {
   /// Base URL
-  static const String baseUrl = "http://api.murasakibara.online";
+  static const String baseUrl = "http://localhost:3000";
 
   /// Anoboy
   static const String anoboy = "/api/anoboy/";

@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:weebs_app/logic/komiku_chapter_fetch_bloc/komiku_chapter_fetch_bloc.dart';
 import 'package:weebs_app/widgets/error_widget/error_screen.dart';
 
@@ -12,7 +11,10 @@ import 'widgets/komik_read_screen_content.dart';
 @RoutePage(name: RouteNames.komikReadScreen)
 class KomikReadScreen extends StatefulWidget {
   final String param;
-  const KomikReadScreen({super.key, required this.param});
+  const KomikReadScreen({
+    super.key,
+    @PathParam('param') required this.param,
+  });
 
   @override
   State<KomikReadScreen> createState() => _KomikReadScreenState();
@@ -76,12 +78,12 @@ class _KomikReadScreenState extends State<KomikReadScreen> {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 8.0),
+                        const Padding(
+                          padding: EdgeInsets.only(bottom: 8.0),
                           child: Text(
                             "Error Loading Chapters",
                             style: TextStyle(
-                              fontSize: 16.sp,
+                              fontSize: 16,
                             ),
                           ),
                         ),
@@ -93,10 +95,10 @@ class _KomikReadScreenState extends State<KomikReadScreen> {
                                   ),
                                 );
                           },
-                          child: Text(
+                          child: const Text(
                             "Reload",
                             style: TextStyle(
-                              fontSize: 16.sp,
+                              fontSize: 16,
                             ),
                           ),
                         ),

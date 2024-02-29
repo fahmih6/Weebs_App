@@ -21,19 +21,17 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
       builder: (context, state) {
         final chewieController = state.chewieController;
         if (chewieController != null) {
-          return SizedBox(
-            child: GestureDetector(
-              onDoubleTapDown: (details) async {
-                await onDoubleTap(
-                  details: details,
-                  state: state,
-                  chewieController: chewieController,
-                );
-              },
-              child: Chewie(
-                key: chewieGlobalKey,
-                controller: chewieController,
-              ),
+          return GestureDetector(
+            onDoubleTapDown: (details) async {
+              await onDoubleTap(
+                details: details,
+                state: state,
+                chewieController: chewieController,
+              );
+            },
+            child: Chewie(
+              key: chewieGlobalKey,
+              controller: chewieController,
             ),
           );
         } else {

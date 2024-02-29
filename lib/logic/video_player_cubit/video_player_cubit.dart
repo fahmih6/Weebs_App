@@ -1,5 +1,6 @@
 import 'package:chewie/chewie.dart';
 import 'package:collection/collection.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -87,6 +88,7 @@ class VideoPlayerCubit extends Cubit<VideoPlayerState> {
             );
           },
         ),
+        url: url,
       ),
     );
 
@@ -106,6 +108,49 @@ class VideoPlayerCubit extends Cubit<VideoPlayerState> {
     videoPlayerController?.dispose();
 
     emit(const VideoPlayerState.state());
+  }
+
+  /// Web Reinitialize
+  void webReinitialize() {
+    /// URL
+    final url = state.url;
+
+    /// Make sure url is empty
+    if (url != null) {
+      /// Remove video player listener
+      videoPlayerController?.removeListener(videoPlayerDurationListener);
+
+      /// Headers
+      final headers = videoPlayerController?.httpHeaders;
+
+      /// Options
+      final options = videoPlayerController?.videoPlayerOptions;
+
+      /// Video player controller
+      videoPlayerController = VideoPlayerController.networkUrl(
+        Uri.parse(url),
+        httpHeaders: headers ?? {},
+        videoPlayerOptions: options,
+      )..initialize().then((value) {
+          /// Seek to the latest position
+          videoPlayerController
+              ?.seekTo(state.lastPosition ?? const Duration(seconds: 0));
+
+          /// Add back the listener
+          videoPlayerController?.addListener(videoPlayerDurationListener);
+        });
+
+      emit(
+        state.copyWith(
+          chewieController: state.chewieController?.copyWith(
+            videoPlayerController: videoPlayerController,
+          ),
+        ),
+      );
+
+      /// Play the video
+      state.chewieController?.play();
+    }
   }
 
   @override

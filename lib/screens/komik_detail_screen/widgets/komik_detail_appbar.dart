@@ -56,7 +56,7 @@ class KomikDetailAppbar extends StatelessWidget {
 
               /// Tambahkan ke Favorit
               Padding(
-                padding: const EdgeInsets.only(top: 16, bottom: 29),
+                padding: const EdgeInsets.only(top: 8, bottom: 29),
                 child: Tooltip(
                   enableFeedback: true,
                   message: komikuDetailModel.title,

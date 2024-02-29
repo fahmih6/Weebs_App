@@ -18,24 +18,25 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$VideoPlayerState {
   ChewieController? get chewieController => throw _privateConstructorUsedError;
   Duration? get lastPosition => throw _privateConstructorUsedError;
+  String? get url => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            ChewieController? chewieController, Duration? lastPosition)
+    required TResult Function(ChewieController? chewieController,
+            Duration? lastPosition, String? url)
         state,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            ChewieController? chewieController, Duration? lastPosition)?
+    TResult? Function(ChewieController? chewieController,
+            Duration? lastPosition, String? url)?
         state,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            ChewieController? chewieController, Duration? lastPosition)?
+    TResult Function(ChewieController? chewieController, Duration? lastPosition,
+            String? url)?
         state,
     required TResult orElse(),
   }) =>
@@ -68,7 +69,10 @@ abstract class $VideoPlayerStateCopyWith<$Res> {
           VideoPlayerState value, $Res Function(VideoPlayerState) then) =
       _$VideoPlayerStateCopyWithImpl<$Res, VideoPlayerState>;
   @useResult
-  $Res call({ChewieController? chewieController, Duration? lastPosition});
+  $Res call(
+      {ChewieController? chewieController,
+      Duration? lastPosition,
+      String? url});
 }
 
 /// @nodoc
@@ -86,6 +90,7 @@ class _$VideoPlayerStateCopyWithImpl<$Res, $Val extends VideoPlayerState>
   $Res call({
     Object? chewieController = freezed,
     Object? lastPosition = freezed,
+    Object? url = freezed,
   }) {
     return _then(_value.copyWith(
       chewieController: freezed == chewieController
@@ -96,6 +101,10 @@ class _$VideoPlayerStateCopyWithImpl<$Res, $Val extends VideoPlayerState>
           ? _value.lastPosition
           : lastPosition // ignore: cast_nullable_to_non_nullable
               as Duration?,
+      url: freezed == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -108,7 +117,10 @@ abstract class _$$StateImplCopyWith<$Res>
       __$$StateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({ChewieController? chewieController, Duration? lastPosition});
+  $Res call(
+      {ChewieController? chewieController,
+      Duration? lastPosition,
+      String? url});
 }
 
 /// @nodoc
@@ -124,6 +136,7 @@ class __$$StateImplCopyWithImpl<$Res>
   $Res call({
     Object? chewieController = freezed,
     Object? lastPosition = freezed,
+    Object? url = freezed,
   }) {
     return _then(_$StateImpl(
       chewieController: freezed == chewieController
@@ -134,23 +147,39 @@ class __$$StateImplCopyWithImpl<$Res>
           ? _value.lastPosition
           : lastPosition // ignore: cast_nullable_to_non_nullable
               as Duration?,
+      url: freezed == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
 
 /// @nodoc
 
-class _$StateImpl implements _State {
-  const _$StateImpl({this.chewieController, this.lastPosition});
+class _$StateImpl with DiagnosticableTreeMixin implements _State {
+  const _$StateImpl({this.chewieController, this.lastPosition, this.url});
 
   @override
   final ChewieController? chewieController;
   @override
   final Duration? lastPosition;
+  @override
+  final String? url;
 
   @override
-  String toString() {
-    return 'VideoPlayerState.state(chewieController: $chewieController, lastPosition: $lastPosition)';
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'VideoPlayerState.state(chewieController: $chewieController, lastPosition: $lastPosition, url: $url)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'VideoPlayerState.state'))
+      ..add(DiagnosticsProperty('chewieController', chewieController))
+      ..add(DiagnosticsProperty('lastPosition', lastPosition))
+      ..add(DiagnosticsProperty('url', url));
   }
 
   @override
@@ -161,11 +190,13 @@ class _$StateImpl implements _State {
             (identical(other.chewieController, chewieController) ||
                 other.chewieController == chewieController) &&
             (identical(other.lastPosition, lastPosition) ||
-                other.lastPosition == lastPosition));
+                other.lastPosition == lastPosition) &&
+            (identical(other.url, url) || other.url == url));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, chewieController, lastPosition);
+  int get hashCode =>
+      Object.hash(runtimeType, chewieController, lastPosition, url);
 
   @JsonKey(ignore: true)
   @override
@@ -176,33 +207,33 @@ class _$StateImpl implements _State {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            ChewieController? chewieController, Duration? lastPosition)
+    required TResult Function(ChewieController? chewieController,
+            Duration? lastPosition, String? url)
         state,
   }) {
-    return state(chewieController, lastPosition);
+    return state(chewieController, lastPosition, url);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            ChewieController? chewieController, Duration? lastPosition)?
+    TResult? Function(ChewieController? chewieController,
+            Duration? lastPosition, String? url)?
         state,
   }) {
-    return state?.call(chewieController, lastPosition);
+    return state?.call(chewieController, lastPosition, url);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            ChewieController? chewieController, Duration? lastPosition)?
+    TResult Function(ChewieController? chewieController, Duration? lastPosition,
+            String? url)?
         state,
     required TResult orElse(),
   }) {
     if (state != null) {
-      return state(chewieController, lastPosition);
+      return state(chewieController, lastPosition, url);
     }
     return orElse();
   }
@@ -239,12 +270,15 @@ class _$StateImpl implements _State {
 abstract class _State implements VideoPlayerState {
   const factory _State(
       {final ChewieController? chewieController,
-      final Duration? lastPosition}) = _$StateImpl;
+      final Duration? lastPosition,
+      final String? url}) = _$StateImpl;
 
   @override
   ChewieController? get chewieController;
   @override
   Duration? get lastPosition;
+  @override
+  String? get url;
   @override
   @JsonKey(ignore: true)
   _$$StateImplCopyWith<_$StateImpl> get copyWith =>

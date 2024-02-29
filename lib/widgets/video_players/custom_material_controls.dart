@@ -13,12 +13,18 @@ import 'package:chewie/src/material/widgets/playback_speed_dialog.dart';
 import 'package:chewie/src/models/option_item.dart';
 import 'package:chewie/src/models/subtitle_model.dart';
 import 'package:chewie/src/notifiers/index.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 import 'package:video_player/video_player.dart';
+import 'package:weebs_app/logic/video_player_cubit/video_player_cubit.dart';
+import 'package:window_manager/window_manager.dart';
+import 'package:universal_html/html.dart' as html;
 
+import '../../helpers/get_it_helper/get_it_helper.dart';
 import '../../logic/anoboy_detail_fetch_bloc/anoboy_detail_fetch_bloc.dart';
+import '../../extensions/platform_extensions.dart';
 
 class CustomMaterialControls extends StatefulWidget {
   const CustomMaterialControls({
@@ -428,7 +434,9 @@ class _CustomMaterialControlsState extends State<CustomMaterialControls>
 
   GestureDetector _buildExpandButton() {
     return GestureDetector(
-      onTap: _onExpandCollapse,
+      onTap: () {
+        _onExpandCollapse();
+      },
       child: AnimatedOpacity(
         opacity: notifier.hideStuff ? 0.0 : 1.0,
         duration: const Duration(milliseconds: 300),
@@ -593,7 +601,7 @@ class _CustomMaterialControlsState extends State<CustomMaterialControls>
     }
   }
 
-  void _onExpandCollapse() {
+  Future<void> _onExpandCollapse() async {
     setState(() {
       notifier.hideStuff = true;
 
@@ -605,6 +613,20 @@ class _CustomMaterialControlsState extends State<CustomMaterialControls>
         });
       });
     });
+
+    /// Request Native full screen.
+    if (kIsWeb) {
+      if (chewieController.isFullScreen) {
+        html.document.documentElement?.requestFullscreen();
+      } else {
+        getIt<VideoPlayerCubit>().webReinitialize();
+        html.document.exitFullscreen();
+      }
+    } else if (PlatformExtension.isDesktop) {
+      chewieController.isFullScreen
+          ? await WindowManager.instance.setFullScreen(true)
+          : await WindowManager.instance.setFullScreen(false);
+    }
   }
 
   void _playPause() {

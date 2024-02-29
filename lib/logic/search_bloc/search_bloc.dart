@@ -64,7 +64,6 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     /// Load More
     on<_LoadMore>(
       (event, emit) async {
-        print("AYAYA");
         if (!state.isLoadMore && !state.isLoading) {
           /// Load More
           emit(state.copyWith(isLoadMore: true));

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ErrorScreen extends StatelessWidget {
   final String errorMesasge;
@@ -34,8 +33,8 @@ class ErrorScreen extends StatelessWidget {
             Text(
               errorMesasge,
               textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 16.sp,
+              style: const TextStyle(
+                fontSize: 16,
               ),
             )
           ],

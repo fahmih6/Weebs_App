@@ -1,7 +1,12 @@
 import 'package:chewie/chewie.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:universal_html/html.dart' as html;
+import 'package:window_manager/window_manager.dart';
 
+import '../../extensions/platform_extensions.dart';
+import '../../helpers/get_it_helper/get_it_helper.dart';
 import '../../logic/video_player_cubit/video_player_cubit.dart';
 
 class VideoFullscreenWidget extends StatefulWidget {
@@ -23,46 +28,60 @@ class _VideoFullscreenWidgetState extends State<VideoFullscreenWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: widget.animation,
-      builder: (BuildContext context, Widget? child) {
-        /// Full Screen Widget
-        return BlocBuilder<VideoPlayerCubit, VideoPlayerState>(
-          builder: (context, state) {
-            /// Chewie Controller
-            final chewieController =
-                state.chewieController ?? widget.controllerProvider.controller;
+    return WillPopScope(
+      onWillPop: () async {
+        /// Request Native full screen.
+        if (kIsWeb) {
+          getIt<VideoPlayerCubit>().webReinitialize();
+          html.document.exitFullscreen();
+        } else if (PlatformExtension.isDesktop) {
+          await WindowManager.instance.setFullScreen(false);
+        }
 
-            /// New Controller Provider
-            final ChewieControllerProvider newControllerProvider =
-                ChewieControllerProvider(
-              controller: chewieController,
-              child: GestureDetector(
-                onDoubleTapDown: (details) {
-                  onDoubleTap(
-                    details: details,
-                    state: state,
-                    chewieController: chewieController,
-                  );
-                },
-                child: Container(
-                  key: chewieGlobalKey,
-                  child: widget.controllerProvider.child,
-                ),
-              ),
-            );
-
-            return Scaffold(
-              resizeToAvoidBottomInset: false,
-              body: Container(
-                alignment: Alignment.center,
-                color: Colors.black,
-                child: newControllerProvider,
-              ),
-            );
-          },
-        );
+        /// Return true
+        return Future.value(true);
       },
+      child: AnimatedBuilder(
+        animation: widget.animation,
+        builder: (BuildContext context, Widget? child) {
+          /// Full Screen Widget
+          return BlocBuilder<VideoPlayerCubit, VideoPlayerState>(
+            builder: (context, state) {
+              /// Chewie Controller
+              final chewieController = state.chewieController ??
+                  widget.controllerProvider.controller;
+
+              /// New Controller Provider
+              final ChewieControllerProvider newControllerProvider =
+                  ChewieControllerProvider(
+                controller: chewieController,
+                child: GestureDetector(
+                  onDoubleTapDown: (details) {
+                    onDoubleTap(
+                      details: details,
+                      state: state,
+                      chewieController: chewieController,
+                    );
+                  },
+                  child: Container(
+                    key: chewieGlobalKey,
+                    child: widget.controllerProvider.child,
+                  ),
+                ),
+              );
+
+              return Scaffold(
+                resizeToAvoidBottomInset: false,
+                body: Container(
+                  alignment: Alignment.center,
+                  color: Colors.black,
+                  child: newControllerProvider,
+                ),
+              );
+            },
+          );
+        },
+      ),
     );
   }
 

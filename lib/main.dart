@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +12,13 @@ import 'package:weebs_app/helpers/get_it_helper/get_it_helper.dart';
 import 'package:weebs_app/helpers/http_overrides/custom_http_overrides.dart';
 import 'package:weebs_app/main_bloc_wrapper.dart';
 import 'package:weebs_app/routes/app_router.dart';
-import 'package:weebs_app/routes/app_router_observer.dart';
+import 'package:weebs_app/routes/route_names.dart';
+import 'package:window_manager/window_manager.dart';
+import 'package:firebase_core/firebase_core.dart';
+
+import 'firebase_options.dart';
+import 'extensions/platform_extensions.dart';
+import 'routes/app_router_observer.dart';
 
 /// Scaffold messenger key
 GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey =
@@ -20,6 +27,24 @@ GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey =
 Future<void> main() async {
   /// Ensure initialized
   WidgetsFlutterBinding.ensureInitialized();
+
+  /// Initialize Firebase App
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  /// Window Manager
+  if (!kIsWeb && PlatformExtension.isDesktop) {
+    // Must add this line.
+    await WindowManager.instance.ensureInitialized();
+    WindowManager.instance.waitUntilReadyToShow(
+      const WindowOptions(),
+      () async {
+        await windowManager.show();
+        await windowManager.focus();
+      },
+    );
+  }
 
   /// Set Custom HTTP Overrides
   HttpOverrides.global = CustomHttpOverrides();
@@ -58,10 +83,29 @@ class WeebsApp extends StatelessWidget {
             title: 'Weebs App 2',
             theme: ThemeData.dark(useMaterial3: true),
             darkTheme: ThemeData.dark(useMaterial3: true),
-            routerDelegate: _appRouter.delegate(
+            routerConfig: _appRouter.config(
+              deepLinkBuilder: (deepLink) {
+                /// Is DeepLink Contains Anoboy Detail
+                final isAnoboyDetail =
+                    deepLink.path.contains('${RouteNames.anoboyDetailScreen}/');
+
+                if (isAnoboyDetail) {
+                  return DeepLink.single(
+                    AnoboyDetailRoute(
+                      param: deepLink.path.split('/').last,
+                    ),
+                  );
+                } else {
+                  return DeepLink.defaultPath;
+                }
+              },
               navigatorObservers: () => [AppRouterObserver()],
             ),
-            routeInformationParser: _appRouter.defaultRouteParser(),
+            // routerDelegate: _appRouter.delegate(
+            //   navigatorObservers: () => [AppRouterObserver()],
+            // ),
+            // routeInformationParser: _appRouter.defaultRouteParser(),
+            // routeInformationProvider: _appRouter.routeInfoProvider(),
             scaffoldMessengerKey: scaffoldMessengerKey,
             scrollBehavior: const MaterialScrollBehavior().copyWith(
               dragDevices: {

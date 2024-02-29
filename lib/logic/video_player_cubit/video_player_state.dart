@@ -5,5 +5,6 @@ class VideoPlayerState with _$VideoPlayerState {
   const factory VideoPlayerState.state({
     ChewieController? chewieController,
     Duration? lastPosition,
+    String? url,
   }) = _State;
 }

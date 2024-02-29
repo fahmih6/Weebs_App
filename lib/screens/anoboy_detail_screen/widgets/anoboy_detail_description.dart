@@ -11,15 +11,21 @@ class AnoboyDetailDescription extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16),
-      child: ReadMoreText(
-        "${anoboyDetailModel.synopsis} ",
-        trimLines: 2,
-        trimMode: TrimMode.line,
-        moreStyle: TextStyle(
-          color: Theme.of(context).buttonTheme.colorScheme?.primary,
-        ),
-        lessStyle: TextStyle(
-          color: Theme.of(context).buttonTheme.colorScheme?.primary,
+      child: Align(
+        alignment: Alignment.centerLeft,
+        child: ReadMoreText(
+          anoboyDetailModel.synopsis.isNotEmpty
+              ? "${anoboyDetailModel.synopsis} "
+              : "No Description",
+          textAlign: TextAlign.left,
+          trimLines: 2,
+          trimMode: TrimMode.line,
+          moreStyle: TextStyle(
+            color: Theme.of(context).buttonTheme.colorScheme?.primary,
+          ),
+          lessStyle: TextStyle(
+            color: Theme.of(context).buttonTheme.colorScheme?.primary,
+          ),
         ),
       ),
     );

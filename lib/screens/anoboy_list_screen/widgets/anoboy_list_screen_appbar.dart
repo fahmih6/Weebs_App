@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:weebs_app/logic/appbar_video_cubit/appbar_video_cubit.dart';
-import 'package:weebs_app/routes/app_router.dart';
-import 'package:weebs_app/widgets/shimmer/shimmer_placeholder_widget.dart';
-import 'package:weebs_app/widgets/video_players/appbar_video_player.dart';
 
+import '../../../logic/appbar_video_cubit/appbar_video_cubit.dart';
+import '../../../routes/app_router.dart';
+import '../../../widgets/shimmer/shimmer_placeholder_widget.dart';
+import '../../../widgets/video_players/appbar_video_player.dart';
 import '../../../model/anoboy/anoboy_list_model/anoboy_list_model.dart';
 
 class AnoboyListScreenAppbar extends StatelessWidget {

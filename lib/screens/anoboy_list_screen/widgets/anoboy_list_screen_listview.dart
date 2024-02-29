@@ -28,7 +28,7 @@ class AnoboyListScreenListView extends StatelessWidget {
           title: data.title,
           subtitle: data.uploadTime,
           containerWidth: getItemContainerWidth(context),
-          imageHeight: 178.h,
+          imageHeight: 178,
           imageWidth: getItemContainerWidth(context),
           onTap: () {
             context.pushRoute(AnoboyDetailRoute(param: data.param));
@@ -38,7 +38,7 @@ class AnoboyListScreenListView extends StatelessWidget {
       loadMoreWidget: Visibility(
         visible: animeList.nextPage != null,
         child: SizedBox(
-          height: 213.h,
+          height: 213,
           width: getItemContainerWidth(context),
           child: ElevatedButton(
             onPressed: () {
@@ -70,12 +70,12 @@ class AnoboyListScreenListView extends StatelessWidget {
                         ),
                       );
                     } else {
-                      return Text(
+                      return const Text(
                         "Load More",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
-                          fontSize: 16.sp,
+                          fontSize: 16,
                         ),
                       );
                     }
@@ -94,6 +94,6 @@ class AnoboyListScreenListView extends StatelessWidget {
 
   /// Item Container Width
   double getItemContainerWidth(BuildContext context) {
-    return HelperFunction.isPortrait(context) ? 178.w : 210.w;
+    return HelperFunction.isPortrait(context) ? 178 : 194;
   }
 }

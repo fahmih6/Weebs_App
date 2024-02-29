@@ -33,9 +33,9 @@ class WrapListWidget<T> extends StatelessWidget {
                 Flexible(
                   child: Text(
                     title ?? 'Title',
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontWeight: FontWeight.w600,
-                      fontSize: 18.sp,
+                      fontSize: 18,
                     ),
                   ),
                 ),

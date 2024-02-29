@@ -52,30 +52,38 @@ class AnoboyRepository implements IAnoboyRepository {
         final data = AnoboyDetailModel.fromJson(r["data"]);
 
         /// Get the direct links
-        final directLinks = await Future.wait(
-          [
-            ...data.videoEmbedLinks.map(
-              (e) => bloggerRepository.getVideoDirectLink(
-                url: e.link,
-                resolution: e.resolution,
-              ),
-            ),
-          ],
-        );
+        final directLinks = data.videoEmbedLinks.every(
+          (element) => element.link.contains('blog'),
+        )
+            ? await Future.wait(
+                [
+                  ...data.videoEmbedLinks.map(
+                    (e) => bloggerRepository.getVideoDirectLink(
+                      url: e.link,
+                      resolution: e.resolution,
+                    ),
+                  ),
+                ],
+              )
+            : <Either<Failure, AnoboyLinksItemModel>>[];
 
         /// Map the direct links
-        final directLinkList = directLinks
-            .map(
-              (e) => e.fold(
-                (l) => const AnoboyLinksItemModel(),
-                (r) => r,
-              ),
-            )
-            .toList();
+        final directLinkList = directLinks.isNotEmpty
+            ? directLinks
+                .map(
+                  (e) => e.fold(
+                    (l) => const AnoboyLinksItemModel(),
+                    (r) => r,
+                  ),
+                )
+                .toList()
+            : <AnoboyLinksItemModel>[];
 
         return Right(
           data.copyWith(
-            videoDirectLinks: directLinkList,
+            videoDirectLinks: directLinkList.isNotEmpty
+                ? directLinkList
+                : data.videoDirectLinks,
           ),
         );
       },

@@ -89,9 +89,9 @@ class WrapListItemWidget extends StatelessWidget {
                           Flexible(
                             child: Text(
                               title,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontWeight: FontWeight.bold,
-                                fontSize: 14.sp,
+                                fontSize: 14,
                               ),
                               textAlign: TextAlign.center,
                               maxLines: titleMaxLines ?? 5,
@@ -121,9 +121,9 @@ class WrapListItemWidget extends StatelessWidget {
                 alignment: Alignment.centerLeft,
                 child: Text(
                   subtitle,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontWeight: FontWeight.w600,
-                    fontSize: 12.sp,
+                    fontSize: 12,
                   ),
                 ),
               ),

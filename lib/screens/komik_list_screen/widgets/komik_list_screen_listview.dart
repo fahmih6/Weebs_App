@@ -33,7 +33,7 @@ class KomikListScreenListView extends StatelessWidget {
           title: data.title,
           subtitle: data.latestChapter,
           containerWidth: getItemContainerWidth(context),
-          imageHeight: 180.h,
+          imageHeight: 180,
           imageWidth: getItemContainerWidth(context),
           titleMaxLines: 2,
           onTap: () {
@@ -46,7 +46,7 @@ class KomikListScreenListView extends StatelessWidget {
       loadMoreWidget: Visibility(
         visible: komikuList.nextPage != null,
         child: SizedBox(
-          height: 213.h,
+          height: 213,
           width: getItemContainerWidth(context),
           child: ElevatedButton(
             onPressed: () {
@@ -86,12 +86,12 @@ class KomikListScreenListView extends StatelessWidget {
                         ),
                       );
                     } else {
-                      return Text(
+                      return const Text(
                         "Load More",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
-                          fontSize: 16.sp,
+                          fontSize: 16,
                         ),
                       );
                     }
@@ -110,6 +110,6 @@ class KomikListScreenListView extends StatelessWidget {
 
   /// Item Container Width
   double getItemContainerWidth(BuildContext context) {
-    return HelperFunction.isPortrait(context) ? 119.w : 152.w;
+    return HelperFunction.isPortrait(context) ? 119 : 142;
   }
 }
