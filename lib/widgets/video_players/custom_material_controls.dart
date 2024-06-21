@@ -213,7 +213,7 @@ class _CustomMaterialControlsState extends State<CustomMaterialControls>
                       /// Back Button
                       BackButton(
                         onPressed: () {
-                          context.popRoute();
+                          context.maybePop();
                         },
                       ),
 
@@ -725,7 +725,7 @@ class _CustomMaterialControlsState extends State<CustomMaterialControls>
               playedColor: Theme.of(context).colorScheme.secondary,
               handleColor: Theme.of(context).colorScheme.secondary,
               bufferedColor:
-                  Theme.of(context).colorScheme.background.withOpacity(0.5),
+                  Theme.of(context).colorScheme.surface.withOpacity(0.5),
               backgroundColor: Theme.of(context).disabledColor.withOpacity(.5),
             ),
       ),

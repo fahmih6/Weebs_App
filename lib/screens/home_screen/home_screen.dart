@@ -102,7 +102,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 backgroundColor:
                     Theme.of(context).buttonTheme.colorScheme?.primary,
                 foregroundColor:
-                    Theme.of(context).buttonTheme.colorScheme?.background,
+                    Theme.of(context).buttonTheme.colorScheme?.surface,
                 shape: const CircleBorder(),
                 padding: const EdgeInsets.all(20),
               ),

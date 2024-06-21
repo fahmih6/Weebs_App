@@ -28,8 +28,13 @@ class _VideoFullscreenWidgetState extends State<VideoFullscreenWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
+    return PopScope(
+      canPop: false,
+      onPopInvoked: (didPop) async {
+        if (didPop) {
+          return;
+        }
+
         /// Request Native full screen.
         if (kIsWeb) {
           getIt<VideoPlayerCubit>().webReinitialize();
@@ -39,7 +44,7 @@ class _VideoFullscreenWidgetState extends State<VideoFullscreenWidget> {
         }
 
         /// Return true
-        return Future.value(true);
+        return;
       },
       child: AnimatedBuilder(
         animation: widget.animation,
