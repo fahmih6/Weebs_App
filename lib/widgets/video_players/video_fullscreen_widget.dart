@@ -30,7 +30,7 @@ class _VideoFullscreenWidgetState extends State<VideoFullscreenWidget> {
   Widget build(BuildContext context) {
     return PopScope(
       canPop: false,
-      onPopInvoked: (didPop) async {
+      onPopInvokedWithResult: (didPop, res) async {
         if (didPop) {
           return;
         }
