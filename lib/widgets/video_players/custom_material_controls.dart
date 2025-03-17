@@ -258,7 +258,7 @@ class _CustomMaterialControlsState extends State<CustomMaterialControls>
   Widget _buildOptionsButton() {
     final options = <OptionItem>[
       OptionItem(
-        onTap: () async {
+        onTap: (context) {
           Navigator.pop(context);
           _onSpeedButtonTap();
         },

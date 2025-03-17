@@ -49,7 +49,7 @@ class VideoPlayerCubit extends Cubit<VideoPlayerState> {
           additionalOptions: (context) {
             return [
               OptionItem(
-                onTap: () {
+                onTap: (context) {
                   showModalBottomSheet(
                     context: context,
                     builder: (_) {
