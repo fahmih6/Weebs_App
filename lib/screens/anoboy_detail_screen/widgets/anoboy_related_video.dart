@@ -97,7 +97,7 @@ class AnoboyRelatedVideo extends StatelessWidget {
                                       stops: const [-1, 0.5],
                                       colors: [
                                         Colors.transparent,
-                                        Colors.black.withOpacity(0.9),
+                                        Colors.black.withValues(alpha: 0.9),
                                       ],
                                     ),
                                   ),

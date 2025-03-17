@@ -274,9 +274,6 @@ class ReadMoreTextState extends State<ReadMoreText> {
               );
             }
             break;
-          default:
-            throw Exception(
-                'TrimMode type: ${widget.trimMode} is not supported');
         }
 
         return Text.rich(

@@ -65,7 +65,7 @@ class KomikListScreenAppBar extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 8.h, vertical: 4.h),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
-                  color: Colors.black.withOpacity(0.7),
+                  color: Colors.black.withValues(alpha: 0.7),
                 ),
                 child: Text(
                   komikuListData.data.first.title,

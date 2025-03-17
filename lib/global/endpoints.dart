@@ -1,6 +1,6 @@
 class Endpoints {
   /// Base URL
-  static const String baseUrl = "http://vps.midorima.online";
+  static const String baseUrl = "http://murasakibara.online";
 
   /// Anoboy
   static const String anoboy = "/api/anoboy/";
