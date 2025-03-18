@@ -689,9 +689,9 @@ class _CustomMaterialControlsState extends State<CustomMaterialControls>
       }
     } else if (!controller.value.isInitialized) {
       _displayBufferingIndicator = true;
-    } else {
-      _displayBufferingIndicator = controller.value.isBuffering;
     }
+
+    _displayBufferingIndicator = controller.value.isBuffering;
 
     setState(() {
       _latestValue = controller.value;
