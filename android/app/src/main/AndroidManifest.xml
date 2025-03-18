@@ -30,8 +30,8 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="http" android:host="midorima.online" />
-                <data android:scheme="weebsapp" android:host="midorima.online" />
+                <data android:scheme="http" android:host="murasakibara.online" />
+                <data android:scheme="weebsapp" android:host="murasakibara.online" />
             </intent-filter>
         </activity>
         <!-- Don't delete the meta-data below.
