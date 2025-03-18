@@ -1,8 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:chewie/chewie.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:universal_html/html.dart' as html;
+import 'package:web/web.dart' as html;
 import 'package:window_manager/window_manager.dart';
 
 import '../../extensions/platform_extensions.dart';
@@ -41,6 +42,8 @@ class _VideoFullscreenWidgetState extends State<VideoFullscreenWidget> {
           html.document.exitFullscreen();
         } else if (PlatformExtension.isDesktop) {
           await WindowManager.instance.setFullScreen(false);
+        } else {
+          context.maybePop();
         }
 
         /// Return true
