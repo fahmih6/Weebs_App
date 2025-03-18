@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:chewie/chewie.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -43,7 +42,7 @@ class _VideoFullscreenWidgetState extends State<VideoFullscreenWidget> {
         } else if (PlatformExtension.isDesktop) {
           await WindowManager.instance.setFullScreen(false);
         } else {
-          context.maybePop();
+          widget.controllerProvider.controller.toggleFullScreen();
         }
 
         /// Return true
