@@ -20,7 +20,7 @@ import 'package:provider/provider.dart';
 import 'package:video_player/video_player.dart';
 import 'package:weebs_app/logic/video_player_cubit/video_player_cubit.dart';
 import 'package:window_manager/window_manager.dart';
-import 'package:web/web.dart' as html;
+import 'package:universal_html/html.dart' as html;
 
 import '../../helpers/get_it_helper/get_it_helper.dart';
 import '../../logic/anoboy_detail_fetch_bloc/anoboy_detail_fetch_bloc.dart';
