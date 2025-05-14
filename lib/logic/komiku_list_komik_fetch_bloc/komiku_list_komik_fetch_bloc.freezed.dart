@@ -12,7 +12,7 @@ part of 'komiku_list_komik_fetch_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$KomikuListKomikFetchEvent {
@@ -73,6 +73,9 @@ class _$KomikuListKomikFetchEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of KomikuListKomikFetchEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -89,6 +92,9 @@ class __$$StartedImplCopyWithImpl<$Res>
   __$$StartedImplCopyWithImpl(
       _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of KomikuListKomikFetchEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -105,11 +111,11 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-        .add(DiagnosticsProperty('type', 'KomikuListKomikFetchEvent.started'));
+      ..add(DiagnosticsProperty('type', 'KomikuListKomikFetchEvent.started'));
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$StartedImpl);
   }
@@ -201,6 +207,8 @@ class __$$LoadMoreImplCopyWithImpl<$Res>
       _$LoadMoreImpl _value, $Res Function(_$LoadMoreImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of KomikuListKomikFetchEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -245,7 +253,7 @@ class _$LoadMoreImpl with DiagnosticableTreeMixin implements _LoadMore {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadMoreImpl &&
@@ -257,7 +265,9 @@ class _$LoadMoreImpl with DiagnosticableTreeMixin implements _LoadMore {
   @override
   int get hashCode => Object.hash(runtimeType, tag, nextLink);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of KomikuListKomikFetchEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$LoadMoreImplCopyWith<_$LoadMoreImpl> get copyWith =>
@@ -333,7 +343,10 @@ abstract class _LoadMore implements KomikuListKomikFetchEvent {
 
   String get tag;
   String get nextLink;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of KomikuListKomikFetchEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LoadMoreImplCopyWith<_$LoadMoreImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -409,6 +422,9 @@ class _$KomikuListKomikFetchStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of KomikuListKomikFetchState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -425,6 +441,9 @@ class __$$InitialImplCopyWithImpl<$Res>
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of KomikuListKomikFetchState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -441,11 +460,11 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-        .add(DiagnosticsProperty('type', 'KomikuListKomikFetchState.initial'));
+      ..add(DiagnosticsProperty('type', 'KomikuListKomikFetchState.initial'));
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
@@ -546,6 +565,9 @@ class __$$LoadingImplCopyWithImpl<$Res>
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of KomikuListKomikFetchState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -562,11 +584,11 @@ class _$LoadingImpl with DiagnosticableTreeMixin implements _Loading {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-        .add(DiagnosticsProperty('type', 'KomikuListKomikFetchState.loading'));
+      ..add(DiagnosticsProperty('type', 'KomikuListKomikFetchState.loading'));
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$LoadingImpl);
   }
@@ -677,6 +699,8 @@ class __$$CompletedImplCopyWithImpl<$Res>
       _$CompletedImpl _value, $Res Function(_$CompletedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of KomikuListKomikFetchState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -705,6 +729,8 @@ class __$$CompletedImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of KomikuListKomikFetchState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $KomikuListModelCopyWith<$Res> get recommendationList {
@@ -713,6 +739,8 @@ class __$$CompletedImplCopyWithImpl<$Res>
     });
   }
 
+  /// Create a copy of KomikuListKomikFetchState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $KomikuListModelCopyWith<$Res> get hotList {
@@ -758,7 +786,7 @@ class _$CompletedImpl with DiagnosticableTreeMixin implements _Completed {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CompletedImpl &&
@@ -775,7 +803,9 @@ class _$CompletedImpl with DiagnosticableTreeMixin implements _Completed {
   int get hashCode => Object.hash(
       runtimeType, recommendationList, hotList, isLoadMore, errorMsg);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of KomikuListKomikFetchState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CompletedImplCopyWith<_$CompletedImpl> get copyWith =>
@@ -867,7 +897,10 @@ abstract class _Completed implements KomikuListKomikFetchState {
   KomikuListModel get hotList;
   bool get isLoadMore;
   String? get errorMsg;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of KomikuListKomikFetchState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CompletedImplCopyWith<_$CompletedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

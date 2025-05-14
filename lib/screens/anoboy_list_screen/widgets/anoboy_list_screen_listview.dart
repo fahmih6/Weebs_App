@@ -94,6 +94,6 @@ class AnoboyListScreenListView extends StatelessWidget {
 
   /// Item Container Width
   double getItemContainerWidth(BuildContext context) {
-    return HelperFunction.isPortrait(context) ? 178 : 194;
+    return HelperFunction.isPortrait(context) ? 178.w : 194.w;
   }
 }

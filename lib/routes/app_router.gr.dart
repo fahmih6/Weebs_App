@@ -1,3 +1,4 @@
+// dart format width=80
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 // **************************************************************************
@@ -9,90 +10,6 @@
 
 part of 'app_router.dart';
 
-abstract class _$AppRouter extends RootStackRouter {
-  // ignore: unused_element
-  _$AppRouter({super.navigatorKey});
-
-  @override
-  final Map<String, PageFactory> pagesMap = {
-    AnoboyDetailRoute.name: (routeData) {
-      final pathParams = routeData.inheritedPathParams;
-      final args = routeData.argsAs<AnoboyDetailRouteArgs>(
-          orElse: () =>
-              AnoboyDetailRouteArgs(param: pathParams.getString('param')));
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: AnoboyDetailScreen(
-          key: args.key,
-          param: args.param,
-        ),
-      );
-    },
-    AnoboyListRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const AnoboyListScreen(),
-      );
-    },
-    HomeRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const HomeScreen(),
-      );
-    },
-    KomikDetailRoute.name: (routeData) {
-      final pathParams = routeData.inheritedPathParams;
-      final args = routeData.argsAs<KomikDetailRouteArgs>(
-          orElse: () =>
-              KomikDetailRouteArgs(param: pathParams.getString('param')));
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: KomikDetailScreen(
-          key: args.key,
-          param: args.param,
-        ),
-      );
-    },
-    KomikListRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const KomikListScreen(),
-      );
-    },
-    KomikReadRoute.name: (routeData) {
-      final pathParams = routeData.inheritedPathParams;
-      final args = routeData.argsAs<KomikReadRouteArgs>(
-          orElse: () =>
-              KomikReadRouteArgs(param: pathParams.getString('param')));
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: KomikReadScreen(
-          key: args.key,
-          param: args.param,
-        ),
-      );
-    },
-    SearchRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const SearchScreen(),
-      );
-    },
-    SettingsRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const SettingsScreen(),
-      );
-    },
-    SplashRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const SplashScreen(),
-      );
-    },
-  };
-}
-
 /// generated route for
 /// [AnoboyDetailScreen]
 class AnoboyDetailRoute extends PageRouteInfo<AnoboyDetailRouteArgs> {
@@ -101,26 +18,29 @@ class AnoboyDetailRoute extends PageRouteInfo<AnoboyDetailRouteArgs> {
     required String param,
     List<PageRouteInfo>? children,
   }) : super(
-          AnoboyDetailRoute.name,
-          args: AnoboyDetailRouteArgs(
-            key: key,
-            param: param,
-          ),
-          rawPathParams: {'param': param},
-          initialChildren: children,
-        );
+         AnoboyDetailRoute.name,
+         args: AnoboyDetailRouteArgs(key: key, param: param),
+         rawPathParams: {'param': param},
+         initialChildren: children,
+       );
 
   static const String name = 'AnoboyDetailRoute';
 
-  static const PageInfo<AnoboyDetailRouteArgs> page =
-      PageInfo<AnoboyDetailRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final pathParams = data.inheritedPathParams;
+      final args = data.argsAs<AnoboyDetailRouteArgs>(
+        orElse:
+            () => AnoboyDetailRouteArgs(param: pathParams.getString('param')),
+      );
+      return AnoboyDetailScreen(key: args.key, param: args.param);
+    },
+  );
 }
 
 class AnoboyDetailRouteArgs {
-  const AnoboyDetailRouteArgs({
-    this.key,
-    required this.param,
-  });
+  const AnoboyDetailRouteArgs({this.key, required this.param});
 
   final Key? key;
 
@@ -136,28 +56,32 @@ class AnoboyDetailRouteArgs {
 /// [AnoboyListScreen]
 class AnoboyListRoute extends PageRouteInfo<void> {
   const AnoboyListRoute({List<PageRouteInfo>? children})
-      : super(
-          AnoboyListRoute.name,
-          initialChildren: children,
-        );
+    : super(AnoboyListRoute.name, initialChildren: children);
 
   static const String name = 'AnoboyListRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const AnoboyListScreen();
+    },
+  );
 }
 
 /// generated route for
 /// [HomeScreen]
 class HomeRoute extends PageRouteInfo<void> {
   const HomeRoute({List<PageRouteInfo>? children})
-      : super(
-          HomeRoute.name,
-          initialChildren: children,
-        );
+    : super(HomeRoute.name, initialChildren: children);
 
   static const String name = 'HomeRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const HomeScreen();
+    },
+  );
 }
 
 /// generated route for
@@ -168,26 +92,29 @@ class KomikDetailRoute extends PageRouteInfo<KomikDetailRouteArgs> {
     required String param,
     List<PageRouteInfo>? children,
   }) : super(
-          KomikDetailRoute.name,
-          args: KomikDetailRouteArgs(
-            key: key,
-            param: param,
-          ),
-          rawPathParams: {'param': param},
-          initialChildren: children,
-        );
+         KomikDetailRoute.name,
+         args: KomikDetailRouteArgs(key: key, param: param),
+         rawPathParams: {'param': param},
+         initialChildren: children,
+       );
 
   static const String name = 'KomikDetailRoute';
 
-  static const PageInfo<KomikDetailRouteArgs> page =
-      PageInfo<KomikDetailRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final pathParams = data.inheritedPathParams;
+      final args = data.argsAs<KomikDetailRouteArgs>(
+        orElse:
+            () => KomikDetailRouteArgs(param: pathParams.getString('param')),
+      );
+      return KomikDetailScreen(key: args.key, param: args.param);
+    },
+  );
 }
 
 class KomikDetailRouteArgs {
-  const KomikDetailRouteArgs({
-    this.key,
-    required this.param,
-  });
+  const KomikDetailRouteArgs({this.key, required this.param});
 
   final Key? key;
 
@@ -203,14 +130,16 @@ class KomikDetailRouteArgs {
 /// [KomikListScreen]
 class KomikListRoute extends PageRouteInfo<void> {
   const KomikListRoute({List<PageRouteInfo>? children})
-      : super(
-          KomikListRoute.name,
-          initialChildren: children,
-        );
+    : super(KomikListRoute.name, initialChildren: children);
 
   static const String name = 'KomikListRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const KomikListScreen();
+    },
+  );
 }
 
 /// generated route for
@@ -221,26 +150,28 @@ class KomikReadRoute extends PageRouteInfo<KomikReadRouteArgs> {
     required String param,
     List<PageRouteInfo>? children,
   }) : super(
-          KomikReadRoute.name,
-          args: KomikReadRouteArgs(
-            key: key,
-            param: param,
-          ),
-          rawPathParams: {'param': param},
-          initialChildren: children,
-        );
+         KomikReadRoute.name,
+         args: KomikReadRouteArgs(key: key, param: param),
+         rawPathParams: {'param': param},
+         initialChildren: children,
+       );
 
   static const String name = 'KomikReadRoute';
 
-  static const PageInfo<KomikReadRouteArgs> page =
-      PageInfo<KomikReadRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final pathParams = data.inheritedPathParams;
+      final args = data.argsAs<KomikReadRouteArgs>(
+        orElse: () => KomikReadRouteArgs(param: pathParams.getString('param')),
+      );
+      return KomikReadScreen(key: args.key, param: args.param);
+    },
+  );
 }
 
 class KomikReadRouteArgs {
-  const KomikReadRouteArgs({
-    this.key,
-    required this.param,
-  });
+  const KomikReadRouteArgs({this.key, required this.param});
 
   final Key? key;
 
@@ -256,40 +187,46 @@ class KomikReadRouteArgs {
 /// [SearchScreen]
 class SearchRoute extends PageRouteInfo<void> {
   const SearchRoute({List<PageRouteInfo>? children})
-      : super(
-          SearchRoute.name,
-          initialChildren: children,
-        );
+    : super(SearchRoute.name, initialChildren: children);
 
   static const String name = 'SearchRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const SearchScreen();
+    },
+  );
 }
 
 /// generated route for
 /// [SettingsScreen]
 class SettingsRoute extends PageRouteInfo<void> {
   const SettingsRoute({List<PageRouteInfo>? children})
-      : super(
-          SettingsRoute.name,
-          initialChildren: children,
-        );
+    : super(SettingsRoute.name, initialChildren: children);
 
   static const String name = 'SettingsRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const SettingsScreen();
+    },
+  );
 }
 
 /// generated route for
 /// [SplashScreen]
 class SplashRoute extends PageRouteInfo<void> {
   const SplashRoute({List<PageRouteInfo>? children})
-      : super(
-          SplashRoute.name,
-          initialChildren: children,
-        );
+    : super(SplashRoute.name, initialChildren: children);
 
   static const String name = 'SplashRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const SplashScreen();
+    },
+  );
 }

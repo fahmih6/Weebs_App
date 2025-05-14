@@ -1,3 +1,5 @@
+import 'dart:io' show Platform;
+
 import 'package:chewie/chewie.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
@@ -8,6 +10,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:video_player/video_player.dart';
 import 'package:weebs_app/model/anoboy/anoboy_detail_model/anoboy_detail_model.dart';
 import 'package:weebs_app/widgets/video_players/video_player_controls.dart';
+// import 'package:weebs_app/widgets/video_players/video_player_controls.dart';
 
 import '../../widgets/video_players/video_fullscreen_widget.dart';
 import '../../widgets/video_players/video_resolution_bottomsheet.dart';
@@ -75,7 +78,9 @@ class VideoPlayerCubit extends Cubit<VideoPlayerState> {
           draggableProgressBar: true,
           showControls: true,
           startAt: state.lastPosition,
-          customControls: const VideoPlayerControls(),
+          customControls: (!kIsWeb && (Platform.isAndroid || Platform.isIOS))
+              ? const VideoPlayerControls()
+              : null,
           routePageBuilder: (
             context,
             animation,

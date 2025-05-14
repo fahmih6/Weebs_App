@@ -9,7 +9,7 @@ part 'app_router.gr.dart';
   replaceInRouteName: 'Screen,Route',
 )
 // extend the generated private router
-class AppRouter extends _$AppRouter {
+class AppRouter extends RootStackRouter {
   @override
   List<AutoRoute> get routes => [
         /// Splash Screen

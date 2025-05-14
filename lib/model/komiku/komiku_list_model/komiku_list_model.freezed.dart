@@ -12,7 +12,7 @@ part of 'komiku_list_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 KomikuListModel _$KomikuListModelFromJson(Map<String, dynamic> json) {
   return _KomikuListModel.fromJson(json);
@@ -26,8 +26,12 @@ mixin _$KomikuListModel {
   String? get prevPage => throw _privateConstructorUsedError;
   List<KomikuListItemModel> get data => throw _privateConstructorUsedError;
 
+  /// Serializes this KomikuListModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of KomikuListModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $KomikuListModelCopyWith<KomikuListModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -54,6 +58,8 @@ class _$KomikuListModelCopyWithImpl<$Res, $Val extends KomikuListModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of KomikuListModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -100,6 +106,8 @@ class __$$KomikuListModelImplCopyWithImpl<$Res>
       _$KomikuListModelImpl _value, $Res Function(_$KomikuListModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of KomikuListModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -151,7 +159,7 @@ class _$KomikuListModelImpl implements _KomikuListModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$KomikuListModelImpl &&
@@ -162,12 +170,14 @@ class _$KomikuListModelImpl implements _KomikuListModel {
             const DeepCollectionEquality().equals(other.data, data));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, nextPage, prevPage,
       const DeepCollectionEquality().hash(data));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of KomikuListModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$KomikuListModelImplCopyWith<_$KomikuListModelImpl> get copyWith =>
@@ -199,8 +209,11 @@ abstract class _KomikuListModel implements KomikuListModel {
   String? get prevPage;
   @override
   List<KomikuListItemModel> get data;
+
+  /// Create a copy of KomikuListModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$KomikuListModelImplCopyWith<_$KomikuListModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -231,8 +244,12 @@ mixin _$KomikuListItemModel {
   @JsonKey(name: "detail_url")
   String get detailUrl => throw _privateConstructorUsedError;
 
+  /// Serializes this KomikuListItemModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of KomikuListItemModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $KomikuListItemModelCopyWith<KomikuListItemModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -262,6 +279,8 @@ class _$KomikuListItemModelCopyWithImpl<$Res, $Val extends KomikuListItemModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of KomikuListItemModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -326,6 +345,8 @@ class __$$KomikuListItemModelImplCopyWithImpl<$Res>
       $Res Function(_$KomikuListItemModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of KomikuListItemModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -415,7 +436,7 @@ class _$KomikuListItemModelImpl implements _KomikuListItemModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$KomikuListItemModelImpl &&
@@ -431,12 +452,14 @@ class _$KomikuListItemModelImpl implements _KomikuListItemModel {
                 other.detailUrl == detailUrl));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, title, thumbnail, param,
       description, latestChapter, detailUrl);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of KomikuListItemModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$KomikuListItemModelImplCopyWith<_$KomikuListItemModelImpl> get copyWith =>
@@ -464,34 +487,36 @@ abstract class _KomikuListItemModel implements KomikuListItemModel {
   factory _KomikuListItemModel.fromJson(Map<String, dynamic> json) =
       _$KomikuListItemModelImpl.fromJson;
 
-  @override
-
   /// Manga Title
-  String get title;
   @override
+  String get title;
 
   /// Manga Thumbnail
-  String get thumbnail;
   @override
+  String get thumbnail;
 
   /// Manga Param
-  String get param;
   @override
+  String get param;
 
   /// Description
-  String get description;
   @override
+  String get description;
 
   /// Manga Latest Chapter
+  @override
   @JsonKey(name: "latest_chapter")
   String get latestChapter;
-  @override
 
   /// Direct detail url
+  @override
   @JsonKey(name: "detail_url")
   String get detailUrl;
+
+  /// Create a copy of KomikuListItemModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$KomikuListItemModelImplCopyWith<_$KomikuListItemModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

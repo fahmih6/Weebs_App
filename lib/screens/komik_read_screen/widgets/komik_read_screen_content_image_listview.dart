@@ -1,4 +1,7 @@
+import 'dart:io' show Platform;
+
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weebs_app/model/settings/settings_model.dart';
@@ -68,48 +71,58 @@ class _KomikReadScreenContentImageListViewState
             },
 
             /// Chapter Detail List
-            child: ListView.builder(
-              shrinkWrap: true,
-              primary: true,
-              itemCount: widget.chapterList.length,
-              itemBuilder: (context, index) {
-                final item = widget.chapterList[index];
+            child: Scrollbar(
+              child: ListView.builder(
+                shrinkWrap: true,
+                primary: true,
+                itemCount: widget.chapterList.length,
+                itemBuilder: (context, index) {
+                  final item = widget.chapterList[index];
 
-                /// Chapter Images List from Chapter Detail
-                return ListView.builder(
-                  shrinkWrap: true,
-                  primary: false,
-                  itemCount: item.chapterUrls.length,
-                  itemBuilder: (context, index) {
-                    final image = item.chapterUrls[index];
-                    return BlocBuilder<SettingsBloc, SettingsState>(
-                      builder: (context, state) {
-                        return state.map(
-                          state: (value) {
-                            final komikReadImageMode =
-                                value.settingsData.komikReadImageMode;
-                            return CachedNetworkImage(
-                              fit: komikReadImageMode ==
-                                      KomikReadImageMode.fillWidth
-                                  ? BoxFit.fill
-                                  : null,
-                              imageUrl: image,
-                              height: komikReadImageMode ==
-                                      KomikReadImageMode.fitHeight
-                                  ? MediaQuery.of(context).size.height
-                                  : null,
-                              placeholder: (context, url) => SizedBox(
-                                height: MediaQuery.of(context).size.height / 2,
-                                child: const ShimmerPlaceholderWidget(),
-                              ),
-                            );
-                          },
-                        );
-                      },
-                    );
-                  },
-                );
-              },
+                  /// Chapter Images List from Chapter Detail
+                  return ListView.builder(
+                    shrinkWrap: true,
+                    primary: false,
+                    itemCount: item.chapterUrls.length,
+                    itemBuilder: (context, index) {
+                      final image = item.chapterUrls[index];
+                      return BlocBuilder<SettingsBloc, SettingsState>(
+                        builder: (context, state) {
+                          return state.map(
+                            state: (value) {
+                              final komikReadImageMode =
+                                  value.settingsData.komikReadImageMode;
+                              return FractionallySizedBox(
+                                widthFactor: komikReadImageMode ==
+                                            KomikReadImageMode.normal &&
+                                        (kIsWeb || Platform.isMacOS)
+                                    ? 0.5
+                                    : 1,
+                                child: CachedNetworkImage(
+                                  fit: komikReadImageMode ==
+                                          KomikReadImageMode.fillWidth
+                                      ? BoxFit.fill
+                                      : null,
+                                  imageUrl: image,
+                                  height: komikReadImageMode ==
+                                          KomikReadImageMode.fitHeight
+                                      ? MediaQuery.sizeOf(context).height
+                                      : null,
+                                  placeholder: (context, url) => SizedBox(
+                                    height:
+                                        MediaQuery.sizeOf(context).height / 2,
+                                    child: const ShimmerPlaceholderWidget(),
+                                  ),
+                                ),
+                              );
+                            },
+                          );
+                        },
+                      );
+                    },
+                  );
+                },
+              ),
             ),
           );
         },

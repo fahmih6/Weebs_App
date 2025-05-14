@@ -12,7 +12,7 @@ part of 'favourites_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$FavouritesEvent {
@@ -81,7 +81,9 @@ mixin _$FavouritesEvent {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $FavouritesEventCopyWith<FavouritesEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -108,6 +110,8 @@ class _$FavouritesEventCopyWithImpl<$Res, $Val extends FavouritesEvent>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -126,6 +130,8 @@ class _$FavouritesEventCopyWithImpl<$Res, $Val extends FavouritesEvent>
     ) as $Val);
   }
 
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AnoboyDetailModelCopyWith<$Res>? get anoboyData {
@@ -138,6 +144,8 @@ class _$FavouritesEventCopyWithImpl<$Res, $Val extends FavouritesEvent>
     });
   }
 
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $KomikuDetailModelCopyWith<$Res>? get komikuData {
@@ -175,6 +183,8 @@ class __$$AddedImplCopyWithImpl<$Res>
       _$AddedImpl _value, $Res Function(_$AddedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -210,7 +220,7 @@ class _$AddedImpl implements _Added {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AddedImpl &&
@@ -223,7 +233,9 @@ class _$AddedImpl implements _Added {
   @override
   int get hashCode => Object.hash(runtimeType, anoboyData, komikuData);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AddedImplCopyWith<_$AddedImpl> get copyWith =>
@@ -325,8 +337,11 @@ abstract class _Added implements FavouritesEvent {
   AnoboyDetailModel? get anoboyData;
   @override
   KomikuDetailModel? get komikuData;
+
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AddedImplCopyWith<_$AddedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -355,6 +370,8 @@ class __$$RemovedImplCopyWithImpl<$Res>
       _$RemovedImpl _value, $Res Function(_$RemovedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -390,7 +407,7 @@ class _$RemovedImpl implements _Removed {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RemovedImpl &&
@@ -403,7 +420,9 @@ class _$RemovedImpl implements _Removed {
   @override
   int get hashCode => Object.hash(runtimeType, anoboyData, komikuData);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$RemovedImplCopyWith<_$RemovedImpl> get copyWith =>
@@ -505,8 +524,11 @@ abstract class _Removed implements FavouritesEvent {
   AnoboyDetailModel? get anoboyData;
   @override
   KomikuDetailModel? get komikuData;
+
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RemovedImplCopyWith<_$RemovedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -535,6 +557,8 @@ class __$$EditedImplCopyWithImpl<$Res>
       _$EditedImpl _value, $Res Function(_$EditedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -570,7 +594,7 @@ class _$EditedImpl implements _Edited {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EditedImpl &&
@@ -583,7 +607,9 @@ class _$EditedImpl implements _Edited {
   @override
   int get hashCode => Object.hash(runtimeType, anoboyData, komikuData);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EditedImplCopyWith<_$EditedImpl> get copyWith =>
@@ -685,8 +711,11 @@ abstract class _Edited implements FavouritesEvent {
   AnoboyDetailModel? get anoboyData;
   @override
   KomikuDetailModel? get komikuData;
+
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EditedImplCopyWith<_$EditedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -734,7 +763,9 @@ mixin _$FavouritesState {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FavouritesState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $FavouritesStateCopyWith<FavouritesState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -759,6 +790,8 @@ class _$FavouritesStateCopyWithImpl<$Res, $Val extends FavouritesState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of FavouritesState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -798,6 +831,8 @@ class __$$StateImplCopyWithImpl<$Res>
       _$StateImpl _value, $Res Function(_$StateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FavouritesState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -850,7 +885,7 @@ class _$StateImpl implements _State {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$StateImpl &&
@@ -866,7 +901,9 @@ class _$StateImpl implements _State {
       const DeepCollectionEquality().hash(_anoboyList),
       const DeepCollectionEquality().hash(_komikuList));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FavouritesState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$StateImplCopyWith<_$StateImpl> get copyWith =>
@@ -944,8 +981,11 @@ abstract class _State implements FavouritesState {
   List<AnoboyDetailModel> get anoboyList;
   @override
   List<KomikuDetailModel> get komikuList;
+
+  /// Create a copy of FavouritesState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StateImplCopyWith<_$StateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

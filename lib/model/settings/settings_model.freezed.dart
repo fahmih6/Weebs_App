@@ -12,7 +12,7 @@ part of 'settings_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 SettingsModel _$SettingsModelFromJson(Map<String, dynamic> json) {
   return _SettingsModel.fromJson(json);
@@ -26,8 +26,12 @@ mixin _$SettingsModel {
   /// Komik Read Image Mode
   dynamic get komikReadImageMode => throw _privateConstructorUsedError;
 
+  /// Serializes this SettingsModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SettingsModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SettingsModelCopyWith<SettingsModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -51,6 +55,8 @@ class _$SettingsModelCopyWithImpl<$Res, $Val extends SettingsModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SettingsModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -89,6 +95,8 @@ class __$$SettingsModelImplCopyWithImpl<$Res>
       _$SettingsModelImpl _value, $Res Function(_$SettingsModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SettingsModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -134,7 +142,7 @@ class _$SettingsModelImpl implements _SettingsModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SettingsModelImpl &&
@@ -144,12 +152,14 @@ class _$SettingsModelImpl implements _SettingsModel {
                 .equals(other.komikReadImageMode, komikReadImageMode));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, anoboyAppBarVideo,
       const DeepCollectionEquality().hash(komikReadImageMode));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SettingsModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SettingsModelImplCopyWith<_$SettingsModelImpl> get copyWith =>
@@ -171,16 +181,18 @@ abstract class _SettingsModel implements SettingsModel {
   factory _SettingsModel.fromJson(Map<String, dynamic> json) =
       _$SettingsModelImpl.fromJson;
 
-  @override
-
   /// Anoboy App Bar Video Playback.
-  bool get anoboyAppBarVideo;
   @override
+  bool get anoboyAppBarVideo;
 
   /// Komik Read Image Mode
-  dynamic get komikReadImageMode;
   @override
-  @JsonKey(ignore: true)
+  dynamic get komikReadImageMode;
+
+  /// Create a copy of SettingsModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SettingsModelImplCopyWith<_$SettingsModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

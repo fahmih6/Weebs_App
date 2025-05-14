@@ -12,7 +12,7 @@ part of 'anoboy_detail_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 AnoboyDetailModel _$AnoboyDetailModelFromJson(Map<String, dynamic> json) {
   return _AnoboyDetailModel.fromJson(json);
@@ -54,8 +54,12 @@ mixin _$AnoboyDetailModel {
   List<AnoboyLinksItemModel> get videoMirrorDirectLinks =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this AnoboyDetailModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AnoboyDetailModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AnoboyDetailModelCopyWith<AnoboyDetailModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -92,6 +96,8 @@ class _$AnoboyDetailModelCopyWithImpl<$Res, $Val extends AnoboyDetailModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AnoboyDetailModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -173,6 +179,8 @@ class __$$AnoboyDetailModelImplCopyWithImpl<$Res>
       $Res Function(_$AnoboyDetailModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AnoboyDetailModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -334,7 +342,7 @@ class _$AnoboyDetailModelImpl implements _AnoboyDetailModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AnoboyDetailModelImpl &&
@@ -355,7 +363,7 @@ class _$AnoboyDetailModelImpl implements _AnoboyDetailModel {
                 other._videoMirrorDirectLinks, _videoMirrorDirectLinks));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -368,7 +376,9 @@ class _$AnoboyDetailModelImpl implements _AnoboyDetailModel {
       const DeepCollectionEquality().hash(_videoEmbedMirrorLinks),
       const DeepCollectionEquality().hash(_videoMirrorDirectLinks));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AnoboyDetailModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AnoboyDetailModelImplCopyWith<_$AnoboyDetailModelImpl> get copyWith =>
@@ -403,45 +413,47 @@ abstract class _AnoboyDetailModel implements AnoboyDetailModel {
   factory _AnoboyDetailModel.fromJson(Map<String, dynamic> json) =
       _$AnoboyDetailModelImpl.fromJson;
 
-  @override
-
   /// Anime Name
-  String get name;
   @override
+  String get name;
 
   /// Anime Synopsis
-  String get synopsis;
   @override
+  String get synopsis;
 
   /// Thumbnail
-  String get thumbnail;
   @override
+  String get thumbnail;
 
   /// Episode Navigation if any
+  @override
   @JsonKey(name: "episode_navigation")
   List<AnoboyEpisodeNavigationItemModel> get episodeNavigations;
-  @override
 
   /// Video Embed Links
+  @override
   @JsonKey(name: "video_embed_links")
   List<AnoboyLinksItemModel> get videoEmbedLinks;
-  @override
 
   /// Video Direct Links
+  @override
   @JsonKey(name: "video_direct_links")
   List<AnoboyLinksItemModel> get videoDirectLinks;
-  @override
 
   /// Video Embed Mirror Links
+  @override
   @JsonKey(name: "video_mirrors")
   List<AnoboyLinksItemModel> get videoEmbedMirrorLinks;
-  @override
 
   /// Video Mirrors Direct Link
+  @override
   @JsonKey(name: 'video_mirrors_direct_link')
   List<AnoboyLinksItemModel> get videoMirrorDirectLinks;
+
+  /// Create a copy of AnoboyDetailModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AnoboyDetailModelImplCopyWith<_$AnoboyDetailModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -458,8 +470,12 @@ mixin _$AnoboyEpisodeNavigationItemModel {
   @JsonKey(name: "nav_name")
   String get navName => throw _privateConstructorUsedError;
 
+  /// Serializes this AnoboyEpisodeNavigationItemModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AnoboyEpisodeNavigationItemModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AnoboyEpisodeNavigationItemModelCopyWith<AnoboyEpisodeNavigationItemModel>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -488,6 +504,8 @@ class _$AnoboyEpisodeNavigationItemModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AnoboyEpisodeNavigationItemModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -531,6 +549,8 @@ class __$$AnoboyEpisodeNavigationItemModelImplCopyWithImpl<$Res>
       $Res Function(_$AnoboyEpisodeNavigationItemModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AnoboyEpisodeNavigationItemModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -575,7 +595,7 @@ class _$AnoboyEpisodeNavigationItemModelImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AnoboyEpisodeNavigationItemModelImpl &&
@@ -583,11 +603,13 @@ class _$AnoboyEpisodeNavigationItemModelImpl
             (identical(other.navName, navName) || other.navName == navName));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, navLink, navName);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AnoboyEpisodeNavigationItemModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AnoboyEpisodeNavigationItemModelImplCopyWith<
@@ -620,8 +642,11 @@ abstract class _AnoboyEpisodeNavigationItemModel
   @override
   @JsonKey(name: "nav_name")
   String get navName;
+
+  /// Create a copy of AnoboyEpisodeNavigationItemModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AnoboyEpisodeNavigationItemModelImplCopyWith<
           _$AnoboyEpisodeNavigationItemModelImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -637,8 +662,12 @@ mixin _$AnoboyLinksItemModel {
   String get link => throw _privateConstructorUsedError;
   Map<String, dynamic>? get headers => throw _privateConstructorUsedError;
 
+  /// Serializes this AnoboyLinksItemModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AnoboyLinksItemModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AnoboyLinksItemModelCopyWith<AnoboyLinksItemModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -663,6 +692,8 @@ class _$AnoboyLinksItemModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AnoboyLinksItemModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -706,6 +737,8 @@ class __$$AnoboyLinksItemModelImplCopyWithImpl<$Res>
       $Res Function(_$AnoboyLinksItemModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AnoboyLinksItemModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -764,7 +797,7 @@ class _$AnoboyLinksItemModelImpl implements _AnoboyLinksItemModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AnoboyLinksItemModelImpl &&
@@ -774,12 +807,14 @@ class _$AnoboyLinksItemModelImpl implements _AnoboyLinksItemModel {
             const DeepCollectionEquality().equals(other._headers, _headers));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, resolution, link,
       const DeepCollectionEquality().hash(_headers));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AnoboyLinksItemModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AnoboyLinksItemModelImplCopyWith<_$AnoboyLinksItemModelImpl>
@@ -810,8 +845,11 @@ abstract class _AnoboyLinksItemModel implements AnoboyLinksItemModel {
   String get link;
   @override
   Map<String, dynamic>? get headers;
+
+  /// Create a copy of AnoboyLinksItemModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AnoboyLinksItemModelImplCopyWith<_$AnoboyLinksItemModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -12,7 +12,7 @@ part of 'anoboy_fetch_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$AnoboyFetchEvent {
@@ -72,6 +72,9 @@ class _$AnoboyFetchEventCopyWithImpl<$Res, $Val extends AnoboyFetchEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of AnoboyFetchEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -88,6 +91,9 @@ class __$$StartedImplCopyWithImpl<$Res>
   __$$StartedImplCopyWithImpl(
       _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AnoboyFetchEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -101,7 +107,7 @@ class _$StartedImpl implements _Started {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$StartedImpl);
   }
@@ -193,6 +199,8 @@ class __$$LoadMoreImplCopyWithImpl<$Res>
       _$LoadMoreImpl _value, $Res Function(_$LoadMoreImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AnoboyFetchEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -221,7 +229,7 @@ class _$LoadMoreImpl implements _LoadMore {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadMoreImpl &&
@@ -232,7 +240,9 @@ class _$LoadMoreImpl implements _LoadMore {
   @override
   int get hashCode => Object.hash(runtimeType, nextLink);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AnoboyFetchEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$LoadMoreImplCopyWith<_$LoadMoreImpl> get copyWith =>
@@ -305,7 +315,10 @@ abstract class _LoadMore implements AnoboyFetchEvent {
   const factory _LoadMore({required final String nextLink}) = _$LoadMoreImpl;
 
   String get nextLink;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AnoboyFetchEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LoadMoreImplCopyWith<_$LoadMoreImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -380,6 +393,9 @@ class _$AnoboyFetchStateCopyWithImpl<$Res, $Val extends AnoboyFetchState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of AnoboyFetchState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -396,6 +412,9 @@ class __$$InitialImplCopyWithImpl<$Res>
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AnoboyFetchState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -409,7 +428,7 @@ class _$InitialImpl implements _Initial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
@@ -515,6 +534,8 @@ class __$$LoadingImplCopyWithImpl<$Res>
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AnoboyFetchState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -528,6 +549,8 @@ class __$$LoadingImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of AnoboyFetchState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AnoboyListModelCopyWith<$Res> get animeList {
@@ -551,7 +574,7 @@ class _$LoadingImpl implements _Loading {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadingImpl &&
@@ -562,7 +585,9 @@ class _$LoadingImpl implements _Loading {
   @override
   int get hashCode => Object.hash(runtimeType, animeList);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AnoboyFetchState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$LoadingImplCopyWith<_$LoadingImpl> get copyWith =>
@@ -648,7 +673,10 @@ abstract class _Loading implements AnoboyFetchState {
       _$LoadingImpl;
 
   AnoboyListModel get animeList;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AnoboyFetchState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LoadingImplCopyWith<_$LoadingImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -672,6 +700,8 @@ class __$$CompletedImplCopyWithImpl<$Res>
       _$CompletedImpl _value, $Res Function(_$CompletedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AnoboyFetchState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -695,6 +725,8 @@ class __$$CompletedImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of AnoboyFetchState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AnoboyListModelCopyWith<$Res> get animeList {
@@ -725,7 +757,7 @@ class _$CompletedImpl implements _Completed {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CompletedImpl &&
@@ -740,7 +772,9 @@ class _$CompletedImpl implements _Completed {
   @override
   int get hashCode => Object.hash(runtimeType, animeList, isLoadMore, errorMsg);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AnoboyFetchState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CompletedImplCopyWith<_$CompletedImpl> get copyWith =>
@@ -830,7 +864,10 @@ abstract class _Completed implements AnoboyFetchState {
   AnoboyListModel get animeList;
   bool get isLoadMore;
   String get errorMsg;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AnoboyFetchState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CompletedImplCopyWith<_$CompletedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -12,7 +12,7 @@ part of 'komiku_read_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$KomikuReadEvent {
@@ -54,7 +54,9 @@ mixin _$KomikuReadEvent {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of KomikuReadEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $KomikuReadEventCopyWith<KomikuReadEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -80,6 +82,8 @@ class _$KomikuReadEventCopyWithImpl<$Res, $Val extends KomikuReadEvent>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of KomikuReadEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -98,6 +102,8 @@ class _$KomikuReadEventCopyWithImpl<$Res, $Val extends KomikuReadEvent>
     ) as $Val);
   }
 
+  /// Create a copy of KomikuReadEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $KomikuDetailModelCopyWith<$Res> get komikuData {
@@ -129,6 +135,8 @@ class __$$MarkAsReadImplCopyWithImpl<$Res>
       _$MarkAsReadImpl _value, $Res Function(_$MarkAsReadImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of KomikuReadEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -165,7 +173,7 @@ class _$MarkAsReadImpl implements _MarkAsRead {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MarkAsReadImpl &&
@@ -178,7 +186,9 @@ class _$MarkAsReadImpl implements _MarkAsRead {
   @override
   int get hashCode => Object.hash(runtimeType, komikuData, chapterParam);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of KomikuReadEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MarkAsReadImplCopyWith<_$MarkAsReadImpl> get copyWith =>
@@ -253,8 +263,11 @@ abstract class _MarkAsRead implements KomikuReadEvent {
   KomikuDetailModel get komikuData;
   @override
   String get chapterParam;
+
+  /// Create a copy of KomikuReadEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MarkAsReadImplCopyWith<_$MarkAsReadImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -295,7 +308,9 @@ mixin _$KomikuReadState {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of KomikuReadState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $KomikuReadStateCopyWith<KomikuReadState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -319,6 +334,8 @@ class _$KomikuReadStateCopyWithImpl<$Res, $Val extends KomikuReadState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of KomikuReadState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -352,6 +369,8 @@ class __$$StateImplCopyWithImpl<$Res>
       _$StateImpl _value, $Res Function(_$StateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of KomikuReadState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -387,7 +406,7 @@ class _$StateImpl implements _State {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$StateImpl &&
@@ -399,7 +418,9 @@ class _$StateImpl implements _State {
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_komikuList));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of KomikuReadState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$StateImplCopyWith<_$StateImpl> get copyWith =>
@@ -468,8 +489,11 @@ abstract class _State implements KomikuReadState {
 
   @override
   List<KomikuDetailModel> get komikuList;
+
+  /// Create a copy of KomikuReadState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StateImplCopyWith<_$StateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

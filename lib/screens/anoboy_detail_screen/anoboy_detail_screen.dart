@@ -1,8 +1,6 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weebs_app/extensions/platform_extensions.dart';
 import 'package:weebs_app/helpers/get_it_helper/get_it_helper.dart';
 import 'package:weebs_app/logic/anoboy_detail_fetch_bloc/anoboy_detail_fetch_bloc.dart';
 import 'package:weebs_app/logic/video_player_cubit/video_player_cubit.dart';
@@ -63,21 +61,11 @@ class _AnoboyDetailScreenState extends State<AnoboyDetailScreen> {
                     AnimatedSwitcher(
                       duration: const Duration(milliseconds: 250),
                       child: value.anoboyDetailModel.videoDirectLinks.isNotEmpty
-                          ? Align(
+                          ? const Align(
                               alignment: Alignment.topCenter,
-                              child: OrientationBuilder(
-                                builder: (context, orientation) {
-                                  if (orientation == Orientation.portrait) {
-                                    return kIsWeb || PlatformExtension.isDesktop
-                                        ? const VideoPlayerWidget()
-                                        : const AspectRatio(
-                                            aspectRatio: 16 / 9,
-                                            child: VideoPlayerWidget(),
-                                          );
-                                  } else {
-                                    return const VideoPlayerWidget();
-                                  }
-                                },
+                              child: AspectRatio(
+                                aspectRatio: 16 / 9,
+                                child: VideoPlayerWidget(),
                               ),
                             )
                           : AppBar(

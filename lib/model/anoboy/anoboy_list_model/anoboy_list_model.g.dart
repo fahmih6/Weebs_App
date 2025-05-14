@@ -9,7 +9,7 @@ part of 'anoboy_list_model.dart';
 _$AnoboyListModelImpl _$$AnoboyListModelImplFromJson(
         Map<String, dynamic> json) =>
     _$AnoboyListModelImpl(
-      maxPage: json['max_page'] as int? ?? 0,
+      maxPage: (json['max_page'] as num?)?.toInt() ?? 0,
       nextPage: json['next_page'] as String?,
       prevPage: json['prev_page'] as String?,
       data: (json['data'] as List<dynamic>?)

@@ -12,7 +12,7 @@ part of 'anoboy_list_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 AnoboyListModel _$AnoboyListModelFromJson(Map<String, dynamic> json) {
   return _AnoboyListModel.fromJson(json);
@@ -35,8 +35,12 @@ mixin _$AnoboyListModel {
   /// Anime List Data
   List<AnoboyListItemModel> get data => throw _privateConstructorUsedError;
 
+  /// Serializes this AnoboyListModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AnoboyListModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AnoboyListModelCopyWith<AnoboyListModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -64,6 +68,8 @@ class _$AnoboyListModelCopyWithImpl<$Res, $Val extends AnoboyListModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AnoboyListModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -116,6 +122,8 @@ class __$$AnoboyListModelImplCopyWithImpl<$Res>
       _$AnoboyListModelImpl _value, $Res Function(_$AnoboyListModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AnoboyListModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -191,7 +199,7 @@ class _$AnoboyListModelImpl implements _AnoboyListModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AnoboyListModelImpl &&
@@ -203,12 +211,14 @@ class _$AnoboyListModelImpl implements _AnoboyListModel {
             const DeepCollectionEquality().equals(other._data, _data));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, maxPage, nextPage, prevPage,
       const DeepCollectionEquality().hash(_data));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AnoboyListModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AnoboyListModelImplCopyWith<_$AnoboyListModelImpl> get copyWith =>
@@ -233,27 +243,29 @@ abstract class _AnoboyListModel implements AnoboyListModel {
   factory _AnoboyListModel.fromJson(Map<String, dynamic> json) =
       _$AnoboyListModelImpl.fromJson;
 
-  @override
-
   /// Max Page of Anoboy Home Screen or Search
+  @override
   @JsonKey(name: "max_page")
   int get maxPage;
-  @override
 
   /// Next Page Link
+  @override
   @JsonKey(name: "next_page")
   String? get nextPage;
-  @override
 
   /// Previous Page Link
+  @override
   @JsonKey(name: "prev_page")
   String? get prevPage;
-  @override
 
   /// Anime List Data
-  List<AnoboyListItemModel> get data;
   @override
-  @JsonKey(ignore: true)
+  List<AnoboyListItemModel> get data;
+
+  /// Create a copy of AnoboyListModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AnoboyListModelImplCopyWith<_$AnoboyListModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -281,8 +293,12 @@ mixin _$AnoboyListItemModel {
   @JsonKey(name: 'detail_url')
   String get detailUrl => throw _privateConstructorUsedError;
 
+  /// Serializes this AnoboyListItemModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AnoboyListItemModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AnoboyListItemModelCopyWith<AnoboyListItemModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -311,6 +327,8 @@ class _$AnoboyListItemModelCopyWithImpl<$Res, $Val extends AnoboyListItemModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AnoboyListItemModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -369,6 +387,8 @@ class __$$AnoboyListItemModelImplCopyWithImpl<$Res>
       $Res Function(_$AnoboyListItemModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AnoboyListItemModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -447,7 +467,7 @@ class _$AnoboyListItemModelImpl implements _AnoboyListItemModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AnoboyListItemModelImpl &&
@@ -461,12 +481,14 @@ class _$AnoboyListItemModelImpl implements _AnoboyListItemModel {
                 other.detailUrl == detailUrl));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, title, param, thumbnail, uploadTime, detailUrl);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AnoboyListItemModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AnoboyListItemModelImplCopyWith<_$AnoboyListItemModelImpl> get copyWith =>
@@ -493,30 +515,32 @@ abstract class _AnoboyListItemModel implements AnoboyListItemModel {
   factory _AnoboyListItemModel.fromJson(Map<String, dynamic> json) =
       _$AnoboyListItemModelImpl.fromJson;
 
-  @override
-
   /// Anime Title
-  String get title;
   @override
+  String get title;
 
   /// Anime parameter used for get anime detail from server
-  String get param;
   @override
+  String get param;
 
   /// Anime thumbnail
-  String get thumbnail;
   @override
+  String get thumbnail;
 
   /// Upload time from anoboy
+  @override
   @JsonKey(name: 'upload_time')
   String get uploadTime;
-  @override
 
   /// Direct link to get anime detail (Video Embed Link or Video Direct Link if we are using API v2)
+  @override
   @JsonKey(name: 'detail_url')
   String get detailUrl;
+
+  /// Create a copy of AnoboyListItemModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AnoboyListItemModelImplCopyWith<_$AnoboyListItemModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

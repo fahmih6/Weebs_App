@@ -21,7 +21,7 @@ class KomikReadScreenContent extends StatelessWidget {
           children: [
             /// Komik Viewer
             SizedBox(
-              height: MediaQuery.of(context).size.height,
+              height: MediaQuery.sizeOf(context).height,
               child: KomikReadScreenContentImageListView(
                 chapterList: chapterList,
               ),

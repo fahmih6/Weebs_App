@@ -110,6 +110,6 @@ class KomikListScreenListView extends StatelessWidget {
 
   /// Item Container Width
   double getItemContainerWidth(BuildContext context) {
-    return HelperFunction.isPortrait(context) ? 119 : 142;
+    return HelperFunction.isPortrait(context) ? 119.w : 142.w;
   }
 }
