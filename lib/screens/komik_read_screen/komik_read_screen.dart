@@ -1,7 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weebs_app/logic/komiku_chapter_fetch_bloc/komiku_chapter_fetch_bloc.dart';
+import 'package:weebs_app/enum/manga_provider.dart';
+import 'package:weebs_app/logic/komik_chapter_fetch_bloc/komik_chapter_fetch_bloc.dart';
 import 'package:weebs_app/widgets/error_widget/error_screen.dart';
 
 import '../../routes/route_names.dart';
@@ -11,9 +12,11 @@ import 'widgets/komik_read_screen_content.dart';
 @RoutePage(name: RouteNames.komikReadScreen)
 class KomikReadScreen extends StatefulWidget {
   final String param;
+  final MangaProvider provider;
   const KomikReadScreen({
     super.key,
     @PathParam('param') required this.param,
+    this.provider = MangaProvider.komiku,
   });
 
   @override
@@ -26,9 +29,12 @@ class _KomikReadScreenState extends State<KomikReadScreen> {
     super.initState();
 
     /// Fetch the images
-    context
-        .read<KomikuChapterFetchBloc>()
-        .add(KomikuChapterFetchEvent.started(param: widget.param));
+    context.read<KomikChapterFetchBloc>().add(
+      KomikChapterFetchEvent.started(
+        param: widget.param,
+        provider: widget.provider,
+      ),
+    );
   }
 
   @override
@@ -36,16 +42,12 @@ class _KomikReadScreenState extends State<KomikReadScreen> {
     return Scaffold(
       body: SafeArea(
         child: SizedBox(
-          child: BlocBuilder<KomikuChapterFetchBloc, KomikuChapterFetchState>(
+          child: BlocBuilder<KomikChapterFetchBloc, KomikChapterFetchState>(
             builder: (context, state) {
               return state.maybeMap(
                 /// Loading
                 loading: (value) {
-                  return const SizedBox(
-                    child: Center(
-                      child: LoadingWidget(),
-                    ),
-                  );
+                  return const SizedBox(child: Center(child: LoadingWidget()));
                 },
 
                 /// Completed
@@ -56,17 +58,14 @@ class _KomikReadScreenState extends State<KomikReadScreen> {
                       chapterList: value.chapterData,
                     );
                   }
-
                   /// Failed
                   else {
                     return ErrorScreen(
                       errorMesasge: value.errorMessage,
                       onTap: () {
-                        context.read<KomikuChapterFetchBloc>().add(
-                              KomikuChapterFetchEvent.started(
-                                param: widget.param,
-                              ),
-                            );
+                        context.read<KomikChapterFetchBloc>().add(
+                          KomikChapterFetchEvent.started(param: widget.param),
+                        );
                       },
                     );
                   }
@@ -82,24 +81,20 @@ class _KomikReadScreenState extends State<KomikReadScreen> {
                           padding: EdgeInsets.only(bottom: 8.0),
                           child: Text(
                             "Error Loading Chapters",
-                            style: TextStyle(
-                              fontSize: 16,
-                            ),
+                            style: TextStyle(fontSize: 16),
                           ),
                         ),
                         ElevatedButton(
                           onPressed: () {
-                            context.read<KomikuChapterFetchBloc>().add(
-                                  KomikuChapterFetchEvent.started(
-                                    param: widget.param,
-                                  ),
-                                );
+                            context.read<KomikChapterFetchBloc>().add(
+                              KomikChapterFetchEvent.started(
+                                param: widget.param,
+                              ),
+                            );
                           },
                           child: const Text(
                             "Reload",
-                            style: TextStyle(
-                              fontSize: 16,
-                            ),
+                            style: TextStyle(fontSize: 16),
                           ),
                         ),
                       ],

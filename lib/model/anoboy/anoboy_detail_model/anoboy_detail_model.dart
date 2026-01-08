@@ -4,7 +4,7 @@ part 'anoboy_detail_model.freezed.dart';
 part 'anoboy_detail_model.g.dart';
 
 @freezed
-class AnoboyDetailModel with _$AnoboyDetailModel {
+sealed class AnoboyDetailModel with _$AnoboyDetailModel {
   const factory AnoboyDetailModel({
     /// Anime Name
     @Default("") String name,
@@ -46,19 +46,20 @@ class AnoboyDetailModel with _$AnoboyDetailModel {
 }
 
 @freezed
-class AnoboyEpisodeNavigationItemModel with _$AnoboyEpisodeNavigationItemModel {
+sealed class AnoboyEpisodeNavigationItemModel
+    with _$AnoboyEpisodeNavigationItemModel {
   const factory AnoboyEpisodeNavigationItemModel({
     @JsonKey(name: "nav_link") @Default("") String navLink,
     @JsonKey(name: "nav_name") @Default("") String navName,
   }) = _AnoboyEpisodeNavigationItemModel;
 
   factory AnoboyEpisodeNavigationItemModel.fromJson(
-          Map<String, dynamic> json) =>
-      _$AnoboyEpisodeNavigationItemModelFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$AnoboyEpisodeNavigationItemModelFromJson(json);
 }
 
 @freezed
-class AnoboyLinksItemModel with _$AnoboyLinksItemModel {
+sealed class AnoboyLinksItemModel with _$AnoboyLinksItemModel {
   const factory AnoboyLinksItemModel({
     @Default("") String resolution,
     @Default("") String link,

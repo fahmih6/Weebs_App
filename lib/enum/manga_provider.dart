@@ -1,0 +1,1 @@
+enum MangaProvider { komiku, komikcast }

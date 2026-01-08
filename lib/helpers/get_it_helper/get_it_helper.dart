@@ -8,17 +8,18 @@ import 'package:weebs_app/logic/anoboy_fetch_bloc/anoboy_fetch_bloc.dart';
 import 'package:weebs_app/logic/appbar_video_cubit/appbar_video_cubit.dart';
 import 'package:weebs_app/logic/favourites_bloc/favourites_bloc.dart';
 import 'package:weebs_app/logic/komik_read_appbar_cubit/komik_read_appbar_cubit.dart';
-import 'package:weebs_app/logic/komiku_detail_fetch_bloc/komiku_detail_fetch_bloc.dart';
-import 'package:weebs_app/logic/komiku_list_komik_fetch_bloc/komiku_list_komik_fetch_bloc.dart';
+import 'package:weebs_app/logic/komik_detail_fetch_bloc/komik_detail_fetch_bloc.dart';
+import 'package:weebs_app/logic/komik_list_fetch_bloc/komik_list_fetch_bloc.dart';
 import 'package:weebs_app/logic/search_bloc/search_bloc.dart';
 import 'package:weebs_app/logic/video_player_cubit/video_player_cubit.dart';
 import 'package:weebs_app/services/repositories/anoboy_repository.dart';
 import 'package:weebs_app/services/repositories/blogger_repository.dart';
 import 'package:weebs_app/services/repositories/komiku_repository.dart';
+import 'package:weebs_app/services/repositories/komikcast_repository.dart';
 
 import '../../logic/anoboy_detail_fetch_bloc/anoboy_detail_fetch_bloc.dart';
-import '../../logic/komiku_chapter_fetch_bloc/komiku_chapter_fetch_bloc.dart';
-import '../../logic/komiku_read_bloc/komiku_read_bloc.dart';
+import '../../logic/komik_chapter_fetch_bloc/komik_chapter_fetch_bloc.dart';
+import '../../logic/komik_read_bloc/komik_read_bloc.dart';
 import '../../logic/settings_bloc/settings_bloc.dart';
 
 /// Get It
@@ -52,6 +53,9 @@ class GetItHelper {
     /// Komiku Repository
     getIt.registerFactory<KomikuRepository>(() => KomikuRepository());
 
+    /// Komikcast Repository
+    getIt.registerFactory<KomikcastRepository>(() => KomikcastRepository());
+
     /// Blogger Repository
     getIt.registerFactory<BloggerRepository>(() => BloggerRepository());
   }
@@ -61,20 +65,20 @@ class GetItHelper {
     /// Search Bloc
     getIt.registerLazySingleton(() => SearchBloc());
 
-    /// Komiku List Komik Fetch Bloc
-    getIt.registerLazySingleton(() => KomikuListKomikFetchBloc());
+    /// Komik List Fetch Bloc
+    getIt.registerFactory(() => KomikListFetchBloc());
 
     /// Komik Detail Bloc
-    getIt.registerLazySingleton(() => KomikuDetailFetchBloc());
+    getIt.registerLazySingleton(() => KomikDetailFetchBloc());
 
     /// Favourites Bloc
     getIt.registerLazySingleton(() => FavouritesBloc());
 
     /// Komik Chapter Bloc
-    getIt.registerLazySingleton(() => KomikuChapterFetchBloc());
+    getIt.registerLazySingleton(() => KomikChapterFetchBloc());
 
     /// Komik Read Bloc
-    getIt.registerLazySingleton(() => KomikuReadBloc());
+    getIt.registerLazySingleton(() => KomikReadBloc());
 
     /// Anoboy Fetch Bloc
     getIt.registerLazySingleton(() => AnoboyFetchBloc());
@@ -127,9 +131,7 @@ class GetItHelper {
   static void helperDependencies() {
     /// Debouncer
     getIt.registerLazySingleton(
-      () => Debouncer(
-        duration: const Duration(seconds: 1),
-      ),
+      () => Debouncer(duration: const Duration(seconds: 1)),
     );
   }
 }

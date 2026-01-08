@@ -6,12 +6,9 @@ part of 'failure.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$FailureImpl _$$FailureImplFromJson(Map<String, dynamic> json) =>
-    _$FailureImpl(
-      message: json['message'] as String,
-    );
+_Failure _$FailureFromJson(Map<String, dynamic> json) =>
+    _Failure(message: json['message'] as String);
 
-Map<String, dynamic> _$$FailureImplToJson(_$FailureImpl instance) =>
-    <String, dynamic>{
-      'message': instance.message,
-    };
+Map<String, dynamic> _$FailureToJson(_Failure instance) => <String, dynamic>{
+  'message': instance.message,
+};

@@ -3,12 +3,18 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:weebs_app/enum/manga_provider.dart';
 import 'package:weebs_app/model/komiku/komiku_list_model/komiku_list_model.dart';
 import 'package:weebs_app/routes/app_router.dart';
 
 class KomikListScreenAppBar extends StatelessWidget {
   final KomikuListModel komikuListData;
-  const KomikListScreenAppBar({super.key, required this.komikuListData});
+  final MangaProvider provider;
+  const KomikListScreenAppBar({
+    super.key,
+    required this.komikuListData,
+    this.provider = MangaProvider.komiku,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +34,7 @@ class KomikListScreenAppBar extends StatelessWidget {
               context.pushRoute(
                 KomikDetailRoute(
                   param: komikuListData.data.firstOrNull?.param ?? '',
+                  provider: provider,
                 ),
               );
             },
@@ -55,6 +62,7 @@ class KomikListScreenAppBar extends StatelessWidget {
                 context.pushRoute(
                   KomikDetailRoute(
                     param: komikuListData.data.firstOrNull?.param ?? '',
+                    provider: provider,
                   ),
                 );
               },

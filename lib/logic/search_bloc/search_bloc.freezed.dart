@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,722 +9,632 @@ part of 'search_bloc.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
 /// @nodoc
 mixin _$SearchEvent {
-  String get currentRouteName => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String currentRouteName, String keyword) started,
-    required TResult Function(String currentRouteName) loadMore,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String currentRouteName, String keyword)? started,
-    TResult? Function(String currentRouteName)? loadMore,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String currentRouteName, String keyword)? started,
-    TResult Function(String currentRouteName)? loadMore,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_LoadMore value) loadMore,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_LoadMore value)? loadMore,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_LoadMore value)? loadMore,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
 
-  /// Create a copy of SearchEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $SearchEventCopyWith<SearchEvent> get copyWith =>
-      throw _privateConstructorUsedError;
+ String get currentRouteName; MangaProvider get provider;
+/// Create a copy of SearchEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$SearchEventCopyWith<SearchEvent> get copyWith => _$SearchEventCopyWithImpl<SearchEvent>(this as SearchEvent, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SearchEvent&&(identical(other.currentRouteName, currentRouteName) || other.currentRouteName == currentRouteName)&&(identical(other.provider, provider) || other.provider == provider));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,currentRouteName,provider);
+
+@override
+String toString() {
+  return 'SearchEvent(currentRouteName: $currentRouteName, provider: $provider)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $SearchEventCopyWith<$Res> {
-  factory $SearchEventCopyWith(
-          SearchEvent value, $Res Function(SearchEvent) then) =
-      _$SearchEventCopyWithImpl<$Res, SearchEvent>;
-  @useResult
-  $Res call({String currentRouteName});
-}
+abstract mixin class $SearchEventCopyWith<$Res>  {
+  factory $SearchEventCopyWith(SearchEvent value, $Res Function(SearchEvent) _then) = _$SearchEventCopyWithImpl;
+@useResult
+$Res call({
+ String currentRouteName, MangaProvider provider
+});
 
+
+
+
+}
 /// @nodoc
-class _$SearchEventCopyWithImpl<$Res, $Val extends SearchEvent>
+class _$SearchEventCopyWithImpl<$Res>
     implements $SearchEventCopyWith<$Res> {
-  _$SearchEventCopyWithImpl(this._value, this._then);
+  _$SearchEventCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final SearchEvent _self;
+  final $Res Function(SearchEvent) _then;
 
-  /// Create a copy of SearchEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? currentRouteName = null,
-  }) {
-    return _then(_value.copyWith(
-      currentRouteName: null == currentRouteName
-          ? _value.currentRouteName
-          : currentRouteName // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
+/// Create a copy of SearchEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? currentRouteName = null,Object? provider = null,}) {
+  return _then(_self.copyWith(
+currentRouteName: null == currentRouteName ? _self.currentRouteName : currentRouteName // ignore: cast_nullable_to_non_nullable
+as String,provider: null == provider ? _self.provider : provider // ignore: cast_nullable_to_non_nullable
+as MangaProvider,
+  ));
 }
 
-/// @nodoc
-abstract class _$$StartedImplCopyWith<$Res>
-    implements $SearchEventCopyWith<$Res> {
-  factory _$$StartedImplCopyWith(
-          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
-      __$$StartedImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String currentRouteName, String keyword});
 }
 
-/// @nodoc
-class __$$StartedImplCopyWithImpl<$Res>
-    extends _$SearchEventCopyWithImpl<$Res, _$StartedImpl>
-    implements _$$StartedImplCopyWith<$Res> {
-  __$$StartedImplCopyWithImpl(
-      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of SearchEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? currentRouteName = null,
-    Object? keyword = null,
-  }) {
-    return _then(_$StartedImpl(
-      currentRouteName: null == currentRouteName
-          ? _value.currentRouteName
-          : currentRouteName // ignore: cast_nullable_to_non_nullable
-              as String,
-      keyword: null == keyword
-          ? _value.keyword
-          : keyword // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
+/// Adds pattern-matching-related methods to [SearchEvent].
+extension SearchEventPatterns on SearchEvent {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Started value)?  started,TResult Function( _LoadMore value)?  loadMore,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _Started() when started != null:
+return started(_that);case _LoadMore() when loadMore != null:
+return loadMore(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Started value)  started,required TResult Function( _LoadMore value)  loadMore,}){
+final _that = this;
+switch (_that) {
+case _Started():
+return started(_that);case _LoadMore():
+return loadMore(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Started value)?  started,TResult? Function( _LoadMore value)?  loadMore,}){
+final _that = this;
+switch (_that) {
+case _Started() when started != null:
+return started(_that);case _LoadMore() when loadMore != null:
+return loadMore(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String currentRouteName,  String keyword,  MangaProvider provider)?  started,TResult Function( String currentRouteName,  MangaProvider provider)?  loadMore,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _Started() when started != null:
+return started(_that.currentRouteName,_that.keyword,_that.provider);case _LoadMore() when loadMore != null:
+return loadMore(_that.currentRouteName,_that.provider);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String currentRouteName,  String keyword,  MangaProvider provider)  started,required TResult Function( String currentRouteName,  MangaProvider provider)  loadMore,}) {final _that = this;
+switch (_that) {
+case _Started():
+return started(_that.currentRouteName,_that.keyword,_that.provider);case _LoadMore():
+return loadMore(_that.currentRouteName,_that.provider);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String currentRouteName,  String keyword,  MangaProvider provider)?  started,TResult? Function( String currentRouteName,  MangaProvider provider)?  loadMore,}) {final _that = this;
+switch (_that) {
+case _Started() when started != null:
+return started(_that.currentRouteName,_that.keyword,_that.provider);case _LoadMore() when loadMore != null:
+return loadMore(_that.currentRouteName,_that.provider);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-
-class _$StartedImpl implements _Started {
-  const _$StartedImpl({required this.currentRouteName, required this.keyword});
-
-  @override
-  final String currentRouteName;
-  @override
-  final String keyword;
-
-  @override
-  String toString() {
-    return 'SearchEvent.started(currentRouteName: $currentRouteName, keyword: $keyword)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$StartedImpl &&
-            (identical(other.currentRouteName, currentRouteName) ||
-                other.currentRouteName == currentRouteName) &&
-            (identical(other.keyword, keyword) || other.keyword == keyword));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, currentRouteName, keyword);
-
-  /// Create a copy of SearchEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$StartedImplCopyWith<_$StartedImpl> get copyWith =>
-      __$$StartedImplCopyWithImpl<_$StartedImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String currentRouteName, String keyword) started,
-    required TResult Function(String currentRouteName) loadMore,
-  }) {
-    return started(currentRouteName, keyword);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String currentRouteName, String keyword)? started,
-    TResult? Function(String currentRouteName)? loadMore,
-  }) {
-    return started?.call(currentRouteName, keyword);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String currentRouteName, String keyword)? started,
-    TResult Function(String currentRouteName)? loadMore,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started(currentRouteName, keyword);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_LoadMore value) loadMore,
-  }) {
-    return started(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_LoadMore value)? loadMore,
-  }) {
-    return started?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_LoadMore value)? loadMore,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Started implements SearchEvent {
-  const factory _Started(
-      {required final String currentRouteName,
-      required final String keyword}) = _$StartedImpl;
-
-  @override
-  String get currentRouteName;
-  String get keyword;
-
-  /// Create a copy of SearchEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$StartedImplCopyWith<_$StartedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$LoadMoreImplCopyWith<$Res>
-    implements $SearchEventCopyWith<$Res> {
-  factory _$$LoadMoreImplCopyWith(
-          _$LoadMoreImpl value, $Res Function(_$LoadMoreImpl) then) =
-      __$$LoadMoreImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String currentRouteName});
-}
-
-/// @nodoc
-class __$$LoadMoreImplCopyWithImpl<$Res>
-    extends _$SearchEventCopyWithImpl<$Res, _$LoadMoreImpl>
-    implements _$$LoadMoreImplCopyWith<$Res> {
-  __$$LoadMoreImplCopyWithImpl(
-      _$LoadMoreImpl _value, $Res Function(_$LoadMoreImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of SearchEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? currentRouteName = null,
-  }) {
-    return _then(_$LoadMoreImpl(
-      currentRouteName: null == currentRouteName
-          ? _value.currentRouteName
-          : currentRouteName // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$LoadMoreImpl implements _LoadMore {
-  const _$LoadMoreImpl({required this.currentRouteName});
 
-  @override
-  final String currentRouteName;
+class _Started implements SearchEvent {
+  const _Started({required this.currentRouteName, required this.keyword, this.provider = MangaProvider.komiku});
+  
 
-  @override
-  String toString() {
-    return 'SearchEvent.loadMore(currentRouteName: $currentRouteName)';
-  }
+@override final  String currentRouteName;
+ final  String keyword;
+@override@JsonKey() final  MangaProvider provider;
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$LoadMoreImpl &&
-            (identical(other.currentRouteName, currentRouteName) ||
-                other.currentRouteName == currentRouteName));
-  }
+/// Create a copy of SearchEvent
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$StartedCopyWith<_Started> get copyWith => __$StartedCopyWithImpl<_Started>(this, _$identity);
 
-  @override
-  int get hashCode => Object.hash(runtimeType, currentRouteName);
 
-  /// Create a copy of SearchEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$LoadMoreImplCopyWith<_$LoadMoreImpl> get copyWith =>
-      __$$LoadMoreImplCopyWithImpl<_$LoadMoreImpl>(this, _$identity);
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String currentRouteName, String keyword) started,
-    required TResult Function(String currentRouteName) loadMore,
-  }) {
-    return loadMore(currentRouteName);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String currentRouteName, String keyword)? started,
-    TResult? Function(String currentRouteName)? loadMore,
-  }) {
-    return loadMore?.call(currentRouteName);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String currentRouteName, String keyword)? started,
-    TResult Function(String currentRouteName)? loadMore,
-    required TResult orElse(),
-  }) {
-    if (loadMore != null) {
-      return loadMore(currentRouteName);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_LoadMore value) loadMore,
-  }) {
-    return loadMore(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_LoadMore value)? loadMore,
-  }) {
-    return loadMore?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_LoadMore value)? loadMore,
-    required TResult orElse(),
-  }) {
-    if (loadMore != null) {
-      return loadMore(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Started&&(identical(other.currentRouteName, currentRouteName) || other.currentRouteName == currentRouteName)&&(identical(other.keyword, keyword) || other.keyword == keyword)&&(identical(other.provider, provider) || other.provider == provider));
 }
 
-abstract class _LoadMore implements SearchEvent {
-  const factory _LoadMore({required final String currentRouteName}) =
-      _$LoadMoreImpl;
 
-  @override
-  String get currentRouteName;
+@override
+int get hashCode => Object.hash(runtimeType,currentRouteName,keyword,provider);
 
-  /// Create a copy of SearchEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$LoadMoreImplCopyWith<_$LoadMoreImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'SearchEvent.started(currentRouteName: $currentRouteName, keyword: $keyword, provider: $provider)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$StartedCopyWith<$Res> implements $SearchEventCopyWith<$Res> {
+  factory _$StartedCopyWith(_Started value, $Res Function(_Started) _then) = __$StartedCopyWithImpl;
+@override @useResult
+$Res call({
+ String currentRouteName, String keyword, MangaProvider provider
+});
+
+
+
+
+}
+/// @nodoc
+class __$StartedCopyWithImpl<$Res>
+    implements _$StartedCopyWith<$Res> {
+  __$StartedCopyWithImpl(this._self, this._then);
+
+  final _Started _self;
+  final $Res Function(_Started) _then;
+
+/// Create a copy of SearchEvent
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? currentRouteName = null,Object? keyword = null,Object? provider = null,}) {
+  return _then(_Started(
+currentRouteName: null == currentRouteName ? _self.currentRouteName : currentRouteName // ignore: cast_nullable_to_non_nullable
+as String,keyword: null == keyword ? _self.keyword : keyword // ignore: cast_nullable_to_non_nullable
+as String,provider: null == provider ? _self.provider : provider // ignore: cast_nullable_to_non_nullable
+as MangaProvider,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class _LoadMore implements SearchEvent {
+  const _LoadMore({required this.currentRouteName, this.provider = MangaProvider.komiku});
+  
+
+@override final  String currentRouteName;
+@override@JsonKey() final  MangaProvider provider;
+
+/// Create a copy of SearchEvent
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$LoadMoreCopyWith<_LoadMore> get copyWith => __$LoadMoreCopyWithImpl<_LoadMore>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _LoadMore&&(identical(other.currentRouteName, currentRouteName) || other.currentRouteName == currentRouteName)&&(identical(other.provider, provider) || other.provider == provider));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,currentRouteName,provider);
+
+@override
+String toString() {
+  return 'SearchEvent.loadMore(currentRouteName: $currentRouteName, provider: $provider)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$LoadMoreCopyWith<$Res> implements $SearchEventCopyWith<$Res> {
+  factory _$LoadMoreCopyWith(_LoadMore value, $Res Function(_LoadMore) _then) = __$LoadMoreCopyWithImpl;
+@override @useResult
+$Res call({
+ String currentRouteName, MangaProvider provider
+});
+
+
+
+
+}
+/// @nodoc
+class __$LoadMoreCopyWithImpl<$Res>
+    implements _$LoadMoreCopyWith<$Res> {
+  __$LoadMoreCopyWithImpl(this._self, this._then);
+
+  final _LoadMore _self;
+  final $Res Function(_LoadMore) _then;
+
+/// Create a copy of SearchEvent
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? currentRouteName = null,Object? provider = null,}) {
+  return _then(_LoadMore(
+currentRouteName: null == currentRouteName ? _self.currentRouteName : currentRouteName // ignore: cast_nullable_to_non_nullable
+as String,provider: null == provider ? _self.provider : provider // ignore: cast_nullable_to_non_nullable
+as MangaProvider,
+  ));
+}
+
+
 }
 
 /// @nodoc
 mixin _$SearchState {
-  bool get isLoading => throw _privateConstructorUsedError;
-  bool get isLoadMore => throw _privateConstructorUsedError;
-  KomikuListModel get komikResult => throw _privateConstructorUsedError;
-  AnoboyListModel get anoboyResult => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(bool isLoading, bool isLoadMore,
-            KomikuListModel komikResult, AnoboyListModel anoboyResult)
-        state,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(bool isLoading, bool isLoadMore,
-            KomikuListModel komikResult, AnoboyListModel anoboyResult)?
-        state,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool isLoading, bool isLoadMore,
-            KomikuListModel komikResult, AnoboyListModel anoboyResult)?
-        state,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_State value) state,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_State value)? state,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_State value)? state,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
 
-  /// Create a copy of SearchState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $SearchStateCopyWith<SearchState> get copyWith =>
-      throw _privateConstructorUsedError;
+ bool get isLoading; bool get isLoadMore; KomikuListModel get komikResult; AnoboyListModel get anoboyResult;
+/// Create a copy of SearchState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$SearchStateCopyWith<SearchState> get copyWith => _$SearchStateCopyWithImpl<SearchState>(this as SearchState, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SearchState&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.isLoadMore, isLoadMore) || other.isLoadMore == isLoadMore)&&(identical(other.komikResult, komikResult) || other.komikResult == komikResult)&&(identical(other.anoboyResult, anoboyResult) || other.anoboyResult == anoboyResult));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,isLoading,isLoadMore,komikResult,anoboyResult);
+
+@override
+String toString() {
+  return 'SearchState(isLoading: $isLoading, isLoadMore: $isLoadMore, komikResult: $komikResult, anoboyResult: $anoboyResult)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $SearchStateCopyWith<$Res> {
-  factory $SearchStateCopyWith(
-          SearchState value, $Res Function(SearchState) then) =
-      _$SearchStateCopyWithImpl<$Res, SearchState>;
-  @useResult
-  $Res call(
-      {bool isLoading,
-      bool isLoadMore,
-      KomikuListModel komikResult,
-      AnoboyListModel anoboyResult});
+abstract mixin class $SearchStateCopyWith<$Res>  {
+  factory $SearchStateCopyWith(SearchState value, $Res Function(SearchState) _then) = _$SearchStateCopyWithImpl;
+@useResult
+$Res call({
+ bool isLoading, bool isLoadMore, KomikuListModel komikResult, AnoboyListModel anoboyResult
+});
 
-  $KomikuListModelCopyWith<$Res> get komikResult;
-  $AnoboyListModelCopyWith<$Res> get anoboyResult;
+
+$KomikuListModelCopyWith<$Res> get komikResult;$AnoboyListModelCopyWith<$Res> get anoboyResult;
+
 }
-
 /// @nodoc
-class _$SearchStateCopyWithImpl<$Res, $Val extends SearchState>
+class _$SearchStateCopyWithImpl<$Res>
     implements $SearchStateCopyWith<$Res> {
-  _$SearchStateCopyWithImpl(this._value, this._then);
+  _$SearchStateCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final SearchState _self;
+  final $Res Function(SearchState) _then;
 
-  /// Create a copy of SearchState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? isLoading = null,
-    Object? isLoadMore = null,
-    Object? komikResult = null,
-    Object? anoboyResult = null,
-  }) {
-    return _then(_value.copyWith(
-      isLoading: null == isLoading
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isLoadMore: null == isLoadMore
-          ? _value.isLoadMore
-          : isLoadMore // ignore: cast_nullable_to_non_nullable
-              as bool,
-      komikResult: null == komikResult
-          ? _value.komikResult
-          : komikResult // ignore: cast_nullable_to_non_nullable
-              as KomikuListModel,
-      anoboyResult: null == anoboyResult
-          ? _value.anoboyResult
-          : anoboyResult // ignore: cast_nullable_to_non_nullable
-              as AnoboyListModel,
-    ) as $Val);
-  }
+/// Create a copy of SearchState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? isLoading = null,Object? isLoadMore = null,Object? komikResult = null,Object? anoboyResult = null,}) {
+  return _then(_self.copyWith(
+isLoading: null == isLoading ? _self.isLoading : isLoading // ignore: cast_nullable_to_non_nullable
+as bool,isLoadMore: null == isLoadMore ? _self.isLoadMore : isLoadMore // ignore: cast_nullable_to_non_nullable
+as bool,komikResult: null == komikResult ? _self.komikResult : komikResult // ignore: cast_nullable_to_non_nullable
+as KomikuListModel,anoboyResult: null == anoboyResult ? _self.anoboyResult : anoboyResult // ignore: cast_nullable_to_non_nullable
+as AnoboyListModel,
+  ));
+}
+/// Create a copy of SearchState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$KomikuListModelCopyWith<$Res> get komikResult {
+  
+  return $KomikuListModelCopyWith<$Res>(_self.komikResult, (value) {
+    return _then(_self.copyWith(komikResult: value));
+  });
+}/// Create a copy of SearchState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$AnoboyListModelCopyWith<$Res> get anoboyResult {
+  
+  return $AnoboyListModelCopyWith<$Res>(_self.anoboyResult, (value) {
+    return _then(_self.copyWith(anoboyResult: value));
+  });
+}
+}
 
-  /// Create a copy of SearchState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $KomikuListModelCopyWith<$Res> get komikResult {
-    return $KomikuListModelCopyWith<$Res>(_value.komikResult, (value) {
-      return _then(_value.copyWith(komikResult: value) as $Val);
-    });
-  }
 
-  /// Create a copy of SearchState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $AnoboyListModelCopyWith<$Res> get anoboyResult {
-    return $AnoboyListModelCopyWith<$Res>(_value.anoboyResult, (value) {
-      return _then(_value.copyWith(anoboyResult: value) as $Val);
-    });
-  }
+/// Adds pattern-matching-related methods to [SearchState].
+extension SearchStatePatterns on SearchState {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _State value)?  state,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _State() when state != null:
+return state(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _State value)  state,}){
+final _that = this;
+switch (_that) {
+case _State():
+return state(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _State value)?  state,}){
+final _that = this;
+switch (_that) {
+case _State() when state != null:
+return state(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( bool isLoading,  bool isLoadMore,  KomikuListModel komikResult,  AnoboyListModel anoboyResult)?  state,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _State() when state != null:
+return state(_that.isLoading,_that.isLoadMore,_that.komikResult,_that.anoboyResult);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( bool isLoading,  bool isLoadMore,  KomikuListModel komikResult,  AnoboyListModel anoboyResult)  state,}) {final _that = this;
+switch (_that) {
+case _State():
+return state(_that.isLoading,_that.isLoadMore,_that.komikResult,_that.anoboyResult);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( bool isLoading,  bool isLoadMore,  KomikuListModel komikResult,  AnoboyListModel anoboyResult)?  state,}) {final _that = this;
+switch (_that) {
+case _State() when state != null:
+return state(_that.isLoading,_that.isLoadMore,_that.komikResult,_that.anoboyResult);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
-abstract class _$$StateImplCopyWith<$Res>
-    implements $SearchStateCopyWith<$Res> {
-  factory _$$StateImplCopyWith(
-          _$StateImpl value, $Res Function(_$StateImpl) then) =
-      __$$StateImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {bool isLoading,
-      bool isLoadMore,
-      KomikuListModel komikResult,
-      AnoboyListModel anoboyResult});
 
-  @override
-  $KomikuListModelCopyWith<$Res> get komikResult;
-  @override
-  $AnoboyListModelCopyWith<$Res> get anoboyResult;
+
+class _State implements SearchState {
+  const _State({this.isLoading = false, this.isLoadMore = false, this.komikResult = const KomikuListModel(), this.anoboyResult = const AnoboyListModel()});
+  
+
+@override@JsonKey() final  bool isLoading;
+@override@JsonKey() final  bool isLoadMore;
+@override@JsonKey() final  KomikuListModel komikResult;
+@override@JsonKey() final  AnoboyListModel anoboyResult;
+
+/// Create a copy of SearchState
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$StateCopyWith<_State> get copyWith => __$StateCopyWithImpl<_State>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _State&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.isLoadMore, isLoadMore) || other.isLoadMore == isLoadMore)&&(identical(other.komikResult, komikResult) || other.komikResult == komikResult)&&(identical(other.anoboyResult, anoboyResult) || other.anoboyResult == anoboyResult));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,isLoading,isLoadMore,komikResult,anoboyResult);
+
+@override
+String toString() {
+  return 'SearchState.state(isLoading: $isLoading, isLoadMore: $isLoadMore, komikResult: $komikResult, anoboyResult: $anoboyResult)';
+}
+
+
 }
 
 /// @nodoc
-class __$$StateImplCopyWithImpl<$Res>
-    extends _$SearchStateCopyWithImpl<$Res, _$StateImpl>
-    implements _$$StateImplCopyWith<$Res> {
-  __$$StateImplCopyWithImpl(
-      _$StateImpl _value, $Res Function(_$StateImpl) _then)
-      : super(_value, _then);
+abstract mixin class _$StateCopyWith<$Res> implements $SearchStateCopyWith<$Res> {
+  factory _$StateCopyWith(_State value, $Res Function(_State) _then) = __$StateCopyWithImpl;
+@override @useResult
+$Res call({
+ bool isLoading, bool isLoadMore, KomikuListModel komikResult, AnoboyListModel anoboyResult
+});
 
-  /// Create a copy of SearchState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? isLoading = null,
-    Object? isLoadMore = null,
-    Object? komikResult = null,
-    Object? anoboyResult = null,
-  }) {
-    return _then(_$StateImpl(
-      isLoading: null == isLoading
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isLoadMore: null == isLoadMore
-          ? _value.isLoadMore
-          : isLoadMore // ignore: cast_nullable_to_non_nullable
-              as bool,
-      komikResult: null == komikResult
-          ? _value.komikResult
-          : komikResult // ignore: cast_nullable_to_non_nullable
-              as KomikuListModel,
-      anoboyResult: null == anoboyResult
-          ? _value.anoboyResult
-          : anoboyResult // ignore: cast_nullable_to_non_nullable
-              as AnoboyListModel,
-    ));
-  }
+
+@override $KomikuListModelCopyWith<$Res> get komikResult;@override $AnoboyListModelCopyWith<$Res> get anoboyResult;
+
 }
-
 /// @nodoc
+class __$StateCopyWithImpl<$Res>
+    implements _$StateCopyWith<$Res> {
+  __$StateCopyWithImpl(this._self, this._then);
 
-class _$StateImpl implements _State {
-  const _$StateImpl(
-      {this.isLoading = false,
-      this.isLoadMore = false,
-      this.komikResult = const KomikuListModel(),
-      this.anoboyResult = const AnoboyListModel()});
+  final _State _self;
+  final $Res Function(_State) _then;
 
-  @override
-  @JsonKey()
-  final bool isLoading;
-  @override
-  @JsonKey()
-  final bool isLoadMore;
-  @override
-  @JsonKey()
-  final KomikuListModel komikResult;
-  @override
-  @JsonKey()
-  final AnoboyListModel anoboyResult;
-
-  @override
-  String toString() {
-    return 'SearchState.state(isLoading: $isLoading, isLoadMore: $isLoadMore, komikResult: $komikResult, anoboyResult: $anoboyResult)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$StateImpl &&
-            (identical(other.isLoading, isLoading) ||
-                other.isLoading == isLoading) &&
-            (identical(other.isLoadMore, isLoadMore) ||
-                other.isLoadMore == isLoadMore) &&
-            (identical(other.komikResult, komikResult) ||
-                other.komikResult == komikResult) &&
-            (identical(other.anoboyResult, anoboyResult) ||
-                other.anoboyResult == anoboyResult));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, isLoading, isLoadMore, komikResult, anoboyResult);
-
-  /// Create a copy of SearchState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$StateImplCopyWith<_$StateImpl> get copyWith =>
-      __$$StateImplCopyWithImpl<_$StateImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(bool isLoading, bool isLoadMore,
-            KomikuListModel komikResult, AnoboyListModel anoboyResult)
-        state,
-  }) {
-    return state(isLoading, isLoadMore, komikResult, anoboyResult);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(bool isLoading, bool isLoadMore,
-            KomikuListModel komikResult, AnoboyListModel anoboyResult)?
-        state,
-  }) {
-    return state?.call(isLoading, isLoadMore, komikResult, anoboyResult);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool isLoading, bool isLoadMore,
-            KomikuListModel komikResult, AnoboyListModel anoboyResult)?
-        state,
-    required TResult orElse(),
-  }) {
-    if (state != null) {
-      return state(isLoading, isLoadMore, komikResult, anoboyResult);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_State value) state,
-  }) {
-    return state(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_State value)? state,
-  }) {
-    return state?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_State value)? state,
-    required TResult orElse(),
-  }) {
-    if (state != null) {
-      return state(this);
-    }
-    return orElse();
-  }
+/// Create a copy of SearchState
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? isLoading = null,Object? isLoadMore = null,Object? komikResult = null,Object? anoboyResult = null,}) {
+  return _then(_State(
+isLoading: null == isLoading ? _self.isLoading : isLoading // ignore: cast_nullable_to_non_nullable
+as bool,isLoadMore: null == isLoadMore ? _self.isLoadMore : isLoadMore // ignore: cast_nullable_to_non_nullable
+as bool,komikResult: null == komikResult ? _self.komikResult : komikResult // ignore: cast_nullable_to_non_nullable
+as KomikuListModel,anoboyResult: null == anoboyResult ? _self.anoboyResult : anoboyResult // ignore: cast_nullable_to_non_nullable
+as AnoboyListModel,
+  ));
 }
 
-abstract class _State implements SearchState {
-  const factory _State(
-      {final bool isLoading,
-      final bool isLoadMore,
-      final KomikuListModel komikResult,
-      final AnoboyListModel anoboyResult}) = _$StateImpl;
-
-  @override
-  bool get isLoading;
-  @override
-  bool get isLoadMore;
-  @override
-  KomikuListModel get komikResult;
-  @override
-  AnoboyListModel get anoboyResult;
-
-  /// Create a copy of SearchState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$StateImplCopyWith<_$StateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+/// Create a copy of SearchState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$KomikuListModelCopyWith<$Res> get komikResult {
+  
+  return $KomikuListModelCopyWith<$Res>(_self.komikResult, (value) {
+    return _then(_self.copyWith(komikResult: value));
+  });
+}/// Create a copy of SearchState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$AnoboyListModelCopyWith<$Res> get anoboyResult {
+  
+  return $AnoboyListModelCopyWith<$Res>(_self.anoboyResult, (value) {
+    return _then(_self.copyWith(anoboyResult: value));
+  });
 }
+}
+
+// dart format on

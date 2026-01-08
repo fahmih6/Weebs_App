@@ -13,6 +13,10 @@ class Endpoints {
   static const String komiku = "/api/komiku/";
   static const String komikuChapter = "/api/komiku/chapter/";
 
+  /// Komikcast
+  static const String komikcast = "/api/komikcast/";
+  static const String komikcastChapter = "/api/komikcast/chapter/";
+
   /// Proxy
   ///
   /// Must be followed by valid link. e.g : `$imgProxy$imageUrl`.

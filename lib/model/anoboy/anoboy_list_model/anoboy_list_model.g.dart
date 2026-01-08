@@ -6,21 +6,21 @@ part of 'anoboy_list_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$AnoboyListModelImpl _$$AnoboyListModelImplFromJson(
-        Map<String, dynamic> json) =>
-    _$AnoboyListModelImpl(
+_AnoboyListModel _$AnoboyListModelFromJson(Map<String, dynamic> json) =>
+    _AnoboyListModel(
       maxPage: (json['max_page'] as num?)?.toInt() ?? 0,
       nextPage: json['next_page'] as String?,
       prevPage: json['prev_page'] as String?,
-      data: (json['data'] as List<dynamic>?)
-              ?.map((e) =>
-                  AnoboyListItemModel.fromJson(e as Map<String, dynamic>))
+      data:
+          (json['data'] as List<dynamic>?)
+              ?.map(
+                (e) => AnoboyListItemModel.fromJson(e as Map<String, dynamic>),
+              )
               .toList() ??
           const [],
     );
 
-Map<String, dynamic> _$$AnoboyListModelImplToJson(
-        _$AnoboyListModelImpl instance) =>
+Map<String, dynamic> _$AnoboyListModelToJson(_AnoboyListModel instance) =>
     <String, dynamic>{
       'max_page': instance.maxPage,
       'next_page': instance.nextPage,
@@ -28,9 +28,8 @@ Map<String, dynamic> _$$AnoboyListModelImplToJson(
       'data': instance.data.map((e) => e.toJson()).toList(),
     };
 
-_$AnoboyListItemModelImpl _$$AnoboyListItemModelImplFromJson(
-        Map<String, dynamic> json) =>
-    _$AnoboyListItemModelImpl(
+_AnoboyListItemModel _$AnoboyListItemModelFromJson(Map<String, dynamic> json) =>
+    _AnoboyListItemModel(
       title: json['title'] as String? ?? "",
       param: json['param'] as String? ?? "",
       thumbnail: json['thumbnail'] as String? ?? "",
@@ -38,12 +37,12 @@ _$AnoboyListItemModelImpl _$$AnoboyListItemModelImplFromJson(
       detailUrl: json['detail_url'] as String? ?? "",
     );
 
-Map<String, dynamic> _$$AnoboyListItemModelImplToJson(
-        _$AnoboyListItemModelImpl instance) =>
-    <String, dynamic>{
-      'title': instance.title,
-      'param': instance.param,
-      'thumbnail': instance.thumbnail,
-      'upload_time': instance.uploadTime,
-      'detail_url': instance.detailUrl,
-    };
+Map<String, dynamic> _$AnoboyListItemModelToJson(
+  _AnoboyListItemModel instance,
+) => <String, dynamic>{
+  'title': instance.title,
+  'param': instance.param,
+  'thumbnail': instance.thumbnail,
+  'upload_time': instance.uploadTime,
+  'detail_url': instance.detailUrl,
+};

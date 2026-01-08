@@ -1,7 +1,7 @@
 part of 'search_bloc.dart';
 
 @freezed
-class SearchState with _$SearchState {
+sealed class SearchState with _$SearchState {
   const factory SearchState.state({
     @Default(false) bool isLoading,
     @Default(false) bool isLoadMore,

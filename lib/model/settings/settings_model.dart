@@ -13,7 +13,7 @@ enum KomikReadImageMode {
 }
 
 @freezed
-class SettingsModel with _$SettingsModel {
+sealed class SettingsModel with _$SettingsModel {
   @JsonSerializable(fieldRename: FieldRename.snake)
   const factory SettingsModel({
     /// Anoboy App Bar Video Playback.

@@ -4,12 +4,12 @@ import 'package:hydrated_bloc/hydrated_bloc.dart';
 
 import '../../model/komiku/komiku_detail_model/komiku_detail_model.dart';
 
-part 'komiku_read_event.dart';
-part 'komiku_read_state.dart';
-part 'komiku_read_bloc.freezed.dart';
+part 'komik_read_event.dart';
+part 'komik_read_state.dart';
+part 'komik_read_bloc.freezed.dart';
 
-class KomikuReadBloc extends HydratedBloc<KomikuReadEvent, KomikuReadState> {
-  KomikuReadBloc() : super(const _State()) {
+class KomikReadBloc extends HydratedBloc<KomikReadEvent, KomikReadState> {
+  KomikReadBloc() : super(const _State()) {
     /// Mark as read
     on<_MarkAsRead>((event, emit) {
       /// State list
@@ -18,19 +18,22 @@ class KomikuReadBloc extends HydratedBloc<KomikuReadEvent, KomikuReadState> {
       /// Reinitialize
       final komikuData = komikuList
           .firstWhereOrNull(
-              (element) => element.param == event.komikuData.param)
+            (element) => element.param == event.komikuData.param,
+          )
           ?.copyWith();
 
       /// Komik Index
-      final komikIndex = komikuList
-          .indexWhere((element) => element.param == komikuData?.param);
+      final komikIndex = komikuList.indexWhere(
+        (element) => element.param == komikuData?.param,
+      );
 
       /// Chapter List
       final chapterList = [...?komikuData?.chapters];
 
       /// Chapter Index
-      final chapterIndex = chapterList
-          .indexWhere((element) => element.param == event.chapterParam);
+      final chapterIndex = chapterList.indexWhere(
+        (element) => element.param == event.chapterParam,
+      );
 
       /// Chapter data
       final chapterData = komikuData?.chapters
@@ -45,7 +48,8 @@ class KomikuReadBloc extends HydratedBloc<KomikuReadEvent, KomikuReadState> {
         chapterList.add(
           event.komikuData.chapters
                   .firstWhereOrNull(
-                      (element) => element.param == event.chapterParam)
+                    (element) => element.param == event.chapterParam,
+                  )
                   ?.copyWith(isRead: true) ??
               KomikuDetailChapterModel(param: event.chapterParam, isRead: true),
         );
@@ -69,34 +73,36 @@ class KomikuReadBloc extends HydratedBloc<KomikuReadEvent, KomikuReadState> {
   }
 
   @override
-  KomikuReadState? fromJson(Map<String, dynamic> json) {
+  KomikReadState? fromJson(Map<String, dynamic> json) {
     /// Parse komiku data
     final List<KomikuDetailModel> komikuList = json['komikuList'] != null
         ? (json['komikuList'] as List)
-            .map((e) => KomikuDetailModel.fromJson(e))
-            .toList()
+              .map((e) => KomikuDetailModel.fromJson(e))
+              .toList()
         : [];
 
     /// Return state
-    return KomikuReadState.state(komikuList: komikuList);
+    return KomikReadState.state(komikuList: komikuList);
   }
 
   @override
-  Map<String, dynamic>? toJson(KomikuReadState state) {
-    return {
-      "komikuList": state.komikuList.map((e) => e.toJson()).toList(),
-    };
+  Map<String, dynamic>? toJson(KomikReadState state) {
+    return {"komikuList": state.komikuList.map((e) => e.toJson()).toList()};
   }
 
-  bool isChapterRead(
-      {required String komikuParam, required String chapterParam}) {
+  bool isChapterRead({
+    required String komikuParam,
+    required String chapterParam,
+  }) {
     /// Komik Data
-    final komikData = state.komikuList
-        .firstWhereOrNull((element) => element.param == komikuParam);
+    final komikData = state.komikuList.firstWhereOrNull(
+      (element) => element.param == komikuParam,
+    );
 
     /// Chapter Data
-    final chapterData = komikData?.chapters
-        .firstWhereOrNull((element) => element.param == chapterParam);
+    final chapterData = komikData?.chapters.firstWhereOrNull(
+      (element) => element.param == chapterParam,
+    );
 
     return chapterData?.isRead ?? false;
   }

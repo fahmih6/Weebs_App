@@ -24,7 +24,6 @@ class KomikDetailAppbar extends StatelessWidget {
       flexibleSpace: ClipPath(
         clipper: const InvertedBottomBorder(radius: 16),
         child: Container(
-          height: MediaQuery.of(context).size.height,
           decoration: BoxDecoration(
             image: DecorationImage(
               fit: BoxFit.cover,
@@ -33,7 +32,6 @@ class KomikDetailAppbar extends StatelessWidget {
             ),
           ),
           child: Column(
-            mainAxisSize: MainAxisSize.min,
             children: [
               /// Image
               Flexible(
@@ -54,7 +52,7 @@ class KomikDetailAppbar extends StatelessWidget {
 
               /// Tambahkan ke Favorit
               Padding(
-                padding: const EdgeInsets.only(top: 8, bottom: 29),
+                padding: EdgeInsets.only(top: 8, bottom: 20.h),
                 child: Tooltip(
                   enableFeedback: true,
                   message: komikuDetailModel.title,

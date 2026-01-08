@@ -2,69 +2,55 @@ import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:weebs_app/routes/route_names.dart';
 import 'package:weebs_app/screens/screens_export.dart';
+import 'package:weebs_app/enum/manga_provider.dart';
 
 part 'app_router.gr.dart';
 
-@AutoRouterConfig(
-  replaceInRouteName: 'Screen,Route',
-)
+@AutoRouterConfig(replaceInRouteName: 'Screen,Route')
 // extend the generated private router
 class AppRouter extends RootStackRouter {
   @override
   List<AutoRoute> get routes => [
-        /// Splash Screen
+    /// Splash Screen
+    AutoRoute(path: "/", initial: true, page: SplashRoute.page),
+
+    /// Home Screen
+    AutoRoute(
+      path: "/${RouteNames.homeScreen}",
+      page: HomeRoute.page,
+      children: [
+        /// Komik List Screen
+        AutoRoute(path: RouteNames.komikListScreen, page: KomikListRoute.page),
+
+        /// Anoboy List Screen
         AutoRoute(
-          path: "/",
-          initial: true,
-          page: SplashRoute.page,
+          path: RouteNames.anoboyListScreen,
+          page: AnoboyListRoute.page,
         ),
 
-        /// Home Screen
-        AutoRoute(
-          path: "/${RouteNames.homeScreen}",
-          page: HomeRoute.page,
-          children: [
-            /// Komik List Screen
-            AutoRoute(
-              path: RouteNames.komikListScreen,
-              page: KomikListRoute.page,
-            ),
+        /// Settings Screen
+        AutoRoute(path: RouteNames.settingsScreen, page: SettingsRoute.page),
+      ],
+    ),
 
-            /// Anoboy List Screen
-            AutoRoute(
-              path: RouteNames.anoboyListScreen,
-              page: AnoboyListRoute.page,
-            ),
+    /// Search Screen
+    AutoRoute(path: "/${RouteNames.searchScreen}", page: SearchRoute.page),
 
-            /// Settings Screen
-            AutoRoute(
-              path: RouteNames.settingsScreen,
-              page: SettingsRoute.page,
-            ),
-          ],
-        ),
+    /// Komik Detail Screen
+    AutoRoute(
+      path: "/${RouteNames.komikDetailScreen}/:param",
+      page: KomikDetailRoute.page,
+    ),
 
-        /// Search Screen
-        AutoRoute(
-          path: "/${RouteNames.searchScreen}",
-          page: SearchRoute.page,
-        ),
+    AutoRoute(
+      path: "/${RouteNames.komikReadScreen}/:param",
+      page: KomikReadRoute.page,
+    ),
 
-        /// Komik Detail Screen
-        AutoRoute(
-          path: "/${RouteNames.komikDetailScreen}/:param",
-          page: KomikDetailRoute.page,
-        ),
-
-        AutoRoute(
-          path: "/${RouteNames.komikReadScreen}/:param",
-          page: KomikReadRoute.page,
-        ),
-
-        /// Anoboy Detail Screen
-        AutoRoute(
-          path: "/${RouteNames.anoboyDetailScreen}/:param",
-          page: AnoboyDetailRoute.page,
-        ),
-      ];
+    /// Anoboy Detail Screen
+    AutoRoute(
+      path: "/${RouteNames.anoboyDetailScreen}/:param",
+      page: AnoboyDetailRoute.page,
+    ),
+  ];
 }

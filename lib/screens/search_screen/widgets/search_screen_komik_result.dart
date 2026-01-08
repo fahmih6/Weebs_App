@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:weebs_app/model/komiku/komiku_list_model/komiku_list_model.dart';
+import 'package:weebs_app/enum/manga_provider.dart';
 
 import '../../../helpers/general/helper_functions.dart';
 import '../../../logic/search_bloc/search_bloc.dart';
@@ -12,7 +13,12 @@ import '../../../widgets/shimmer/shimmer_placeholder_widget.dart';
 
 class SearchScreenKomikResult extends StatelessWidget {
   final KomikuListModel komikResult;
-  const SearchScreenKomikResult({super.key, required this.komikResult});
+  final MangaProvider provider;
+  const SearchScreenKomikResult({
+    super.key,
+    required this.komikResult,
+    this.provider = MangaProvider.komiku,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +35,10 @@ class SearchScreenKomikResult extends StatelessWidget {
           );
 
           context.read<SearchBloc>().add(
-            SearchEvent.loadMore(currentRouteName: currentRoute),
+            SearchEvent.loadMore(
+              currentRouteName: currentRoute,
+              provider: provider,
+            ),
           );
         }
         return true;
@@ -42,7 +51,9 @@ class SearchScreenKomikResult extends StatelessWidget {
             padding: EdgeInsets.only(bottom: 16.h),
             child: InkWell(
               onTap: () {
-                context.pushRoute(KomikDetailRoute(param: item.param));
+                context.pushRoute(
+                  KomikDetailRoute(param: item.param, provider: provider),
+                );
               },
               child: Container(
                 height: 120.h,
@@ -89,7 +100,35 @@ class SearchScreenKomikResult extends StatelessWidget {
                           Flexible(
                             child: Padding(
                               padding: EdgeInsets.only(top: 8.h),
-                              child: Text("Updated : ${item.latestChapter}"),
+                              child: provider == MangaProvider.komikcast
+                                  ? Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text("Rating : ${item.rating}"),
+                                        SizedBox(height: 4.h),
+                                        Container(
+                                          padding: EdgeInsets.symmetric(
+                                            horizontal: 4.w,
+                                            vertical: 2.h,
+                                          ),
+                                          decoration: BoxDecoration(
+                                            color: Colors.red,
+                                            borderRadius: BorderRadius.circular(
+                                              4,
+                                            ),
+                                          ),
+                                          child: Text(
+                                            item.type,
+                                            style: TextStyle(
+                                              fontSize: 10.sp,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    )
+                                  : Text("Updated : ${item.latestChapter}"),
                             ),
                           ),
                         ],

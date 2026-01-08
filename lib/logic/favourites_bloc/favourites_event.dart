@@ -1,7 +1,7 @@
 part of 'favourites_bloc.dart';
 
 @freezed
-class FavouritesEvent with _$FavouritesEvent {
+sealed class FavouritesEvent with _$FavouritesEvent {
   const factory FavouritesEvent.added({
     AnoboyDetailModel? anoboyData,
     KomikuDetailModel? komikuData,

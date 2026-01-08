@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:weebs_app/helpers/general/helper_functions.dart';
-import 'package:weebs_app/logic/komiku_list_komik_fetch_bloc/komiku_list_komik_fetch_bloc.dart';
+import 'package:weebs_app/logic/komik_list_fetch_bloc/komik_list_fetch_bloc.dart';
+import 'package:weebs_app/enum/manga_provider.dart';
 import 'package:weebs_app/widgets/list_widget/wrap_list_item_widget.dart';
 import 'package:weebs_app/widgets/loading_widget/loading_widget.dart';
 
@@ -15,11 +16,13 @@ class KomikListScreenListView extends StatelessWidget {
   final String title;
   final KomikuListModel komikuList;
   final String tagOrGenre;
+  final MangaProvider provider;
   const KomikListScreenListView({
     super.key,
     required this.komikuList,
     this.title = "Recommendation",
     this.tagOrGenre = "rekomendasi",
+    this.provider = MangaProvider.komiku,
   });
 
   @override
@@ -37,12 +40,16 @@ class KomikListScreenListView extends StatelessWidget {
           imageWidth: getItemContainerWidth(context),
           titleMaxLines: 2,
           onTap: () {
-            context.pushRoute(KomikDetailRoute(param: data.param));
+            context.pushRoute(
+              KomikDetailRoute(param: data.param, provider: provider),
+            );
           },
+          type: data.type,
         );
       },
-      listAlignment:
-          komikuList.data.length <= 2 ? Alignment.topLeft : Alignment.topCenter,
+      listAlignment: komikuList.data.length <= 2
+          ? Alignment.topLeft
+          : Alignment.topCenter,
       loadMoreWidget: Visibility(
         visible: komikuList.nextPage != null,
         child: SizedBox(
@@ -51,16 +58,17 @@ class KomikListScreenListView extends StatelessWidget {
           child: ElevatedButton(
             onPressed: () {
               /// Komiku bloc
-              final komikuBloc = context.read<KomikuListKomikFetchBloc>();
+              final komikuBloc = context.read<KomikListFetchBloc>();
 
               /// Only perform is load more when is load more is not active
               komikuBloc.state.mapOrNull(
                 completed: (value) {
                   if (!value.isLoadMore) {
                     komikuBloc.add(
-                      KomikuListKomikFetchEvent.loadMore(
+                      KomikListFetchEvent.loadMore(
                         tag: tagOrGenre,
                         nextLink: komikuList.nextPage ?? '',
+                        provider: provider,
                       ),
                     );
                   }
@@ -72,8 +80,7 @@ class KomikListScreenListView extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8),
               ),
             ),
-            child: BlocBuilder<KomikuListKomikFetchBloc,
-                KomikuListKomikFetchState>(
+            child: BlocBuilder<KomikListFetchBloc, KomikListFetchState>(
               builder: (context, state) {
                 return state.maybeMap(
                   completed: (value) {

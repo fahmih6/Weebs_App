@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weebs_app/logic/komiku_chapter_fetch_bloc/komiku_chapter_fetch_bloc.dart';
+import 'package:weebs_app/logic/komik_chapter_fetch_bloc/komik_chapter_fetch_bloc.dart';
 import 'package:weebs_app/model/settings/settings_model.dart';
 
 import '../../../logic/komik_read_appbar_cubit/komik_read_appbar_cubit.dart';
@@ -23,16 +23,15 @@ class _KomikReadScreenContentAppbarState
 
     /// Get current chapter param
     final currentChapterParam =
-        context.read<KomikuChapterFetchBloc>().state.mapOrNull(
-                  completed: (value) =>
-                      value.chapterData.firstOrNull?.chapterParam,
-                ) ??
-            "-";
+        context.read<KomikChapterFetchBloc>().state.mapOrNull(
+          completed: (value) => value.chapterData.firstOrNull?.chapterParam,
+        ) ??
+        "-";
 
     /// Init
-    context
-        .read<KomikReadAppbarCubit>()
-        .init(currentChapterParam: currentChapterParam);
+    context.read<KomikReadAppbarCubit>().init(
+      currentChapterParam: currentChapterParam,
+    );
   }
 
   @override
@@ -68,7 +67,7 @@ class _KomikReadScreenContentAppbarState
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
                       ),
-                    )
+                    ),
                   ],
                 ),
 
@@ -84,8 +83,8 @@ class _KomikReadScreenContentAppbarState
                           tooltip: mode == KomikReadImageMode.fillWidth
                               ? "Fill Width"
                               : mode == KomikReadImageMode.fitHeight
-                                  ? "Fit Height"
-                                  : "Normal",
+                              ? "Fit Height"
+                              : "Normal",
                           onPressed: () {
                             /// Keep appbar shown
                             context
@@ -99,8 +98,8 @@ class _KomikReadScreenContentAppbarState
                             mode == KomikReadImageMode.fillWidth
                                 ? Icons.width_full
                                 : mode == KomikReadImageMode.fitHeight
-                                    ? Icons.width_normal
-                                    : Icons.fit_screen,
+                                ? Icons.width_normal
+                                : Icons.fit_screen,
                           ),
                         );
                       },

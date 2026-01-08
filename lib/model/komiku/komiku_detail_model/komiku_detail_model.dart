@@ -4,7 +4,7 @@ part 'komiku_detail_model.freezed.dart';
 part 'komiku_detail_model.g.dart';
 
 @freezed
-class KomikuDetailModel with _$KomikuDetailModel {
+sealed class KomikuDetailModel with _$KomikuDetailModel {
   const factory KomikuDetailModel({
     @Default("") String title,
     @Default("") String param,
@@ -12,6 +12,8 @@ class KomikuDetailModel with _$KomikuDetailModel {
     @Default([]) List<String> genre,
     @Default("") String synopsis,
     @Default([]) List<KomikuDetailChapterModel> chapters,
+    @Default("") String type,
+    @Default("") String rating,
   }) = _KomikuDetailModel;
 
   factory KomikuDetailModel.fromJson(Map<String, dynamic> json) =>
@@ -19,13 +21,13 @@ class KomikuDetailModel with _$KomikuDetailModel {
 }
 
 @freezed
-class KomikuDetailChapterModel with _$KomikuDetailChapterModel {
+sealed class KomikuDetailChapterModel with _$KomikuDetailChapterModel {
   const factory KomikuDetailChapterModel({
     /// Manga chapter number
     @Default("") String chapter,
 
     /// Manga chapter param
-    @Default("") String param,
+    @JsonKey(readValue: _readParam) @Default("") String param,
 
     /// Manga chapter release date
     @Default("") String release,
@@ -42,7 +44,7 @@ class KomikuDetailChapterModel with _$KomikuDetailChapterModel {
 }
 
 @freezed
-class KomikuChapterFetchModel with _$KomikuChapterFetchModel {
+sealed class KomikuChapterFetchModel with _$KomikuChapterFetchModel {
   @JsonSerializable(fieldRename: FieldRename.snake)
   const factory KomikuChapterFetchModel({
     /// Chapter Param
@@ -54,4 +56,8 @@ class KomikuChapterFetchModel with _$KomikuChapterFetchModel {
 
   factory KomikuChapterFetchModel.fromJson(Map<String, dynamic> json) =>
       _$KomikuChapterFetchModelFromJson(json);
+}
+
+Object? _readParam(Map<dynamic, dynamic> json, String key) {
+  return json['param'] ?? json['slug'];
 }

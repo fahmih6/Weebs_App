@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,865 +9,628 @@ part of 'anoboy_fetch_bloc.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
 /// @nodoc
 mixin _$AnoboyFetchEvent {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(String nextLink) loadMore,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(String nextLink)? loadMore,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(String nextLink)? loadMore,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_LoadMore value) loadMore,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_LoadMore value)? loadMore,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_LoadMore value)? loadMore,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AnoboyFetchEvent);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'AnoboyFetchEvent()';
+}
+
+
 }
 
 /// @nodoc
-abstract class $AnoboyFetchEventCopyWith<$Res> {
-  factory $AnoboyFetchEventCopyWith(
-          AnoboyFetchEvent value, $Res Function(AnoboyFetchEvent) then) =
-      _$AnoboyFetchEventCopyWithImpl<$Res, AnoboyFetchEvent>;
+class $AnoboyFetchEventCopyWith<$Res>  {
+$AnoboyFetchEventCopyWith(AnoboyFetchEvent _, $Res Function(AnoboyFetchEvent) __);
 }
 
-/// @nodoc
-class _$AnoboyFetchEventCopyWithImpl<$Res, $Val extends AnoboyFetchEvent>
-    implements $AnoboyFetchEventCopyWith<$Res> {
-  _$AnoboyFetchEventCopyWithImpl(this._value, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+/// Adds pattern-matching-related methods to [AnoboyFetchEvent].
+extension AnoboyFetchEventPatterns on AnoboyFetchEvent {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
 
-  /// Create a copy of AnoboyFetchEvent
-  /// with the given fields replaced by the non-null parameter values.
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Started value)?  started,TResult Function( _LoadMore value)?  loadMore,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _Started() when started != null:
+return started(_that);case _LoadMore() when loadMore != null:
+return loadMore(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Started value)  started,required TResult Function( _LoadMore value)  loadMore,}){
+final _that = this;
+switch (_that) {
+case _Started():
+return started(_that);case _LoadMore():
+return loadMore(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Started value)?  started,TResult? Function( _LoadMore value)?  loadMore,}){
+final _that = this;
+switch (_that) {
+case _Started() when started != null:
+return started(_that);case _LoadMore() when loadMore != null:
+return loadMore(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  started,TResult Function( String nextLink)?  loadMore,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _Started() when started != null:
+return started();case _LoadMore() when loadMore != null:
+return loadMore(_that.nextLink);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  started,required TResult Function( String nextLink)  loadMore,}) {final _that = this;
+switch (_that) {
+case _Started():
+return started();case _LoadMore():
+return loadMore(_that.nextLink);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  started,TResult? Function( String nextLink)?  loadMore,}) {final _that = this;
+switch (_that) {
+case _Started() when started != null:
+return started();case _LoadMore() when loadMore != null:
+return loadMore(_that.nextLink);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-abstract class _$$StartedImplCopyWith<$Res> {
-  factory _$$StartedImplCopyWith(
-          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
-      __$$StartedImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$StartedImplCopyWithImpl<$Res>
-    extends _$AnoboyFetchEventCopyWithImpl<$Res, _$StartedImpl>
-    implements _$$StartedImplCopyWith<$Res> {
-  __$$StartedImplCopyWithImpl(
-      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of AnoboyFetchEvent
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$StartedImpl implements _Started {
-  const _$StartedImpl();
-
-  @override
-  String toString() {
-    return 'AnoboyFetchEvent.started()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$StartedImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(String nextLink) loadMore,
-  }) {
-    return started();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(String nextLink)? loadMore,
-  }) {
-    return started?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(String nextLink)? loadMore,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_LoadMore value) loadMore,
-  }) {
-    return started(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_LoadMore value)? loadMore,
-  }) {
-    return started?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_LoadMore value)? loadMore,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Started implements AnoboyFetchEvent {
-  const factory _Started() = _$StartedImpl;
-}
-
-/// @nodoc
-abstract class _$$LoadMoreImplCopyWith<$Res> {
-  factory _$$LoadMoreImplCopyWith(
-          _$LoadMoreImpl value, $Res Function(_$LoadMoreImpl) then) =
-      __$$LoadMoreImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String nextLink});
-}
-
-/// @nodoc
-class __$$LoadMoreImplCopyWithImpl<$Res>
-    extends _$AnoboyFetchEventCopyWithImpl<$Res, _$LoadMoreImpl>
-    implements _$$LoadMoreImplCopyWith<$Res> {
-  __$$LoadMoreImplCopyWithImpl(
-      _$LoadMoreImpl _value, $Res Function(_$LoadMoreImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of AnoboyFetchEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? nextLink = null,
-  }) {
-    return _then(_$LoadMoreImpl(
-      nextLink: null == nextLink
-          ? _value.nextLink
-          : nextLink // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$LoadMoreImpl implements _LoadMore {
-  const _$LoadMoreImpl({required this.nextLink});
 
-  @override
-  final String nextLink;
+class _Started implements AnoboyFetchEvent {
+  const _Started();
+  
 
-  @override
-  String toString() {
-    return 'AnoboyFetchEvent.loadMore(nextLink: $nextLink)';
-  }
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$LoadMoreImpl &&
-            (identical(other.nextLink, nextLink) ||
-                other.nextLink == nextLink));
-  }
 
-  @override
-  int get hashCode => Object.hash(runtimeType, nextLink);
 
-  /// Create a copy of AnoboyFetchEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$LoadMoreImplCopyWith<_$LoadMoreImpl> get copyWith =>
-      __$$LoadMoreImplCopyWithImpl<_$LoadMoreImpl>(this, _$identity);
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(String nextLink) loadMore,
-  }) {
-    return loadMore(nextLink);
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(String nextLink)? loadMore,
-  }) {
-    return loadMore?.call(nextLink);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(String nextLink)? loadMore,
-    required TResult orElse(),
-  }) {
-    if (loadMore != null) {
-      return loadMore(nextLink);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_LoadMore value) loadMore,
-  }) {
-    return loadMore(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_LoadMore value)? loadMore,
-  }) {
-    return loadMore?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_LoadMore value)? loadMore,
-    required TResult orElse(),
-  }) {
-    if (loadMore != null) {
-      return loadMore(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Started);
 }
 
-abstract class _LoadMore implements AnoboyFetchEvent {
-  const factory _LoadMore({required final String nextLink}) = _$LoadMoreImpl;
 
-  String get nextLink;
+@override
+int get hashCode => runtimeType.hashCode;
 
-  /// Create a copy of AnoboyFetchEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$LoadMoreImplCopyWith<_$LoadMoreImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'AnoboyFetchEvent.started()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class _LoadMore implements AnoboyFetchEvent {
+  const _LoadMore({required this.nextLink});
+  
+
+ final  String nextLink;
+
+/// Create a copy of AnoboyFetchEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$LoadMoreCopyWith<_LoadMore> get copyWith => __$LoadMoreCopyWithImpl<_LoadMore>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _LoadMore&&(identical(other.nextLink, nextLink) || other.nextLink == nextLink));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,nextLink);
+
+@override
+String toString() {
+  return 'AnoboyFetchEvent.loadMore(nextLink: $nextLink)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$LoadMoreCopyWith<$Res> implements $AnoboyFetchEventCopyWith<$Res> {
+  factory _$LoadMoreCopyWith(_LoadMore value, $Res Function(_LoadMore) _then) = __$LoadMoreCopyWithImpl;
+@useResult
+$Res call({
+ String nextLink
+});
+
+
+
+
+}
+/// @nodoc
+class __$LoadMoreCopyWithImpl<$Res>
+    implements _$LoadMoreCopyWith<$Res> {
+  __$LoadMoreCopyWithImpl(this._self, this._then);
+
+  final _LoadMore _self;
+  final $Res Function(_LoadMore) _then;
+
+/// Create a copy of AnoboyFetchEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? nextLink = null,}) {
+  return _then(_LoadMore(
+nextLink: null == nextLink ? _self.nextLink : nextLink // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
 }
 
 /// @nodoc
 mixin _$AnoboyFetchState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(AnoboyListModel animeList) loading,
-    required TResult Function(
-            AnoboyListModel animeList, bool isLoadMore, String errorMsg)
-        completed,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(AnoboyListModel animeList)? loading,
-    TResult? Function(
-            AnoboyListModel animeList, bool isLoadMore, String errorMsg)?
-        completed,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(AnoboyListModel animeList)? loading,
-    TResult Function(
-            AnoboyListModel animeList, bool isLoadMore, String errorMsg)?
-        completed,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Completed value) completed,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Completed value)? completed,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Completed value)? completed,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AnoboyFetchState);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'AnoboyFetchState()';
+}
+
+
 }
 
 /// @nodoc
-abstract class $AnoboyFetchStateCopyWith<$Res> {
-  factory $AnoboyFetchStateCopyWith(
-          AnoboyFetchState value, $Res Function(AnoboyFetchState) then) =
-      _$AnoboyFetchStateCopyWithImpl<$Res, AnoboyFetchState>;
+class $AnoboyFetchStateCopyWith<$Res>  {
+$AnoboyFetchStateCopyWith(AnoboyFetchState _, $Res Function(AnoboyFetchState) __);
 }
 
-/// @nodoc
-class _$AnoboyFetchStateCopyWithImpl<$Res, $Val extends AnoboyFetchState>
-    implements $AnoboyFetchStateCopyWith<$Res> {
-  _$AnoboyFetchStateCopyWithImpl(this._value, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+/// Adds pattern-matching-related methods to [AnoboyFetchState].
+extension AnoboyFetchStatePatterns on AnoboyFetchState {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
 
-  /// Create a copy of AnoboyFetchState
-  /// with the given fields replaced by the non-null parameter values.
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Initial value)?  initial,TResult Function( _Loading value)?  loading,TResult Function( _Completed value)?  completed,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _Initial() when initial != null:
+return initial(_that);case _Loading() when loading != null:
+return loading(_that);case _Completed() when completed != null:
+return completed(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Initial value)  initial,required TResult Function( _Loading value)  loading,required TResult Function( _Completed value)  completed,}){
+final _that = this;
+switch (_that) {
+case _Initial():
+return initial(_that);case _Loading():
+return loading(_that);case _Completed():
+return completed(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Initial value)?  initial,TResult? Function( _Loading value)?  loading,TResult? Function( _Completed value)?  completed,}){
+final _that = this;
+switch (_that) {
+case _Initial() when initial != null:
+return initial(_that);case _Loading() when loading != null:
+return loading(_that);case _Completed() when completed != null:
+return completed(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function( AnoboyListModel animeList)?  loading,TResult Function( AnoboyListModel animeList,  bool isLoadMore,  String errorMsg)?  completed,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _Initial() when initial != null:
+return initial();case _Loading() when loading != null:
+return loading(_that.animeList);case _Completed() when completed != null:
+return completed(_that.animeList,_that.isLoadMore,_that.errorMsg);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function( AnoboyListModel animeList)  loading,required TResult Function( AnoboyListModel animeList,  bool isLoadMore,  String errorMsg)  completed,}) {final _that = this;
+switch (_that) {
+case _Initial():
+return initial();case _Loading():
+return loading(_that.animeList);case _Completed():
+return completed(_that.animeList,_that.isLoadMore,_that.errorMsg);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function( AnoboyListModel animeList)?  loading,TResult? Function( AnoboyListModel animeList,  bool isLoadMore,  String errorMsg)?  completed,}) {final _that = this;
+switch (_that) {
+case _Initial() when initial != null:
+return initial();case _Loading() when loading != null:
+return loading(_that.animeList);case _Completed() when completed != null:
+return completed(_that.animeList,_that.isLoadMore,_that.errorMsg);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-abstract class _$$InitialImplCopyWith<$Res> {
-  factory _$$InitialImplCopyWith(
-          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
-      __$$InitialImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$InitialImplCopyWithImpl<$Res>
-    extends _$AnoboyFetchStateCopyWithImpl<$Res, _$InitialImpl>
-    implements _$$InitialImplCopyWith<$Res> {
-  __$$InitialImplCopyWithImpl(
-      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of AnoboyFetchState
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$InitialImpl implements _Initial {
-  const _$InitialImpl();
-
-  @override
-  String toString() {
-    return 'AnoboyFetchState.initial()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(AnoboyListModel animeList) loading,
-    required TResult Function(
-            AnoboyListModel animeList, bool isLoadMore, String errorMsg)
-        completed,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(AnoboyListModel animeList)? loading,
-    TResult? Function(
-            AnoboyListModel animeList, bool isLoadMore, String errorMsg)?
-        completed,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(AnoboyListModel animeList)? loading,
-    TResult Function(
-            AnoboyListModel animeList, bool isLoadMore, String errorMsg)?
-        completed,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Completed value) completed,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Completed value)? completed,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Completed value)? completed,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Initial implements AnoboyFetchState {
-  const factory _Initial() = _$InitialImpl;
-}
-
-/// @nodoc
-abstract class _$$LoadingImplCopyWith<$Res> {
-  factory _$$LoadingImplCopyWith(
-          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
-      __$$LoadingImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({AnoboyListModel animeList});
-
-  $AnoboyListModelCopyWith<$Res> get animeList;
-}
-
-/// @nodoc
-class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$AnoboyFetchStateCopyWithImpl<$Res, _$LoadingImpl>
-    implements _$$LoadingImplCopyWith<$Res> {
-  __$$LoadingImplCopyWithImpl(
-      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of AnoboyFetchState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? animeList = null,
-  }) {
-    return _then(_$LoadingImpl(
-      animeList: null == animeList
-          ? _value.animeList
-          : animeList // ignore: cast_nullable_to_non_nullable
-              as AnoboyListModel,
-    ));
-  }
-
-  /// Create a copy of AnoboyFetchState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $AnoboyListModelCopyWith<$Res> get animeList {
-    return $AnoboyListModelCopyWith<$Res>(_value.animeList, (value) {
-      return _then(_value.copyWith(animeList: value));
-    });
-  }
 }
 
 /// @nodoc
 
-class _$LoadingImpl implements _Loading {
-  const _$LoadingImpl({required this.animeList});
 
-  @override
-  final AnoboyListModel animeList;
+class _Initial implements AnoboyFetchState {
+  const _Initial();
+  
 
-  @override
-  String toString() {
-    return 'AnoboyFetchState.loading(animeList: $animeList)';
-  }
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$LoadingImpl &&
-            (identical(other.animeList, animeList) ||
-                other.animeList == animeList));
-  }
 
-  @override
-  int get hashCode => Object.hash(runtimeType, animeList);
 
-  /// Create a copy of AnoboyFetchState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$LoadingImplCopyWith<_$LoadingImpl> get copyWith =>
-      __$$LoadingImplCopyWithImpl<_$LoadingImpl>(this, _$identity);
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(AnoboyListModel animeList) loading,
-    required TResult Function(
-            AnoboyListModel animeList, bool isLoadMore, String errorMsg)
-        completed,
-  }) {
-    return loading(animeList);
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(AnoboyListModel animeList)? loading,
-    TResult? Function(
-            AnoboyListModel animeList, bool isLoadMore, String errorMsg)?
-        completed,
-  }) {
-    return loading?.call(animeList);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(AnoboyListModel animeList)? loading,
-    TResult Function(
-            AnoboyListModel animeList, bool isLoadMore, String errorMsg)?
-        completed,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading(animeList);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Completed value) completed,
-  }) {
-    return loading(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Completed value)? completed,
-  }) {
-    return loading?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Completed value)? completed,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Initial);
 }
 
-abstract class _Loading implements AnoboyFetchState {
-  const factory _Loading({required final AnoboyListModel animeList}) =
-      _$LoadingImpl;
 
-  AnoboyListModel get animeList;
+@override
+int get hashCode => runtimeType.hashCode;
 
-  /// Create a copy of AnoboyFetchState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$LoadingImplCopyWith<_$LoadingImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'AnoboyFetchState.initial()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class _Loading implements AnoboyFetchState {
+  const _Loading({required this.animeList});
+  
+
+ final  AnoboyListModel animeList;
+
+/// Create a copy of AnoboyFetchState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$LoadingCopyWith<_Loading> get copyWith => __$LoadingCopyWithImpl<_Loading>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loading&&(identical(other.animeList, animeList) || other.animeList == animeList));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,animeList);
+
+@override
+String toString() {
+  return 'AnoboyFetchState.loading(animeList: $animeList)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$CompletedImplCopyWith<$Res> {
-  factory _$$CompletedImplCopyWith(
-          _$CompletedImpl value, $Res Function(_$CompletedImpl) then) =
-      __$$CompletedImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({AnoboyListModel animeList, bool isLoadMore, String errorMsg});
+abstract mixin class _$LoadingCopyWith<$Res> implements $AnoboyFetchStateCopyWith<$Res> {
+  factory _$LoadingCopyWith(_Loading value, $Res Function(_Loading) _then) = __$LoadingCopyWithImpl;
+@useResult
+$Res call({
+ AnoboyListModel animeList
+});
 
-  $AnoboyListModelCopyWith<$Res> get animeList;
+
+$AnoboyListModelCopyWith<$Res> get animeList;
+
+}
+/// @nodoc
+class __$LoadingCopyWithImpl<$Res>
+    implements _$LoadingCopyWith<$Res> {
+  __$LoadingCopyWithImpl(this._self, this._then);
+
+  final _Loading _self;
+  final $Res Function(_Loading) _then;
+
+/// Create a copy of AnoboyFetchState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? animeList = null,}) {
+  return _then(_Loading(
+animeList: null == animeList ? _self.animeList : animeList // ignore: cast_nullable_to_non_nullable
+as AnoboyListModel,
+  ));
 }
 
-/// @nodoc
-class __$$CompletedImplCopyWithImpl<$Res>
-    extends _$AnoboyFetchStateCopyWithImpl<$Res, _$CompletedImpl>
-    implements _$$CompletedImplCopyWith<$Res> {
-  __$$CompletedImplCopyWithImpl(
-      _$CompletedImpl _value, $Res Function(_$CompletedImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of AnoboyFetchState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? animeList = null,
-    Object? isLoadMore = null,
-    Object? errorMsg = null,
-  }) {
-    return _then(_$CompletedImpl(
-      animeList: null == animeList
-          ? _value.animeList
-          : animeList // ignore: cast_nullable_to_non_nullable
-              as AnoboyListModel,
-      isLoadMore: null == isLoadMore
-          ? _value.isLoadMore
-          : isLoadMore // ignore: cast_nullable_to_non_nullable
-              as bool,
-      errorMsg: null == errorMsg
-          ? _value.errorMsg
-          : errorMsg // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-
-  /// Create a copy of AnoboyFetchState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $AnoboyListModelCopyWith<$Res> get animeList {
-    return $AnoboyListModelCopyWith<$Res>(_value.animeList, (value) {
-      return _then(_value.copyWith(animeList: value));
-    });
-  }
+/// Create a copy of AnoboyFetchState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$AnoboyListModelCopyWith<$Res> get animeList {
+  
+  return $AnoboyListModelCopyWith<$Res>(_self.animeList, (value) {
+    return _then(_self.copyWith(animeList: value));
+  });
+}
 }
 
 /// @nodoc
 
-class _$CompletedImpl implements _Completed {
-  const _$CompletedImpl(
-      {required this.animeList, this.isLoadMore = false, this.errorMsg = ""});
 
-  @override
-  final AnoboyListModel animeList;
-  @override
-  @JsonKey()
-  final bool isLoadMore;
-  @override
-  @JsonKey()
-  final String errorMsg;
+class _Completed implements AnoboyFetchState {
+  const _Completed({required this.animeList, this.isLoadMore = false, this.errorMsg = ""});
+  
 
-  @override
-  String toString() {
-    return 'AnoboyFetchState.completed(animeList: $animeList, isLoadMore: $isLoadMore, errorMsg: $errorMsg)';
-  }
+ final  AnoboyListModel animeList;
+@JsonKey() final  bool isLoadMore;
+@JsonKey() final  String errorMsg;
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$CompletedImpl &&
-            (identical(other.animeList, animeList) ||
-                other.animeList == animeList) &&
-            (identical(other.isLoadMore, isLoadMore) ||
-                other.isLoadMore == isLoadMore) &&
-            (identical(other.errorMsg, errorMsg) ||
-                other.errorMsg == errorMsg));
-  }
+/// Create a copy of AnoboyFetchState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$CompletedCopyWith<_Completed> get copyWith => __$CompletedCopyWithImpl<_Completed>(this, _$identity);
 
-  @override
-  int get hashCode => Object.hash(runtimeType, animeList, isLoadMore, errorMsg);
 
-  /// Create a copy of AnoboyFetchState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$CompletedImplCopyWith<_$CompletedImpl> get copyWith =>
-      __$$CompletedImplCopyWithImpl<_$CompletedImpl>(this, _$identity);
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(AnoboyListModel animeList) loading,
-    required TResult Function(
-            AnoboyListModel animeList, bool isLoadMore, String errorMsg)
-        completed,
-  }) {
-    return completed(animeList, isLoadMore, errorMsg);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(AnoboyListModel animeList)? loading,
-    TResult? Function(
-            AnoboyListModel animeList, bool isLoadMore, String errorMsg)?
-        completed,
-  }) {
-    return completed?.call(animeList, isLoadMore, errorMsg);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(AnoboyListModel animeList)? loading,
-    TResult Function(
-            AnoboyListModel animeList, bool isLoadMore, String errorMsg)?
-        completed,
-    required TResult orElse(),
-  }) {
-    if (completed != null) {
-      return completed(animeList, isLoadMore, errorMsg);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Completed value) completed,
-  }) {
-    return completed(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Completed value)? completed,
-  }) {
-    return completed?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Completed value)? completed,
-    required TResult orElse(),
-  }) {
-    if (completed != null) {
-      return completed(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Completed&&(identical(other.animeList, animeList) || other.animeList == animeList)&&(identical(other.isLoadMore, isLoadMore) || other.isLoadMore == isLoadMore)&&(identical(other.errorMsg, errorMsg) || other.errorMsg == errorMsg));
 }
 
-abstract class _Completed implements AnoboyFetchState {
-  const factory _Completed(
-      {required final AnoboyListModel animeList,
-      final bool isLoadMore,
-      final String errorMsg}) = _$CompletedImpl;
 
-  AnoboyListModel get animeList;
-  bool get isLoadMore;
-  String get errorMsg;
+@override
+int get hashCode => Object.hash(runtimeType,animeList,isLoadMore,errorMsg);
 
-  /// Create a copy of AnoboyFetchState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$CompletedImplCopyWith<_$CompletedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'AnoboyFetchState.completed(animeList: $animeList, isLoadMore: $isLoadMore, errorMsg: $errorMsg)';
 }
+
+
+}
+
+/// @nodoc
+abstract mixin class _$CompletedCopyWith<$Res> implements $AnoboyFetchStateCopyWith<$Res> {
+  factory _$CompletedCopyWith(_Completed value, $Res Function(_Completed) _then) = __$CompletedCopyWithImpl;
+@useResult
+$Res call({
+ AnoboyListModel animeList, bool isLoadMore, String errorMsg
+});
+
+
+$AnoboyListModelCopyWith<$Res> get animeList;
+
+}
+/// @nodoc
+class __$CompletedCopyWithImpl<$Res>
+    implements _$CompletedCopyWith<$Res> {
+  __$CompletedCopyWithImpl(this._self, this._then);
+
+  final _Completed _self;
+  final $Res Function(_Completed) _then;
+
+/// Create a copy of AnoboyFetchState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? animeList = null,Object? isLoadMore = null,Object? errorMsg = null,}) {
+  return _then(_Completed(
+animeList: null == animeList ? _self.animeList : animeList // ignore: cast_nullable_to_non_nullable
+as AnoboyListModel,isLoadMore: null == isLoadMore ? _self.isLoadMore : isLoadMore // ignore: cast_nullable_to_non_nullable
+as bool,errorMsg: null == errorMsg ? _self.errorMsg : errorMsg // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+/// Create a copy of AnoboyFetchState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$AnoboyListModelCopyWith<$Res> get animeList {
+  
+  return $AnoboyListModelCopyWith<$Res>(_self.animeList, (value) {
+    return _then(_self.copyWith(animeList: value));
+  });
+}
+}
+
+// dart format on

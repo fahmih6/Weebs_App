@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:weebs_app/global/assets_constant.dart';
 import 'package:weebs_app/routes/app_router.dart';
 import 'package:weebs_app/routes/route_names.dart';
+import 'package:weebs_app/enum/manga_provider.dart';
 
 @RoutePage(name: RouteNames.homeScreen)
 class HomeScreen extends StatefulWidget {
@@ -18,16 +19,14 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return AutoTabsRouter(
-      routes: const [
+      routes: [
         KomikListRoute(),
+        KomikListRoute(provider: MangaProvider.komikcast),
         AnoboyListRoute(),
         SettingsRoute(),
       ],
       transitionBuilder: (context, child, animation) {
-        return FadeTransition(
-          opacity: animation,
-          child: child,
-        );
+        return FadeTransition(opacity: animation, child: child);
       },
       duration: const Duration(milliseconds: 250),
       lazyLoad: false,
@@ -43,7 +42,8 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 /// Navigation Rail for Landscape
                 Visibility(
-                  visible: MediaQuery.of(context).orientation ==
+                  visible:
+                      MediaQuery.of(context).orientation ==
                       Orientation.landscape,
                   child: NavigationRail(
                     selectedIndex: tabsRouter.activeIndex,
@@ -55,6 +55,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       NavigationRailDestination(
                         icon: Icon(Icons.menu_book_outlined),
                         label: Text("Komiku"),
+                      ),
+                      NavigationRailDestination(
+                        icon: Icon(Icons.menu_book_sharp),
+                        label: Text("Komikcast"),
                       ),
                       NavigationRailDestination(
                         icon: Icon(Icons.tv_sharp),
@@ -74,10 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 /// Content
                 Expanded(
                   flex: 2,
-                  child: Container(
-                    alignment: Alignment.center,
-                    child: child,
-                  ),
+                  child: Container(alignment: Alignment.center, child: child),
                 ),
               ],
             ),
@@ -92,6 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 },
                 icons: [
                   FluidNavBarIcon(svgPath: AssetsConstant.komikuIcon),
+                  FluidNavBarIcon(svgPath: AssetsConstant.komikcastIcon),
                   FluidNavBarIcon(svgPath: AssetsConstant.anoboyIcon),
                   FluidNavBarIcon(icon: Icons.settings),
                 ],
@@ -99,16 +101,22 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             floatingActionButton: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                backgroundColor:
-                    Theme.of(context).buttonTheme.colorScheme?.primary,
-                foregroundColor:
-                    Theme.of(context).buttonTheme.colorScheme?.surface,
+                backgroundColor: Theme.of(
+                  context,
+                ).buttonTheme.colorScheme?.primary,
+                foregroundColor: Theme.of(
+                  context,
+                ).buttonTheme.colorScheme?.surface,
                 shape: const CircleBorder(),
                 padding: const EdgeInsets.all(20),
               ),
               child: const Icon(Icons.search),
               onPressed: () {
-                context.pushRoute(const SearchRoute());
+                final tabsRouter = AutoTabsRouter.of(context);
+                final provider = tabsRouter.activeIndex == 1
+                    ? MangaProvider.komikcast
+                    : MangaProvider.komiku;
+                context.pushRoute(SearchRoute(provider: provider));
               },
             ),
           ),

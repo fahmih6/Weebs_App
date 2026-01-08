@@ -13,6 +13,7 @@ class WrapListItemWidget extends StatelessWidget {
   final double? imageWidth;
   final double? imageHeight;
   final int? titleMaxLines;
+  final String? type;
   const WrapListItemWidget({
     super.key,
     this.onTap,
@@ -23,6 +24,7 @@ class WrapListItemWidget extends StatelessWidget {
     this.imageWidth,
     this.imageHeight,
     this.titleMaxLines,
+    this.type,
   });
 
   @override
@@ -55,6 +57,31 @@ class WrapListItemWidget extends StatelessWidget {
                     width: imageWidth ?? 190.h,
                   ),
                 ),
+
+                /// Type Badge
+                if (type != null && type!.isNotEmpty)
+                  Positioned(
+                    top: 8.h,
+                    right: 8.h,
+                    child: Container(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 6.h,
+                        vertical: 2.h,
+                      ),
+                      decoration: BoxDecoration(
+                        color: _getTypeColor(type!),
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                      child: Text(
+                        type!,
+                        style: const TextStyle(
+                          fontSize: 10,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
 
                 /// Title
                 Tooltip(
@@ -130,5 +157,19 @@ class WrapListItemWidget extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  /// Get Type Color
+  Color _getTypeColor(String type) {
+    switch (type.toLowerCase()) {
+      case 'manga':
+        return Colors.blue;
+      case 'manhwa':
+        return Colors.green;
+      case 'manhua':
+        return Colors.orange;
+      default:
+        return Colors.grey;
+    }
   }
 }

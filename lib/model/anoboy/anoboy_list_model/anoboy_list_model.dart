@@ -4,7 +4,7 @@ part 'anoboy_list_model.freezed.dart';
 part 'anoboy_list_model.g.dart';
 
 @freezed
-class AnoboyListModel with _$AnoboyListModel {
+sealed class AnoboyListModel with _$AnoboyListModel {
   const factory AnoboyListModel({
     /// Max Page of Anoboy Home Screen or Search
     @JsonKey(name: "max_page") @Default(0) int maxPage,
@@ -24,7 +24,7 @@ class AnoboyListModel with _$AnoboyListModel {
 }
 
 @freezed
-class AnoboyListItemModel with _$AnoboyListItemModel {
+sealed class AnoboyListItemModel with _$AnoboyListItemModel {
   const factory AnoboyListItemModel({
     /// Anime Title
     @Default("") String title,

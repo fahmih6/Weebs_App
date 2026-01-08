@@ -2,9 +2,9 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:weebs_app/enum/manga_provider.dart';
 import '../komik_detail_screen/widgets/komik_detail_list_chapter.dart';
-import '../../logic/komiku_detail_fetch_bloc/komiku_detail_fetch_bloc.dart';
+import '../../logic/komik_detail_fetch_bloc/komik_detail_fetch_bloc.dart';
 import '../../screens/komik_detail_screen/widgets/komik_detail_appbar.dart';
 import '../../widgets/loading_widget/loading_widget.dart';
 import '../../widgets/texts/readmore.dart';
@@ -13,9 +13,11 @@ import '../../routes/route_names.dart';
 @RoutePage(name: RouteNames.komikDetailScreen)
 class KomikDetailScreen extends StatefulWidget {
   final String param;
+  final MangaProvider provider;
   const KomikDetailScreen({
     super.key,
     @PathParam('param') required this.param,
+    this.provider = MangaProvider.komiku,
   });
 
   @override
@@ -30,16 +32,19 @@ class _KomikDetailScreenState extends State<KomikDetailScreen> {
   void initState() {
     super.initState();
 
-    context
-        .read<KomikuDetailFetchBloc>()
-        .add(KomikuDetailFetchEvent.started(param: widget.param));
+    context.read<KomikDetailFetchBloc>().add(
+      KomikDetailFetchEvent.started(
+        param: widget.param,
+        provider: widget.provider,
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SizedBox(
-        child: BlocBuilder<KomikuDetailFetchBloc, KomikuDetailFetchState>(
+        child: BlocBuilder<KomikDetailFetchBloc, KomikDetailFetchState>(
           builder: (context, state) {
             return AnimatedSwitcher(
               duration: const Duration(milliseconds: 250),
@@ -90,20 +95,16 @@ class _KomikDetailScreenState extends State<KomikDetailScreen> {
                                   "${value.komikuDetailModel.synopsis} ",
                                   trimLines: 2,
                                   trimMode: TrimMode.line,
-                                  style: const TextStyle(
-                                    fontSize: 12,
-                                  ),
+                                  style: const TextStyle(fontSize: 12),
                                   moreStyle: TextStyle(
-                                    color: Theme.of(context)
-                                        .buttonTheme
-                                        .colorScheme
-                                        ?.primary,
+                                    color: Theme.of(
+                                      context,
+                                    ).buttonTheme.colorScheme?.primary,
                                   ),
                                   lessStyle: TextStyle(
-                                    color: Theme.of(context)
-                                        .buttonTheme
-                                        .colorScheme
-                                        ?.primary,
+                                    color: Theme.of(
+                                      context,
+                                    ).buttonTheme.colorScheme?.primary,
                                   ),
                                 ),
                               ),
@@ -136,10 +137,13 @@ class _KomikDetailScreenState extends State<KomikDetailScreen> {
                                         flipX: _flipList,
                                         child: RotatedBox(
                                           quarterTurns: _flipList ? 2 : 0,
-                                          child: const Icon(Icons.sort, size: 20),
+                                          child: const Icon(
+                                            Icons.sort,
+                                            size: 20,
+                                          ),
                                         ),
                                       ),
-                                    )
+                                    ),
                                   ],
                                 ),
                               ),
@@ -149,8 +153,9 @@ class _KomikDetailScreenState extends State<KomikDetailScreen> {
                                 child: KomikDetailListChapter(
                                   komikuDetailModel: value.komikuDetailModel,
                                   isReversed: _flipList,
+                                  provider: widget.provider,
                                 ),
-                              )
+                              ),
                             ],
                           ),
                         ),
@@ -160,11 +165,9 @@ class _KomikDetailScreenState extends State<KomikDetailScreen> {
                     return InkWell(
                       onTap: () {
                         /// Start the komik list fetch.
-                        context.read<KomikuDetailFetchBloc>().add(
-                              KomikuDetailFetchEvent.started(
-                                param: widget.param,
-                              ),
-                            );
+                        context.read<KomikDetailFetchBloc>().add(
+                          KomikDetailFetchEvent.started(param: widget.param),
+                        );
                       },
                       child: Center(
                         child: Text(
@@ -176,9 +179,7 @@ class _KomikDetailScreenState extends State<KomikDetailScreen> {
                   }
                 },
                 orElse: () {
-                  return const Center(
-                    child: LoadingWidget(),
-                  );
+                  return const Center(child: LoadingWidget());
                 },
               ),
             );

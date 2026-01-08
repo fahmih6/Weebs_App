@@ -4,7 +4,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:weebs_app/helpers/general/debouncer.dart';
 import 'package:weebs_app/helpers/get_it_helper/get_it_helper.dart';
 
-import '../komiku_detail_fetch_bloc/komiku_detail_fetch_bloc.dart';
+import '../komik_detail_fetch_bloc/komik_detail_fetch_bloc.dart';
 
 part 'komik_read_appbar_state.dart';
 part 'komik_read_appbar_cubit.freezed.dart';
@@ -33,11 +33,14 @@ class KomikReadAppbarCubit extends Cubit<KomikReadAppbarState> {
   /// App bar title
   void getAppbarTitle({required String currentChapterParam}) {
     /// Title
-    final title = getIt<KomikuDetailFetchBloc>().state.mapOrNull(
-            completed: (value) => value.komikuDetailModel.chapters
-                .firstWhereOrNull(
-                    (element) => element.param == currentChapterParam)
-                ?.chapter) ??
+    final title =
+        getIt<KomikDetailFetchBloc>().state.mapOrNull(
+          completed: (value) => value.komikuDetailModel.chapters
+              .firstWhereOrNull(
+                (element) => element.param == currentChapterParam,
+              )
+              ?.chapter,
+        ) ??
         "-";
 
     /// Emit the title

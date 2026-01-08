@@ -11,10 +11,12 @@ import 'package:weebs_app/routes/route_names.dart';
 import 'package:weebs_app/screens/search_screen/widgets/search_screen_anoboy_result.dart';
 import 'package:weebs_app/screens/search_screen/widgets/search_screen_komik_result.dart';
 import 'package:weebs_app/widgets/loading_widget/loading_widget.dart';
+import 'package:weebs_app/enum/manga_provider.dart';
 
 @RoutePage(name: RouteNames.searchScreen)
 class SearchScreen extends StatelessWidget {
-  const SearchScreen({super.key});
+  final MangaProvider provider;
+  const SearchScreen({super.key, this.provider = MangaProvider.komiku});
 
   @override
   Widget build(BuildContext context) {
@@ -36,19 +38,18 @@ class SearchScreen extends StatelessWidget {
               onChanged: (value) {
                 getIt<Debouncer>().run(() {
                   context.read<SearchBloc>().add(
-                        SearchEvent.started(
-                          keyword: value,
-                          currentRouteName: currentRoute,
-                        ),
-                      );
+                    SearchEvent.started(
+                      keyword: value,
+                      currentRouteName: currentRoute,
+                      provider: provider,
+                    ),
+                  );
                 });
               },
             ),
 
             /// Padding
-            Padding(
-              padding: EdgeInsets.only(top: 24.h),
-            ),
+            Padding(padding: EdgeInsets.only(top: 24.h)),
 
             /// Result
             Expanded(
@@ -61,15 +62,14 @@ class SearchScreen extends StatelessWidget {
                     child: state.map(
                       state: (value) {
                         if (value.isLoading) {
-                          return const Center(
-                            child: LoadingWidget(),
-                          );
+                          return const Center(child: LoadingWidget());
                         } else {
                           return AnimatedSwitcher(
                             duration: const Duration(milliseconds: 250),
                             child: currentRoute == RouteNames.komikListScreen
                                 ? SearchScreenKomikResult(
                                     komikResult: value.komikResult,
+                                    provider: provider,
                                   )
                                 : SearchScreenAnoboyResult(
                                     anoboyResult: value.anoboyResult,
@@ -81,7 +81,7 @@ class SearchScreen extends StatelessWidget {
                   );
                 },
               ),
-            )
+            ),
           ],
         ),
       ),
