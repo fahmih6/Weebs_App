@@ -38,9 +38,7 @@ class KomikListScreenAppBar extends StatelessWidget {
                 return Shimmer.fromColors(
                   baseColor: Colors.grey,
                   highlightColor: Colors.grey.shade300,
-                  child: Container(
-                    color: Colors.grey,
-                  ),
+                  child: Container(color: Colors.grey),
                 );
               },
             ),

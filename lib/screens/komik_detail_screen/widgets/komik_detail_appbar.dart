@@ -29,9 +29,7 @@ class KomikDetailAppbar extends StatelessWidget {
             image: DecorationImage(
               fit: BoxFit.cover,
               opacity: 0.125,
-              image: CachedNetworkImageProvider(
-                komikuDetailModel.thumbnail,
-              ),
+              image: CachedNetworkImageProvider(komikuDetailModel.thumbnail),
             ),
           ),
           child: Column(
@@ -63,9 +61,11 @@ class KomikDetailAppbar extends StatelessWidget {
                   child: BlocBuilder<FavouritesBloc, FavouritesState>(
                     builder: (context, state) {
                       /// Is komik is already added to the favourites
-                      final isExist = state.komikuList.firstWhereOrNull(
-                              (element) =>
-                                  element.param == komikuDetailModel.param) !=
+                      final isExist =
+                          state.komikuList.firstWhereOrNull(
+                            (element) =>
+                                element.param == komikuDetailModel.param,
+                          ) !=
                           null;
 
                       /// Widget
@@ -73,16 +73,16 @@ class KomikDetailAppbar extends StatelessWidget {
                         onPressed: () {
                           if (!isExist) {
                             context.read<FavouritesBloc>().add(
-                                  FavouritesEvent.added(
-                                    komikuData: komikuDetailModel,
-                                  ),
-                                );
+                              FavouritesEvent.added(
+                                komikuData: komikuDetailModel,
+                              ),
+                            );
                           } else {
                             context.read<FavouritesBloc>().add(
-                                  FavouritesEvent.removed(
-                                    komikuData: komikuDetailModel,
-                                  ),
-                                );
+                              FavouritesEvent.removed(
+                                komikuData: komikuDetailModel,
+                              ),
+                            );
                           }
                         },
                         child: Text(

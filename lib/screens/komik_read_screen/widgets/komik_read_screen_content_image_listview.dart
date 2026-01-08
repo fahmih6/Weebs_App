@@ -66,8 +66,8 @@ class _KomikReadScreenContentImageListViewState
             scaleEnabled: true,
             transformationController: _transformationController,
             onInteractionEnd: (details) {
-              _scale.value =
-                  _transformationController.value.getMaxScaleOnAxis();
+              _scale.value = _transformationController.value
+                  .getMaxScaleOnAxis();
             },
 
             /// Chapter Detail List
@@ -93,18 +93,21 @@ class _KomikReadScreenContentImageListViewState
                               final komikReadImageMode =
                                   value.settingsData.komikReadImageMode;
                               return FractionallySizedBox(
-                                widthFactor: komikReadImageMode ==
+                                widthFactor:
+                                    komikReadImageMode ==
                                             KomikReadImageMode.normal &&
                                         (kIsWeb || Platform.isMacOS)
                                     ? 0.5
                                     : 1,
                                 child: CachedNetworkImage(
-                                  fit: komikReadImageMode ==
+                                  fit:
+                                      komikReadImageMode ==
                                           KomikReadImageMode.fillWidth
                                       ? BoxFit.fill
                                       : null,
                                   imageUrl: image,
-                                  height: komikReadImageMode ==
+                                  height:
+                                      komikReadImageMode ==
                                           KomikReadImageMode.fitHeight
                                       ? MediaQuery.sizeOf(context).height
                                       : null,
@@ -156,8 +159,8 @@ class _KomikReadScreenContentImageListViewState
       animation = Matrix4Tween(
         begin: _transformationController.value,
         end: Matrix4.identity()
-          ..translate(-position.dx * 1.5, -position.dy * 1.5)
-          ..scale(2.5),
+          ..translateByDouble(-position.dx * 1.5, -position.dy * 1.5, 0.0, 1.0)
+          ..scaleByDouble(2.5, 2.5, 1.0, 1.0),
       ).animate(_animationController);
 
       _animationController.forward();

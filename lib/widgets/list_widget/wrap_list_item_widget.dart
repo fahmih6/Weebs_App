@@ -48,9 +48,7 @@ class WrapListItemWidget extends StatelessWidget {
                       return const ShimmerPlaceholderWidget();
                     },
                     errorWidget: (context, url, error) {
-                      return Container(
-                        color: Colors.black,
-                      );
+                      return Container(color: Colors.black);
                     },
                     fit: BoxFit.cover,
                     height: imageHeight ?? 190.h,
@@ -109,10 +107,7 @@ class WrapListItemWidget extends StatelessWidget {
             /// Divider
             Padding(
               padding: EdgeInsets.symmetric(vertical: 8.h),
-              child: const Divider(
-                color: Colors.white,
-                height: 1,
-              ),
+              child: const Divider(color: Colors.white, height: 1),
             ),
 
             /// Chapter

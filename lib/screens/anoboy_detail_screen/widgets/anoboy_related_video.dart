@@ -9,10 +9,7 @@ import '../../../widgets/shimmer/shimmer_placeholder_widget.dart';
 
 class AnoboyRelatedVideo extends StatelessWidget {
   final AnoboyDetailModel anoboyDetailModel;
-  const AnoboyRelatedVideo({
-    super.key,
-    required this.anoboyDetailModel,
-  });
+  const AnoboyRelatedVideo({super.key, required this.anoboyDetailModel});
 
   @override
   Widget build(BuildContext context) {
@@ -27,10 +24,7 @@ class AnoboyRelatedVideo extends StatelessWidget {
             /// Related Videos
             const Text(
               "Related Videos",
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
 
             /// Content
@@ -53,7 +47,8 @@ class AnoboyRelatedVideo extends StatelessWidget {
                       onTap: () {
                         context.router.popAndPush(
                           AnoboyDetailRoute(
-                              param: item.navLink.split('/').last),
+                            param: item.navLink.split('/').last,
+                          ),
                         );
                       },
                       child: Stack(
@@ -68,9 +63,7 @@ class AnoboyRelatedVideo extends StatelessWidget {
                                 return const ShimmerPlaceholderWidget();
                               },
                               errorWidget: (context, url, error) {
-                                return Container(
-                                  color: Colors.black,
-                                );
+                                return Container(color: Colors.black);
                               },
                               fit: BoxFit.cover,
                               height: 250.h,

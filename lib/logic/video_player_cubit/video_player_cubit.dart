@@ -36,7 +36,7 @@ class VideoPlayerCubit extends Cubit<VideoPlayerState> {
     videoPlayerController = VideoPlayerController.networkUrl(
       Uri.parse(url),
       httpHeaders: <String, String>{
-        ...?links.firstWhereOrNull((element) => element.link == url)?.headers
+        ...?links.firstWhereOrNull((element) => element.link == url)?.headers,
       },
       videoPlayerOptions: VideoPlayerOptions(
         allowBackgroundPlayback: false,
@@ -56,9 +56,7 @@ class VideoPlayerCubit extends Cubit<VideoPlayerState> {
                   showModalBottomSheet(
                     context: context,
                     builder: (_) {
-                      return VideoResolutionBottomSheet(
-                        links: links,
-                      );
+                      return VideoResolutionBottomSheet(links: links);
                     },
                   );
                 },
@@ -81,17 +79,13 @@ class VideoPlayerCubit extends Cubit<VideoPlayerState> {
           customControls: (!kIsWeb && (Platform.isAndroid || Platform.isIOS))
               ? const VideoPlayerControls()
               : null,
-          routePageBuilder: (
-            context,
-            animation,
-            secondaryAnimation,
-            controllerProvider,
-          ) {
-            return VideoFullscreenWidget(
-              animation: animation,
-              controllerProvider: controllerProvider,
-            );
-          },
+          routePageBuilder:
+              (context, animation, secondaryAnimation, controllerProvider) {
+                return VideoFullscreenWidget(
+                  animation: animation,
+                  controllerProvider: controllerProvider,
+                );
+              },
         ),
         url: url,
       ),
@@ -132,18 +126,21 @@ class VideoPlayerCubit extends Cubit<VideoPlayerState> {
       final options = videoPlayerController?.videoPlayerOptions;
 
       /// Video player controller
-      videoPlayerController = VideoPlayerController.networkUrl(
-        Uri.parse(url),
-        httpHeaders: headers ?? {},
-        videoPlayerOptions: options,
-      )..initialize().then((value) {
-          /// Seek to the latest position
-          videoPlayerController
-              ?.seekTo(state.lastPosition ?? const Duration(seconds: 0));
+      videoPlayerController =
+          VideoPlayerController.networkUrl(
+              Uri.parse(url),
+              httpHeaders: headers ?? {},
+              videoPlayerOptions: options,
+            )
+            ..initialize().then((value) {
+              /// Seek to the latest position
+              videoPlayerController?.seekTo(
+                state.lastPosition ?? const Duration(seconds: 0),
+              );
 
-          /// Add back the listener
-          videoPlayerController?.addListener(videoPlayerDurationListener);
-        });
+              /// Add back the listener
+              videoPlayerController?.addListener(videoPlayerDurationListener);
+            });
 
       emit(
         state.copyWith(

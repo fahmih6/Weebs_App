@@ -29,10 +29,8 @@ class SearchScreenKomikResult extends StatelessWidget {
           );
 
           context.read<SearchBloc>().add(
-                SearchEvent.loadMore(
-                  currentRouteName: currentRoute,
-                ),
-              );
+            SearchEvent.loadMore(currentRouteName: currentRoute),
+          );
         }
         return true;
       },
@@ -44,11 +42,7 @@ class SearchScreenKomikResult extends StatelessWidget {
             padding: EdgeInsets.only(bottom: 16.h),
             child: InkWell(
               onTap: () {
-                context.pushRoute(
-                  KomikDetailRoute(
-                    param: item.param,
-                  ),
-                );
+                context.pushRoute(KomikDetailRoute(param: item.param));
               },
               child: Container(
                 height: 120.h,
@@ -73,9 +67,7 @@ class SearchScreenKomikResult extends StatelessWidget {
                     ),
 
                     /// Padding
-                    SizedBox(
-                      width: 8.h,
-                    ),
+                    SizedBox(width: 8.h),
 
                     /// Title and Description
                     Flexible(
@@ -97,9 +89,7 @@ class SearchScreenKomikResult extends StatelessWidget {
                           Flexible(
                             child: Padding(
                               padding: EdgeInsets.only(top: 8.h),
-                              child: Text(
-                                "Updated : ${item.latestChapter}",
-                              ),
+                              child: Text("Updated : ${item.latestChapter}"),
                             ),
                           ),
                         ],

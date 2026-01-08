@@ -48,23 +48,23 @@ class AnoboyListScreenAppbar extends StatelessWidget {
                         return const ShimmerPlaceholderWidget();
                       },
                       errorWidget: (context, url, error) {
-                        return Container(
-                          color: Colors.black,
-                        );
+                        return Container(color: Colors.black);
                       },
                     ),
 
                     /// App Bar Video Player
                     AnimatedOpacity(
-                      opacity: shouldHideVideo(
-                        context: context,
-                        constraints: constraints,
-                      )
+                      opacity:
+                          shouldHideVideo(
+                            context: context,
+                            constraints: constraints,
+                          )
                           ? 0
                           : 1,
                       duration: const Duration(milliseconds: 250),
-                      child:
-                          AppbarVideoPlayer(param: animeList.data.first.param),
+                      child: AppbarVideoPlayer(
+                        param: animeList.data.first.param,
+                      ),
                     ),
                   ],
                 ),
@@ -84,8 +84,10 @@ class AnoboyListScreenAppbar extends StatelessWidget {
                   },
                   child: Container(
                     width: double.infinity,
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 8.h, vertical: 4.h),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 8.h,
+                      vertical: 4.h,
+                    ),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8),
                       color: Colors.black.withValues(alpha: 0.7),

@@ -29,10 +29,8 @@ class SearchScreenAnoboyResult extends StatelessWidget {
           );
 
           context.read<SearchBloc>().add(
-                SearchEvent.loadMore(
-                  currentRouteName: currentRoute,
-                ),
-              );
+            SearchEvent.loadMore(currentRouteName: currentRoute),
+          );
         }
         return true;
       },
@@ -44,11 +42,7 @@ class SearchScreenAnoboyResult extends StatelessWidget {
             padding: EdgeInsets.only(bottom: 16.h),
             child: InkWell(
               onTap: () {
-                context.pushRoute(
-                  AnoboyDetailRoute(
-                    param: item.param,
-                  ),
-                );
+                context.pushRoute(AnoboyDetailRoute(param: item.param));
               },
               child: Container(
                 height: 120.h,
@@ -73,9 +67,7 @@ class SearchScreenAnoboyResult extends StatelessWidget {
                     ),
 
                     /// Padding
-                    SizedBox(
-                      width: 8.h,
-                    ),
+                    SizedBox(width: 8.h),
 
                     /// Title and Description
                     Flexible(

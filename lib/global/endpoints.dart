@@ -1,6 +1,6 @@
 class Endpoints {
   /// Base URL
-  static const String baseUrl = "http://murasakibara.online";
+  static const String baseUrl = "http://midorima.online:3000";
 
   /// Anoboy
   static const String anoboy = "/api/anoboy/";
@@ -12,4 +12,9 @@ class Endpoints {
   /// Komiku
   static const String komiku = "/api/komiku/";
   static const String komikuChapter = "/api/komiku/chapter/";
+
+  /// Proxy
+  ///
+  /// Must be followed by valid link. e.g : `$imgProxy$imageUrl`.
+  static const String imgProxy = "$baseUrl/api/proxy/?url=";
 }

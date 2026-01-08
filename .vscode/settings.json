@@ -1,3 +1,7 @@
 {
-  "dart.flutterSdkPath": "~/Flutter/flutter-latest"
+  "dart.flutterSdkPath": "~/Flutter/flutter-latest",
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "always"
+  },
+  "editor.codeLens": true
 }

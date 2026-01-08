@@ -17,10 +17,10 @@ publish_to: "none" # Remove this line if you wish to publish to pub.dev
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 # In Windows, build-name is used as the major, minor, and patch parts
 # of the product and file versions while build-number is used as the build suffix.
-version: 1.0.0+4
+version: 1.0.0+8
 
 environment:
-  sdk: ">=3.2.3 <4.0.0"
+  sdk: ">=3.10.1 <4.0.0"
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -29,19 +29,19 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
-  auto_route: ^10.0.1
+  auto_route: ^11.0.0
   bloc_concurrency: ^0.3.0
   cached_network_image: ^3.4.1
   chewie: ^1.11.3
   collection: ^1.17.1
   cupertino_icons: ^1.0.2
   dartz: ^0.10.1
-  device_info_plus: ^11.3.0
+  device_info_plus: ^12.3.0
   dio: ^5.8.0+1
-  dio_smart_retry: ^5.0.0
+  dio_smart_retry: ^7.0.1
   equatable: ^2.0.7
-  firebase_analytics: ^11.3.3
-  firebase_core: ^3.6.0
+  firebase_analytics: ^12.0.4
+  firebase_core: ^4.2.1
   fluid_bottom_nav_bar: ^1.4.0
   flutter:
     sdk: flutter
@@ -49,8 +49,8 @@ dependencies:
   flutter_native_splash: ^2.2.16
   flutter_screenutil: ^5.6.0
   flutter_svg: ^1.1.6
-  freezed_annotation: ^2.2.0
-  get_it: ^7.2.0
+  freezed_annotation: ^3.1.0
+  get_it: ^9.2.0
   html: ^0.15.4
   hydrated_bloc: ^10.0.0
   json_annotation: ^4.8.1
@@ -59,15 +59,15 @@ dependencies:
   universal_html: ^2.2.4
   video_player: ^2.9.5
   win32: ^5.5.5
-  window_manager: ^0.3.7
+  window_manager: ^0.5.1
 
 dev_dependencies:
   auto_route_generator: ^10.0.1
   build_runner: ^2.4.15
-  flutter_lints: ^2.0.0
+  flutter_lints: ^6.0.0
   flutter_test:
     sdk: flutter
-  freezed: ^2.3.0
+  freezed: ^3.2.3
   json_serializable: ^6.5.4
 
 # For information on the generic Dart part of this file, see the
