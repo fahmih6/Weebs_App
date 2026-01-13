@@ -1,8 +1,9 @@
-import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:video_player/video_player.dart';
 
 import '../../logic/video_player_cubit/video_player_cubit.dart';
+import 'custom_material_controls.dart';
 
 class VideoPlayerWidget extends StatefulWidget {
   const VideoPlayerWidget({super.key});
@@ -12,70 +13,26 @@ class VideoPlayerWidget extends StatefulWidget {
 }
 
 class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
-  /// Chewie Global Key
-  final chewieGlobalKey = GlobalKey();
+  /// Global Key
+  final playerGlobalKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<VideoPlayerCubit, VideoPlayerState>(
       builder: (context, state) {
-        final chewieController = state.chewieController;
-        if (chewieController != null) {
-          return GestureDetector(
-            onDoubleTapDown: (details) async {
-              await onDoubleTap(
-                details: details,
-                state: state,
-                chewieController: chewieController,
-              );
-            },
-            child: Chewie(
-              key: chewieGlobalKey,
-              controller: chewieController,
-            ),
+        final controller = state.controller;
+        if (controller != null && controller.controller.value.isInitialized) {
+          return Stack(
+            key: playerGlobalKey,
+            children: [
+              VideoPlayer(controller.controller),
+              CustomMaterialControls(controller: controller),
+            ],
           );
         } else {
-          return const SizedBox.shrink();
+          return const Center(child: CircularProgressIndicator());
         }
       },
     );
-  }
-
-  /// On Double Tap.
-  Future<void> onDoubleTap({
-    required TapDownDetails details,
-    required VideoPlayerState state,
-    required ChewieController chewieController,
-  }) async {
-    /// Player size
-    final playerSize = chewieGlobalKey.currentContext?.size;
-
-    /// Last Position
-    final lastPosition = state.lastPosition;
-
-    if (playerSize != null && lastPosition != null) {
-      /// Thrid Size
-      final thirdSize = playerSize.width / 3;
-
-      /// Dx
-      final dx = details.globalPosition.dx;
-
-      /// Determines if center
-      final isCenter = dx >= thirdSize && dx <= thirdSize * 2;
-
-      /// Backwards
-      if (dx < thirdSize && !isCenter) {
-        await chewieController.seekTo(
-          lastPosition - const Duration(seconds: 5),
-        );
-      }
-
-      /// Forwards
-      else if (dx > thirdSize && !isCenter) {
-        await chewieController.seekTo(
-          lastPosition + const Duration(seconds: 5),
-        );
-      }
-    }
   }
 }

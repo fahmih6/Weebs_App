@@ -1,132 +1,91 @@
-import 'package:chewie/chewie.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:video_player/video_player.dart';
 import 'package:universal_html/html.dart' as html;
 import 'package:window_manager/window_manager.dart';
 
 import '../../extensions/platform_extensions.dart';
-import '../../helpers/get_it_helper/get_it_helper.dart';
 import '../../logic/video_player_cubit/video_player_cubit.dart';
+import 'custom_material_controls.dart';
 
 class VideoFullscreenWidget extends StatefulWidget {
-  final Animation<double> animation;
-  final ChewieControllerProvider controllerProvider;
-  const VideoFullscreenWidget({
-    super.key,
-    required this.animation,
-    required this.controllerProvider,
-  });
+  const VideoFullscreenWidget({super.key});
 
   @override
   State<VideoFullscreenWidget> createState() => _VideoFullscreenWidgetState();
 }
 
 class _VideoFullscreenWidgetState extends State<VideoFullscreenWidget> {
-  /// Chewie Global Key
-  final chewieGlobalKey = GlobalKey();
+  final playerGlobalKey = GlobalKey();
+
+  @override
+  void initState() {
+    super.initState();
+    if (!kIsWeb) {
+      SystemChrome.setPreferredOrientations([
+        DeviceOrientation.landscapeLeft,
+        DeviceOrientation.landscapeRight,
+      ]);
+      SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+    }
+  }
+
+  @override
+  void dispose() {
+    if (!kIsWeb) {
+      SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+      SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+    }
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return PopScope(
-      canPop: false,
+      canPop: true,
       onPopInvokedWithResult: (didPop, res) async {
-        if (didPop) {
-          return;
-        }
+        if (!didPop) return;
 
-        /// Request Native full screen.
         if (kIsWeb) {
-          getIt<VideoPlayerCubit>().webReinitialize();
           html.document.exitFullscreen();
         } else if (PlatformExtension.isDesktop) {
           await WindowManager.instance.setFullScreen(false);
-        } else {
-          widget.controllerProvider.controller.toggleFullScreen();
         }
-
-        /// Return true
-        return;
       },
-      child: AnimatedBuilder(
-        animation: widget.animation,
-        builder: (BuildContext context, Widget? child) {
-          /// Full Screen Widget
-          return BlocBuilder<VideoPlayerCubit, VideoPlayerState>(
-            builder: (context, state) {
-              /// Chewie Controller
-              final chewieController = state.chewieController ??
-                  widget.controllerProvider.controller;
+      child: BlocBuilder<VideoPlayerCubit, VideoPlayerState>(
+        builder: (context, state) {
+          final controller = state.controller;
 
-              /// New Controller Provider
-              final ChewieControllerProvider newControllerProvider =
-                  ChewieControllerProvider(
-                controller: chewieController,
-                child: GestureDetector(
-                  onDoubleTapDown: (details) {
-                    onDoubleTap(
-                      details: details,
-                      state: state,
-                      chewieController: chewieController,
-                    );
-                  },
-                  child: Container(
-                    key: chewieGlobalKey,
-                    child: widget.controllerProvider.child,
-                  ),
-                ),
-              );
+          if (controller == null) {
+            return const Scaffold(
+              backgroundColor: Colors.black,
+              body: Center(child: CircularProgressIndicator()),
+            );
+          }
 
-              return Scaffold(
-                resizeToAvoidBottomInset: false,
-                body: Container(
-                  alignment: Alignment.center,
-                  color: Colors.black,
-                  child: newControllerProvider,
+          return Scaffold(
+            resizeToAvoidBottomInset: false,
+            backgroundColor: Colors.black,
+            body: Center(
+              child: AspectRatio(
+                aspectRatio: controller.controller.value.aspectRatio,
+                child: Stack(
+                  key: playerGlobalKey,
+                  children: [
+                    VideoPlayer(controller.controller),
+                    CustomMaterialControls(
+                      controller: controller,
+                      isFullScreen: true,
+                    ),
+                  ],
                 ),
-              );
-            },
+              ),
+            ),
           );
         },
       ),
     );
-  }
-
-  /// On Double Tap.
-  Future<void> onDoubleTap({
-    required TapDownDetails details,
-    required VideoPlayerState state,
-    required ChewieController chewieController,
-  }) async {
-    /// Player size
-    final playerSize = chewieGlobalKey.currentContext?.size;
-
-    /// Last Position
-    final lastPosition = state.lastPosition;
-
-    if (playerSize != null && lastPosition != null) {
-      /// Thrid Size
-      final thirdSize = playerSize.width / 3;
-
-      /// Dx
-      final dx = details.globalPosition.dx;
-
-      /// Determines if center
-      final isCenter = dx >= thirdSize && dx <= thirdSize * 2;
-
-      /// Backwards
-      if (dx < thirdSize && !isCenter) {
-        await chewieController.seekTo(
-          lastPosition - const Duration(seconds: 5),
-        );
-      }
-
-      /// Forwards
-      else if (dx > thirdSize && !isCenter) {
-        await chewieController.seekTo(
-          lastPosition + const Duration(seconds: 5),
-        );
-      }
-    }
   }
 }

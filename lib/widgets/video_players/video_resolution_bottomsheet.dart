@@ -36,14 +36,12 @@ class VideoResolutionBottomSheet extends StatelessWidget {
                     onTap: () {
                       /// Load video
                       context.read<VideoPlayerCubit>().loadVideo(
-                            links: links,
-                            url: item.link,
-                          );
+                        links: links,
+                        url: item.link,
+                      );
 
-                      /// Pop the video
-                      Navigator.of(context)
-                        ..pop()
-                        ..pop();
+                      /// Pop the bottom sheet
+                      Navigator.of(context).pop();
                     },
                     child: Container(
                       margin: const EdgeInsets.all(16),
@@ -58,13 +56,15 @@ class VideoResolutionBottomSheet extends StatelessWidget {
                               children: [
                                 Text(item.resolution),
                                 Visibility(
-                                  visible: context
+                                  visible:
+                                      context
                                           .watch<VideoPlayerCubit>()
                                           .state
-                                          .chewieController
-                                          ?.videoPlayerController
-                                          .dataSource ==
-                                      item.link,
+                                          .controller
+                                          ?.controller
+                                          .dataSource
+                                          .contains(item.link) ??
+                                      false,
                                   child: const Icon(Icons.check),
                                 ),
                               ],

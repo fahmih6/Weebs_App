@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$VideoPlayerState implements DiagnosticableTreeMixin {
 
- ChewieController? get chewieController; Duration? get lastPosition; String? get url;
+ CachedVideoPlayerPlus? get controller; Duration? get lastPosition; String? get url; List<AnoboyLinksItemModel> get links;
 /// Create a copy of VideoPlayerState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -26,21 +26,21 @@ $VideoPlayerStateCopyWith<VideoPlayerState> get copyWith => _$VideoPlayerStateCo
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'VideoPlayerState'))
-    ..add(DiagnosticsProperty('chewieController', chewieController))..add(DiagnosticsProperty('lastPosition', lastPosition))..add(DiagnosticsProperty('url', url));
+    ..add(DiagnosticsProperty('controller', controller))..add(DiagnosticsProperty('lastPosition', lastPosition))..add(DiagnosticsProperty('url', url))..add(DiagnosticsProperty('links', links));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is VideoPlayerState&&(identical(other.chewieController, chewieController) || other.chewieController == chewieController)&&(identical(other.lastPosition, lastPosition) || other.lastPosition == lastPosition)&&(identical(other.url, url) || other.url == url));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is VideoPlayerState&&(identical(other.controller, controller) || other.controller == controller)&&(identical(other.lastPosition, lastPosition) || other.lastPosition == lastPosition)&&(identical(other.url, url) || other.url == url)&&const DeepCollectionEquality().equals(other.links, links));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,chewieController,lastPosition,url);
+int get hashCode => Object.hash(runtimeType,controller,lastPosition,url,const DeepCollectionEquality().hash(links));
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'VideoPlayerState(chewieController: $chewieController, lastPosition: $lastPosition, url: $url)';
+  return 'VideoPlayerState(controller: $controller, lastPosition: $lastPosition, url: $url, links: $links)';
 }
 
 
@@ -51,7 +51,7 @@ abstract mixin class $VideoPlayerStateCopyWith<$Res>  {
   factory $VideoPlayerStateCopyWith(VideoPlayerState value, $Res Function(VideoPlayerState) _then) = _$VideoPlayerStateCopyWithImpl;
 @useResult
 $Res call({
- ChewieController? chewieController, Duration? lastPosition, String? url
+ CachedVideoPlayerPlus? controller, Duration? lastPosition, String? url, List<AnoboyLinksItemModel> links
 });
 
 
@@ -68,12 +68,13 @@ class _$VideoPlayerStateCopyWithImpl<$Res>
 
 /// Create a copy of VideoPlayerState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? chewieController = freezed,Object? lastPosition = freezed,Object? url = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? controller = freezed,Object? lastPosition = freezed,Object? url = freezed,Object? links = null,}) {
   return _then(_self.copyWith(
-chewieController: freezed == chewieController ? _self.chewieController : chewieController // ignore: cast_nullable_to_non_nullable
-as ChewieController?,lastPosition: freezed == lastPosition ? _self.lastPosition : lastPosition // ignore: cast_nullable_to_non_nullable
+controller: freezed == controller ? _self.controller : controller // ignore: cast_nullable_to_non_nullable
+as CachedVideoPlayerPlus?,lastPosition: freezed == lastPosition ? _self.lastPosition : lastPosition // ignore: cast_nullable_to_non_nullable
 as Duration?,url: freezed == url ? _self.url : url // ignore: cast_nullable_to_non_nullable
-as String?,
+as String?,links: null == links ? _self.links : links // ignore: cast_nullable_to_non_nullable
+as List<AnoboyLinksItemModel>,
   ));
 }
 
@@ -155,10 +156,10 @@ return state(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( ChewieController? chewieController,  Duration? lastPosition,  String? url)?  state,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( CachedVideoPlayerPlus? controller,  Duration? lastPosition,  String? url,  List<AnoboyLinksItemModel> links)?  state,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _State() when state != null:
-return state(_that.chewieController,_that.lastPosition,_that.url);case _:
+return state(_that.controller,_that.lastPosition,_that.url,_that.links);case _:
   return orElse();
 
 }
@@ -176,10 +177,10 @@ return state(_that.chewieController,_that.lastPosition,_that.url);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( ChewieController? chewieController,  Duration? lastPosition,  String? url)  state,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( CachedVideoPlayerPlus? controller,  Duration? lastPosition,  String? url,  List<AnoboyLinksItemModel> links)  state,}) {final _that = this;
 switch (_that) {
 case _State():
-return state(_that.chewieController,_that.lastPosition,_that.url);}
+return state(_that.controller,_that.lastPosition,_that.url,_that.links);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -193,10 +194,10 @@ return state(_that.chewieController,_that.lastPosition,_that.url);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( ChewieController? chewieController,  Duration? lastPosition,  String? url)?  state,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( CachedVideoPlayerPlus? controller,  Duration? lastPosition,  String? url,  List<AnoboyLinksItemModel> links)?  state,}) {final _that = this;
 switch (_that) {
 case _State() when state != null:
-return state(_that.chewieController,_that.lastPosition,_that.url);case _:
+return state(_that.controller,_that.lastPosition,_that.url,_that.links);case _:
   return null;
 
 }
@@ -208,12 +209,19 @@ return state(_that.chewieController,_that.lastPosition,_that.url);case _:
 
 
 class _State with DiagnosticableTreeMixin implements VideoPlayerState {
-  const _State({this.chewieController, this.lastPosition, this.url});
+  const _State({this.controller, this.lastPosition, this.url, final  List<AnoboyLinksItemModel> links = const []}): _links = links;
   
 
-@override final  ChewieController? chewieController;
+@override final  CachedVideoPlayerPlus? controller;
 @override final  Duration? lastPosition;
 @override final  String? url;
+ final  List<AnoboyLinksItemModel> _links;
+@override@JsonKey() List<AnoboyLinksItemModel> get links {
+  if (_links is EqualUnmodifiableListView) return _links;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_links);
+}
+
 
 /// Create a copy of VideoPlayerState
 /// with the given fields replaced by the non-null parameter values.
@@ -226,21 +234,21 @@ _$StateCopyWith<_State> get copyWith => __$StateCopyWithImpl<_State>(this, _$ide
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'VideoPlayerState.state'))
-    ..add(DiagnosticsProperty('chewieController', chewieController))..add(DiagnosticsProperty('lastPosition', lastPosition))..add(DiagnosticsProperty('url', url));
+    ..add(DiagnosticsProperty('controller', controller))..add(DiagnosticsProperty('lastPosition', lastPosition))..add(DiagnosticsProperty('url', url))..add(DiagnosticsProperty('links', links));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _State&&(identical(other.chewieController, chewieController) || other.chewieController == chewieController)&&(identical(other.lastPosition, lastPosition) || other.lastPosition == lastPosition)&&(identical(other.url, url) || other.url == url));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _State&&(identical(other.controller, controller) || other.controller == controller)&&(identical(other.lastPosition, lastPosition) || other.lastPosition == lastPosition)&&(identical(other.url, url) || other.url == url)&&const DeepCollectionEquality().equals(other._links, _links));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,chewieController,lastPosition,url);
+int get hashCode => Object.hash(runtimeType,controller,lastPosition,url,const DeepCollectionEquality().hash(_links));
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'VideoPlayerState.state(chewieController: $chewieController, lastPosition: $lastPosition, url: $url)';
+  return 'VideoPlayerState.state(controller: $controller, lastPosition: $lastPosition, url: $url, links: $links)';
 }
 
 
@@ -251,7 +259,7 @@ abstract mixin class _$StateCopyWith<$Res> implements $VideoPlayerStateCopyWith<
   factory _$StateCopyWith(_State value, $Res Function(_State) _then) = __$StateCopyWithImpl;
 @override @useResult
 $Res call({
- ChewieController? chewieController, Duration? lastPosition, String? url
+ CachedVideoPlayerPlus? controller, Duration? lastPosition, String? url, List<AnoboyLinksItemModel> links
 });
 
 
@@ -268,12 +276,13 @@ class __$StateCopyWithImpl<$Res>
 
 /// Create a copy of VideoPlayerState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? chewieController = freezed,Object? lastPosition = freezed,Object? url = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? controller = freezed,Object? lastPosition = freezed,Object? url = freezed,Object? links = null,}) {
   return _then(_State(
-chewieController: freezed == chewieController ? _self.chewieController : chewieController // ignore: cast_nullable_to_non_nullable
-as ChewieController?,lastPosition: freezed == lastPosition ? _self.lastPosition : lastPosition // ignore: cast_nullable_to_non_nullable
+controller: freezed == controller ? _self.controller : controller // ignore: cast_nullable_to_non_nullable
+as CachedVideoPlayerPlus?,lastPosition: freezed == lastPosition ? _self.lastPosition : lastPosition // ignore: cast_nullable_to_non_nullable
 as Duration?,url: freezed == url ? _self.url : url // ignore: cast_nullable_to_non_nullable
-as String?,
+as String?,links: null == links ? _self._links : links // ignore: cast_nullable_to_non_nullable
+as List<AnoboyLinksItemModel>,
   ));
 }
 

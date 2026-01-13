@@ -50,35 +50,29 @@ class AnoboyRepository implements IAnoboyRepository {
     return await res.fold((l) => Left(l), (r) async {
       final data = AnoboyDetailModel.fromJson(r["data"]);
 
-      /// Get the direct links
-      final bloggerLinks = data.videoEmbedLinks
-          .where((element) => element.link.contains('blog'))
-          .toList();
+      // /// Get the direct links
+      // final bloggerLinks = data.videoEmbedLinks
+      //     .where((element) => element.link.contains('blog'))
+      //     .toList();
 
-      final directLinks = bloggerLinks.isNotEmpty
-          ? await Future.wait(
-              bloggerLinks.map(
-                (e) => bloggerRepository.getVideoDirectLink(
-                  url: e.link,
-                  resolution: e.resolution,
-                ),
-              ),
-            )
-          : <Either<Failure, AnoboyLinksItemModel>>[];
+      // final directLinks = bloggerLinks.isNotEmpty
+      //     ? await Future.wait(
+      //         bloggerLinks.map(
+      //           (e) => bloggerRepository.getVideoDirectLink(
+      //             url: e.link,
+      //             resolution: e.resolution,
+      //           ),
+      //         ),
+      //       )
+      //     : <Either<Failure, AnoboyLinksItemModel>>[];
 
-      /// Map the direct links
-      final directLinkList = directLinks
-          .map((e) => e.fold((l) => null, (r) => r))
-          .whereType<AnoboyLinksItemModel>()
-          .toList();
+      // /// Map the direct links
+      // final directLinkList = directLinks
+      //     .map((e) => e.fold((l) => null, (r) => r))
+      //     .whereType<AnoboyLinksItemModel>()
+      //     .toList();
 
-      return Right(
-        data.copyWith(
-          videoDirectLinks: directLinkList.isNotEmpty
-              ? directLinkList
-              : data.videoDirectLinks,
-        ),
-      );
+      return Right(data.copyWith(videoDirectLinks: data.videoDirectLinks));
     });
   }
 
