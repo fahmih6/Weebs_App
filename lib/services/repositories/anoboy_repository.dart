@@ -48,7 +48,19 @@ class AnoboyRepository implements IAnoboyRepository {
 
     /// Return the result
     return await res.fold((l) => Left(l), (r) async {
-      final data = AnoboyDetailModel.fromJson(r["data"]);
+      final dataJson = r["data"];
+
+      final dynamic targetJson;
+      if (dataJson is List) {
+        if (dataJson.isEmpty) {
+          return Right(const AnoboyDetailModel());
+        }
+        targetJson = dataJson[0];
+      } else {
+        targetJson = dataJson;
+      }
+
+      final data = AnoboyDetailModel.fromJson(targetJson);
 
       // /// Get the direct links
       // final bloggerLinks = data.videoEmbedLinks

@@ -25,7 +25,7 @@ sealed class KomikuListItemModel with _$KomikuListItemModel {
     @Default("") String thumbnail,
 
     /// Manga Param
-    @Default("") String param,
+    @JsonKey(readValue: _readParam) @Default("") String param,
 
     /// Description
     @Default("") String description,
@@ -45,4 +45,8 @@ sealed class KomikuListItemModel with _$KomikuListItemModel {
 
   factory KomikuListItemModel.fromJson(Map<String, dynamic> json) =>
       _$KomikuListItemModelFromJson(json);
+}
+
+Object? _readParam(Map<dynamic, dynamic> json, String key) {
+  return json['param'] ?? json['slug'];
 }

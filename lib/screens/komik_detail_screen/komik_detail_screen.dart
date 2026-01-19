@@ -56,6 +56,7 @@ class _KomikDetailScreenState extends State<KomikDetailScreen> {
                       slivers: [
                         KomikDetailAppbar(
                           komikuDetailModel: value.komikuDetailModel,
+                          provider: widget.provider,
                         ),
 
                         /// Box

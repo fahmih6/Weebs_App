@@ -30,7 +30,7 @@ _KomikuListItemModel _$KomikuListItemModelFromJson(Map<String, dynamic> json) =>
     _KomikuListItemModel(
       title: json['title'] as String? ?? "",
       thumbnail: json['thumbnail'] as String? ?? "",
-      param: json['param'] as String? ?? "",
+      param: _readParam(json, 'param') as String? ?? "",
       description: json['description'] as String? ?? "",
       latestChapter: json['latest_chapter'] as String? ?? "",
       detailUrl: json['detail_url'] as String? ?? "",

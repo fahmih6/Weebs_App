@@ -7,7 +7,7 @@ part 'komiku_detail_model.g.dart';
 sealed class KomikuDetailModel with _$KomikuDetailModel {
   const factory KomikuDetailModel({
     @Default("") String title,
-    @Default("") String param,
+    @JsonKey(readValue: _readParam) @Default("") String param,
     @Default("") String thumbnail,
     @Default([]) List<String> genre,
     @Default("") String synopsis,

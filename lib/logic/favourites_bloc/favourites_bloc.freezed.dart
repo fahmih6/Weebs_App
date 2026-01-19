@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$FavouritesEvent {
 
- AnoboyDetailModel? get anoboyData; KomikuDetailModel? get komikuData;
+ AnoboyDetailModel? get anoboyData; KomikuDetailModel? get komikuData; MangaProvider? get provider;
 /// Create a copy of FavouritesEvent
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $FavouritesEventCopyWith<FavouritesEvent> get copyWith => _$FavouritesEventCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is FavouritesEvent&&(identical(other.anoboyData, anoboyData) || other.anoboyData == anoboyData)&&(identical(other.komikuData, komikuData) || other.komikuData == komikuData));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is FavouritesEvent&&(identical(other.anoboyData, anoboyData) || other.anoboyData == anoboyData)&&(identical(other.komikuData, komikuData) || other.komikuData == komikuData)&&(identical(other.provider, provider) || other.provider == provider));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,anoboyData,komikuData);
+int get hashCode => Object.hash(runtimeType,anoboyData,komikuData,provider);
 
 @override
 String toString() {
-  return 'FavouritesEvent(anoboyData: $anoboyData, komikuData: $komikuData)';
+  return 'FavouritesEvent(anoboyData: $anoboyData, komikuData: $komikuData, provider: $provider)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $FavouritesEventCopyWith<$Res>  {
   factory $FavouritesEventCopyWith(FavouritesEvent value, $Res Function(FavouritesEvent) _then) = _$FavouritesEventCopyWithImpl;
 @useResult
 $Res call({
- AnoboyDetailModel? anoboyData, KomikuDetailModel? komikuData
+ AnoboyDetailModel? anoboyData, KomikuDetailModel? komikuData, MangaProvider? provider
 });
 
 
@@ -62,11 +62,12 @@ class _$FavouritesEventCopyWithImpl<$Res>
 
 /// Create a copy of FavouritesEvent
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? anoboyData = freezed,Object? komikuData = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? anoboyData = freezed,Object? komikuData = freezed,Object? provider = freezed,}) {
   return _then(_self.copyWith(
 anoboyData: freezed == anoboyData ? _self.anoboyData : anoboyData // ignore: cast_nullable_to_non_nullable
 as AnoboyDetailModel?,komikuData: freezed == komikuData ? _self.komikuData : komikuData // ignore: cast_nullable_to_non_nullable
-as KomikuDetailModel?,
+as KomikuDetailModel?,provider: freezed == provider ? _self.provider : provider // ignore: cast_nullable_to_non_nullable
+as MangaProvider?,
   ));
 }
 /// Create a copy of FavouritesEvent
@@ -178,12 +179,12 @@ return edited(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( AnoboyDetailModel? anoboyData,  KomikuDetailModel? komikuData)?  added,TResult Function( AnoboyDetailModel? anoboyData,  KomikuDetailModel? komikuData)?  removed,TResult Function( AnoboyDetailModel? anoboyData,  KomikuDetailModel? komikuData)?  edited,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( AnoboyDetailModel? anoboyData,  KomikuDetailModel? komikuData,  MangaProvider? provider)?  added,TResult Function( AnoboyDetailModel? anoboyData,  KomikuDetailModel? komikuData,  MangaProvider? provider)?  removed,TResult Function( AnoboyDetailModel? anoboyData,  KomikuDetailModel? komikuData,  MangaProvider? provider)?  edited,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Added() when added != null:
-return added(_that.anoboyData,_that.komikuData);case _Removed() when removed != null:
-return removed(_that.anoboyData,_that.komikuData);case _Edited() when edited != null:
-return edited(_that.anoboyData,_that.komikuData);case _:
+return added(_that.anoboyData,_that.komikuData,_that.provider);case _Removed() when removed != null:
+return removed(_that.anoboyData,_that.komikuData,_that.provider);case _Edited() when edited != null:
+return edited(_that.anoboyData,_that.komikuData,_that.provider);case _:
   return orElse();
 
 }
@@ -201,12 +202,12 @@ return edited(_that.anoboyData,_that.komikuData);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( AnoboyDetailModel? anoboyData,  KomikuDetailModel? komikuData)  added,required TResult Function( AnoboyDetailModel? anoboyData,  KomikuDetailModel? komikuData)  removed,required TResult Function( AnoboyDetailModel? anoboyData,  KomikuDetailModel? komikuData)  edited,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( AnoboyDetailModel? anoboyData,  KomikuDetailModel? komikuData,  MangaProvider? provider)  added,required TResult Function( AnoboyDetailModel? anoboyData,  KomikuDetailModel? komikuData,  MangaProvider? provider)  removed,required TResult Function( AnoboyDetailModel? anoboyData,  KomikuDetailModel? komikuData,  MangaProvider? provider)  edited,}) {final _that = this;
 switch (_that) {
 case _Added():
-return added(_that.anoboyData,_that.komikuData);case _Removed():
-return removed(_that.anoboyData,_that.komikuData);case _Edited():
-return edited(_that.anoboyData,_that.komikuData);}
+return added(_that.anoboyData,_that.komikuData,_that.provider);case _Removed():
+return removed(_that.anoboyData,_that.komikuData,_that.provider);case _Edited():
+return edited(_that.anoboyData,_that.komikuData,_that.provider);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -220,12 +221,12 @@ return edited(_that.anoboyData,_that.komikuData);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( AnoboyDetailModel? anoboyData,  KomikuDetailModel? komikuData)?  added,TResult? Function( AnoboyDetailModel? anoboyData,  KomikuDetailModel? komikuData)?  removed,TResult? Function( AnoboyDetailModel? anoboyData,  KomikuDetailModel? komikuData)?  edited,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( AnoboyDetailModel? anoboyData,  KomikuDetailModel? komikuData,  MangaProvider? provider)?  added,TResult? Function( AnoboyDetailModel? anoboyData,  KomikuDetailModel? komikuData,  MangaProvider? provider)?  removed,TResult? Function( AnoboyDetailModel? anoboyData,  KomikuDetailModel? komikuData,  MangaProvider? provider)?  edited,}) {final _that = this;
 switch (_that) {
 case _Added() when added != null:
-return added(_that.anoboyData,_that.komikuData);case _Removed() when removed != null:
-return removed(_that.anoboyData,_that.komikuData);case _Edited() when edited != null:
-return edited(_that.anoboyData,_that.komikuData);case _:
+return added(_that.anoboyData,_that.komikuData,_that.provider);case _Removed() when removed != null:
+return removed(_that.anoboyData,_that.komikuData,_that.provider);case _Edited() when edited != null:
+return edited(_that.anoboyData,_that.komikuData,_that.provider);case _:
   return null;
 
 }
@@ -237,11 +238,12 @@ return edited(_that.anoboyData,_that.komikuData);case _:
 
 
 class _Added implements FavouritesEvent {
-  const _Added({this.anoboyData, this.komikuData});
+  const _Added({this.anoboyData, this.komikuData, this.provider});
   
 
 @override final  AnoboyDetailModel? anoboyData;
 @override final  KomikuDetailModel? komikuData;
+@override final  MangaProvider? provider;
 
 /// Create a copy of FavouritesEvent
 /// with the given fields replaced by the non-null parameter values.
@@ -253,16 +255,16 @@ _$AddedCopyWith<_Added> get copyWith => __$AddedCopyWithImpl<_Added>(this, _$ide
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Added&&(identical(other.anoboyData, anoboyData) || other.anoboyData == anoboyData)&&(identical(other.komikuData, komikuData) || other.komikuData == komikuData));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Added&&(identical(other.anoboyData, anoboyData) || other.anoboyData == anoboyData)&&(identical(other.komikuData, komikuData) || other.komikuData == komikuData)&&(identical(other.provider, provider) || other.provider == provider));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,anoboyData,komikuData);
+int get hashCode => Object.hash(runtimeType,anoboyData,komikuData,provider);
 
 @override
 String toString() {
-  return 'FavouritesEvent.added(anoboyData: $anoboyData, komikuData: $komikuData)';
+  return 'FavouritesEvent.added(anoboyData: $anoboyData, komikuData: $komikuData, provider: $provider)';
 }
 
 
@@ -273,7 +275,7 @@ abstract mixin class _$AddedCopyWith<$Res> implements $FavouritesEventCopyWith<$
   factory _$AddedCopyWith(_Added value, $Res Function(_Added) _then) = __$AddedCopyWithImpl;
 @override @useResult
 $Res call({
- AnoboyDetailModel? anoboyData, KomikuDetailModel? komikuData
+ AnoboyDetailModel? anoboyData, KomikuDetailModel? komikuData, MangaProvider? provider
 });
 
 
@@ -290,11 +292,12 @@ class __$AddedCopyWithImpl<$Res>
 
 /// Create a copy of FavouritesEvent
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? anoboyData = freezed,Object? komikuData = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? anoboyData = freezed,Object? komikuData = freezed,Object? provider = freezed,}) {
   return _then(_Added(
 anoboyData: freezed == anoboyData ? _self.anoboyData : anoboyData // ignore: cast_nullable_to_non_nullable
 as AnoboyDetailModel?,komikuData: freezed == komikuData ? _self.komikuData : komikuData // ignore: cast_nullable_to_non_nullable
-as KomikuDetailModel?,
+as KomikuDetailModel?,provider: freezed == provider ? _self.provider : provider // ignore: cast_nullable_to_non_nullable
+as MangaProvider?,
   ));
 }
 
@@ -329,11 +332,12 @@ $KomikuDetailModelCopyWith<$Res>? get komikuData {
 
 
 class _Removed implements FavouritesEvent {
-  const _Removed({this.anoboyData, this.komikuData});
+  const _Removed({this.anoboyData, this.komikuData, this.provider});
   
 
 @override final  AnoboyDetailModel? anoboyData;
 @override final  KomikuDetailModel? komikuData;
+@override final  MangaProvider? provider;
 
 /// Create a copy of FavouritesEvent
 /// with the given fields replaced by the non-null parameter values.
@@ -345,16 +349,16 @@ _$RemovedCopyWith<_Removed> get copyWith => __$RemovedCopyWithImpl<_Removed>(thi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Removed&&(identical(other.anoboyData, anoboyData) || other.anoboyData == anoboyData)&&(identical(other.komikuData, komikuData) || other.komikuData == komikuData));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Removed&&(identical(other.anoboyData, anoboyData) || other.anoboyData == anoboyData)&&(identical(other.komikuData, komikuData) || other.komikuData == komikuData)&&(identical(other.provider, provider) || other.provider == provider));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,anoboyData,komikuData);
+int get hashCode => Object.hash(runtimeType,anoboyData,komikuData,provider);
 
 @override
 String toString() {
-  return 'FavouritesEvent.removed(anoboyData: $anoboyData, komikuData: $komikuData)';
+  return 'FavouritesEvent.removed(anoboyData: $anoboyData, komikuData: $komikuData, provider: $provider)';
 }
 
 
@@ -365,7 +369,7 @@ abstract mixin class _$RemovedCopyWith<$Res> implements $FavouritesEventCopyWith
   factory _$RemovedCopyWith(_Removed value, $Res Function(_Removed) _then) = __$RemovedCopyWithImpl;
 @override @useResult
 $Res call({
- AnoboyDetailModel? anoboyData, KomikuDetailModel? komikuData
+ AnoboyDetailModel? anoboyData, KomikuDetailModel? komikuData, MangaProvider? provider
 });
 
 
@@ -382,11 +386,12 @@ class __$RemovedCopyWithImpl<$Res>
 
 /// Create a copy of FavouritesEvent
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? anoboyData = freezed,Object? komikuData = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? anoboyData = freezed,Object? komikuData = freezed,Object? provider = freezed,}) {
   return _then(_Removed(
 anoboyData: freezed == anoboyData ? _self.anoboyData : anoboyData // ignore: cast_nullable_to_non_nullable
 as AnoboyDetailModel?,komikuData: freezed == komikuData ? _self.komikuData : komikuData // ignore: cast_nullable_to_non_nullable
-as KomikuDetailModel?,
+as KomikuDetailModel?,provider: freezed == provider ? _self.provider : provider // ignore: cast_nullable_to_non_nullable
+as MangaProvider?,
   ));
 }
 
@@ -421,11 +426,12 @@ $KomikuDetailModelCopyWith<$Res>? get komikuData {
 
 
 class _Edited implements FavouritesEvent {
-  const _Edited({this.anoboyData, this.komikuData});
+  const _Edited({this.anoboyData, this.komikuData, this.provider});
   
 
 @override final  AnoboyDetailModel? anoboyData;
 @override final  KomikuDetailModel? komikuData;
+@override final  MangaProvider? provider;
 
 /// Create a copy of FavouritesEvent
 /// with the given fields replaced by the non-null parameter values.
@@ -437,16 +443,16 @@ _$EditedCopyWith<_Edited> get copyWith => __$EditedCopyWithImpl<_Edited>(this, _
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Edited&&(identical(other.anoboyData, anoboyData) || other.anoboyData == anoboyData)&&(identical(other.komikuData, komikuData) || other.komikuData == komikuData));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Edited&&(identical(other.anoboyData, anoboyData) || other.anoboyData == anoboyData)&&(identical(other.komikuData, komikuData) || other.komikuData == komikuData)&&(identical(other.provider, provider) || other.provider == provider));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,anoboyData,komikuData);
+int get hashCode => Object.hash(runtimeType,anoboyData,komikuData,provider);
 
 @override
 String toString() {
-  return 'FavouritesEvent.edited(anoboyData: $anoboyData, komikuData: $komikuData)';
+  return 'FavouritesEvent.edited(anoboyData: $anoboyData, komikuData: $komikuData, provider: $provider)';
 }
 
 
@@ -457,7 +463,7 @@ abstract mixin class _$EditedCopyWith<$Res> implements $FavouritesEventCopyWith<
   factory _$EditedCopyWith(_Edited value, $Res Function(_Edited) _then) = __$EditedCopyWithImpl;
 @override @useResult
 $Res call({
- AnoboyDetailModel? anoboyData, KomikuDetailModel? komikuData
+ AnoboyDetailModel? anoboyData, KomikuDetailModel? komikuData, MangaProvider? provider
 });
 
 
@@ -474,11 +480,12 @@ class __$EditedCopyWithImpl<$Res>
 
 /// Create a copy of FavouritesEvent
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? anoboyData = freezed,Object? komikuData = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? anoboyData = freezed,Object? komikuData = freezed,Object? provider = freezed,}) {
   return _then(_Edited(
 anoboyData: freezed == anoboyData ? _self.anoboyData : anoboyData // ignore: cast_nullable_to_non_nullable
 as AnoboyDetailModel?,komikuData: freezed == komikuData ? _self.komikuData : komikuData // ignore: cast_nullable_to_non_nullable
-as KomikuDetailModel?,
+as KomikuDetailModel?,provider: freezed == provider ? _self.provider : provider // ignore: cast_nullable_to_non_nullable
+as MangaProvider?,
   ));
 }
 
@@ -512,7 +519,7 @@ $KomikuDetailModelCopyWith<$Res>? get komikuData {
 /// @nodoc
 mixin _$FavouritesState {
 
- List<AnoboyDetailModel> get anoboyList; List<KomikuDetailModel> get komikuList;
+ List<AnoboyDetailModel> get anoboyList; List<KomikuDetailModel> get komikuList; List<KomikuDetailModel> get komikcastList;
 /// Create a copy of FavouritesState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -523,16 +530,16 @@ $FavouritesStateCopyWith<FavouritesState> get copyWith => _$FavouritesStateCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is FavouritesState&&const DeepCollectionEquality().equals(other.anoboyList, anoboyList)&&const DeepCollectionEquality().equals(other.komikuList, komikuList));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is FavouritesState&&const DeepCollectionEquality().equals(other.anoboyList, anoboyList)&&const DeepCollectionEquality().equals(other.komikuList, komikuList)&&const DeepCollectionEquality().equals(other.komikcastList, komikcastList));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(anoboyList),const DeepCollectionEquality().hash(komikuList));
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(anoboyList),const DeepCollectionEquality().hash(komikuList),const DeepCollectionEquality().hash(komikcastList));
 
 @override
 String toString() {
-  return 'FavouritesState(anoboyList: $anoboyList, komikuList: $komikuList)';
+  return 'FavouritesState(anoboyList: $anoboyList, komikuList: $komikuList, komikcastList: $komikcastList)';
 }
 
 
@@ -543,7 +550,7 @@ abstract mixin class $FavouritesStateCopyWith<$Res>  {
   factory $FavouritesStateCopyWith(FavouritesState value, $Res Function(FavouritesState) _then) = _$FavouritesStateCopyWithImpl;
 @useResult
 $Res call({
- List<AnoboyDetailModel> anoboyList, List<KomikuDetailModel> komikuList
+ List<AnoboyDetailModel> anoboyList, List<KomikuDetailModel> komikuList, List<KomikuDetailModel> komikcastList
 });
 
 
@@ -560,10 +567,11 @@ class _$FavouritesStateCopyWithImpl<$Res>
 
 /// Create a copy of FavouritesState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? anoboyList = null,Object? komikuList = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? anoboyList = null,Object? komikuList = null,Object? komikcastList = null,}) {
   return _then(_self.copyWith(
 anoboyList: null == anoboyList ? _self.anoboyList : anoboyList // ignore: cast_nullable_to_non_nullable
 as List<AnoboyDetailModel>,komikuList: null == komikuList ? _self.komikuList : komikuList // ignore: cast_nullable_to_non_nullable
+as List<KomikuDetailModel>,komikcastList: null == komikcastList ? _self.komikcastList : komikcastList // ignore: cast_nullable_to_non_nullable
 as List<KomikuDetailModel>,
   ));
 }
@@ -646,10 +654,10 @@ return state(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( List<AnoboyDetailModel> anoboyList,  List<KomikuDetailModel> komikuList)?  state,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( List<AnoboyDetailModel> anoboyList,  List<KomikuDetailModel> komikuList,  List<KomikuDetailModel> komikcastList)?  state,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _State() when state != null:
-return state(_that.anoboyList,_that.komikuList);case _:
+return state(_that.anoboyList,_that.komikuList,_that.komikcastList);case _:
   return orElse();
 
 }
@@ -667,10 +675,10 @@ return state(_that.anoboyList,_that.komikuList);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( List<AnoboyDetailModel> anoboyList,  List<KomikuDetailModel> komikuList)  state,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( List<AnoboyDetailModel> anoboyList,  List<KomikuDetailModel> komikuList,  List<KomikuDetailModel> komikcastList)  state,}) {final _that = this;
 switch (_that) {
 case _State():
-return state(_that.anoboyList,_that.komikuList);}
+return state(_that.anoboyList,_that.komikuList,_that.komikcastList);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -684,10 +692,10 @@ return state(_that.anoboyList,_that.komikuList);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( List<AnoboyDetailModel> anoboyList,  List<KomikuDetailModel> komikuList)?  state,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( List<AnoboyDetailModel> anoboyList,  List<KomikuDetailModel> komikuList,  List<KomikuDetailModel> komikcastList)?  state,}) {final _that = this;
 switch (_that) {
 case _State() when state != null:
-return state(_that.anoboyList,_that.komikuList);case _:
+return state(_that.anoboyList,_that.komikuList,_that.komikcastList);case _:
   return null;
 
 }
@@ -699,7 +707,7 @@ return state(_that.anoboyList,_that.komikuList);case _:
 
 
 class _State implements FavouritesState {
-  const _State({final  List<AnoboyDetailModel> anoboyList = const [], final  List<KomikuDetailModel> komikuList = const []}): _anoboyList = anoboyList,_komikuList = komikuList;
+  const _State({final  List<AnoboyDetailModel> anoboyList = const [], final  List<KomikuDetailModel> komikuList = const [], final  List<KomikuDetailModel> komikcastList = const []}): _anoboyList = anoboyList,_komikuList = komikuList,_komikcastList = komikcastList;
   
 
  final  List<AnoboyDetailModel> _anoboyList;
@@ -716,6 +724,13 @@ class _State implements FavouritesState {
   return EqualUnmodifiableListView(_komikuList);
 }
 
+ final  List<KomikuDetailModel> _komikcastList;
+@override@JsonKey() List<KomikuDetailModel> get komikcastList {
+  if (_komikcastList is EqualUnmodifiableListView) return _komikcastList;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_komikcastList);
+}
+
 
 /// Create a copy of FavouritesState
 /// with the given fields replaced by the non-null parameter values.
@@ -727,16 +742,16 @@ _$StateCopyWith<_State> get copyWith => __$StateCopyWithImpl<_State>(this, _$ide
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _State&&const DeepCollectionEquality().equals(other._anoboyList, _anoboyList)&&const DeepCollectionEquality().equals(other._komikuList, _komikuList));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _State&&const DeepCollectionEquality().equals(other._anoboyList, _anoboyList)&&const DeepCollectionEquality().equals(other._komikuList, _komikuList)&&const DeepCollectionEquality().equals(other._komikcastList, _komikcastList));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_anoboyList),const DeepCollectionEquality().hash(_komikuList));
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_anoboyList),const DeepCollectionEquality().hash(_komikuList),const DeepCollectionEquality().hash(_komikcastList));
 
 @override
 String toString() {
-  return 'FavouritesState.state(anoboyList: $anoboyList, komikuList: $komikuList)';
+  return 'FavouritesState.state(anoboyList: $anoboyList, komikuList: $komikuList, komikcastList: $komikcastList)';
 }
 
 
@@ -747,7 +762,7 @@ abstract mixin class _$StateCopyWith<$Res> implements $FavouritesStateCopyWith<$
   factory _$StateCopyWith(_State value, $Res Function(_State) _then) = __$StateCopyWithImpl;
 @override @useResult
 $Res call({
- List<AnoboyDetailModel> anoboyList, List<KomikuDetailModel> komikuList
+ List<AnoboyDetailModel> anoboyList, List<KomikuDetailModel> komikuList, List<KomikuDetailModel> komikcastList
 });
 
 
@@ -764,10 +779,11 @@ class __$StateCopyWithImpl<$Res>
 
 /// Create a copy of FavouritesState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? anoboyList = null,Object? komikuList = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? anoboyList = null,Object? komikuList = null,Object? komikcastList = null,}) {
   return _then(_State(
 anoboyList: null == anoboyList ? _self._anoboyList : anoboyList // ignore: cast_nullable_to_non_nullable
 as List<AnoboyDetailModel>,komikuList: null == komikuList ? _self._komikuList : komikuList // ignore: cast_nullable_to_non_nullable
+as List<KomikuDetailModel>,komikcastList: null == komikcastList ? _self._komikcastList : komikcastList // ignore: cast_nullable_to_non_nullable
 as List<KomikuDetailModel>,
   ));
 }

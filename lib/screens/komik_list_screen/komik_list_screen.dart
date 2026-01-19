@@ -77,8 +77,13 @@ class _KomikListScreenState extends State<KomikListScreen> {
                       SliverToBoxAdapter(
                         child: BlocBuilder<FavouritesBloc, FavouritesState>(
                           builder: (context, state) {
+                            final list =
+                                widget.provider == MangaProvider.komikcast
+                                ? state.komikcastList
+                                : state.komikuList;
+
                             return Visibility(
-                              visible: state.komikuList.isNotEmpty,
+                              visible: list.isNotEmpty,
                               child: Padding(
                                 padding: EdgeInsets.symmetric(horizontal: 8.h),
                                 child: KomikListScreenListView(
@@ -86,12 +91,12 @@ class _KomikListScreenState extends State<KomikListScreen> {
                                   tagOrGenre: 'favourites',
                                   provider: widget.provider,
                                   komikuList: KomikuListModel(
-                                    data: state.komikuList
+                                    data: list
                                         .map(
                                           (e) => KomikuListItemModel(
                                             description: e.synopsis,
                                             detailUrl:
-                                                '${Endpoints.baseUrl}${Endpoints.komiku}/${e.param}',
+                                                '${Endpoints.baseUrl}${widget.provider == MangaProvider.komiku ? Endpoints.komiku : Endpoints.komikcast}/${e.param}',
                                             latestChapter:
                                                 e
                                                     .chapters

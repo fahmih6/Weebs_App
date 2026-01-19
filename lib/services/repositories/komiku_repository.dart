@@ -10,8 +10,10 @@ import '../../model/komiku/komiku_list_model/komiku_list_model.dart';
 /// Komiku Repository
 abstract class IKomikuRepository {
   /// Get latest manga from komiku
-  Future<Either<Failure, KomikuListModel>> getLatestKomik(
-      {String? genre, String? tag});
+  Future<Either<Failure, KomikuListModel>> getLatestKomik({
+    String? genre,
+    String? tag,
+  });
 
   /// Get next data of komik list
   Future<Either<Failure, KomikuListModel>> getNextKomikListData({
@@ -25,14 +27,10 @@ abstract class IKomikuRepository {
 
   /// Get chapter images
   Future<Either<Failure, KomikuChapterImageListModel>>
-      getKomikDetailChapterImages({
-    required String url,
-  });
+  getKomikDetailChapterImages({required String url});
 
   /// Search Komik
-  Future<Either<Failure, KomikuListModel>> searchKomik({
-    String? keyword,
-  });
+  Future<Either<Failure, KomikuListModel>> searchKomik({String? keyword});
 }
 
 /// Komiku Repository
@@ -45,17 +43,24 @@ class KomikuRepository implements IKomikuRepository {
     final res = await DioHelper.defaultGetRequest(url: url);
 
     /// Return the result
-    return res.fold(
-      (l) => Left(l),
-      (r) => Right(KomikuDetailModel.fromJson(r['data'])),
-    );
+    return res.fold((l) => Left(l), (r) {
+      final data = r['data'];
+
+      /// If data is list, take the first one
+      if (data is List) {
+        if (data.isEmpty) {
+          return Right(const KomikuDetailModel());
+        }
+        return Right(KomikuDetailModel.fromJson(data[0]));
+      }
+
+      return Right(KomikuDetailModel.fromJson(data));
+    });
   }
 
   @override
   Future<Either<Failure, KomikuChapterImageListModel>>
-      getKomikDetailChapterImages({
-    required String url,
-  }) async {
+  getKomikDetailChapterImages({required String url}) async {
     /// Get komik chapter image
     final res = await DioHelper.defaultGetRequest(url: url);
 
@@ -67,8 +72,10 @@ class KomikuRepository implements IKomikuRepository {
   }
 
   @override
-  Future<Either<Failure, KomikuListModel>> getLatestKomik(
-      {String? genre, String? tag}) async {
+  Future<Either<Failure, KomikuListModel>> getLatestKomik({
+    String? genre,
+    String? tag,
+  }) async {
     /// Query Params
     Map<String, dynamic> queryParams = {};
 
@@ -78,31 +85,29 @@ class KomikuRepository implements IKomikuRepository {
 
     /// Get latest updated komik
     final res = await DioHelper.defaultGetRequest(
-        url: Endpoints.komiku, queryParams: queryParams);
+      url: Endpoints.komiku,
+      queryParams: queryParams,
+    );
 
     /// return the result
-    return res.fold(
-      (l) => Left(l),
-      (r) => Right(KomikuListModel.fromJson(r)),
-    );
+    return res.fold((l) => Left(l), (r) => Right(KomikuListModel.fromJson(r)));
   }
 
   @override
-  Future<Either<Failure, KomikuListModel>> getNextKomikListData(
-      {required String nextURL}) async {
+  Future<Either<Failure, KomikuListModel>> getNextKomikListData({
+    required String nextURL,
+  }) async {
     /// Get next komik list
     final res = await DioHelper.defaultGetRequest(url: nextURL);
 
     /// return the result
-    return res.fold(
-      (l) => Left(l),
-      (r) => Right(KomikuListModel.fromJson(r)),
-    );
+    return res.fold((l) => Left(l), (r) => Right(KomikuListModel.fromJson(r)));
   }
 
   @override
-  Future<Either<Failure, KomikuListModel>> searchKomik(
-      {String? keyword}) async {
+  Future<Either<Failure, KomikuListModel>> searchKomik({
+    String? keyword,
+  }) async {
     /// Search Komik
     final res = await DioHelper.defaultGetRequest(
       url: Endpoints.komiku,
@@ -110,11 +115,6 @@ class KomikuRepository implements IKomikuRepository {
     );
 
     /// Return the result
-    return res.fold(
-      (l) => Left(l),
-      (r) => Right(
-        KomikuListModel.fromJson(r),
-      ),
-    );
+    return res.fold((l) => Left(l), (r) => Right(KomikuListModel.fromJson(r)));
   }
 }

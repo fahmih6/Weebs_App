@@ -40,7 +40,8 @@ class KomikDetailFetchBloc
             errorMessage: l.message,
           ),
         ),
-        (r) => emit(_Completed(komikuDetailModel: r)),
+        (r) =>
+            emit(_Completed(komikuDetailModel: r.copyWith(param: event.param))),
       );
     });
   }

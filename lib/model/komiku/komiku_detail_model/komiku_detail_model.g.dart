@@ -9,7 +9,7 @@ part of 'komiku_detail_model.dart';
 _KomikuDetailModel _$KomikuDetailModelFromJson(Map<String, dynamic> json) =>
     _KomikuDetailModel(
       title: json['title'] as String? ?? "",
-      param: json['param'] as String? ?? "",
+      param: _readParam(json, 'param') as String? ?? "",
       thumbnail: json['thumbnail'] as String? ?? "",
       genre:
           (json['genre'] as List<dynamic>?)?.map((e) => e as String).toList() ??

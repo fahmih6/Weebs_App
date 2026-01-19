@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../enum/manga_provider.dart';
 import '../../../model/komiku/komiku_detail_model/komiku_detail_model.dart';
 import '../../../logic/favourites_bloc/favourites_bloc.dart';
 import '../../../widgets/clipper/inverted_bottom_border.dart';
@@ -11,7 +12,12 @@ import '../../../widgets/shimmer/shimmer_placeholder_widget.dart';
 
 class KomikDetailAppbar extends StatelessWidget {
   final KomikuDetailModel komikuDetailModel;
-  const KomikDetailAppbar({super.key, required this.komikuDetailModel});
+  final MangaProvider provider;
+  const KomikDetailAppbar({
+    super.key,
+    required this.komikuDetailModel,
+    this.provider = MangaProvider.komiku,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -59,12 +65,17 @@ class KomikDetailAppbar extends StatelessWidget {
                   child: BlocBuilder<FavouritesBloc, FavouritesState>(
                     builder: (context, state) {
                       /// Is komik is already added to the favourites
-                      final isExist =
-                          state.komikuList.firstWhereOrNull(
-                            (element) =>
-                                element.param == komikuDetailModel.param,
-                          ) !=
-                          null;
+                      final isExist = provider == MangaProvider.komikcast
+                          ? state.komikcastList.firstWhereOrNull(
+                                  (element) =>
+                                      element.param == komikuDetailModel.param,
+                                ) !=
+                                null
+                          : state.komikuList.firstWhereOrNull(
+                                  (element) =>
+                                      element.param == komikuDetailModel.param,
+                                ) !=
+                                null;
 
                       /// Widget
                       return ElevatedButton(
@@ -73,12 +84,14 @@ class KomikDetailAppbar extends StatelessWidget {
                             context.read<FavouritesBloc>().add(
                               FavouritesEvent.added(
                                 komikuData: komikuDetailModel,
+                                provider: provider,
                               ),
                             );
                           } else {
                             context.read<FavouritesBloc>().add(
                               FavouritesEvent.removed(
                                 komikuData: komikuDetailModel,
+                                provider: provider,
                               ),
                             );
                           }
