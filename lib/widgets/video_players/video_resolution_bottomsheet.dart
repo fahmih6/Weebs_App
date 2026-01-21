@@ -60,10 +60,8 @@ class VideoResolutionBottomSheet extends StatelessWidget {
                                       context
                                           .watch<VideoPlayerCubit>()
                                           .state
-                                          .controller
-                                          ?.controller
-                                          .dataSource
-                                          .contains(item.link) ??
+                                          .url
+                                          ?.contains(item.link) ??
                                       false,
                                   child: const Icon(Icons.check),
                                 ),

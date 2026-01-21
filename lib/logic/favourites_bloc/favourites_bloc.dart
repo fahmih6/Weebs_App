@@ -208,21 +208,24 @@ class FavouritesBloc extends HydratedBloc<FavouritesEvent, FavouritesState> {
       /// Param
       final param = state.komikuList[i].param;
 
-      /// Komik Data
-      final komikData = await getIt<KomikuRepository>().getKomikDetail(
-        url: "${Endpoints.komiku}$param",
-      );
+      /// Only update if param is not empty
+      if (param.isNotEmpty) {
+        /// Komik Data
+        final komikData = await getIt<KomikuRepository>().getKomikDetail(
+          url: "${Endpoints.komiku}$param",
+        );
 
-      /// Edit the data from list
-      komikData.fold(
-        (l) => null,
-        (r) => add(
-          FavouritesEvent.edited(
-            komikuData: r.copyWith(param: param),
-            provider: MangaProvider.komiku,
+        /// Edit the data from list
+        komikData.fold(
+          (l) => null,
+          (r) => add(
+            FavouritesEvent.edited(
+              komikuData: r.copyWith(param: param),
+              provider: MangaProvider.komiku,
+            ),
           ),
-        ),
-      );
+        );
+      }
     }
 
     /// Update Komikcast
@@ -230,21 +233,24 @@ class FavouritesBloc extends HydratedBloc<FavouritesEvent, FavouritesState> {
       /// Param
       final param = state.komikcastList[i].param;
 
-      /// Komik Data
-      final komikData = await getIt<KomikcastRepository>().getKomikDetail(
-        url: "${Endpoints.komikcast}$param",
-      );
+      /// Only update if param is not empty
+      if (param.isNotEmpty) {
+        /// Komik Data
+        final komikData = await getIt<KomikcastRepository>().getKomikDetail(
+          url: "${Endpoints.komikcast}$param",
+        );
 
-      /// Edit the data from list
-      komikData.fold(
-        (l) => null,
-        (r) => add(
-          FavouritesEvent.edited(
-            komikuData: r.copyWith(param: param),
-            provider: MangaProvider.komikcast,
+        /// Edit the data from list
+        komikData.fold(
+          (l) => null,
+          (r) => add(
+            FavouritesEvent.edited(
+              komikuData: r.copyWith(param: param),
+              provider: MangaProvider.komikcast,
+            ),
           ),
-        ),
-      );
+        );
+      }
     }
   }
 }

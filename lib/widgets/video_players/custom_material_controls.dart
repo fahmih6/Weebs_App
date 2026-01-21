@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:cached_video_player_plus/cached_video_player_plus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,7 +11,7 @@ import 'video_fullscreen_widget.dart';
 import 'video_resolution_bottomsheet.dart';
 
 class CustomMaterialControls extends StatefulWidget {
-  final CachedVideoPlayerPlus controller;
+  final VideoPlayerController controller;
   final bool isFullScreen;
 
   const CustomMaterialControls({
@@ -36,14 +35,14 @@ class _CustomMaterialControlsState extends State<CustomMaterialControls> {
   @override
   void initState() {
     super.initState();
-    _latestValue = widget.controller.controller.value;
-    widget.controller.controller.addListener(_updateState);
+    _latestValue = widget.controller.value;
+    widget.controller.addListener(_updateState);
     _startHideTimer();
   }
 
   @override
   void dispose() {
-    widget.controller.controller.removeListener(_updateState);
+    widget.controller.removeListener(_updateState);
     _hideTimer?.cancel();
     super.dispose();
   }
@@ -51,17 +50,17 @@ class _CustomMaterialControlsState extends State<CustomMaterialControls> {
   @override
   void didUpdateWidget(CustomMaterialControls oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (widget.controller.controller != oldWidget.controller.controller) {
-      oldWidget.controller.controller.removeListener(_updateState);
-      _latestValue = widget.controller.controller.value;
-      widget.controller.controller.addListener(_updateState);
+    if (widget.controller != oldWidget.controller) {
+      oldWidget.controller.removeListener(_updateState);
+      _latestValue = widget.controller.value;
+      widget.controller.addListener(_updateState);
     }
   }
 
   void _updateState() {
     if (!mounted) return;
     setState(() {
-      _latestValue = widget.controller.controller.value;
+      _latestValue = widget.controller.value;
     });
   }
 
@@ -86,17 +85,15 @@ class _CustomMaterialControlsState extends State<CustomMaterialControls> {
   void _playPause() {
     setState(() {
       if (_latestValue.isPlaying) {
-        widget.controller.controller.pause();
+        widget.controller.pause();
       } else {
         if (!_latestValue.isInitialized) {
-          widget.controller.initialize().then(
-            (_) => widget.controller.controller.play(),
-          );
+          widget.controller.initialize().then((_) => widget.controller.play());
         } else {
           if (_latestValue.position >= _latestValue.duration) {
-            widget.controller.controller.seekTo(Duration.zero);
+            widget.controller.seekTo(Duration.zero);
           }
-          widget.controller.controller.play();
+          widget.controller.play();
         }
       }
     });
@@ -167,7 +164,7 @@ class _CustomMaterialControlsState extends State<CustomMaterialControls> {
           children: [
             _buildHitArea(),
             ValueListenableBuilder(
-              valueListenable: widget.controller.controller,
+              valueListenable: widget.controller,
               builder: (context, VideoPlayerValue value, child) {
                 if (!value.isBuffering) {
                   return const SizedBox.shrink();
@@ -207,13 +204,13 @@ class _CustomMaterialControlsState extends State<CustomMaterialControls> {
     if (dx < thirdSize) {
       // Seek backward
       final newPostion = _latestValue.position - const Duration(seconds: 10);
-      widget.controller.controller.seekTo(
+      widget.controller.seekTo(
         newPostion < Duration.zero ? Duration.zero : newPostion,
       );
     } else if (dx > thirdSize * 2) {
       // Seek forward
       final newPosition = _latestValue.position + const Duration(seconds: 10);
-      widget.controller.controller.seekTo(
+      widget.controller.seekTo(
         newPosition > _latestValue.duration
             ? _latestValue.duration
             : newPosition,
@@ -361,98 +358,15 @@ class _CustomMaterialControlsState extends State<CustomMaterialControls> {
   }
 
   Widget _buildProgressBar() {
-    return CachedVideoPlayerPlusProgressBar(
-      widget.controller.controller,
-      onDragStart: () {
-        _hideTimer?.cancel();
-      },
-      onDragEnd: () {
-        _startHideTimer();
-      },
-      colors: CachedVideoPlayerPlusProgressColors(
-        playedColor: Theme.of(context).primaryColor,
-        handleColor: Theme.of(context).primaryColor,
-        bufferedColor: Colors.white24,
-        backgroundColor: Colors.white12,
-      ),
-    );
-  }
-}
-
-class CachedVideoPlayerPlusProgressBar extends StatefulWidget {
-  final VideoPlayerController controller;
-  final VoidCallback? onDragStart;
-  final VoidCallback? onDragEnd;
-  final CachedVideoPlayerPlusProgressColors? colors;
-
-  const CachedVideoPlayerPlusProgressBar(
-    this.controller, {
-    super.key,
-    this.onDragStart,
-    this.onDragEnd,
-    this.colors,
-  });
-
-  @override
-  State<CachedVideoPlayerPlusProgressBar> createState() =>
-      _CachedVideoPlayerPlusProgressBarState();
-}
-
-class _CachedVideoPlayerPlusProgressBarState
-    extends State<CachedVideoPlayerPlusProgressBar> {
-  void _updateState() => setState(() {});
-
-  @override
-  void initState() {
-    super.initState();
-    widget.controller.addListener(_updateState);
-  }
-
-  @override
-  void dispose() {
-    widget.controller.removeListener(_updateState);
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
     return VideoProgressIndicator(
       widget.controller,
       allowScrubbing: true,
-      colors:
-          widget.colors?.toVideoProgressColors() ?? const VideoProgressColors(),
+      colors: VideoProgressColors(
+        playedColor: Theme.of(context).primaryColor,
+        bufferedColor: Colors.white24,
+        backgroundColor: Colors.white12,
+      ),
       padding: const EdgeInsets.symmetric(vertical: 8),
     );
   }
 }
-
-class CachedVideoPlayerPlusProgressColors {
-  final Color playedColor;
-  final Color bufferedColor;
-  final Color handleColor;
-  final Color backgroundColor;
-
-  const CachedVideoPlayerPlusProgressColors({
-    this.playedColor = const Color.fromRGBO(255, 0, 0, 0.7),
-    this.bufferedColor = const Color.fromRGBO(30, 30, 200, 0.2),
-    this.handleColor = const Color.fromRGBO(200, 200, 200, 1.0),
-    this.backgroundColor = const Color.fromRGBO(200, 200, 200, 0.5),
-  });
-}
-
-extension on CachedVideoPlayerPlusProgressColors {
-  VideoProgressColors toVideoProgressColors() {
-    return VideoProgressColors(
-      playedColor: playedColor,
-      bufferedColor: bufferedColor,
-      backgroundColor: backgroundColor,
-    );
-  }
-}
-
-// Fixed buildProgressBar to use VideoProgressIndicator for now as it's built-in
-// and I don't want to overcomplicate with custom slider unless needed.
-// CachedVideoPlayerPlus is a fork of video_player, so VideoProgressIndicator should work if we pass the controller.
-// Actually, video_player's VideoProgressIndicator takes a VideoPlayerController.
-// CachedVideoPlayerPlusController should be compatible with VideoPlayerController if they followed the same interface,
-// let's check if it has its own.

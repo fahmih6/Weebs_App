@@ -21,11 +21,11 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
     return BlocBuilder<VideoPlayerCubit, VideoPlayerState>(
       builder: (context, state) {
         final controller = state.controller;
-        if (controller != null && controller.controller.value.isInitialized) {
+        if (controller != null && controller.value.isInitialized) {
           return Stack(
             key: playerGlobalKey,
             children: [
-              VideoPlayer(controller.controller),
+              VideoPlayer(controller),
               CustomMaterialControls(controller: controller),
             ],
           );

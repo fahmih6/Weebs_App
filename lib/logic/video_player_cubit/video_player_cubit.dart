@@ -1,4 +1,3 @@
-import 'package:cached_video_player_plus/cached_video_player_plus.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -63,7 +62,7 @@ class VideoPlayerCubit extends Cubit<VideoPlayerState> {
     final proxiedUrl = _getProxiedUrl(selectedLink.link, selectedLink.headers);
 
     /// Load new video controller
-    final player = CachedVideoPlayerPlus.networkUrl(
+    final player = VideoPlayerController.networkUrl(
       Uri.parse(proxiedUrl),
       httpHeaders: <String, String>{...?selectedLink.headers},
       videoPlayerOptions: VideoPlayerOptions(mixWithOthers: true),
@@ -72,23 +71,23 @@ class VideoPlayerCubit extends Cubit<VideoPlayerState> {
     try {
       await player.initialize();
       emit(state.copyWith(controller: player, url: url, links: links));
-      player.controller.play();
+      player.play();
     } catch (e) {
       debugPrint("Error loading video: $e");
     }
 
     /// Seek to last position if any
     if (state.lastPosition != null) {
-      await player.controller.seekTo(state.lastPosition!);
+      await player.seekTo(state.lastPosition!);
     }
 
     /// Play
-    await player.controller.play();
+    await player.play();
 
     /// Add listener for duration
-    player.controller.addListener(() {
-      if (player.controller.value.isInitialized) {
-        emit(state.copyWith(lastPosition: player.controller.value.position));
+    player.addListener(() {
+      if (player.value.isInitialized) {
+        emit(state.copyWith(lastPosition: player.value.position));
       }
     });
   }

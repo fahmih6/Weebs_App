@@ -70,11 +70,11 @@ class _VideoFullscreenWidgetState extends State<VideoFullscreenWidget> {
             backgroundColor: Colors.black,
             body: Center(
               child: AspectRatio(
-                aspectRatio: controller.controller.value.aspectRatio,
+                aspectRatio: controller.value.aspectRatio,
                 child: Stack(
                   key: playerGlobalKey,
                   children: [
-                    VideoPlayer(controller.controller),
+                    VideoPlayer(controller),
                     CustomMaterialControls(
                       controller: controller,
                       isFullScreen: true,

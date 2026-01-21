@@ -59,5 +59,18 @@ sealed class KomikuChapterFetchModel with _$KomikuChapterFetchModel {
 }
 
 Object? _readParam(Map<dynamic, dynamic> json, String key) {
-  return json['param'] ?? json['slug'];
+  final param = json['param'] ?? json['slug'];
+  if (param != null && param.toString().isNotEmpty) return param;
+
+  final detailUrl = json['detail_url'];
+  if (detailUrl != null && detailUrl is String && detailUrl.isNotEmpty) {
+    final parts = detailUrl
+        .split('/')
+        .where((element) => element.isNotEmpty)
+        .toList();
+    if (parts.isNotEmpty) {
+      return parts.last;
+    }
+  }
+  return null;
 }
