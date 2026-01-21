@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:video_player/video_player.dart';
 import 'package:universal_html/html.dart' as html;
+import 'package:wakelock_plus/wakelock_plus.dart';
 import 'package:window_manager/window_manager.dart';
 import '../../extensions/platform_extensions.dart';
 import '../../logic/video_player_cubit/video_player_cubit.dart';
@@ -28,6 +29,7 @@ class _CustomMaterialControlsState extends State<CustomMaterialControls> {
   bool _hideStuff = true;
   Timer? _hideTimer;
   late VideoPlayerValue _latestValue;
+  bool _isWakelockEnabled = false;
 
   final barHeight = 48.0;
   final marginSize = 16.0;
@@ -44,6 +46,7 @@ class _CustomMaterialControlsState extends State<CustomMaterialControls> {
   void dispose() {
     widget.controller.removeListener(_updateState);
     _hideTimer?.cancel();
+    WakelockPlus.disable();
     super.dispose();
   }
 
@@ -62,6 +65,16 @@ class _CustomMaterialControlsState extends State<CustomMaterialControls> {
     setState(() {
       _latestValue = widget.controller.value;
     });
+
+    final shouldEnableWakelock = _latestValue.isPlaying;
+    if (shouldEnableWakelock != _isWakelockEnabled) {
+      _isWakelockEnabled = shouldEnableWakelock;
+      if (shouldEnableWakelock) {
+        WakelockPlus.enable();
+      } else {
+        WakelockPlus.disable();
+      }
+    }
   }
 
   void _cancelAndRestartTimer() {
@@ -160,9 +173,16 @@ class _CustomMaterialControlsState extends State<CustomMaterialControls> {
         onDoubleTapDown: (details) {
           _onDoubleTap(details);
         },
+        onLongPress: () {
+          widget.controller.setPlaybackSpeed(1.5);
+        },
+        onLongPressUp: () {
+          widget.controller.setPlaybackSpeed(1.0);
+        },
         child: Stack(
           children: [
             _buildHitArea(),
+            _buildSpeedOverlay(),
             ValueListenableBuilder(
               valueListenable: widget.controller,
               builder: (context, VideoPlayerValue value, child) {
@@ -217,23 +237,51 @@ class _CustomMaterialControlsState extends State<CustomMaterialControls> {
       );
     } else {
       // Center tap - toggle play/pause
-      _playPause();
+      if (!_hideStuff) {
+        _playPause();
+      }
     }
     _cancelAndRestartTimer();
   }
 
   Widget _buildHitArea() {
-    return AnimatedOpacity(
-      opacity: _hideStuff ? 0.0 : 1.0,
-      duration: const Duration(milliseconds: 300),
-      child: Center(
-        child: IconButton(
-          iconSize: 64,
-          icon: Icon(
-            _latestValue.isPlaying ? Icons.pause : Icons.play_arrow,
-            color: Colors.white,
+    return IgnorePointer(
+      ignoring: _hideStuff,
+      child: AnimatedOpacity(
+        opacity: _hideStuff ? 0.0 : 1.0,
+        duration: const Duration(milliseconds: 300),
+        child: Center(
+          child: IconButton(
+            iconSize: 64,
+            icon: Icon(
+              _latestValue.isPlaying ? Icons.pause : Icons.play_arrow,
+              color: Colors.white,
+            ),
+            onPressed: _playPause,
           ),
-          onPressed: _playPause,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSpeedOverlay() {
+    if (_latestValue.playbackSpeed == 1.0) return const SizedBox.shrink();
+    return IgnorePointer(
+      child: Center(
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          decoration: BoxDecoration(
+            color: Colors.black54,
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: Text(
+            "${_latestValue.playbackSpeed}x",
+            style: const TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 16,
+            ),
+          ),
         ),
       ),
     );

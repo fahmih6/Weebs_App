@@ -60,6 +60,7 @@ dependencies:
   universal_html: ^2.2.4
   win32: ^5.5.5
   window_manager: ^0.5.1
+  wakelock_plus: ^1.4.0
 
 dev_dependencies:
   auto_route_generator: ^10.0.1
