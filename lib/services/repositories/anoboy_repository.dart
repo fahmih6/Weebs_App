@@ -62,29 +62,38 @@ class AnoboyRepository implements IAnoboyRepository {
 
       final data = AnoboyDetailModel.fromJson(targetJson);
 
-      // /// Get the direct links
-      // final bloggerLinks = data.videoEmbedLinks
-      //     .where((element) => element.link.contains('blog'))
-      //     .toList();
+      /// Check if direct links are unavailable (empty or all items have empty links/errors)
+      final isDirectLinksUnavailable =
+          data.videoDirectLinks.isEmpty ||
+          data.videoDirectLinks.every((element) => element.link.isEmpty);
 
-      // final directLinks = bloggerLinks.isNotEmpty
-      //     ? await Future.wait(
-      //         bloggerLinks.map(
-      //           (e) => bloggerRepository.getVideoDirectLink(
-      //             url: e.link,
-      //             resolution: e.resolution,
-      //           ),
-      //         ),
-      //       )
-      //     : <Either<Failure, AnoboyLinksItemModel>>[];
+      if (isDirectLinksUnavailable) {
+        /// Get the direct links
+        final bloggerLinks = data.videoEmbedLinks
+            .where((element) => element.link.contains('blog'))
+            .toList();
 
-      // /// Map the direct links
-      // final directLinkList = directLinks
-      //     .map((e) => e.fold((l) => null, (r) => r))
-      //     .whereType<AnoboyLinksItemModel>()
-      //     .toList();
+        final directLinks = bloggerLinks.isNotEmpty
+            ? await Future.wait(
+                bloggerLinks.map(
+                  (e) => bloggerRepository.getVideoDirectLink(
+                    url: e.link,
+                    resolution: e.resolution,
+                  ),
+                ),
+              )
+            : <Either<Failure, AnoboyLinksItemModel>>[];
 
-      return Right(data.copyWith(videoDirectLinks: data.videoDirectLinks));
+        /// Map the direct links
+        final directLinkList = directLinks
+            .map((e) => e.fold((l) => null, (r) => r))
+            .whereType<AnoboyLinksItemModel>()
+            .toList();
+
+        return Right(data.copyWith(videoDirectLinks: directLinkList));
+      }
+
+      return Right(data);
     });
   }
 
