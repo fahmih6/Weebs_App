@@ -2,13 +2,12 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:video_player/video_player.dart';
 import 'package:universal_html/html.dart' as html;
 import 'package:window_manager/window_manager.dart';
 
 import '../../extensions/platform_extensions.dart';
 import '../../logic/video_player_cubit/video_player_cubit.dart';
-import 'custom_material_controls.dart';
+import 'video_player_widget.dart';
 
 class VideoFullscreenWidget extends StatefulWidget {
   const VideoFullscreenWidget({super.key});
@@ -18,8 +17,6 @@ class VideoFullscreenWidget extends StatefulWidget {
 }
 
 class _VideoFullscreenWidgetState extends State<VideoFullscreenWidget> {
-  final playerGlobalKey = GlobalKey();
-
   @override
   void initState() {
     super.initState();
@@ -65,24 +62,10 @@ class _VideoFullscreenWidgetState extends State<VideoFullscreenWidget> {
             );
           }
 
-          return Scaffold(
+          return const Scaffold(
             resizeToAvoidBottomInset: false,
             backgroundColor: Colors.black,
-            body: Center(
-              child: AspectRatio(
-                aspectRatio: controller.value.aspectRatio,
-                child: Stack(
-                  key: playerGlobalKey,
-                  children: [
-                    VideoPlayer(controller),
-                    CustomMaterialControls(
-                      controller: controller,
-                      isFullScreen: true,
-                    ),
-                  ],
-                ),
-              ),
-            ),
+            body: Center(child: VideoPlayerWidget(isFullScreen: true)),
           );
         },
       ),

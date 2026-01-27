@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weebs_app/helpers/get_it_helper/get_it_helper.dart';
 import 'package:weebs_app/logic/anoboy_detail_fetch_bloc/anoboy_detail_fetch_bloc.dart';
+import 'package:weebs_app/model/anoboy/anoboy_detail_model/anoboy_detail_model.dart';
 import 'package:weebs_app/logic/video_player_cubit/video_player_cubit.dart';
 import 'package:weebs_app/screens/anoboy_detail_screen/widgets/anoboy_related_video.dart';
 import 'package:weebs_app/widgets/loading_widget/loading_widget.dart';
@@ -43,9 +44,9 @@ class _AnoboyDetailScreenState extends State<AnoboyDetailScreen> {
             completed: (value) {
               if (value.anoboyDetailModel.videoDirectLinks.isNotEmpty) {
                 context.read<VideoPlayerCubit>().loadVideo(
-                      links: value.anoboyDetailModel.videoDirectLinks,
-                      url: value.anoboyDetailModel.videoDirectLinks.last.link,
-                    );
+                  links: value.anoboyDetailModel.videoDirectLinks,
+                  url: value.anoboyDetailModel.videoDirectLinks.last.link,
+                );
               }
             },
           );
@@ -54,52 +55,85 @@ class _AnoboyDetailScreenState extends State<AnoboyDetailScreen> {
           return state.maybeMap(
             completed: (value) {
               if (value.errorMessage.isEmpty) {
-                return ListView(
-                  shrinkWrap: true,
-                  children: [
-                    /// Video Player
-                    AnimatedSwitcher(
-                      duration: const Duration(milliseconds: 250),
-                      child: value.anoboyDetailModel.videoDirectLinks.isNotEmpty
-                          ? const Align(
-                              alignment: Alignment.topCenter,
-                              child: AspectRatio(
-                                aspectRatio: 16 / 9,
-                                child: VideoPlayerWidget(),
-                              ),
-                            )
-                          : AppBar(
-                              title: const Text(
-                                "Video is not available",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20,
+                return OrientationBuilder(
+                  builder: (context, orientation) {
+                    final isSideBySide =
+                        orientation == Orientation.landscape ||
+                        MediaQuery.of(context).size.width > 600;
+
+                    if (isSideBySide) {
+                      return Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          /// Left side: Video + Title + Description
+                          Expanded(
+                            flex: 7,
+                            child: ListView(
+                              children: [
+                                /// Video Player
+                                _buildVideoPlayer(value.anoboyDetailModel),
+
+                                /// Title
+                                AnoboyDetailTitle(
+                                  anoboyDetailModel: value.anoboyDetailModel,
                                 ),
+
+                                /// Description
+                                AnoboyDetailDescription(
+                                  anoboyDetailModel: value.anoboyDetailModel,
+                                ),
+                              ],
+                            ),
+                          ),
+
+                          /// Right side: Related Videos
+                          Expanded(
+                            flex: 3,
+                            child: Padding(
+                              padding: const EdgeInsets.only(top: 16),
+                              child: ListView(
+                                children: [
+                                  AnoboyRelatedVideo(
+                                    anoboyDetailModel: value.anoboyDetailModel,
+                                    isVertical: true,
+                                  ),
+                                ],
                               ),
                             ),
-                    ),
+                          ),
+                        ],
+                      );
+                    }
 
-                    /// Video Description and Navigation Links.
-                    Column(
-                      mainAxisSize: MainAxisSize.min,
+                    return ListView(
+                      shrinkWrap: true,
                       children: [
-                        /// Title
-                        AnoboyDetailTitle(
-                          anoboyDetailModel: value.anoboyDetailModel,
-                        ),
+                        /// Video Player
+                        _buildVideoPlayer(value.anoboyDetailModel),
 
-                        /// Description.
-                        AnoboyDetailDescription(
-                          anoboyDetailModel: value.anoboyDetailModel,
-                        ),
+                        /// Video Description and Navigation Links.
+                        Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            /// Title
+                            AnoboyDetailTitle(
+                              anoboyDetailModel: value.anoboyDetailModel,
+                            ),
 
-                        /// Related Video
-                        AnoboyRelatedVideo(
-                          anoboyDetailModel: value.anoboyDetailModel,
+                            /// Description.
+                            AnoboyDetailDescription(
+                              anoboyDetailModel: value.anoboyDetailModel,
+                            ),
+
+                            /// Related Video
+                            AnoboyRelatedVideo(
+                              anoboyDetailModel: value.anoboyDetailModel,
+                            ),
+                          ],
                         ),
                       ],
-                    ),
-                  ],
+                    );
+                  },
                 );
               } else {
                 return ErrorScreen(
@@ -112,9 +146,7 @@ class _AnoboyDetailScreenState extends State<AnoboyDetailScreen> {
               }
             },
             orElse: () {
-              return const Center(
-                child: LoadingWidget(),
-              );
+              return const Center(child: LoadingWidget());
             },
           );
         },
@@ -125,8 +157,8 @@ class _AnoboyDetailScreenState extends State<AnoboyDetailScreen> {
   /// Get Data
   void getData() {
     context.read<AnoboyDetailFetchBloc>().add(
-          AnoboyDetailFetchEvent.started(param: widget.param),
-        );
+      AnoboyDetailFetchEvent.started(param: widget.param),
+    );
   }
 
   @override
@@ -134,5 +166,32 @@ class _AnoboyDetailScreenState extends State<AnoboyDetailScreen> {
     final videoPlayerCubit = getIt<VideoPlayerCubit>();
     videoPlayerCubit.reset();
     super.dispose();
+  }
+
+  Widget _buildVideoPlayer(AnoboyDetailModel model) {
+    return BlocBuilder<VideoPlayerCubit, VideoPlayerState>(
+      builder: (context, state) {
+        if (model.videoDirectLinks.isNotEmpty) {
+          return Align(
+            key: const ValueKey("video_player_align"),
+            alignment: Alignment.topCenter,
+            child: AspectRatio(
+              aspectRatio: 16 / 9,
+              child: state.isFullScreen
+                  ? Container(color: Colors.black)
+                  : VideoPlayerWidget(),
+            ),
+          );
+        } else {
+          return AppBar(
+            key: const ValueKey("video_player_not_available"),
+            title: const Text(
+              "Video is not available",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+            ),
+          );
+        }
+      },
+    );
   }
 }

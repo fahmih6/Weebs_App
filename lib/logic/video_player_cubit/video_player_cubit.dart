@@ -1,4 +1,5 @@
 import 'package:collection/collection.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:video_player/video_player.dart';
@@ -9,19 +10,13 @@ part 'video_player_state.dart';
 part 'video_player_cubit.freezed.dart';
 
 class VideoPlayerCubit extends Cubit<VideoPlayerState> {
+  final videoPlayerKey = GlobalKey();
   VideoPlayerCubit() : super(const VideoPlayerState.state());
 
   void loadVideo({
     required List<AnoboyLinksItemModel> links,
     String? url,
   }) async {
-    /// Emit state without controller first to show loader
-    final oldController = state.controller;
-    emit(state.copyWith(controller: null));
-
-    /// Dispose old video controller
-    await oldController?.dispose();
-
     /// Selected Link
     AnoboyLinksItemModel? selectedLink;
 
@@ -35,7 +30,6 @@ class VideoPlayerCubit extends Cubit<VideoPlayerState> {
 
       /// Fallback to nearest possible from the highest resolution
       if (selectedLink == null && links.isNotEmpty) {
-        // Sort by resolution descending (assuming resolution string contains numbers like 1080p, 720p, 480p, 360p)
         final sortedLinks = List<AnoboyLinksItemModel>.from(links)
           ..sort((a, b) {
             final resA =
@@ -59,12 +53,31 @@ class VideoPlayerCubit extends Cubit<VideoPlayerState> {
       return;
     }
 
+    /// URL check to prevent redundant reload
+    if (state.url == selectedLink.link &&
+        state.controller != null &&
+        state.controller!.value.isInitialized) {
+      return;
+    }
+
+    /// Emit state without controller first to show loader
+    final oldController = state.controller;
+    emit(state.copyWith(controller: null, url: selectedLink.link));
+
+    /// Dispose old video controller
+    await oldController?.dispose();
+
     final proxiedUrl = _getProxiedUrl(selectedLink.link, selectedLink.headers);
 
     /// Load new video controller
     final player = VideoPlayerController.networkUrl(
       Uri.parse(proxiedUrl),
-      httpHeaders: <String, String>{...?selectedLink.headers},
+      httpHeaders: kIsWeb
+          ? const {} // Avoid CORS preflight on Web as headers are in the proxy URL
+          : selectedLink.headers?.map(
+                  (key, value) => MapEntry(key, value.toString()),
+                ) ??
+                const {},
       videoPlayerOptions: VideoPlayerOptions(mixWithOthers: true),
     );
 
@@ -107,6 +120,11 @@ class VideoPlayerCubit extends Cubit<VideoPlayerState> {
     }
 
     return proxiedUrl;
+  }
+
+  /// Set Full Screen
+  void setFullScreen(bool value) {
+    emit(state.copyWith(isFullScreen: value));
   }
 
   /// Reset

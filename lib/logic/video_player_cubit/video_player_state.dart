@@ -7,5 +7,6 @@ sealed class VideoPlayerState with _$VideoPlayerState {
     Duration? lastPosition,
     String? url,
     @Default([]) List<AnoboyLinksItemModel> links,
+    @Default(false) bool isFullScreen,
   }) = _State;
 }

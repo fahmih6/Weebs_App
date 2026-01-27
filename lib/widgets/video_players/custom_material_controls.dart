@@ -114,24 +114,36 @@ class _CustomMaterialControlsState extends State<CustomMaterialControls> {
   }
 
   void _toggleFullScreen() async {
+    final cubit = context.read<VideoPlayerCubit>();
     if (kIsWeb) {
       if (widget.isFullScreen) {
         html.document.exitFullscreen();
         Navigator.of(context).pop();
       } else {
         html.document.documentElement?.requestFullscreen();
-        Navigator.of(context).push(
-          MaterialPageRoute(builder: (_) => const VideoFullscreenWidget()),
-        );
+        cubit.setFullScreen(true);
+        Navigator.of(context)
+            .push(
+              PageRouteBuilder(
+                pageBuilder: (context, animation, secondaryAnimation) =>
+                    const VideoFullscreenWidget(),
+                transitionDuration: Duration.zero,
+                reverseTransitionDuration: Duration.zero,
+              ),
+            )
+            .then((_) => cubit.setFullScreen(false));
       }
     } else if (PlatformExtension.isDesktop) {
       final isFullScreen = await WindowManager.instance.isFullScreen();
       await WindowManager.instance.setFullScreen(!isFullScreen);
       if (!mounted) return;
       if (!isFullScreen) {
-        Navigator.of(context).push(
-          MaterialPageRoute(builder: (_) => const VideoFullscreenWidget()),
-        );
+        cubit.setFullScreen(true);
+        Navigator.of(context)
+            .push(
+              MaterialPageRoute(builder: (_) => const VideoFullscreenWidget()),
+            )
+            .then((_) => cubit.setFullScreen(false));
       } else {
         Navigator.of(context).pop();
       }
@@ -139,9 +151,12 @@ class _CustomMaterialControlsState extends State<CustomMaterialControls> {
       if (widget.isFullScreen) {
         Navigator.of(context).pop();
       } else {
-        Navigator.of(context).push(
-          MaterialPageRoute(builder: (_) => const VideoFullscreenWidget()),
-        );
+        cubit.setFullScreen(true);
+        Navigator.of(context)
+            .push(
+              MaterialPageRoute(builder: (_) => const VideoFullscreenWidget()),
+            )
+            .then((_) => cubit.setFullScreen(false));
       }
     }
   }

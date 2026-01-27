@@ -6,27 +6,29 @@ import '../../logic/video_player_cubit/video_player_cubit.dart';
 import 'custom_material_controls.dart';
 
 class VideoPlayerWidget extends StatefulWidget {
-  const VideoPlayerWidget({super.key});
+  final bool isFullScreen;
+  const VideoPlayerWidget({super.key, this.isFullScreen = false});
 
   @override
   State<VideoPlayerWidget> createState() => _VideoPlayerWidgetState();
 }
 
 class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
-  /// Global Key
-  final playerGlobalKey = GlobalKey();
-
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<VideoPlayerCubit>();
     return BlocBuilder<VideoPlayerCubit, VideoPlayerState>(
       builder: (context, state) {
         final controller = state.controller;
         if (controller != null && controller.value.isInitialized) {
           return Stack(
-            key: playerGlobalKey,
+            key: cubit.videoPlayerKey,
             children: [
               VideoPlayer(controller),
-              CustomMaterialControls(controller: controller),
+              CustomMaterialControls(
+                controller: controller,
+                isFullScreen: widget.isFullScreen,
+              ),
             ],
           );
         } else {

@@ -64,8 +64,8 @@ class AnoboyRepository implements IAnoboyRepository {
 
       /// Check if direct links are unavailable (empty or all items have empty links/errors)
       final isDirectLinksUnavailable =
-          data.videoDirectLinks.isEmpty ||
-          data.videoDirectLinks.every((element) => element.link.isEmpty);
+          data.videoEmbedLinks.isNotEmpty &&
+          data.videoEmbedLinks.lastOrNull?.link.isNotEmpty == true;
 
       if (isDirectLinksUnavailable) {
         /// Get the direct links

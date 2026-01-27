@@ -6,6 +6,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:marionette_flutter/marionette_flutter.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:weebs_app/global/design_size.dart';
 import 'package:weebs_app/helpers/get_it_helper/get_it_helper.dart';
@@ -26,12 +27,14 @@ GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey =
 
 Future<void> main() async {
   /// Ensure initialized
-  WidgetsFlutterBinding.ensureInitialized();
+  if (kDebugMode) {
+    MarionetteBinding.ensureInitialized();
+  } else {
+    WidgetsFlutterBinding.ensureInitialized();
+  }
 
   /// Initialize Firebase App
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   /// Window Manager
   if (!kIsWeb && PlatformExtension.isDesktop) {
@@ -57,7 +60,8 @@ Future<void> main() async {
     storageDirectory: kIsWeb
         ? HydratedStorageDirectory.web
         : HydratedStorageDirectory(
-            (await getApplicationSupportDirectory()).path),
+            (await getApplicationSupportDirectory()).path,
+          ),
   );
 
   /// Run the app
@@ -87,14 +91,13 @@ class WeebsApp extends StatelessWidget {
             routerConfig: _appRouter.config(
               deepLinkBuilder: (deepLink) {
                 /// Is DeepLink Contains Anoboy Detail
-                final isAnoboyDetail =
-                    deepLink.path.contains('${RouteNames.anoboyDetailScreen}/');
+                final isAnoboyDetail = deepLink.path.contains(
+                  '${RouteNames.anoboyDetailScreen}/',
+                );
 
                 if (isAnoboyDetail) {
                   return DeepLink.single(
-                    AnoboyDetailRoute(
-                      param: deepLink.path.split('/').last,
-                    ),
+                    AnoboyDetailRoute(param: deepLink.path.split('/').last),
                   );
                 } else {
                   return DeepLink.defaultPath;
