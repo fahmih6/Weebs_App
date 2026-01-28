@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:video_player/video_player.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:weebs_app/global/endpoints.dart';
 import 'package:weebs_app/model/anoboy/anoboy_detail_model/anoboy_detail_model.dart';
 
 part 'video_player_state.dart';
@@ -108,9 +109,14 @@ class VideoPlayerCubit extends Cubit<VideoPlayerState> {
   /// Get Proxied URL
   String _getProxiedUrl(String url, Map<String, dynamic>? headers) {
     if (url.isEmpty) return "";
+
+    /// If url already contains the video proxy, return it as is.
+    if (url.contains(Endpoints.videoProxy)) {
+      return url;
+    }
+
     final encodedUrl = Uri.encodeComponent(url);
-    var proxiedUrl =
-        'https://video-proxy.midorima9877.workers.dev/?url=$encodedUrl';
+    var proxiedUrl = "${Endpoints.videoProxy}$encodedUrl";
 
     if (headers != null) {
       headers.forEach((key, value) {

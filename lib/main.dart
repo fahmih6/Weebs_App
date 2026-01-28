@@ -4,6 +4,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:weebs_app/helpers/url_strategy/url_strategy.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:marionette_flutter/marionette_flutter.dart';
@@ -26,6 +27,9 @@ GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey =
     GlobalKey<ScaffoldMessengerState>();
 
 Future<void> main() async {
+  /// use path url strategy
+  configureUrl();
+
   /// Ensure initialized
   if (kDebugMode) {
     MarionetteBinding.ensureInitialized();

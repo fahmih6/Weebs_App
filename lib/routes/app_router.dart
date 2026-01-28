@@ -12,11 +12,11 @@ class AppRouter extends RootStackRouter {
   @override
   List<AutoRoute> get routes => [
     /// Splash Screen
-    AutoRoute(path: "/", initial: true, page: SplashRoute.page),
+    AutoRoute(path: "/splash", initial: true, page: SplashRoute.page),
 
     /// Home Screen
     AutoRoute(
-      path: "/${RouteNames.homeScreen}",
+      path: "/",
       page: HomeRoute.page,
       children: [
         /// Komik List Screen

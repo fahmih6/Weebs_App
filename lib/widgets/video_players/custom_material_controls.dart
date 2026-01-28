@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:video_player/video_player.dart';
 import 'package:universal_html/html.dart' as html;
@@ -30,6 +31,7 @@ class _CustomMaterialControlsState extends State<CustomMaterialControls> {
   Timer? _hideTimer;
   late VideoPlayerValue _latestValue;
   bool _isWakelockEnabled = false;
+  final FocusNode _focusNode = FocusNode();
 
   final barHeight = 48.0;
   final marginSize = 16.0;
@@ -47,6 +49,7 @@ class _CustomMaterialControlsState extends State<CustomMaterialControls> {
     widget.controller.removeListener(_updateState);
     _hideTimer?.cancel();
     WakelockPlus.disable();
+    _focusNode.dispose();
     super.dispose();
   }
 
@@ -194,40 +197,69 @@ class _CustomMaterialControlsState extends State<CustomMaterialControls> {
         onLongPressUp: () {
           widget.controller.setPlaybackSpeed(1.0);
         },
-        child: Stack(
-          children: [
-            _buildHitArea(),
-            _buildSpeedOverlay(),
-            ValueListenableBuilder(
-              valueListenable: widget.controller,
-              builder: (context, VideoPlayerValue value, child) {
-                if (!value.isBuffering) {
-                  return const SizedBox.shrink();
-                }
+        child: Focus(
+          focusNode: _focusNode,
+          onKeyEvent: (FocusNode node, KeyEvent event) {
+            if (event is KeyDownEvent) {
+              if (event.logicalKey == LogicalKeyboardKey.arrowRight) {
+                _seekRelative(const Duration(seconds: 5));
+                return KeyEventResult.handled;
+              } else if (event.logicalKey == LogicalKeyboardKey.arrowLeft) {
+                _seekRelative(const Duration(seconds: -5));
+                return KeyEventResult.handled;
+              }
+            }
+            return KeyEventResult.ignored;
+          },
+          child: Stack(
+            children: [
+              _buildHitArea(),
+              _buildSpeedOverlay(),
+              ValueListenableBuilder(
+                valueListenable: widget.controller,
+                builder: (context, VideoPlayerValue value, child) {
+                  if (!value.isBuffering) {
+                    return const SizedBox.shrink();
+                  }
 
-                // On Android, isBuffering often stays true even when playback is possible.
-                // We check if the current position is well within the buffered ranges.
-                if (value.isPlaying && value.buffered.isNotEmpty) {
-                  final currentPos = value.position;
-                  for (final range in value.buffered) {
-                    if (currentPos >= range.start && currentPos <= range.end) {
-                      // If we have more than 1 second of video buffered ahead, hide the spinner.
-                      if (range.end - currentPos > const Duration(seconds: 1)) {
-                        return const SizedBox.shrink();
+                  // On Android, isBuffering often stays true even when playback is possible.
+                  // We check if the current position is well within the buffered ranges.
+                  if (value.isPlaying && value.buffered.isNotEmpty) {
+                    final currentPos = value.position;
+                    for (final range in value.buffered) {
+                      if (currentPos >= range.start &&
+                          currentPos <= range.end) {
+                        // If we have more than 1 second of video buffered ahead, hide the spinner.
+                        if (range.end - currentPos >
+                            const Duration(seconds: 1)) {
+                          return const SizedBox.shrink();
+                        }
                       }
                     }
                   }
-                }
 
-                return const Center(child: CircularProgressIndicator());
-              },
-            ),
-            _buildActionBar(),
-            _buildBottomBar(),
-          ],
+                  return const Center(child: CircularProgressIndicator());
+                },
+              ),
+              _buildActionBar(),
+              _buildBottomBar(),
+            ],
+          ),
         ),
       ),
     );
+  }
+
+  void _seekRelative(Duration offset) {
+    final newPosition = _latestValue.position + offset;
+    widget.controller.seekTo(
+      newPosition < Duration.zero
+          ? Duration.zero
+          : newPosition > _latestValue.duration
+          ? _latestValue.duration
+          : newPosition,
+    );
+    _cancelAndRestartTimer();
   }
 
   void _onDoubleTap(TapDownDetails details) {
@@ -238,18 +270,10 @@ class _CustomMaterialControlsState extends State<CustomMaterialControls> {
 
     if (dx < thirdSize) {
       // Seek backward
-      final newPostion = _latestValue.position - const Duration(seconds: 10);
-      widget.controller.seekTo(
-        newPostion < Duration.zero ? Duration.zero : newPostion,
-      );
+      _seekRelative(const Duration(seconds: -10));
     } else if (dx > thirdSize * 2) {
       // Seek forward
-      final newPosition = _latestValue.position + const Duration(seconds: 10);
-      widget.controller.seekTo(
-        newPosition > _latestValue.duration
-            ? _latestValue.duration
-            : newPosition,
-      );
+      _seekRelative(const Duration(seconds: 10));
     } else {
       // Center tap - toggle play/pause
       if (!_hideStuff) {

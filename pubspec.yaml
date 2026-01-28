@@ -65,6 +65,7 @@ dependencies:
 
 dev_dependencies:
   auto_route_generator: ^10.0.1
+  build_pipe: ^0.3.1
   build_runner: ^2.4.15
   flutter_lints: ^6.0.0
   flutter_test:
@@ -108,3 +109,14 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+# Build Pipe Configuration to prevent cache issue.
+# To use this, run `dart run build_pipe:build` instead of `flutter build web`.
+build_pipe:
+  workflows:
+    default:
+      platforms:
+        web:
+          build:
+            build_command: flutter build web --release
+            add_version_query_param: true # Always set this to `true` to prevent cache issue.

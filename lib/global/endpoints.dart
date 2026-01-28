@@ -1,6 +1,6 @@
 class Endpoints {
   /// Base URL
-  static const String baseUrl = "http://midorima.online:3000";
+  static String baseUrl = Uri.base.origin;
 
   /// Anoboy
   static const String anoboy = "/api/anoboy/";
@@ -20,5 +20,7 @@ class Endpoints {
   /// Proxy
   ///
   /// Must be followed by valid link. e.g : `$imgProxy$imageUrl`.
-  static const String imgProxy = "$baseUrl/api/proxy/?url=";
+  static String imgProxy = "$baseUrl/api/proxy/?url=";
+  static String videoProxy =
+      "https://video-proxy.midorima9877.workers.dev/?url=";
 }

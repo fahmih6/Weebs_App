@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:html/parser.dart';
+import 'package:weebs_app/global/endpoints.dart';
 import 'package:weebs_app/model/anoboy/anoboy_detail_model/anoboy_detail_model.dart';
 
 import '../../model/failure/failure.dart';
@@ -24,16 +25,20 @@ class BloggerRepository implements BloggerRepositoryInterface {
     required String resolution,
   }) async {
     try {
-      final res = await dio.get(
-        url,
-        options: Options(
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-            "User-Agent":
-                "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-          },
-        ),
-      );
+      final headers = {
+        "Access-Control-Allow-Origin": "*",
+        "User-Agent":
+            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+      };
+
+      var proxiedUrl = "${Endpoints.videoProxy}${Uri.encodeComponent(url)}";
+
+      headers.forEach((key, value) {
+        proxiedUrl +=
+            "&${key.toLowerCase()}=${Uri.encodeComponent(value.toString())}";
+      });
+
+      final res = await dio.get(proxiedUrl);
 
       final document = parse(res.data);
 
