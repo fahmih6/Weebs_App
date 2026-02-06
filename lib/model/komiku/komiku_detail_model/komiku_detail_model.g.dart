@@ -25,7 +25,7 @@ _KomikuDetailModel _$KomikuDetailModelFromJson(Map<String, dynamic> json) =>
               .toList() ??
           const [],
       type: json['type'] as String? ?? "",
-      rating: json['rating'] as String? ?? "",
+      rating: _readString(json, 'rating') as String? ?? "",
     );
 
 Map<String, dynamic> _$KomikuDetailModelToJson(_KomikuDetailModel instance) =>
@@ -43,7 +43,7 @@ Map<String, dynamic> _$KomikuDetailModelToJson(_KomikuDetailModel instance) =>
 _KomikuDetailChapterModel _$KomikuDetailChapterModelFromJson(
   Map<String, dynamic> json,
 ) => _KomikuDetailChapterModel(
-  chapter: json['chapter'] as String? ?? "",
+  chapter: _readString(json, 'chapter') as String? ?? "",
   param: _readParam(json, 'param') as String? ?? "",
   release: json['release'] as String? ?? "",
   detailUrl: json['detail_url'] as String? ?? "",

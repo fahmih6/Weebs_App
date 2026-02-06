@@ -13,7 +13,7 @@ sealed class KomikuDetailModel with _$KomikuDetailModel {
     @Default("") String synopsis,
     @Default([]) List<KomikuDetailChapterModel> chapters,
     @Default("") String type,
-    @Default("") String rating,
+    @JsonKey(readValue: _readString) @Default("") String rating,
   }) = _KomikuDetailModel;
 
   factory KomikuDetailModel.fromJson(Map<String, dynamic> json) =>
@@ -24,7 +24,7 @@ sealed class KomikuDetailModel with _$KomikuDetailModel {
 sealed class KomikuDetailChapterModel with _$KomikuDetailChapterModel {
   const factory KomikuDetailChapterModel({
     /// Manga chapter number
-    @Default("") String chapter,
+    @JsonKey(readValue: _readString) @Default("") String chapter,
 
     /// Manga chapter param
     @JsonKey(readValue: _readParam) @Default("") String param,
@@ -58,9 +58,12 @@ sealed class KomikuChapterFetchModel with _$KomikuChapterFetchModel {
       _$KomikuChapterFetchModelFromJson(json);
 }
 
+Object? _readString(Map<dynamic, dynamic> json, String key) =>
+    json[key]?.toString();
+
 Object? _readParam(Map<dynamic, dynamic> json, String key) {
   final param = json['param'] ?? json['slug'];
-  if (param != null && param.toString().isNotEmpty) return param;
+  if (param != null && param.toString().isNotEmpty) return param.toString();
 
   final detailUrl = json['detail_url'];
   if (detailUrl != null && detailUrl is String && detailUrl.isNotEmpty) {

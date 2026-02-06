@@ -34,7 +34,9 @@ class KomikListScreenListView extends StatelessWidget {
         return WrapListItemWidget(
           thumbnailLink: data.thumbnail,
           title: data.title,
-          subtitle: data.latestChapter,
+          subtitle: data.latestChapter.toLowerCase().contains("chapter")
+              ? data.latestChapter
+              : "Chapter ${data.latestChapter}",
           containerWidth: getItemContainerWidth(context),
           imageHeight: 180,
           imageWidth: getItemContainerWidth(context),

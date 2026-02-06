@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$KomikuDetailModel {
 
- String get title;@JsonKey(readValue: _readParam) String get param; String get thumbnail; List<String> get genre; String get synopsis; List<KomikuDetailChapterModel> get chapters; String get type; String get rating;
+ String get title;@JsonKey(readValue: _readParam) String get param; String get thumbnail; List<String> get genre; String get synopsis; List<KomikuDetailChapterModel> get chapters; String get type;@JsonKey(readValue: _readString) String get rating;
 /// Create a copy of KomikuDetailModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -48,7 +48,7 @@ abstract mixin class $KomikuDetailModelCopyWith<$Res>  {
   factory $KomikuDetailModelCopyWith(KomikuDetailModel value, $Res Function(KomikuDetailModel) _then) = _$KomikuDetailModelCopyWithImpl;
 @useResult
 $Res call({
- String title,@JsonKey(readValue: _readParam) String param, String thumbnail, List<String> genre, String synopsis, List<KomikuDetailChapterModel> chapters, String type, String rating
+ String title,@JsonKey(readValue: _readParam) String param, String thumbnail, List<String> genre, String synopsis, List<KomikuDetailChapterModel> chapters, String type,@JsonKey(readValue: _readString) String rating
 });
 
 
@@ -157,7 +157,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String title, @JsonKey(readValue: _readParam)  String param,  String thumbnail,  List<String> genre,  String synopsis,  List<KomikuDetailChapterModel> chapters,  String type,  String rating)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String title, @JsonKey(readValue: _readParam)  String param,  String thumbnail,  List<String> genre,  String synopsis,  List<KomikuDetailChapterModel> chapters,  String type, @JsonKey(readValue: _readString)  String rating)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _KomikuDetailModel() when $default != null:
 return $default(_that.title,_that.param,_that.thumbnail,_that.genre,_that.synopsis,_that.chapters,_that.type,_that.rating);case _:
@@ -178,7 +178,7 @@ return $default(_that.title,_that.param,_that.thumbnail,_that.genre,_that.synops
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String title, @JsonKey(readValue: _readParam)  String param,  String thumbnail,  List<String> genre,  String synopsis,  List<KomikuDetailChapterModel> chapters,  String type,  String rating)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String title, @JsonKey(readValue: _readParam)  String param,  String thumbnail,  List<String> genre,  String synopsis,  List<KomikuDetailChapterModel> chapters,  String type, @JsonKey(readValue: _readString)  String rating)  $default,) {final _that = this;
 switch (_that) {
 case _KomikuDetailModel():
 return $default(_that.title,_that.param,_that.thumbnail,_that.genre,_that.synopsis,_that.chapters,_that.type,_that.rating);}
@@ -195,7 +195,7 @@ return $default(_that.title,_that.param,_that.thumbnail,_that.genre,_that.synops
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String title, @JsonKey(readValue: _readParam)  String param,  String thumbnail,  List<String> genre,  String synopsis,  List<KomikuDetailChapterModel> chapters,  String type,  String rating)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String title, @JsonKey(readValue: _readParam)  String param,  String thumbnail,  List<String> genre,  String synopsis,  List<KomikuDetailChapterModel> chapters,  String type, @JsonKey(readValue: _readString)  String rating)?  $default,) {final _that = this;
 switch (_that) {
 case _KomikuDetailModel() when $default != null:
 return $default(_that.title,_that.param,_that.thumbnail,_that.genre,_that.synopsis,_that.chapters,_that.type,_that.rating);case _:
@@ -210,7 +210,7 @@ return $default(_that.title,_that.param,_that.thumbnail,_that.genre,_that.synops
 @JsonSerializable()
 
 class _KomikuDetailModel implements KomikuDetailModel {
-  const _KomikuDetailModel({this.title = "", @JsonKey(readValue: _readParam) this.param = "", this.thumbnail = "", final  List<String> genre = const [], this.synopsis = "", final  List<KomikuDetailChapterModel> chapters = const [], this.type = "", this.rating = ""}): _genre = genre,_chapters = chapters;
+  const _KomikuDetailModel({this.title = "", @JsonKey(readValue: _readParam) this.param = "", this.thumbnail = "", final  List<String> genre = const [], this.synopsis = "", final  List<KomikuDetailChapterModel> chapters = const [], this.type = "", @JsonKey(readValue: _readString) this.rating = ""}): _genre = genre,_chapters = chapters;
   factory _KomikuDetailModel.fromJson(Map<String, dynamic> json) => _$KomikuDetailModelFromJson(json);
 
 @override@JsonKey() final  String title;
@@ -232,7 +232,7 @@ class _KomikuDetailModel implements KomikuDetailModel {
 }
 
 @override@JsonKey() final  String type;
-@override@JsonKey() final  String rating;
+@override@JsonKey(readValue: _readString) final  String rating;
 
 /// Create a copy of KomikuDetailModel
 /// with the given fields replaced by the non-null parameter values.
@@ -267,7 +267,7 @@ abstract mixin class _$KomikuDetailModelCopyWith<$Res> implements $KomikuDetailM
   factory _$KomikuDetailModelCopyWith(_KomikuDetailModel value, $Res Function(_KomikuDetailModel) _then) = __$KomikuDetailModelCopyWithImpl;
 @override @useResult
 $Res call({
- String title,@JsonKey(readValue: _readParam) String param, String thumbnail, List<String> genre, String synopsis, List<KomikuDetailChapterModel> chapters, String type, String rating
+ String title,@JsonKey(readValue: _readParam) String param, String thumbnail, List<String> genre, String synopsis, List<KomikuDetailChapterModel> chapters, String type,@JsonKey(readValue: _readString) String rating
 });
 
 
@@ -306,7 +306,7 @@ as String,
 mixin _$KomikuDetailChapterModel {
 
 /// Manga chapter number
- String get chapter;/// Manga chapter param
+@JsonKey(readValue: _readString) String get chapter;/// Manga chapter param
 @JsonKey(readValue: _readParam) String get param;/// Manga chapter release date
  String get release;/// Manga chapter detail URL
 @JsonKey(name: "detail_url") String get detailUrl;/// Is Read
@@ -343,7 +343,7 @@ abstract mixin class $KomikuDetailChapterModelCopyWith<$Res>  {
   factory $KomikuDetailChapterModelCopyWith(KomikuDetailChapterModel value, $Res Function(KomikuDetailChapterModel) _then) = _$KomikuDetailChapterModelCopyWithImpl;
 @useResult
 $Res call({
- String chapter,@JsonKey(readValue: _readParam) String param, String release,@JsonKey(name: "detail_url") String detailUrl, bool isRead
+@JsonKey(readValue: _readString) String chapter,@JsonKey(readValue: _readParam) String param, String release,@JsonKey(name: "detail_url") String detailUrl, bool isRead
 });
 
 
@@ -449,7 +449,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String chapter, @JsonKey(readValue: _readParam)  String param,  String release, @JsonKey(name: "detail_url")  String detailUrl,  bool isRead)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(readValue: _readString)  String chapter, @JsonKey(readValue: _readParam)  String param,  String release, @JsonKey(name: "detail_url")  String detailUrl,  bool isRead)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _KomikuDetailChapterModel() when $default != null:
 return $default(_that.chapter,_that.param,_that.release,_that.detailUrl,_that.isRead);case _:
@@ -470,7 +470,7 @@ return $default(_that.chapter,_that.param,_that.release,_that.detailUrl,_that.is
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String chapter, @JsonKey(readValue: _readParam)  String param,  String release, @JsonKey(name: "detail_url")  String detailUrl,  bool isRead)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(readValue: _readString)  String chapter, @JsonKey(readValue: _readParam)  String param,  String release, @JsonKey(name: "detail_url")  String detailUrl,  bool isRead)  $default,) {final _that = this;
 switch (_that) {
 case _KomikuDetailChapterModel():
 return $default(_that.chapter,_that.param,_that.release,_that.detailUrl,_that.isRead);}
@@ -487,7 +487,7 @@ return $default(_that.chapter,_that.param,_that.release,_that.detailUrl,_that.is
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String chapter, @JsonKey(readValue: _readParam)  String param,  String release, @JsonKey(name: "detail_url")  String detailUrl,  bool isRead)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(readValue: _readString)  String chapter, @JsonKey(readValue: _readParam)  String param,  String release, @JsonKey(name: "detail_url")  String detailUrl,  bool isRead)?  $default,) {final _that = this;
 switch (_that) {
 case _KomikuDetailChapterModel() when $default != null:
 return $default(_that.chapter,_that.param,_that.release,_that.detailUrl,_that.isRead);case _:
@@ -502,11 +502,11 @@ return $default(_that.chapter,_that.param,_that.release,_that.detailUrl,_that.is
 @JsonSerializable()
 
 class _KomikuDetailChapterModel implements KomikuDetailChapterModel {
-  const _KomikuDetailChapterModel({this.chapter = "", @JsonKey(readValue: _readParam) this.param = "", this.release = "", @JsonKey(name: "detail_url") this.detailUrl = "", this.isRead = false});
+  const _KomikuDetailChapterModel({@JsonKey(readValue: _readString) this.chapter = "", @JsonKey(readValue: _readParam) this.param = "", this.release = "", @JsonKey(name: "detail_url") this.detailUrl = "", this.isRead = false});
   factory _KomikuDetailChapterModel.fromJson(Map<String, dynamic> json) => _$KomikuDetailChapterModelFromJson(json);
 
 /// Manga chapter number
-@override@JsonKey() final  String chapter;
+@override@JsonKey(readValue: _readString) final  String chapter;
 /// Manga chapter param
 @override@JsonKey(readValue: _readParam) final  String param;
 /// Manga chapter release date
@@ -549,7 +549,7 @@ abstract mixin class _$KomikuDetailChapterModelCopyWith<$Res> implements $Komiku
   factory _$KomikuDetailChapterModelCopyWith(_KomikuDetailChapterModel value, $Res Function(_KomikuDetailChapterModel) _then) = __$KomikuDetailChapterModelCopyWithImpl;
 @override @useResult
 $Res call({
- String chapter,@JsonKey(readValue: _readParam) String param, String release,@JsonKey(name: "detail_url") String detailUrl, bool isRead
+@JsonKey(readValue: _readString) String chapter,@JsonKey(readValue: _readParam) String param, String release,@JsonKey(name: "detail_url") String detailUrl, bool isRead
 });
 
 

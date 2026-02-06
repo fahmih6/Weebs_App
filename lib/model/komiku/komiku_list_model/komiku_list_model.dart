@@ -31,7 +31,9 @@ sealed class KomikuListItemModel with _$KomikuListItemModel {
     @Default("") String description,
 
     /// Manga Latest Chapter
-    @JsonKey(name: "latest_chapter") @Default("") String latestChapter,
+    @JsonKey(name: "latest_chapter", readValue: _readString)
+    @Default("")
+    String latestChapter,
 
     /// Direct detail url
     @JsonKey(name: "detail_url") @Default("") String detailUrl,
@@ -40,16 +42,19 @@ sealed class KomikuListItemModel with _$KomikuListItemModel {
     @Default("") String type,
 
     /// Manga Rating
-    @Default("") String rating,
+    @JsonKey(readValue: _readString) @Default("") String rating,
   }) = _KomikuListItemModel;
 
   factory KomikuListItemModel.fromJson(Map<String, dynamic> json) =>
       _$KomikuListItemModelFromJson(json);
 }
 
+Object? _readString(Map<dynamic, dynamic> json, String key) =>
+    json[key]?.toString();
+
 Object? _readParam(Map<dynamic, dynamic> json, String key) {
   final param = json['param'] ?? json['slug'];
-  if (param != null && param.toString().isNotEmpty) return param;
+  if (param != null && param.toString().isNotEmpty) return param.toString();
 
   final detailUrl = json['detail_url'];
   if (detailUrl != null && detailUrl is String && detailUrl.isNotEmpty) {

@@ -12,7 +12,7 @@ part of 'video_player_cubit.dart';
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
-mixin _$VideoPlayerState implements DiagnosticableTreeMixin {
+mixin _$VideoPlayerState {
 
  VideoPlayerController? get controller; Duration? get lastPosition; String? get url; List<AnoboyLinksItemModel> get links; bool get isFullScreen;
 /// Create a copy of VideoPlayerState
@@ -22,12 +22,6 @@ mixin _$VideoPlayerState implements DiagnosticableTreeMixin {
 $VideoPlayerStateCopyWith<VideoPlayerState> get copyWith => _$VideoPlayerStateCopyWithImpl<VideoPlayerState>(this as VideoPlayerState, _$identity);
 
 
-@override
-void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  properties
-    ..add(DiagnosticsProperty('type', 'VideoPlayerState'))
-    ..add(DiagnosticsProperty('controller', controller))..add(DiagnosticsProperty('lastPosition', lastPosition))..add(DiagnosticsProperty('url', url))..add(DiagnosticsProperty('links', links))..add(DiagnosticsProperty('isFullScreen', isFullScreen));
-}
 
 @override
 bool operator ==(Object other) {
@@ -39,7 +33,7 @@ bool operator ==(Object other) {
 int get hashCode => Object.hash(runtimeType,controller,lastPosition,url,const DeepCollectionEquality().hash(links),isFullScreen);
 
 @override
-String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+String toString() {
   return 'VideoPlayerState(controller: $controller, lastPosition: $lastPosition, url: $url, links: $links, isFullScreen: $isFullScreen)';
 }
 
@@ -209,7 +203,7 @@ return state(_that.controller,_that.lastPosition,_that.url,_that.links,_that.isF
 /// @nodoc
 
 
-class _State with DiagnosticableTreeMixin implements VideoPlayerState {
+class _State implements VideoPlayerState {
   const _State({this.controller, this.lastPosition, this.url, final  List<AnoboyLinksItemModel> links = const [], this.isFullScreen = false}): _links = links;
   
 
@@ -232,12 +226,6 @@ class _State with DiagnosticableTreeMixin implements VideoPlayerState {
 _$StateCopyWith<_State> get copyWith => __$StateCopyWithImpl<_State>(this, _$identity);
 
 
-@override
-void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  properties
-    ..add(DiagnosticsProperty('type', 'VideoPlayerState.state'))
-    ..add(DiagnosticsProperty('controller', controller))..add(DiagnosticsProperty('lastPosition', lastPosition))..add(DiagnosticsProperty('url', url))..add(DiagnosticsProperty('links', links))..add(DiagnosticsProperty('isFullScreen', isFullScreen));
-}
 
 @override
 bool operator ==(Object other) {
@@ -249,7 +237,7 @@ bool operator ==(Object other) {
 int get hashCode => Object.hash(runtimeType,controller,lastPosition,url,const DeepCollectionEquality().hash(_links),isFullScreen);
 
 @override
-String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+String toString() {
   return 'VideoPlayerState.state(controller: $controller, lastPosition: $lastPosition, url: $url, links: $links, isFullScreen: $isFullScreen)';
 }
 
