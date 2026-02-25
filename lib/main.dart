@@ -81,52 +81,54 @@ class WeebsApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MainBlocWrapper(
-      child: SafeArea(
-        child: ScreenUtilInit(
-          designSize: MediaQuery.of(context).orientation == Orientation.portrait
-              ? DesignSize.designSize
-              : DesignSize.landscapeDesignSize,
-          ensureScreenSize: true,
-          builder: (context, child) => MaterialApp.router(
-            debugShowCheckedModeBanner: false,
-            title: 'Weebs App 2',
-            theme: ThemeData.dark(useMaterial3: true),
-            darkTheme: ThemeData.dark(useMaterial3: true),
-            routerConfig: _appRouter.config(
-              deepLinkBuilder: (deepLink) {
-                /// Is DeepLink Contains Anoboy Detail
-                final isAnoboyDetail = deepLink.path.contains(
-                  '${RouteNames.anoboyDetailScreen}/',
-                );
-
-                if (isAnoboyDetail) {
-                  return DeepLink.single(
-                    AnoboyDetailRoute(param: deepLink.path.split('/').last),
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          return ScreenUtilInit(
+            designSize: constraints.maxWidth < constraints.maxHeight
+                ? DesignSize.designSize
+                : DesignSize.landscapeDesignSize,
+            ensureScreenSize: true,
+            builder: (context, child) => MaterialApp.router(
+              debugShowCheckedModeBanner: false,
+              title: 'Weebs App 2',
+              theme: ThemeData.dark(useMaterial3: true),
+              darkTheme: ThemeData.dark(useMaterial3: true),
+              routerConfig: _appRouter.config(
+                deepLinkBuilder: (deepLink) {
+                  /// Is DeepLink Contains Anoboy Detail
+                  final isAnoboyDetail = deepLink.path.contains(
+                    '${RouteNames.anoboyDetailScreen}/',
                   );
-                } else {
-                  return DeepLink.defaultPath;
-                }
-              },
-              navigatorObservers: () => [AppRouterObserver()],
+
+                  if (isAnoboyDetail) {
+                    return DeepLink.single(
+                      AnoboyDetailRoute(param: deepLink.path.split('/').last),
+                    );
+                  } else {
+                    return DeepLink.defaultPath;
+                  }
+                },
+                navigatorObservers: () => [AppRouterObserver()],
+              ),
+              // routerDelegate: _appRouter.delegate(
+              //   navigatorObservers: () => [AppRouterObserver()],
+              // ),
+              // routeInformationParser: _appRouter.defaultRouteParser(),
+              // routeInformationProvider: _appRouter.routeInfoProvider(),
+              scaffoldMessengerKey: scaffoldMessengerKey,
+              scrollBehavior: const MaterialScrollBehavior().copyWith(
+                dragDevices: {
+                  PointerDeviceKind.mouse,
+                  PointerDeviceKind.touch,
+                  PointerDeviceKind.stylus,
+                  PointerDeviceKind.trackpad,
+                  PointerDeviceKind.unknown,
+                },
+                scrollbars: false,
+              ),
             ),
-            // routerDelegate: _appRouter.delegate(
-            //   navigatorObservers: () => [AppRouterObserver()],
-            // ),
-            // routeInformationParser: _appRouter.defaultRouteParser(),
-            // routeInformationProvider: _appRouter.routeInfoProvider(),
-            scaffoldMessengerKey: scaffoldMessengerKey,
-            scrollBehavior: const MaterialScrollBehavior().copyWith(
-              dragDevices: {
-                PointerDeviceKind.mouse,
-                PointerDeviceKind.touch,
-                PointerDeviceKind.stylus,
-                PointerDeviceKind.trackpad,
-                PointerDeviceKind.unknown,
-              },
-              scrollbars: false,
-            ),
-          ),
-        ),
+          );
+        },
       ),
     );
   }

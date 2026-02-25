@@ -16,15 +16,18 @@ class VideoPlayerWidget extends StatefulWidget {
 class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<VideoPlayerCubit>();
     return BlocBuilder<VideoPlayerCubit, VideoPlayerState>(
       builder: (context, state) {
         final controller = state.controller;
-        if (controller != null && controller.value.isInitialized) {
+        if (controller != null && controller.isInitialized) {
           return Stack(
-            key: cubit.videoPlayerKey,
             children: [
-              VideoPlayer(controller),
+              Center(
+                child: AspectRatio(
+                  aspectRatio: controller.controller.value.aspectRatio,
+                  child: VideoPlayer(controller.controller),
+                ),
+              ),
               CustomMaterialControls(
                 controller: controller,
                 isFullScreen: widget.isFullScreen,

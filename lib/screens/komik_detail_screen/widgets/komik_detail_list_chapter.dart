@@ -42,8 +42,13 @@ class KomikDetailListChapter extends StatelessWidget {
             borderRadius: BorderRadius.circular(8),
           ),
           onTap: () {
+            /// The param for komikcast should be slug/chapter
+            final String chapterParam = provider == MangaProvider.komikcast
+                ? "${komikuDetailModel.param}/${item.param}"
+                : item.param;
+
             context.pushRoute(
-              KomikReadRoute(param: item.param, provider: provider),
+              KomikReadRoute(param: chapterParam, provider: provider),
             );
 
             /// Mark as read

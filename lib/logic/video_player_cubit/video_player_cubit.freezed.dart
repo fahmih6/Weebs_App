@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$VideoPlayerState {
 
- VideoPlayerController? get controller; Duration? get lastPosition; String? get url; List<AnoboyLinksItemModel> get links; bool get isFullScreen;
+ CachedVideoPlayerPlus? get controller; Duration? get lastPosition; String? get url; List<AnoboyLinksItemModel> get links; bool get isFullScreen;
 /// Create a copy of VideoPlayerState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -45,7 +45,7 @@ abstract mixin class $VideoPlayerStateCopyWith<$Res>  {
   factory $VideoPlayerStateCopyWith(VideoPlayerState value, $Res Function(VideoPlayerState) _then) = _$VideoPlayerStateCopyWithImpl;
 @useResult
 $Res call({
- VideoPlayerController? controller, Duration? lastPosition, String? url, List<AnoboyLinksItemModel> links, bool isFullScreen
+ CachedVideoPlayerPlus? controller, Duration? lastPosition, String? url, List<AnoboyLinksItemModel> links, bool isFullScreen
 });
 
 
@@ -65,7 +65,7 @@ class _$VideoPlayerStateCopyWithImpl<$Res>
 @pragma('vm:prefer-inline') @override $Res call({Object? controller = freezed,Object? lastPosition = freezed,Object? url = freezed,Object? links = null,Object? isFullScreen = null,}) {
   return _then(_self.copyWith(
 controller: freezed == controller ? _self.controller : controller // ignore: cast_nullable_to_non_nullable
-as VideoPlayerController?,lastPosition: freezed == lastPosition ? _self.lastPosition : lastPosition // ignore: cast_nullable_to_non_nullable
+as CachedVideoPlayerPlus?,lastPosition: freezed == lastPosition ? _self.lastPosition : lastPosition // ignore: cast_nullable_to_non_nullable
 as Duration?,url: freezed == url ? _self.url : url // ignore: cast_nullable_to_non_nullable
 as String?,links: null == links ? _self.links : links // ignore: cast_nullable_to_non_nullable
 as List<AnoboyLinksItemModel>,isFullScreen: null == isFullScreen ? _self.isFullScreen : isFullScreen // ignore: cast_nullable_to_non_nullable
@@ -151,7 +151,7 @@ return state(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( VideoPlayerController? controller,  Duration? lastPosition,  String? url,  List<AnoboyLinksItemModel> links,  bool isFullScreen)?  state,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( CachedVideoPlayerPlus? controller,  Duration? lastPosition,  String? url,  List<AnoboyLinksItemModel> links,  bool isFullScreen)?  state,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _State() when state != null:
 return state(_that.controller,_that.lastPosition,_that.url,_that.links,_that.isFullScreen);case _:
@@ -172,7 +172,7 @@ return state(_that.controller,_that.lastPosition,_that.url,_that.links,_that.isF
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( VideoPlayerController? controller,  Duration? lastPosition,  String? url,  List<AnoboyLinksItemModel> links,  bool isFullScreen)  state,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( CachedVideoPlayerPlus? controller,  Duration? lastPosition,  String? url,  List<AnoboyLinksItemModel> links,  bool isFullScreen)  state,}) {final _that = this;
 switch (_that) {
 case _State():
 return state(_that.controller,_that.lastPosition,_that.url,_that.links,_that.isFullScreen);}
@@ -189,7 +189,7 @@ return state(_that.controller,_that.lastPosition,_that.url,_that.links,_that.isF
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( VideoPlayerController? controller,  Duration? lastPosition,  String? url,  List<AnoboyLinksItemModel> links,  bool isFullScreen)?  state,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( CachedVideoPlayerPlus? controller,  Duration? lastPosition,  String? url,  List<AnoboyLinksItemModel> links,  bool isFullScreen)?  state,}) {final _that = this;
 switch (_that) {
 case _State() when state != null:
 return state(_that.controller,_that.lastPosition,_that.url,_that.links,_that.isFullScreen);case _:
@@ -207,7 +207,7 @@ class _State implements VideoPlayerState {
   const _State({this.controller, this.lastPosition, this.url, final  List<AnoboyLinksItemModel> links = const [], this.isFullScreen = false}): _links = links;
   
 
-@override final  VideoPlayerController? controller;
+@override final  CachedVideoPlayerPlus? controller;
 @override final  Duration? lastPosition;
 @override final  String? url;
  final  List<AnoboyLinksItemModel> _links;
@@ -249,7 +249,7 @@ abstract mixin class _$StateCopyWith<$Res> implements $VideoPlayerStateCopyWith<
   factory _$StateCopyWith(_State value, $Res Function(_State) _then) = __$StateCopyWithImpl;
 @override @useResult
 $Res call({
- VideoPlayerController? controller, Duration? lastPosition, String? url, List<AnoboyLinksItemModel> links, bool isFullScreen
+ CachedVideoPlayerPlus? controller, Duration? lastPosition, String? url, List<AnoboyLinksItemModel> links, bool isFullScreen
 });
 
 
@@ -269,7 +269,7 @@ class __$StateCopyWithImpl<$Res>
 @override @pragma('vm:prefer-inline') $Res call({Object? controller = freezed,Object? lastPosition = freezed,Object? url = freezed,Object? links = null,Object? isFullScreen = null,}) {
   return _then(_State(
 controller: freezed == controller ? _self.controller : controller // ignore: cast_nullable_to_non_nullable
-as VideoPlayerController?,lastPosition: freezed == lastPosition ? _self.lastPosition : lastPosition // ignore: cast_nullable_to_non_nullable
+as CachedVideoPlayerPlus?,lastPosition: freezed == lastPosition ? _self.lastPosition : lastPosition // ignore: cast_nullable_to_non_nullable
 as Duration?,url: freezed == url ? _self.url : url // ignore: cast_nullable_to_non_nullable
 as String?,links: null == links ? _self._links : links // ignore: cast_nullable_to_non_nullable
 as List<AnoboyLinksItemModel>,isFullScreen: null == isFullScreen ? _self.isFullScreen : isFullScreen // ignore: cast_nullable_to_non_nullable

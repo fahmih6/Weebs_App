@@ -43,18 +43,19 @@ class _AppbarVideoPlayerState extends State<AppbarVideoPlayer> {
                     final controller = value.videoPlayerController;
                     if (controller != null && !state.shouldStop) {
                       return ValueListenableBuilder(
-                          valueListenable: controller,
-                          builder: (context, value, child) {
-                            if (value.isInitialized) {
-                              return SizedBox(
-                                height: controller.value.size.height,
-                                width: controller.value.size.width,
-                                child: VideoPlayer(controller),
-                              );
-                            } else {
-                              return const SizedBox.shrink();
-                            }
-                          });
+                        valueListenable: controller.controller,
+                        builder: (context, VideoPlayerValue value, child) {
+                          if (value.isInitialized) {
+                            return SizedBox(
+                              height: controller.controller.value.size.height,
+                              width: controller.controller.value.size.width,
+                              child: VideoPlayer(controller.controller),
+                            );
+                          } else {
+                            return const SizedBox.shrink();
+                          }
+                        },
+                      );
                     } else {
                       return const SizedBox.shrink();
                     }

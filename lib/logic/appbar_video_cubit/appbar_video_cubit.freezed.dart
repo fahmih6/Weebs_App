@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$AppbarVideoState {
 
- VideoPlayerController? get videoPlayerController; bool get shouldStop; bool get isVisible;
+ CachedVideoPlayerPlus? get videoPlayerController; bool get shouldStop; bool get isVisible;
 /// Create a copy of AppbarVideoState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -45,7 +45,7 @@ abstract mixin class $AppbarVideoStateCopyWith<$Res>  {
   factory $AppbarVideoStateCopyWith(AppbarVideoState value, $Res Function(AppbarVideoState) _then) = _$AppbarVideoStateCopyWithImpl;
 @useResult
 $Res call({
- VideoPlayerController? videoPlayerController, bool shouldStop, bool isVisible
+ CachedVideoPlayerPlus? videoPlayerController, bool shouldStop, bool isVisible
 });
 
 
@@ -65,7 +65,7 @@ class _$AppbarVideoStateCopyWithImpl<$Res>
 @pragma('vm:prefer-inline') @override $Res call({Object? videoPlayerController = freezed,Object? shouldStop = null,Object? isVisible = null,}) {
   return _then(_self.copyWith(
 videoPlayerController: freezed == videoPlayerController ? _self.videoPlayerController : videoPlayerController // ignore: cast_nullable_to_non_nullable
-as VideoPlayerController?,shouldStop: null == shouldStop ? _self.shouldStop : shouldStop // ignore: cast_nullable_to_non_nullable
+as CachedVideoPlayerPlus?,shouldStop: null == shouldStop ? _self.shouldStop : shouldStop // ignore: cast_nullable_to_non_nullable
 as bool,isVisible: null == isVisible ? _self.isVisible : isVisible // ignore: cast_nullable_to_non_nullable
 as bool,
   ));
@@ -149,7 +149,7 @@ return state(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( VideoPlayerController? videoPlayerController,  bool shouldStop,  bool isVisible)?  state,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( CachedVideoPlayerPlus? videoPlayerController,  bool shouldStop,  bool isVisible)?  state,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _State() when state != null:
 return state(_that.videoPlayerController,_that.shouldStop,_that.isVisible);case _:
@@ -170,7 +170,7 @@ return state(_that.videoPlayerController,_that.shouldStop,_that.isVisible);case 
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( VideoPlayerController? videoPlayerController,  bool shouldStop,  bool isVisible)  state,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( CachedVideoPlayerPlus? videoPlayerController,  bool shouldStop,  bool isVisible)  state,}) {final _that = this;
 switch (_that) {
 case _State():
 return state(_that.videoPlayerController,_that.shouldStop,_that.isVisible);}
@@ -187,7 +187,7 @@ return state(_that.videoPlayerController,_that.shouldStop,_that.isVisible);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( VideoPlayerController? videoPlayerController,  bool shouldStop,  bool isVisible)?  state,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( CachedVideoPlayerPlus? videoPlayerController,  bool shouldStop,  bool isVisible)?  state,}) {final _that = this;
 switch (_that) {
 case _State() when state != null:
 return state(_that.videoPlayerController,_that.shouldStop,_that.isVisible);case _:
@@ -205,7 +205,7 @@ class _State implements AppbarVideoState {
   const _State({this.videoPlayerController, this.shouldStop = false, this.isVisible = true});
   
 
-@override final  VideoPlayerController? videoPlayerController;
+@override final  CachedVideoPlayerPlus? videoPlayerController;
 @override@JsonKey() final  bool shouldStop;
 @override@JsonKey() final  bool isVisible;
 
@@ -239,7 +239,7 @@ abstract mixin class _$StateCopyWith<$Res> implements $AppbarVideoStateCopyWith<
   factory _$StateCopyWith(_State value, $Res Function(_State) _then) = __$StateCopyWithImpl;
 @override @useResult
 $Res call({
- VideoPlayerController? videoPlayerController, bool shouldStop, bool isVisible
+ CachedVideoPlayerPlus? videoPlayerController, bool shouldStop, bool isVisible
 });
 
 
@@ -259,7 +259,7 @@ class __$StateCopyWithImpl<$Res>
 @override @pragma('vm:prefer-inline') $Res call({Object? videoPlayerController = freezed,Object? shouldStop = null,Object? isVisible = null,}) {
   return _then(_State(
 videoPlayerController: freezed == videoPlayerController ? _self.videoPlayerController : videoPlayerController // ignore: cast_nullable_to_non_nullable
-as VideoPlayerController?,shouldStop: null == shouldStop ? _self.shouldStop : shouldStop // ignore: cast_nullable_to_non_nullable
+as CachedVideoPlayerPlus?,shouldStop: null == shouldStop ? _self.shouldStop : shouldStop // ignore: cast_nullable_to_non_nullable
 as bool,isVisible: null == isVisible ? _self.isVisible : isVisible // ignore: cast_nullable_to_non_nullable
 as bool,
   ));

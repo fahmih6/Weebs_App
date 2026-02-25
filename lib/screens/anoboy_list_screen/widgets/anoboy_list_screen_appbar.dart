@@ -124,14 +124,14 @@ class AnoboyListScreenAppbar extends StatelessWidget {
     /// If scrolled down, pause the video, otherwise, resume it
     if (scrolled &&
         controller != null &&
-        controller.value.isPlaying &&
+        controller.controller.value.isPlaying &&
         !appbarCubit.state.shouldStop) {
-      controller.pause();
+      controller.controller.pause();
     } else if (!scrolled &&
         controller != null &&
-        !controller.value.isPlaying &&
+        !controller.controller.value.isPlaying &&
         !appbarCubit.state.shouldStop) {
-      controller.play();
+      controller.controller.play();
     }
 
     /// Edit state on app bar cubit

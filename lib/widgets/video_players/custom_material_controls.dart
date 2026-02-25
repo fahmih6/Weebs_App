@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:video_player/video_player.dart';
+import 'package:cached_video_player_plus/cached_video_player_plus.dart';
 import 'package:universal_html/html.dart' as html;
 import 'package:wakelock_plus/wakelock_plus.dart';
 import 'package:window_manager/window_manager.dart';
@@ -13,7 +14,7 @@ import 'video_fullscreen_widget.dart';
 import 'video_resolution_bottomsheet.dart';
 
 class CustomMaterialControls extends StatefulWidget {
-  final VideoPlayerController controller;
+  final CachedVideoPlayerPlus controller;
   final bool isFullScreen;
 
   const CustomMaterialControls({
@@ -31,6 +32,7 @@ class _CustomMaterialControlsState extends State<CustomMaterialControls> {
   Timer? _hideTimer;
   late VideoPlayerValue _latestValue;
   bool _isWakelockEnabled = false;
+  bool _isLongPressing = false;
   final FocusNode _focusNode = FocusNode();
 
   final barHeight = 48.0;
@@ -39,14 +41,14 @@ class _CustomMaterialControlsState extends State<CustomMaterialControls> {
   @override
   void initState() {
     super.initState();
-    _latestValue = widget.controller.value;
-    widget.controller.addListener(_updateState);
+    _latestValue = widget.controller.controller.value;
+    widget.controller.controller.addListener(_updateState);
     _startHideTimer();
   }
 
   @override
   void dispose() {
-    widget.controller.removeListener(_updateState);
+    widget.controller.controller.removeListener(_updateState);
     _hideTimer?.cancel();
     WakelockPlus.disable();
     _focusNode.dispose();
@@ -57,16 +59,16 @@ class _CustomMaterialControlsState extends State<CustomMaterialControls> {
   void didUpdateWidget(CustomMaterialControls oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (widget.controller != oldWidget.controller) {
-      oldWidget.controller.removeListener(_updateState);
-      _latestValue = widget.controller.value;
-      widget.controller.addListener(_updateState);
+      oldWidget.controller.controller.removeListener(_updateState);
+      _latestValue = widget.controller.controller.value;
+      widget.controller.controller.addListener(_updateState);
     }
   }
 
   void _updateState() {
     if (!mounted) return;
     setState(() {
-      _latestValue = widget.controller.value;
+      _latestValue = widget.controller.controller.value;
     });
 
     final shouldEnableWakelock = _latestValue.isPlaying;
@@ -101,18 +103,27 @@ class _CustomMaterialControlsState extends State<CustomMaterialControls> {
   void _playPause() {
     setState(() {
       if (_latestValue.isPlaying) {
-        widget.controller.pause();
+        widget.controller.controller.pause();
       } else {
-        if (!_latestValue.isInitialized) {
-          widget.controller.initialize().then((_) => widget.controller.play());
+        if (!widget.controller.isInitialized) {
+          widget.controller.initialize().then(
+            (_) => widget.controller.controller.play(),
+          );
         } else {
           if (_latestValue.position >= _latestValue.duration) {
-            widget.controller.seekTo(Duration.zero);
+            widget.controller.controller.seekTo(Duration.zero);
           }
-          widget.controller.play();
+          widget.controller.controller.play();
         }
       }
     });
+    _cancelAndRestartTimer();
+  }
+
+  void _toggleSpeed() {
+    final currentSpeed = _latestValue.playbackSpeed;
+    final nextSpeed = currentSpeed == 1.5 ? 1.0 : 1.5;
+    widget.controller.controller.setPlaybackSpeed(nextSpeed);
     _cancelAndRestartTimer();
   }
 
@@ -192,10 +203,12 @@ class _CustomMaterialControlsState extends State<CustomMaterialControls> {
           _onDoubleTap(details);
         },
         onLongPress: () {
-          widget.controller.setPlaybackSpeed(1.5);
+          setState(() => _isLongPressing = true);
+          widget.controller.controller.setPlaybackSpeed(1.5);
         },
         onLongPressUp: () {
-          widget.controller.setPlaybackSpeed(1.0);
+          setState(() => _isLongPressing = false);
+          widget.controller.controller.setPlaybackSpeed(1.0);
         },
         child: Focus(
           focusNode: _focusNode,
@@ -216,7 +229,7 @@ class _CustomMaterialControlsState extends State<CustomMaterialControls> {
               _buildHitArea(),
               _buildSpeedOverlay(),
               ValueListenableBuilder(
-                valueListenable: widget.controller,
+                valueListenable: widget.controller.controller,
                 builder: (context, VideoPlayerValue value, child) {
                   if (!value.isBuffering) {
                     return const SizedBox.shrink();
@@ -252,7 +265,7 @@ class _CustomMaterialControlsState extends State<CustomMaterialControls> {
 
   void _seekRelative(Duration offset) {
     final newPosition = _latestValue.position + offset;
-    widget.controller.seekTo(
+    widget.controller.controller.seekTo(
       newPosition < Duration.zero
           ? Duration.zero
           : newPosition > _latestValue.duration
@@ -304,7 +317,9 @@ class _CustomMaterialControlsState extends State<CustomMaterialControls> {
   }
 
   Widget _buildSpeedOverlay() {
-    if (_latestValue.playbackSpeed == 1.0) return const SizedBox.shrink();
+    if (_latestValue.playbackSpeed == 1.0 || !_isLongPressing) {
+      return const SizedBox.shrink();
+    }
     return IgnorePointer(
       child: Center(
         child: Container(
@@ -398,6 +413,20 @@ class _CustomMaterialControlsState extends State<CustomMaterialControls> {
                   Expanded(child: _buildProgressBar()),
                   IconButton(
                     visualDensity: VisualDensity.compact,
+                    icon: Text(
+                      '1.5x',
+                      style: TextStyle(
+                        color: _latestValue.playbackSpeed == 1.5
+                            ? Theme.of(context).primaryColor
+                            : Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 12,
+                      ),
+                    ),
+                    onPressed: _toggleSpeed,
+                  ),
+                  IconButton(
+                    visualDensity: VisualDensity.compact,
                     icon: Icon(
                       widget.isFullScreen
                           ? Icons.fullscreen_exit
@@ -446,7 +475,7 @@ class _CustomMaterialControlsState extends State<CustomMaterialControls> {
 
   Widget _buildProgressBar() {
     return VideoProgressIndicator(
-      widget.controller,
+      widget.controller.controller,
       allowScrubbing: true,
       colors: VideoProgressColors(
         playedColor: Theme.of(context).primaryColor,

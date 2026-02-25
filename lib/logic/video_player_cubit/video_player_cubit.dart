@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:video_player/video_player.dart';
+import 'package:cached_video_player_plus/cached_video_player_plus.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:weebs_app/global/endpoints.dart';
 import 'package:weebs_app/model/anoboy/anoboy_detail_model/anoboy_detail_model.dart';
@@ -57,7 +58,7 @@ class VideoPlayerCubit extends Cubit<VideoPlayerState> {
     /// URL check to prevent redundant reload
     if (state.url == selectedLink.link &&
         state.controller != null &&
-        state.controller!.value.isInitialized) {
+        state.controller!.isInitialized) {
       return;
     }
 
@@ -71,7 +72,7 @@ class VideoPlayerCubit extends Cubit<VideoPlayerState> {
     final proxiedUrl = _getProxiedUrl(selectedLink.link, selectedLink.headers);
 
     /// Load new video controller
-    final player = VideoPlayerController.networkUrl(
+    final player = CachedVideoPlayerPlus.networkUrl(
       Uri.parse(proxiedUrl),
       httpHeaders: kIsWeb
           ? const {} // Avoid CORS preflight on Web as headers are in the proxy URL
@@ -84,24 +85,30 @@ class VideoPlayerCubit extends Cubit<VideoPlayerState> {
 
     try {
       await player.initialize();
-      emit(state.copyWith(controller: player, url: url, links: links));
-      player.play();
+      emit(
+        state.copyWith(
+          controller: player,
+          url: selectedLink.link,
+          links: links,
+        ),
+      );
+      player.controller.play();
     } catch (e) {
       debugPrint("Error loading video: $e");
     }
 
     /// Seek to last position if any
     if (state.lastPosition != null) {
-      await player.seekTo(state.lastPosition!);
+      await player.controller.seekTo(state.lastPosition!);
     }
 
     /// Play
-    await player.play();
+    await player.controller.play();
 
     /// Add listener for duration
-    player.addListener(() {
-      if (player.value.isInitialized) {
-        emit(state.copyWith(lastPosition: player.value.position));
+    player.controller.addListener(() {
+      if (player.controller.value.isInitialized) {
+        emit(state.copyWith(lastPosition: player.controller.value.position));
       }
     });
   }

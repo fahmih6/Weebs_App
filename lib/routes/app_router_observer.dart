@@ -53,12 +53,12 @@ class AppRouterObserver extends AutoRouterObserver {
         appbarVideoCubit.state.isVisible) {
       if (!appbarVideoCubit.state.shouldStop) {
         /// Play the video
-        await appbarVideoCubit.videoPlayerController?.play();
+        await appbarVideoCubit.videoPlayerController?.controller.play();
       }
     } else {
       /// Pause the video
       !appbarVideoCubit.state.shouldStop
-          ? await appbarVideoCubit.videoPlayerController?.pause()
+          ? await appbarVideoCubit.videoPlayerController?.controller.pause()
           : null;
     }
 
@@ -67,12 +67,12 @@ class AppRouterObserver extends AutoRouterObserver {
         route.settings.name == RouteNames.homeScreen &&
         appbarVideoCubit.state.isVisible) {
       !appbarVideoCubit.state.shouldStop
-          ? await appbarVideoCubit.videoPlayerController?.play()
+          ? await appbarVideoCubit.videoPlayerController?.controller.play()
           : null;
     } else if (route != null && route.settings.name != RouteNames.homeScreen) {
       /// Pause the video
       !appbarVideoCubit.state.shouldStop
-          ? await appbarVideoCubit.videoPlayerController?.pause()
+          ? await appbarVideoCubit.videoPlayerController?.controller.pause()
           : null;
     }
   }

@@ -1,6 +1,8 @@
+import 'package:flutter/foundation.dart';
+
 class Endpoints {
   /// Base URL
-  static String baseUrl = Uri.base.origin;
+  static String baseUrl = kIsWeb ? Uri.base.origin : "https://midorima.online";
 
   /// Anoboy
   static const String anoboy = "/api/anoboy/";
