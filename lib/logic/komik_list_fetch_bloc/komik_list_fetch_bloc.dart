@@ -5,6 +5,7 @@ import 'package:weebs_app/model/komiku/komiku_list_model/komiku_list_model.dart'
 import 'package:weebs_app/services/repositories/komiku_repository.dart';
 import 'package:weebs_app/enum/manga_provider.dart';
 import 'package:weebs_app/services/repositories/komikcast_repository.dart';
+import 'package:weebs_app/services/repositories/voratoon_repository.dart';
 
 import '../../helpers/get_it_helper/get_it_helper.dart';
 
@@ -28,9 +29,7 @@ class KomikListFetchBloc
       emit(const _Loading());
 
       /// Repository
-      final repo = event.provider == MangaProvider.komiku
-          ? getIt<KomikuRepository>()
-          : getIt<KomikcastRepository>();
+      final repo = _getRepository(event.provider);
 
       /// Get fetch result
       final res = await repo.getLatestKomik();
@@ -68,9 +67,7 @@ class KomikListFetchBloc
       );
 
       /// Repository
-      final repo = event.provider == MangaProvider.komiku
-          ? getIt<KomikuRepository>()
-          : getIt<KomikcastRepository>();
+      final repo = _getRepository(event.provider);
 
       /// Get fetch result
       final res = await repo.getNextKomikListData(nextURL: event.nextLink);
@@ -110,5 +107,17 @@ class KomikListFetchBloc
         },
       );
     });
+  }
+
+  /// Get repository based on provider
+  IKomikuRepository _getRepository(MangaProvider provider) {
+    switch (provider) {
+      case MangaProvider.komiku:
+        return getIt<KomikuRepository>();
+      case MangaProvider.komikcast:
+        return getIt<KomikcastRepository>();
+      case MangaProvider.voratoon:
+        return getIt<VoratoonRepository>();
+    }
   }
 }

@@ -6,6 +6,7 @@ import 'package:weebs_app/helpers/get_it_helper/get_it_helper.dart';
 import 'package:weebs_app/enum/manga_provider.dart';
 import 'package:weebs_app/services/repositories/komiku_repository.dart';
 import 'package:weebs_app/services/repositories/komikcast_repository.dart';
+import 'package:weebs_app/services/repositories/voratoon_repository.dart';
 
 import '../../global/endpoints.dart';
 import '../../model/anoboy/anoboy_detail_model/anoboy_detail_model.dart';
@@ -31,6 +32,7 @@ class FavouritesBloc extends HydratedBloc<FavouritesEvent, FavouritesState> {
       final anoboyList = [...state.anoboyList];
       final komikuList = [...state.komikuList];
       final komikcastList = [...state.komikcastList];
+      final voratoonList = [...state.voratoonList];
 
       /// Add to the state
       if (anoboyData != null) {
@@ -47,6 +49,18 @@ class FavouritesBloc extends HydratedBloc<FavouritesEvent, FavouritesState> {
           /// If doesn't exists, add the data
           if (!isExist) {
             komikcastList.add(komikuData);
+          }
+        } else if (provider == MangaProvider.voratoon) {
+          /// Check if voratoon list contains the added komik data
+          final isExist =
+              voratoonList.firstWhereOrNull(
+                (element) => element.param == komikuData.param,
+              ) !=
+              null;
+
+          /// If doesn't exists, add the data
+          if (!isExist) {
+            voratoonList.add(komikuData);
           }
         } else {
           /// Check if komiku list contains the added komik data
@@ -69,6 +83,7 @@ class FavouritesBloc extends HydratedBloc<FavouritesEvent, FavouritesState> {
           anoboyList: anoboyList,
           komikuList: komikuList,
           komikcastList: komikcastList,
+          voratoonList: voratoonList,
         ),
       );
     }, transformer: sequential());
@@ -83,6 +98,7 @@ class FavouritesBloc extends HydratedBloc<FavouritesEvent, FavouritesState> {
       final anoboyList = [...state.anoboyList];
       final komikuList = [...state.komikuList];
       final komikcastList = [...state.komikcastList];
+      final voratoonList = [...state.voratoonList];
 
       /// Add to the state
       if (anoboyData != null) {
@@ -91,6 +107,11 @@ class FavouritesBloc extends HydratedBloc<FavouritesEvent, FavouritesState> {
         if (provider == MangaProvider.komikcast) {
           /// Remove from list
           komikcastList.removeWhere(
+            (element) => element.param == komikuData.param,
+          );
+        } else if (provider == MangaProvider.voratoon) {
+          /// Remove from list
+          voratoonList.removeWhere(
             (element) => element.param == komikuData.param,
           );
         } else {
@@ -107,6 +128,7 @@ class FavouritesBloc extends HydratedBloc<FavouritesEvent, FavouritesState> {
           anoboyList: anoboyList,
           komikuList: komikuList,
           komikcastList: komikcastList,
+          voratoonList: voratoonList,
         ),
       );
     });
@@ -121,6 +143,7 @@ class FavouritesBloc extends HydratedBloc<FavouritesEvent, FavouritesState> {
       final anoboyList = [...state.anoboyList];
       final komikuList = [...state.komikuList];
       final komikcastList = [...state.komikcastList];
+      final voratoonList = [...state.voratoonList];
 
       /// Add to the state
       if (anoboyData != null) {
@@ -135,6 +158,16 @@ class FavouritesBloc extends HydratedBloc<FavouritesEvent, FavouritesState> {
           /// If doesn't exists, add the data
           if (index >= 0) {
             komikcastList[index] = komikuData;
+          }
+        } else if (provider == MangaProvider.voratoon) {
+          /// Check if voratoon list contains the added komik data
+          final index = voratoonList.indexWhere(
+            (element) => element.param == komikuData.param,
+          );
+
+          /// If doesn't exists, add the data
+          if (index >= 0) {
+            voratoonList[index] = komikuData;
           }
         } else {
           /// Check if komiku list contains the added komik data
@@ -155,6 +188,7 @@ class FavouritesBloc extends HydratedBloc<FavouritesEvent, FavouritesState> {
           anoboyList: anoboyList,
           komikuList: komikuList,
           komikcastList: komikcastList,
+          voratoonList: voratoonList,
         ),
       );
     }, transformer: sequential());
@@ -183,11 +217,19 @@ class FavouritesBloc extends HydratedBloc<FavouritesEvent, FavouritesState> {
               .toList()
         : [];
 
+    /// Parse voratoon data
+    final List<KomikuDetailModel> voratoonList = json['voratoonList'] != null
+        ? (json['voratoonList'] as List)
+              .map((e) => KomikuDetailModel.fromJson(e))
+              .toList()
+        : [];
+
     /// Return state
     return FavouritesState.state(
       anoboyList: anoboyList,
       komikuList: komikuList,
       komikcastList: komikcastList,
+      voratoonList: voratoonList,
     );
   }
 
@@ -198,6 +240,7 @@ class FavouritesBloc extends HydratedBloc<FavouritesEvent, FavouritesState> {
       "anoboyList": state.anoboyList.map((e) => e.toJson()).toList(),
       "komikuList": state.komikuList.map((e) => e.toJson()).toList(),
       "komikcastList": state.komikcastList.map((e) => e.toJson()).toList(),
+      "voratoonList": state.voratoonList.map((e) => e.toJson()).toList(),
     };
   }
 
@@ -247,6 +290,31 @@ class FavouritesBloc extends HydratedBloc<FavouritesEvent, FavouritesState> {
             FavouritesEvent.edited(
               komikuData: r.copyWith(param: param),
               provider: MangaProvider.komikcast,
+            ),
+          ),
+        );
+      }
+    }
+
+    /// Update Voratoon
+    for (var i = 0; i < state.voratoonList.length; i++) {
+      /// Param
+      final param = state.voratoonList[i].param;
+
+      /// Only update if param is not empty
+      if (param.isNotEmpty) {
+        /// Komik Data
+        final komikData = await getIt<VoratoonRepository>().getKomikDetail(
+          url: "${Endpoints.voratoon}$param",
+        );
+
+        /// Edit the data from list
+        komikData.fold(
+          (l) => null,
+          (r) => add(
+            FavouritesEvent.edited(
+              komikuData: r.copyWith(param: param),
+              provider: MangaProvider.voratoon,
             ),
           ),
         );

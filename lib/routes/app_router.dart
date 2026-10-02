@@ -11,46 +11,57 @@ part 'app_router.gr.dart';
 class AppRouter extends RootStackRouter {
   @override
   List<AutoRoute> get routes => [
-    /// Splash Screen
-    AutoRoute(path: "/splash", initial: true, page: SplashRoute.page),
+        /// Splash Screen
+        AutoRoute(path: "/splash", initial: true, page: SplashRoute.page),
 
-    /// Home Screen
-    AutoRoute(
-      path: "/",
-      page: HomeRoute.page,
-      children: [
-        /// Komik List Screen
-        AutoRoute(path: RouteNames.komikListScreen, page: KomikListRoute.page),
-
-        /// Anoboy List Screen
+        /// Home Screen
         AutoRoute(
-          path: RouteNames.anoboyListScreen,
-          page: AnoboyListRoute.page,
+          path: "/",
+          page: HomeRoute.page,
+          children: [
+            /// Komik List Screen
+            AutoRoute(
+              path: RouteNames.komikListScreen,
+              page: KomikListRoute.page,
+              initial: true,
+            ),
+
+
+            /// Voratoon List Screen
+            AutoRoute(
+              path: RouteNames.voratoonListScreen,
+              page: VoratoonListRoute.page,
+            ),
+
+            /// Anoboy List Screen
+            AutoRoute(
+              path: RouteNames.anoboyListScreen,
+              page: AnoboyListRoute.page,
+            ),
+
+            /// Settings Screen
+            AutoRoute(path: RouteNames.settingsScreen, page: SettingsRoute.page),
+          ],
         ),
 
-        /// Settings Screen
-        AutoRoute(path: RouteNames.settingsScreen, page: SettingsRoute.page),
-      ],
-    ),
+        /// Search Screen
+        AutoRoute(path: "/${RouteNames.searchScreen}", page: SearchRoute.page),
 
-    /// Search Screen
-    AutoRoute(path: "/${RouteNames.searchScreen}", page: SearchRoute.page),
+        /// Komik Detail Screen
+        AutoRoute(
+          path: "/${RouteNames.komikDetailScreen}/:param",
+          page: KomikDetailRoute.page,
+        ),
 
-    /// Komik Detail Screen
-    AutoRoute(
-      path: "/${RouteNames.komikDetailScreen}/:param",
-      page: KomikDetailRoute.page,
-    ),
+        AutoRoute(
+          path: "/${RouteNames.komikReadScreen}/:param",
+          page: KomikReadRoute.page,
+        ),
 
-    AutoRoute(
-      path: "/${RouteNames.komikReadScreen}/:param",
-      page: KomikReadRoute.page,
-    ),
-
-    /// Anoboy Detail Screen
-    AutoRoute(
-      path: "/${RouteNames.anoboyDetailScreen}/:param",
-      page: AnoboyDetailRoute.page,
-    ),
-  ];
+        /// Anoboy Detail Screen
+        AutoRoute(
+          path: "/${RouteNames.anoboyDetailScreen}/:param",
+          page: AnoboyDetailRoute.page,
+        ),
+      ];
 }

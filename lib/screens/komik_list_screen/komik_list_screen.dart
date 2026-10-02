@@ -12,6 +12,7 @@ import 'package:weebs_app/enum/manga_provider.dart';
 import 'package:weebs_app/screens/komik_list_screen/widgets/komik_list_screen_appbar.dart';
 import 'package:weebs_app/screens/komik_list_screen/widgets/komik_list_screen_listview.dart';
 
+import '../../model/komiku/komiku_detail_model/komiku_detail_model.dart';
 import '../../widgets/loading_widget/loading_widget.dart';
 import 'package:weebs_app/helpers/get_it_helper/get_it_helper.dart';
 
@@ -77,10 +78,7 @@ class _KomikListScreenState extends State<KomikListScreen> {
                       SliverToBoxAdapter(
                         child: BlocBuilder<FavouritesBloc, FavouritesState>(
                           builder: (context, state) {
-                            final list =
-                                widget.provider == MangaProvider.komikcast
-                                ? state.komikcastList
-                                : state.komikuList;
+                            final list = _getFavouriteList(state);
 
                             return Visibility(
                               visible: list.isNotEmpty,
@@ -96,7 +94,7 @@ class _KomikListScreenState extends State<KomikListScreen> {
                                           (e) => KomikuListItemModel(
                                             description: e.synopsis,
                                             detailUrl:
-                                                '${Endpoints.baseUrl}${widget.provider == MangaProvider.komiku ? Endpoints.komiku : Endpoints.komikcast}/${e.param}',
+                                                '${Endpoints.baseUrl}${_getEndpoint(widget.provider)}/${e.param}',
                                             latestChapter:
                                                 e
                                                     .chapters
@@ -151,4 +149,49 @@ class _KomikListScreenState extends State<KomikListScreen> {
       ),
     );
   }
+
+  /// Get the correct favourites list based on provider
+  List<KomikuDetailModel> _getFavouriteList(FavouritesState state) {
+    switch (widget.provider) {
+      case MangaProvider.komikcast:
+        return state.komikcastList;
+      case MangaProvider.voratoon:
+        return state.voratoonList;
+      case MangaProvider.komiku:
+        return state.komikuList;
+    }
+  }
+
+  /// Get the endpoint string for a provider
+  String _getEndpoint(MangaProvider provider) {
+    switch (provider) {
+      case MangaProvider.komiku:
+        return Endpoints.komiku;
+      case MangaProvider.komikcast:
+        return Endpoints.komikcast;
+      case MangaProvider.voratoon:
+        return Endpoints.voratoon;
+    }
+  }
 }
+
+@RoutePage(name: RouteNames.komikcastListScreen)
+class KomikcastListScreen extends StatelessWidget {
+  const KomikcastListScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const KomikListScreen(provider: MangaProvider.komikcast);
+  }
+}
+
+@RoutePage(name: RouteNames.voratoonListScreen)
+class VoratoonListScreen extends StatelessWidget {
+  const VoratoonListScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const KomikListScreen(provider: MangaProvider.voratoon);
+  }
+}
+

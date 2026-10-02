@@ -6,5 +6,6 @@ sealed class FavouritesState with _$FavouritesState {
     @Default([]) List<AnoboyDetailModel> anoboyList,
     @Default([]) List<KomikuDetailModel> komikuList,
     @Default([]) List<KomikuDetailModel> komikcastList,
+    @Default([]) List<KomikuDetailModel> voratoonList,
   }) = _State;
 }

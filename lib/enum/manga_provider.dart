@@ -1,1 +1,1 @@
-enum MangaProvider { komiku, komikcast }
+enum MangaProvider { komiku, komikcast, voratoon }

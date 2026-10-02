@@ -5,6 +5,7 @@ import 'package:weebs_app/helpers/get_it_helper/get_it_helper.dart';
 import 'package:weebs_app/services/repositories/komiku_repository.dart';
 import 'package:weebs_app/enum/manga_provider.dart';
 import 'package:weebs_app/services/repositories/komikcast_repository.dart';
+import 'package:weebs_app/services/repositories/voratoon_repository.dart';
 
 import '../../global/endpoints.dart';
 import '../../model/komiku/komiku_detail_model/komiku_detail_model.dart';
@@ -22,14 +23,10 @@ class KomikChapterFetchBloc
       emit(const _Loading());
 
       /// Repository
-      final repo = event.provider == MangaProvider.komiku
-          ? getIt<KomikuRepository>()
-          : getIt<KomikcastRepository>();
+      final repo = _getRepository(event.provider);
 
       /// Endpoint
-      final endpoint = event.provider == MangaProvider.komiku
-          ? Endpoints.komikuChapter
-          : Endpoints.komikcastChapter;
+      final endpoint = _getEndpoint(event.provider);
 
       /// Chapter Images
       final chapterImages = await repo.getKomikDetailChapterImages(
@@ -59,5 +56,29 @@ class KomikChapterFetchBloc
         },
       );
     }, transformer: droppable());
+  }
+
+  /// Get repository based on provider
+  IKomikuRepository _getRepository(MangaProvider provider) {
+    switch (provider) {
+      case MangaProvider.komiku:
+        return getIt<KomikuRepository>();
+      case MangaProvider.komikcast:
+        return getIt<KomikcastRepository>();
+      case MangaProvider.voratoon:
+        return getIt<VoratoonRepository>();
+    }
+  }
+
+  /// Get endpoint based on provider
+  String _getEndpoint(MangaProvider provider) {
+    switch (provider) {
+      case MangaProvider.komiku:
+        return Endpoints.komikuChapter;
+      case MangaProvider.komikcast:
+        return Endpoints.komikcastChapter;
+      case MangaProvider.voratoon:
+        return Endpoints.voratoonChapter;
+    }
   }
 }

@@ -273,6 +273,22 @@ class KomikReadRouteArgs {
 }
 
 /// generated route for
+/// [KomikcastListScreen]
+class KomikcastListRoute extends PageRouteInfo<void> {
+  const KomikcastListRoute({List<PageRouteInfo>? children})
+    : super(KomikcastListRoute.name, initialChildren: children);
+
+  static const String name = 'KomikcastListRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const KomikcastListScreen();
+    },
+  );
+}
+
+/// generated route for
 /// [SearchScreen]
 class SearchRoute extends PageRouteInfo<SearchRouteArgs> {
   SearchRoute({
@@ -349,6 +365,22 @@ class SplashRoute extends PageRouteInfo<void> {
     name,
     builder: (data) {
       return const SplashScreen();
+    },
+  );
+}
+
+/// generated route for
+/// [VoratoonListScreen]
+class VoratoonListRoute extends PageRouteInfo<void> {
+  const VoratoonListRoute({List<PageRouteInfo>? children})
+    : super(VoratoonListRoute.name, initialChildren: children);
+
+  static const String name = 'VoratoonListRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const VoratoonListScreen();
     },
   );
 }

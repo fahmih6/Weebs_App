@@ -16,6 +16,7 @@ import 'package:weebs_app/services/repositories/anoboy_repository.dart';
 import 'package:weebs_app/services/repositories/blogger_repository.dart';
 import 'package:weebs_app/services/repositories/komiku_repository.dart';
 import 'package:weebs_app/services/repositories/komikcast_repository.dart';
+import 'package:weebs_app/services/repositories/voratoon_repository.dart';
 
 import '../../logic/anoboy_detail_fetch_bloc/anoboy_detail_fetch_bloc.dart';
 import '../../logic/komik_chapter_fetch_bloc/komik_chapter_fetch_bloc.dart';
@@ -55,6 +56,9 @@ class GetItHelper {
 
     /// Komikcast Repository
     getIt.registerFactory<KomikcastRepository>(() => KomikcastRepository());
+
+    /// Voratoon Repository
+    getIt.registerFactory<VoratoonRepository>(() => VoratoonRepository());
 
     /// Blogger Repository
     getIt.registerFactory<BloggerRepository>(() => BloggerRepository());

@@ -66,7 +66,9 @@ class SearchScreen extends StatelessWidget {
                         } else {
                           return AnimatedSwitcher(
                             duration: const Duration(milliseconds: 250),
-                            child: currentRoute == RouteNames.komikListScreen
+                            child: (currentRoute == RouteNames.komikListScreen ||
+                                    currentRoute == RouteNames.komikcastListScreen ||
+                                    currentRoute == RouteNames.voratoonListScreen)
                                 ? SearchScreenKomikResult(
                                     komikResult: value.komikResult,
                                     provider: provider,

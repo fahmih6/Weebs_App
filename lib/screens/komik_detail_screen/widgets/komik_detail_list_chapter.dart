@@ -42,8 +42,9 @@ class KomikDetailListChapter extends StatelessWidget {
             borderRadius: BorderRadius.circular(8),
           ),
           onTap: () {
-            /// The param for komikcast should be slug/chapter
-            final String chapterParam = provider == MangaProvider.komikcast
+            /// The param for komikcast and voratoon should be slug/chapter
+            final String chapterParam = provider == MangaProvider.komikcast || 
+                provider == MangaProvider.voratoon
                 ? "${komikuDetailModel.param}/${item.param}"
                 : item.param;
 

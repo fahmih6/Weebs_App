@@ -37,8 +37,56 @@ Future<void> main() async {
     WidgetsFlutterBinding.ensureInitialized();
   }
 
+  /// Custom ErrorWidget builder to prevent silent grey screens in release mode
+  ErrorWidget.builder = (FlutterErrorDetails details) {
+    debugPrint(
+      'Flutter error caught by ErrorWidget.builder: ${details.exceptionAsString()}',
+    );
+    debugPrint(details.stack?.toString());
+    return Material(
+      color: const Color(0xFF121212),
+      child: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Icon(
+                Icons.error_outline,
+                color: Colors.redAccent,
+                size: 48,
+              ),
+              const SizedBox(height: 16),
+              const Text(
+                'Something went wrong',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                kReleaseMode
+                    ? 'An unexpected error occurred. Please restart the app.'
+                    : details.exceptionAsString(),
+                style: const TextStyle(color: Colors.white70, fontSize: 14),
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  };
+
   /// Initialize Firebase App
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  try {
+    await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  } catch (e) {
+    debugPrint('Firebase initialization error: $e');
+    // Continue anyway - app might work without Firebase
+  }
 
   /// Window Manager
   if (!kIsWeb && PlatformExtension.isDesktop) {
@@ -57,7 +105,12 @@ Future<void> main() async {
   HttpOverrides.global = CustomHttpOverrides();
 
   /// Setup the dependencies
-  await GetItHelper.setupDependencies();
+  try {
+    await GetItHelper.setupDependencies();
+  } catch (e) {
+    debugPrint('GetIt initialization error: $e');
+    rethrow;
+  }
 
   /// Hydrated Bloc
   HydratedBloc.storage = await HydratedStorage.build(

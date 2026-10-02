@@ -21,9 +21,9 @@ class _HomeScreenState extends State<HomeScreen> {
     return AutoTabsRouter(
       routes: [
         KomikListRoute(),
-        KomikListRoute(provider: MangaProvider.komikcast),
-        AnoboyListRoute(),
-        SettingsRoute(),
+        const VoratoonListRoute(),
+        const AnoboyListRoute(),
+        const SettingsRoute(),
       ],
       transitionBuilder: (context, child, animation) {
         return FadeTransition(opacity: animation, child: child);
@@ -57,8 +57,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         label: Text("Komiku"),
                       ),
                       NavigationRailDestination(
-                        icon: Icon(Icons.menu_book_sharp),
-                        label: Text("Komikcast"),
+                        icon: Icon(Icons.menu_book_rounded),
+                        label: Text("Voratoon"),
                       ),
                       NavigationRailDestination(
                         icon: Icon(Icons.tv_sharp),
@@ -93,7 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 },
                 icons: [
                   FluidNavBarIcon(svgPath: AssetsConstant.komikuIcon),
-                  FluidNavBarIcon(svgPath: AssetsConstant.komikcastIcon),
+                  FluidNavBarIcon(svgPath: AssetsConstant.voratoonIcon),
                   FluidNavBarIcon(svgPath: AssetsConstant.anoboyIcon),
                   FluidNavBarIcon(icon: Icons.settings),
                 ],
@@ -113,9 +113,7 @@ class _HomeScreenState extends State<HomeScreen> {
               child: const Icon(Icons.search),
               onPressed: () {
                 final tabsRouter = AutoTabsRouter.of(context);
-                final provider = tabsRouter.activeIndex == 1
-                    ? MangaProvider.komikcast
-                    : MangaProvider.komiku;
+                final provider = _getProviderForSearch(tabsRouter.activeIndex);
                 context.pushRoute(SearchRoute(provider: provider));
               },
             ),
@@ -123,5 +121,15 @@ class _HomeScreenState extends State<HomeScreen> {
         );
       },
     );
+  }
+
+  /// Get provider for search based on tab index
+  MangaProvider _getProviderForSearch(int index) {
+    switch (index) {
+      case 1:
+        return MangaProvider.voratoon;
+      default:
+        return MangaProvider.komiku;
+    }
   }
 }

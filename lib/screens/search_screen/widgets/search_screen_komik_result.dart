@@ -100,35 +100,7 @@ class SearchScreenKomikResult extends StatelessWidget {
                           Flexible(
                             child: Padding(
                               padding: EdgeInsets.only(top: 8.h),
-                              child: provider == MangaProvider.komikcast
-                                  ? Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text("Rating : ${item.rating}"),
-                                        SizedBox(height: 4.h),
-                                        Container(
-                                          padding: EdgeInsets.symmetric(
-                                            horizontal: 4.w,
-                                            vertical: 2.h,
-                                          ),
-                                          decoration: BoxDecoration(
-                                            color: Colors.red,
-                                            borderRadius: BorderRadius.circular(
-                                              4,
-                                            ),
-                                          ),
-                                          child: Text(
-                                            item.type,
-                                            style: TextStyle(
-                                              fontSize: 10.sp,
-                                              color: Colors.white,
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    )
-                                  : Text("Updated : ${item.latestChapter}"),
+                              child: _buildProviderInfo(item),
                             ),
                           ),
                         ],
@@ -142,5 +114,63 @@ class SearchScreenKomikResult extends StatelessWidget {
         },
       ),
     );
+  }
+
+  /// Build provider-specific info widget
+  Widget _buildProviderInfo(KomikuListItemModel item) {
+    switch (provider) {
+      case MangaProvider.komikcast:
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text("Rating : ${item.rating}"),
+            SizedBox(height: 4.h),
+            Container(
+              padding: EdgeInsets.symmetric(
+                horizontal: 4.w,
+                vertical: 2.h,
+              ),
+              decoration: BoxDecoration(
+                color: Colors.red,
+                borderRadius: BorderRadius.circular(4),
+              ),
+              child: Text(
+                item.type,
+                style: TextStyle(
+                  fontSize: 10.sp,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ],
+        );
+      case MangaProvider.voratoon:
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text("Rating : ${item.rating}"),
+            SizedBox(height: 4.h),
+            Container(
+              padding: EdgeInsets.symmetric(
+                horizontal: 4.w,
+                vertical: 2.h,
+              ),
+              decoration: BoxDecoration(
+                color: Colors.red,
+                borderRadius: BorderRadius.circular(4),
+              ),
+              child: Text(
+                item.type,
+                style: TextStyle(
+                  fontSize: 10.sp,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ],
+        );
+      case MangaProvider.komiku:
+        return Text("Updated : ${item.latestChapter}");
+    }
   }
 }

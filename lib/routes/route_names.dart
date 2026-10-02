@@ -3,6 +3,7 @@ class RouteNames {
   static const String homeScreen = "HomeRoute";
   static const String komikListScreen = "KomikListRoute";
   static const String komikcastListScreen = "KomikcastListRoute";
+  static const String voratoonListScreen = "VoratoonListRoute";
   static const String anoboyListScreen = "AnoboyListRoute";
   static const String anoboyDetailScreen = "AnoboyDetailRoute";
   static const String searchScreen = "SearchRoute";

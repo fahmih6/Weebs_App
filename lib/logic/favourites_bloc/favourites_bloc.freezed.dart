@@ -519,7 +519,7 @@ $KomikuDetailModelCopyWith<$Res>? get komikuData {
 /// @nodoc
 mixin _$FavouritesState {
 
- List<AnoboyDetailModel> get anoboyList; List<KomikuDetailModel> get komikuList; List<KomikuDetailModel> get komikcastList;
+ List<AnoboyDetailModel> get anoboyList; List<KomikuDetailModel> get komikuList; List<KomikuDetailModel> get komikcastList; List<KomikuDetailModel> get voratoonList;
 /// Create a copy of FavouritesState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -530,16 +530,16 @@ $FavouritesStateCopyWith<FavouritesState> get copyWith => _$FavouritesStateCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is FavouritesState&&const DeepCollectionEquality().equals(other.anoboyList, anoboyList)&&const DeepCollectionEquality().equals(other.komikuList, komikuList)&&const DeepCollectionEquality().equals(other.komikcastList, komikcastList));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is FavouritesState&&const DeepCollectionEquality().equals(other.anoboyList, anoboyList)&&const DeepCollectionEquality().equals(other.komikuList, komikuList)&&const DeepCollectionEquality().equals(other.komikcastList, komikcastList)&&const DeepCollectionEquality().equals(other.voratoonList, voratoonList));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(anoboyList),const DeepCollectionEquality().hash(komikuList),const DeepCollectionEquality().hash(komikcastList));
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(anoboyList),const DeepCollectionEquality().hash(komikuList),const DeepCollectionEquality().hash(komikcastList),const DeepCollectionEquality().hash(voratoonList));
 
 @override
 String toString() {
-  return 'FavouritesState(anoboyList: $anoboyList, komikuList: $komikuList, komikcastList: $komikcastList)';
+  return 'FavouritesState(anoboyList: $anoboyList, komikuList: $komikuList, komikcastList: $komikcastList, voratoonList: $voratoonList)';
 }
 
 
@@ -550,7 +550,7 @@ abstract mixin class $FavouritesStateCopyWith<$Res>  {
   factory $FavouritesStateCopyWith(FavouritesState value, $Res Function(FavouritesState) _then) = _$FavouritesStateCopyWithImpl;
 @useResult
 $Res call({
- List<AnoboyDetailModel> anoboyList, List<KomikuDetailModel> komikuList, List<KomikuDetailModel> komikcastList
+ List<AnoboyDetailModel> anoboyList, List<KomikuDetailModel> komikuList, List<KomikuDetailModel> komikcastList, List<KomikuDetailModel> voratoonList
 });
 
 
@@ -567,11 +567,12 @@ class _$FavouritesStateCopyWithImpl<$Res>
 
 /// Create a copy of FavouritesState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? anoboyList = null,Object? komikuList = null,Object? komikcastList = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? anoboyList = null,Object? komikuList = null,Object? komikcastList = null,Object? voratoonList = null,}) {
   return _then(_self.copyWith(
 anoboyList: null == anoboyList ? _self.anoboyList : anoboyList // ignore: cast_nullable_to_non_nullable
 as List<AnoboyDetailModel>,komikuList: null == komikuList ? _self.komikuList : komikuList // ignore: cast_nullable_to_non_nullable
 as List<KomikuDetailModel>,komikcastList: null == komikcastList ? _self.komikcastList : komikcastList // ignore: cast_nullable_to_non_nullable
+as List<KomikuDetailModel>,voratoonList: null == voratoonList ? _self.voratoonList : voratoonList // ignore: cast_nullable_to_non_nullable
 as List<KomikuDetailModel>,
   ));
 }
@@ -654,10 +655,10 @@ return state(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( List<AnoboyDetailModel> anoboyList,  List<KomikuDetailModel> komikuList,  List<KomikuDetailModel> komikcastList)?  state,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( List<AnoboyDetailModel> anoboyList,  List<KomikuDetailModel> komikuList,  List<KomikuDetailModel> komikcastList,  List<KomikuDetailModel> voratoonList)?  state,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _State() when state != null:
-return state(_that.anoboyList,_that.komikuList,_that.komikcastList);case _:
+return state(_that.anoboyList,_that.komikuList,_that.komikcastList,_that.voratoonList);case _:
   return orElse();
 
 }
@@ -675,10 +676,10 @@ return state(_that.anoboyList,_that.komikuList,_that.komikcastList);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( List<AnoboyDetailModel> anoboyList,  List<KomikuDetailModel> komikuList,  List<KomikuDetailModel> komikcastList)  state,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( List<AnoboyDetailModel> anoboyList,  List<KomikuDetailModel> komikuList,  List<KomikuDetailModel> komikcastList,  List<KomikuDetailModel> voratoonList)  state,}) {final _that = this;
 switch (_that) {
 case _State():
-return state(_that.anoboyList,_that.komikuList,_that.komikcastList);}
+return state(_that.anoboyList,_that.komikuList,_that.komikcastList,_that.voratoonList);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -692,10 +693,10 @@ return state(_that.anoboyList,_that.komikuList,_that.komikcastList);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( List<AnoboyDetailModel> anoboyList,  List<KomikuDetailModel> komikuList,  List<KomikuDetailModel> komikcastList)?  state,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( List<AnoboyDetailModel> anoboyList,  List<KomikuDetailModel> komikuList,  List<KomikuDetailModel> komikcastList,  List<KomikuDetailModel> voratoonList)?  state,}) {final _that = this;
 switch (_that) {
 case _State() when state != null:
-return state(_that.anoboyList,_that.komikuList,_that.komikcastList);case _:
+return state(_that.anoboyList,_that.komikuList,_that.komikcastList,_that.voratoonList);case _:
   return null;
 
 }
@@ -707,7 +708,7 @@ return state(_that.anoboyList,_that.komikuList,_that.komikcastList);case _:
 
 
 class _State implements FavouritesState {
-  const _State({final  List<AnoboyDetailModel> anoboyList = const [], final  List<KomikuDetailModel> komikuList = const [], final  List<KomikuDetailModel> komikcastList = const []}): _anoboyList = anoboyList,_komikuList = komikuList,_komikcastList = komikcastList;
+  const _State({final  List<AnoboyDetailModel> anoboyList = const [], final  List<KomikuDetailModel> komikuList = const [], final  List<KomikuDetailModel> komikcastList = const [], final  List<KomikuDetailModel> voratoonList = const []}): _anoboyList = anoboyList,_komikuList = komikuList,_komikcastList = komikcastList,_voratoonList = voratoonList;
   
 
  final  List<AnoboyDetailModel> _anoboyList;
@@ -731,6 +732,13 @@ class _State implements FavouritesState {
   return EqualUnmodifiableListView(_komikcastList);
 }
 
+ final  List<KomikuDetailModel> _voratoonList;
+@override@JsonKey() List<KomikuDetailModel> get voratoonList {
+  if (_voratoonList is EqualUnmodifiableListView) return _voratoonList;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_voratoonList);
+}
+
 
 /// Create a copy of FavouritesState
 /// with the given fields replaced by the non-null parameter values.
@@ -742,16 +750,16 @@ _$StateCopyWith<_State> get copyWith => __$StateCopyWithImpl<_State>(this, _$ide
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _State&&const DeepCollectionEquality().equals(other._anoboyList, _anoboyList)&&const DeepCollectionEquality().equals(other._komikuList, _komikuList)&&const DeepCollectionEquality().equals(other._komikcastList, _komikcastList));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _State&&const DeepCollectionEquality().equals(other._anoboyList, _anoboyList)&&const DeepCollectionEquality().equals(other._komikuList, _komikuList)&&const DeepCollectionEquality().equals(other._komikcastList, _komikcastList)&&const DeepCollectionEquality().equals(other._voratoonList, _voratoonList));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_anoboyList),const DeepCollectionEquality().hash(_komikuList),const DeepCollectionEquality().hash(_komikcastList));
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_anoboyList),const DeepCollectionEquality().hash(_komikuList),const DeepCollectionEquality().hash(_komikcastList),const DeepCollectionEquality().hash(_voratoonList));
 
 @override
 String toString() {
-  return 'FavouritesState.state(anoboyList: $anoboyList, komikuList: $komikuList, komikcastList: $komikcastList)';
+  return 'FavouritesState.state(anoboyList: $anoboyList, komikuList: $komikuList, komikcastList: $komikcastList, voratoonList: $voratoonList)';
 }
 
 
@@ -762,7 +770,7 @@ abstract mixin class _$StateCopyWith<$Res> implements $FavouritesStateCopyWith<$
   factory _$StateCopyWith(_State value, $Res Function(_State) _then) = __$StateCopyWithImpl;
 @override @useResult
 $Res call({
- List<AnoboyDetailModel> anoboyList, List<KomikuDetailModel> komikuList, List<KomikuDetailModel> komikcastList
+ List<AnoboyDetailModel> anoboyList, List<KomikuDetailModel> komikuList, List<KomikuDetailModel> komikcastList, List<KomikuDetailModel> voratoonList
 });
 
 
@@ -779,11 +787,12 @@ class __$StateCopyWithImpl<$Res>
 
 /// Create a copy of FavouritesState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? anoboyList = null,Object? komikuList = null,Object? komikcastList = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? anoboyList = null,Object? komikuList = null,Object? komikcastList = null,Object? voratoonList = null,}) {
   return _then(_State(
 anoboyList: null == anoboyList ? _self._anoboyList : anoboyList // ignore: cast_nullable_to_non_nullable
 as List<AnoboyDetailModel>,komikuList: null == komikuList ? _self._komikuList : komikuList // ignore: cast_nullable_to_non_nullable
 as List<KomikuDetailModel>,komikcastList: null == komikcastList ? _self._komikcastList : komikcastList // ignore: cast_nullable_to_non_nullable
+as List<KomikuDetailModel>,voratoonList: null == voratoonList ? _self._voratoonList : voratoonList // ignore: cast_nullable_to_non_nullable
 as List<KomikuDetailModel>,
   ));
 }

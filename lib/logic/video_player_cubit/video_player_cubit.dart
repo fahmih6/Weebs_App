@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:video_player/video_player.dart';
 import 'package:cached_video_player_plus/cached_video_player_plus.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:weebs_app/global/endpoints.dart';
 import 'package:weebs_app/model/anoboy/anoboy_detail_model/anoboy_detail_model.dart';
 
 part 'video_player_state.dart';
@@ -69,7 +68,8 @@ class VideoPlayerCubit extends Cubit<VideoPlayerState> {
     /// Dispose old video controller
     await oldController?.dispose();
 
-    final proxiedUrl = _getProxiedUrl(selectedLink.link, selectedLink.headers);
+    // final proxiedUrl = _getProxiedUrl(selectedLink.link, selectedLink.headers);
+    final proxiedUrl = selectedLink.link;
 
     /// Load new video controller
     final player = CachedVideoPlayerPlus.networkUrl(
@@ -85,6 +85,13 @@ class VideoPlayerCubit extends Cubit<VideoPlayerState> {
 
     try {
       await player.initialize();
+
+      /// Check if this request is still relevant (not superseded by a newer loadVideo call)
+      if (state.url != selectedLink.link) {
+        await player.dispose();
+        return;
+      }
+
       emit(
         state.copyWith(
           controller: player,
@@ -92,48 +99,30 @@ class VideoPlayerCubit extends Cubit<VideoPlayerState> {
           links: links,
         ),
       );
-      player.controller.play();
+
+      /// Seek to last position if any
+      if (state.lastPosition != null) {
+        await player.controller.seekTo(state.lastPosition!);
+      }
+
+      /// Play
+      await player.controller.play();
+
+      /// Add listener for duration
+      player.controller.addListener(() {
+        if (player.controller.value.isInitialized) {
+          emit(state.copyWith(lastPosition: player.controller.value.position));
+        }
+      });
     } catch (e) {
       debugPrint("Error loading video: $e");
-    }
-
-    /// Seek to last position if any
-    if (state.lastPosition != null) {
-      await player.controller.seekTo(state.lastPosition!);
-    }
-
-    /// Play
-    await player.controller.play();
-
-    /// Add listener for duration
-    player.controller.addListener(() {
-      if (player.controller.value.isInitialized) {
-        emit(state.copyWith(lastPosition: player.controller.value.position));
+      if (state.url == selectedLink.link) {
+        emit(state.copyWith(controller: null));
       }
-    });
+    }
   }
 
-  /// Get Proxied URL
-  String _getProxiedUrl(String url, Map<String, dynamic>? headers) {
-    if (url.isEmpty) return "";
 
-    /// If url already contains the video proxy, return it as is.
-    if (url.contains(Endpoints.videoProxy)) {
-      return url;
-    }
-
-    final encodedUrl = Uri.encodeComponent(url);
-    var proxiedUrl = "${Endpoints.videoProxy}$encodedUrl";
-
-    if (headers != null) {
-      headers.forEach((key, value) {
-        proxiedUrl +=
-            '&${key.toLowerCase()}=${Uri.encodeComponent(value.toString())}';
-      });
-    }
-
-    return proxiedUrl;
-  }
 
   /// Set Full Screen
   void setFullScreen(bool value) {

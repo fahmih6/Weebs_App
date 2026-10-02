@@ -65,17 +65,7 @@ class KomikDetailAppbar extends StatelessWidget {
                   child: BlocBuilder<FavouritesBloc, FavouritesState>(
                     builder: (context, state) {
                       /// Is komik is already added to the favourites
-                      final isExist = provider == MangaProvider.komikcast
-                          ? state.komikcastList.firstWhereOrNull(
-                                  (element) =>
-                                      element.param == komikuDetailModel.param,
-                                ) !=
-                                null
-                          : state.komikuList.firstWhereOrNull(
-                                  (element) =>
-                                      element.param == komikuDetailModel.param,
-                                ) !=
-                                null;
+                      final isExist = _isFavourite(provider, state);
 
                       /// Widget
                       return ElevatedButton(
@@ -112,5 +102,29 @@ class KomikDetailAppbar extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  /// Check if komik is already added to favourites based on provider
+  bool _isFavourite(MangaProvider provider, FavouritesState state) {
+    switch (provider) {
+      case MangaProvider.komikcast:
+        return state.komikcastList
+                .firstWhereOrNull(
+                  (element) => element.param == komikuDetailModel.param,
+                ) !=
+            null;
+      case MangaProvider.voratoon:
+        return state.voratoonList
+                .firstWhereOrNull(
+                  (element) => element.param == komikuDetailModel.param,
+                ) !=
+            null;
+      case MangaProvider.komiku:
+        return state.komikuList
+                .firstWhereOrNull(
+                  (element) => element.param == komikuDetailModel.param,
+                ) !=
+            null;
+    }
   }
 }

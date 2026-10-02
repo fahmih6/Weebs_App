@@ -5,6 +5,7 @@ import 'package:weebs_app/routes/route_names.dart';
 import 'package:weebs_app/services/repositories/anoboy_repository.dart';
 import 'package:weebs_app/services/repositories/komiku_repository.dart';
 import 'package:weebs_app/services/repositories/komikcast_repository.dart';
+import 'package:weebs_app/services/repositories/voratoon_repository.dart';
 import 'package:weebs_app/enum/manga_provider.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
 
@@ -25,13 +26,11 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       /// Keyword
       final keyword = event.keyword;
 
-      /// If user is on Komiku section.
+      /// If user is on Komik section.
       /// Search komik
-      if (event.currentRouteName == RouteNames.komikListScreen) {
+      if (_isKomikRoute(event.currentRouteName)) {
         /// Repository
-        final repo = event.provider == MangaProvider.komiku
-            ? getIt<KomikuRepository>()
-            : getIt<KomikcastRepository>();
+        final repo = _getRepository(event.provider);
 
         /// Get komik
         final res = await repo.searchKomik(keyword: keyword);
@@ -66,11 +65,9 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
 
         /// Get the data
         if (state.komikResult.nextPage != null &&
-            event.currentRouteName == RouteNames.komikListScreen) {
+            _isKomikRoute(event.currentRouteName)) {
           /// Repository
-          final repo = event.provider == MangaProvider.komiku
-              ? getIt<KomikuRepository>()
-              : getIt<KomikcastRepository>();
+          final repo = _getRepository(event.provider);
 
           /// Result
           final res = await repo.getNextKomikListData(
@@ -116,5 +113,24 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         }
       }
     }, transformer: droppable());
+  }
+
+  /// Check if route is a komik route
+  bool _isKomikRoute(String routeName) {
+    return routeName == RouteNames.komikListScreen ||
+        routeName == RouteNames.komikcastListScreen ||
+        routeName == RouteNames.voratoonListScreen;
+  }
+
+  /// Get repository based on provider
+  IKomikuRepository _getRepository(MangaProvider provider) {
+    switch (provider) {
+      case MangaProvider.komiku:
+        return getIt<KomikuRepository>();
+      case MangaProvider.komikcast:
+        return getIt<KomikcastRepository>();
+      case MangaProvider.voratoon:
+        return getIt<VoratoonRepository>();
+    }
   }
 }
